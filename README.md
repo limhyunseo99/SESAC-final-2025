@@ -17,14 +17,10 @@
     - Assets 리포 Path는 반드시 Ludico_KNOCKturne 리포를 먼저 Clone한 후에 해당 리포가 Clone된 경로 하위 Content 폴더로 지정하셔야 합니다.
       > ex. 저는 [D:\GitHub]에 Ludico_KNOCKturne을 Clone했고, [D:\GitHub\Ludico_KNOCKturne\Content]에 Assets 리포를 Clone했습니다.
 5. Clone한 리포가 깃허브 데스크탑 내에 잘 위치했는지 확인한다.
-   
-![image](https://github.com/cedongne/Assets/assets/57585303/55075cfe-c783-41ad-8e9c-9dc6ef473bd2)
 
 <br><br>
 
 ## Step 2. Commit changes(애셋 변경 사항 업로드)
-
-![image](https://github.com/cedongne/Assets/assets/57585303/613aab87-7d3b-4d04-b1e4-0013f25248d6)
 
 - 리포 내에 특정 애셋 파일을 변경(추가, 삭제 포함)했다면 좌측 `Changes` 탭에 변경 내용이 반영되었을 겁니다. 기존에 Asset update list에 작성하던 것처럼 Summary를 작성하고 부가 설명이 필요한 경우 Description을 작성합니다.
 
@@ -33,7 +29,6 @@
 ## Step 3. Github Desktop Layout(깃허브 데스크탑 레이아웃 설명)
 앞서 사용한 기본 Github Desktop 레이아웃을 설명하는 내용입니다.
 
-![image](https://github.com/cedongne/Assets/assets/57585303/b83fb9cc-58ea-4927-95a3-ce81b3438bda)
 
 
 ### [기본 용어 설명]
