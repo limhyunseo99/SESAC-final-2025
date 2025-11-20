@@ -6,6 +6,38 @@
 ⚠ 반드시 작업 전 모든 애셋을 업데이트해주세요.
 ```
 
+# [파일·폴더 네이밍 규칙]
+파일을 저장할 때에는 아래의 규칙에 따라 파일명을 작성해주세요.
+
+■ 공통
+- 소문자 + snake_case 사용
+- 영문/숫자만, 공백은 "_"로
+- 버전은 v1, v1.1 형식
+- prefix 사용: raw_, clean_, final_, draft_
+
+■ 코드 파일
+- 기능_설명.py  (예: data_preprocessing.py)
+- 테스트: test_파일명.py
+
+■ 데이터 파일
+- RAW:    raw_내용_날짜.csv
+- CLEAN:  clean_내용_v1.csv
+- PROC:   processed_내용.pkl
+- 분할:   train_dataset_v1.csv 등
+
+■ 문서 파일
+- meeting_notes_YYYYMMDD.md
+- report_v1.pdf / diagram_v1.png
+
+■ 권장 폴더 구조
+src/, data/raw-clean-processed/, docs/, notebooks/
+
+
+
+
+
+
+
 # [Github Desktop 사용법]
 
 ## Step 1. Clone repository(원격 저장소 다운로드)
@@ -60,6 +92,11 @@
     - Fetch : 리포의 변경 사항이 있는지 체크합니다.
     - Push : 나의 커밋을 원격 저장소에 공유합니다.
     - Pull : 다른 사람이 원격 저장소에 저장한 정보를 나의 로컬 저장소로 가져옴.
+
+
+
+
+
 
 
 
