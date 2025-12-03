@@ -1,0 +1,67 @@
+{
+  "keywords": [
+    {
+      "category": "juice",
+      "kr": "오렌지 주스",
+      "en": "orange juice korea",
+      "jp": "オレンジジュース韓国",
+      "vn": "nước cam Hàn Quốc"
+    },
+    {
+      "category": "juice",
+      "kr": "레몬 주스",
+      "en": "lemon juice korea",
+      "jp": "レモンジュース韓国",
+      "vn": "nước chanh Hàn Quốc"
+    },
+    {
+      "category": "soda",
+      "kr": "칠성 사이다",
+      "en": "Chilsung Cider korea",
+      "jp": "チルソンサイダー韓国",
+      "vn": "Chilsung Cider Hàn Quốc"
+    },
+    {
+      "category": "tea",
+      "kr": "녹차",
+      "en": "green tea korea",
+      "jp": "緑茶韓国",
+      "vn": "trà xanh Hàn Quốc"
+    },
+    {
+      "category": "tea",
+      "kr": "식혜",
+      "en": "sikhye korea",
+      "jp": "シッケ韓国",
+      "vn": "nước gạo ngọt Hàn Quốc"
+    },
+    {
+      "category": "milk",
+      "kr": "커피우유",
+      "en": "coffee milk korea",
+      "jp": "コーヒーミルク韓国",
+      "vn": "sữa cà phê Hàn Quốc"
+    },
+    {
+      "category": "milk",
+      "kr": "바나나우유",
+      "en": "banana milk korea",
+      "jp": "バナナミルク韓国",
+      "vn": "sữa chuối Hàn Quốc"
+    },
+    {
+      "category": "soy",
+      "kr": "검은콩 두유",
+      "en": "black bean soy milk korea",
+      "jp": "黒豆豆乳韓国",
+      "vn": "sữa đậu đen Hàn Quốc"
+    },
+    {
+      "category": "juice",
+      "kr": "알로에 주스",
+      "en": "aloe juice korea",
+      "jp": "アロエジュース韓国",
+      "vn": "nước ép lô hội Hàn Quốc"
+    }
+  ]
+}

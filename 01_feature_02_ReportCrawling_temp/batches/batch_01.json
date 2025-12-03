@@ -1,0 +1,48 @@
+{
+  "api_keys": [
+    "AIzaSyAtlx-wNxwe5jZhSR_1PleAwKrqvjF5hOE",
+    "AIzaSyAxwvpew_Xcp5-a2Ah6eV--5_M1icSL-c8",
+    "AIzaSyAlLK8Oh-fEgT-h-ZtYMI0Nh3_oJt4Xg4I",
+    "AIzaSyCeSSxG0QI-S7TGFQcqSwgKCQEgl8Q_Y0w",
+    "AIzaSyCFn-TNjPFE7HMlZaIh0-aulsV8Zysx2Ck",
+    "AIzaSyDxLXOeywxrNtZ4NHSDnsZPCgDycdYQgv4",
+    "AIzaSyCpohMLo6yqTVGyDkLukneb7KDxoc9HQbQ",
+    "AIzaSyCB-6oxdfLcY2Cj2brBFTMmuaaW9pWwFTc",
+    "AIzaSyDJgtlZtSYDLeyibEqP5HuxfE9PKRIRpUg"
+  ],
+  "months": [
+    "2024-12",
+    "2025-01",
+    "2025-02",
+    "2025-03",
+    "2025-04",
+    "2025-05",
+    "2025-06",
+    "2025-07",
+    "2025-08",
+    "2025-09",
+    "2025-10",
+    "2025-11"
+  ],
+  "countries": [
+    "US",
+    "JP",
+    "VN"
+  ],
+  "keywords": [
+    {
+      "category": "juice",
+      "kr": "오렌지 주스",
+      "en": "orange juice korea",
+      "jp": "オレンジジュース韓国",
+      "vn": "nước cam Hàn Quốc"
+    },
+    {
+      "category": "juice",
+      "kr": "레몬 주스",
+      "en": "lemon juice korea",
+      "jp": "レモンジュース韓国",
+      "vn": "nước chanh Hàn Quốc"
+    }
+  ]
+}
