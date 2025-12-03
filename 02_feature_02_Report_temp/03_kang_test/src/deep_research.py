@@ -1,619 +1,284 @@
 # deep_research.py
-import os
-import json
-from typing import List, Dict, Optional
-from datetime import datetime
-
-from langchain_community.tools.tavily_search import TavilySearchResults
-from langchain_openai import ChatOpenAI
-
-# ----------------------------------------------------------
-# 절대경로 설정
-# ----------------------------------------------------------
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-OUTPUT_DIR = os.path.join(BASE_DIR, "output")
-META_PATH = os.path.join(BASE_DIR, "metadata", "table_image_index.json")
-
-os.makedirs(OUTPUT_DIR, exist_ok=True)
-
-
-# ----------------------------------------------------------
-# 표/이미지 페이지 데이터 로드
-# ----------------------------------------------------------
-def load_table_image_index() -> Dict:
-    try:
-        with open(META_PATH, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except FileNotFoundError:
-        print(f"⚠ table_image_index.json 파일이 없습니다: {META_PATH}")
-        return {}
-    except json.JSONDecodeError as e:
-        print(f"⚠ table_image_index.json 파싱 실패: {e}")
-        return {}
-
-
-TABLE_IMAGE_INDEX = load_table_image_index()
-
-
-# ----------------------------------------------------------
-# 슈퍼바이저 에이전트 (핵심 추가)
-# ----------------------------------------------------------
-class ResearchSupervisor:
-    """
-    Deep Research 검색 품질을 감독하고
-    추가 검색이 필요한지 판단하는 에이전트
-    """
-
-    def __init__(self, model: str = "gpt-4o-mini"):
-        self.llm = ChatOpenAI(model=model, temperature=0)
-        self.max_iterations = 3  # 최대 검색 반복 횟수
-
-    def evaluate_search_quality(
-        self, search_results: List[Dict], query: str, research_type: str
-    ) -> Dict:
-        """
-        검색 결과의 품질을 평가하고 다음 액션 결정
-
-        Returns:
-            {
-                "quality_score": int (0-100),
-                "is_sufficient": bool,
-                "missing_aspects": List[str],
-                "next_query_suggestions": List[str],
-                "reasoning": str
-            }
-        """
-
-        # 검색 결과 요약
-        results_summary = self._summarize_results(search_results)
-
-        prompt = f"""
-당신은 시장조사 Deep Research의 **품질 감독관(Supervisor)**입니다.
-
-【검색 정보】
-- 연구 유형: {research_type}
-- 원본 쿼리: {query}
-- 검색 결과 개수: {len(search_results)}
-
-【검색 결과 요약】
-{results_summary}
-
-【평가 기준】
-다음 기준으로 검색 결과의 품질을 평가하세요:
-
-1. **정보 완전성** (40점)
-   - 최신 정보 포함 여부 (2024-2025)
-   - 구체적 수치/통계 존재 여부
-   - 신뢰할 수 있는 출처 (정부, 공식 기관, 주요 언론)
-
-2. **정보 관련성** (30점)
-   - 쿼리와의 직접적 연관성
-   - 국가/품목 특정성
-   - 실행 가능한 인사이트 포함
-
-3. **정보 다양성** (30점)
-   - 여러 관점의 정보
-   - 다양한 출처
-   - 상반된 의견이나 리스크 요인 포함
-
-【요구 출력 (JSON)】
-{{
-  "quality_score": 0-100 사이 정수,
-  "is_sufficient": true/false,
-  "confidence": "high/medium/low",
-  "strengths": ["강점1", "강점2"],
-  "missing_aspects": ["부족한 부분1", "부족한 부분2"],
-  "next_query_suggestions": ["추가 검색 쿼리1", "추가 검색 쿼리2"],
-  "reasoning": "평가 근거 설명 (2-3문장)"
-}}
-
-【규칙】
-- quality_score 70점 이상 → is_sufficient: true
-- quality_score 70점 미만 → is_sufficient: false
-- is_sufficient가 false면 next_query_suggestions 필수 제공 (1-3개)
-- 검색 결과가 없거나 너무 일반적이면 낮은 점수
+"""
+Deep Research Engine
+- Tavily 웹 검색 기반 최신 정보 수집
+- Supervisor 모듈을 통한 공공기관 출처 검증
+- 검증된 출처만을 사용하여 LLM 요약 수행
 """
 
-        try:
-            response = self.llm.invoke(prompt)
-            result = response.content.strip()
-
-            # JSON 파싱
-            if "```json" in result:
-                result = result.split("```json")[1].split("```")[0]
-
-            evaluation = json.loads(result)
-            return evaluation
-
-        except Exception as e:
-            print(f"⚠️ 슈퍼바이저 평가 실패: {e}")
-            # 기본값 반환
-            return {
-                "quality_score": 50,
-                "is_sufficient": False,
-                "confidence": "low",
-                "strengths": [],
-                "missing_aspects": ["평가 실패로 인한 재검색 필요"],
-                "next_query_suggestions": [query + " 최신 정보"],
-                "reasoning": "평가 프로세스 오류로 인한 보수적 판단",
-            }
-
-    def _summarize_results(self, results: List[Dict]) -> str:
-        """검색 결과를 요약하여 슈퍼바이저에게 제공"""
-        if not results:
-            return "검색 결과 없음"
-
-        summary_parts = []
-        for i, r in enumerate(results[:5], 1):  # 상위 5개만
-            title = r.get("title", "제목 없음")
-            content = r.get("content", "")[:200]  # 200자로 제한
-            url = r.get("url", "")
-
-            summary_parts.append(
-                f"[{i}] {title}\n    내용: {content}...\n    출처: {url}\n"
-            )
-
-        return "\n".join(summary_parts)
-
-    def decide_next_action(self, evaluation: Dict, current_iteration: int) -> str:
-        """
-        다음 액션 결정
-
-        Returns:
-            "continue" - 추가 검색 필요
-            "stop" - 검색 종료
-        """
-        # 최대 반복 횟수 도달
-        if current_iteration >= self.max_iterations:
-            print(f"   ⏹ 최대 반복 횟수({self.max_iterations}) 도달 - 검색 종료")
-            return "stop"
-
-        # 품질 점수가 충분
-        if evaluation.get("is_sufficient", False):
-            print(f"   ✅ 품질 점수 {evaluation['quality_score']}/100 - 충분")
-            return "stop"
-
-        # 추가 검색 필요
-        print(f"   🔄 품질 점수 {evaluation['quality_score']}/100 - 추가 검색 필요")
-        print(f"   부족한 부분: {', '.join(evaluation.get('missing_aspects', []))}")
-        return "continue"
+import json
+from typing import Dict, List
+from langchain_openai import ChatOpenAI
+from langchain_core.messages import AIMessage
+from tavily import TavilyClient
+from supervisor import Supervisor
 
 
-# ----------------------------------------------------------
-# Deep Research 엔진 (슈퍼바이저 통합)
-# ----------------------------------------------------------
+# LLM 호출 관련 유틸 함수
+def safe_llm_invoke(llm, prompt: str) -> str:
+    """LLM 호출을 안전하게 수행하는 래퍼 함수 — 실패 시 JSON 오류 반환"""
+    try:
+        response = llm.invoke(prompt)
+        return response.content if isinstance(response, AIMessage) else str(response)
+    except Exception as e:
+        return f'{{"error": "LLM invocation failed: {str(e)}"}}'
+
+
+def safe_json_parse(text: str) -> Dict:
+    """LLM 응답에서 JSON 블록만 안전하게 파싱"""
+    import re
+    # Markdown 코드 블록 제거
+    text = re.sub(r'```(?:json)?\s*', '', text)
+    text = re.sub(r'```\s*$', '', text)
+    
+    # Non-greedy JSON 매칭
+    match = re.search(r'\{(?:[^{}]|(?:\{[^{}]*\}))*\}', text, re.DOTALL)
+    if not match:
+        return {"error": "JSON not found in response"}
+    
+    try:
+        return json.loads(match.group(0))
+    except json.JSONDecodeError as e:
+        return {"error": f"JSON parse failed: {str(e)}"}
+
+
+
+# Deep Research Engine 클래스
 class DeepResearchEngine:
-    """최신 정보 웹 검색 엔진 (슈퍼바이저 감독 포함)"""
+    """
+    Deep Research Engine
+    - Tavily 기반 인터넷 최신 정보 검색
+    - Supervisor로 출처 검증(공공기관/국제기구)
+    - 검증된 데이터로만 LLM 요약 생성
+    """
 
     def __init__(self, model: str = "gpt-4o-mini"):
-        if not os.getenv("TAVILY_API_KEY"):
-            raise ValueError(
-                "TAVILY_API_KEY가 설정되지 않았습니다.\n"
-                ".env 파일에 다음을 추가하세요:\n"
-                "TAVILY_API_KEY=tvly-..."
-            )
-
-        self.search_tool = TavilySearchResults(
-            max_results=5,
-            search_depth="advanced",
-            include_answer=True,
-            include_raw_content=False,
-        )
         self.llm = ChatOpenAI(model=model, temperature=0.3)
-        self.supervisor = ResearchSupervisor(model=model)  # 슈퍼바이저 추가
+        self.supervisor = Supervisor(model=model)
+        self.tavily = TavilyClient()
+        self.max_iterations = 3  # 반복 검색 최대 횟수
 
-    # ----------------------------------------------------------
-    # 표/이미지 페이지 조회 기능
-    # ----------------------------------------------------------
-    def get_special_pages(self, source: str, country_code: str, year: Optional[int]):
-        try:
-            source = source.upper()
-            country_code = country_code.upper()
-
-            if source not in TABLE_IMAGE_INDEX:
-                return {}
-
-            if country_code not in TABLE_IMAGE_INDEX[source]:
-                return {}
-
-            year = str(year)
-            if year not in TABLE_IMAGE_INDEX[source][country_code]:
-                return {}
-
-            return TABLE_IMAGE_INDEX[source][country_code][year]
-
-        except Exception as e:
-            print(f"⚠ 표/이미지 페이지 조회 실패: {e}")
-            return {}
-
-    # ----------------------------------------------------------
-    # 슈퍼바이저 기반 반복 검색 (핵심 메서드)
-    # ----------------------------------------------------------
+    # 반복 검색 수행
     def _iterative_search(
-        self,
-        initial_queries: List[str],
-        research_type: str,
-        country: str,
-        product_name: str,
+        self, queries: List[str], research_type: str, country_code: str
     ) -> Dict:
         """
-        슈퍼바이저가 감독하는 반복 검색 프로세스
-
-        Returns:
-            {
-                "all_results": List[Dict],  # 모든 검색 결과 누적
-                "iterations": int,
-                "final_evaluation": Dict,
-                "search_log": List[Dict]
-            }
+        Tavily 검색을 반복 수행하여 충분한 품질을 확보할 때까지 검색.
+        - 최대 2개의 쿼리만 사용
+        - Supervisor가 검색 품질 평가
         """
+
         all_results = []
-        search_log = []
-        queries_to_try = initial_queries.copy()
         iteration = 0
 
-        print(f"\n{'=' * 60}")
-        print(f"🔍 [{research_type}] 슈퍼바이저 검색 시작")
-        print(f"{'=' * 60}")
-
-        while iteration < self.supervisor.max_iterations:
-            iteration += 1
-
-            if not queries_to_try:
-                print(f"\n⏹ 반복 {iteration}: 더 이상 시도할 쿼리 없음")
-                break
-
-            current_query = queries_to_try.pop(0)
-            print(f"\n🔎 반복 {iteration}/{self.supervisor.max_iterations}")
-            print(f"   쿼리: {current_query}")
-
-            # 검색 실행
+        for q in queries[:2]:
             try:
-                results = self.search_tool.invoke({"query": current_query})
-                print(f"   결과: {len(results)}개")
+                raw = self.tavily.search(
+                    query=q,
+                    search_depth="advanced",
+                    max_results=5
+                )
+                results = raw.get("results", [])
                 all_results.extend(results)
 
+                # Supervisor가 검색 품질 검사
+                eval_result = self.supervisor.evaluate_search_quality(
+                    results, q, research_type, country_code
+                )
+
+                # 품질이 충분하면 반복 종료
+                if eval_result["is_sufficient"] and eval_result["quality_score"] >= 70:
+                    break
+
+                iteration += 1
+                if iteration >= self.max_iterations:
+                    break
+
             except Exception as e:
-                print(f"   ❌ 검색 실패: {e}")
-                results = []
-
-            # 슈퍼바이저 평가
-            evaluation = self.supervisor.evaluate_search_quality(
-                search_results=results, query=current_query, research_type=research_type
-            )
-
-            # 로그 기록
-            search_log.append(
-                {
-                    "iteration": iteration,
-                    "query": current_query,
-                    "results_count": len(results),
-                    "evaluation": evaluation,
-                }
-            )
-
-            # 다음 액션 결정
-            action = self.supervisor.decide_next_action(evaluation, iteration)
-
-            if action == "stop":
-                print(f"   ✅ 검색 종료 (충분한 정보 확보)\n")
-                break
-
-            # 추가 쿼리 추가
-            new_queries = evaluation.get("next_query_suggestions", [])
-            if new_queries:
-                print(f"   📝 추가 쿼리 {len(new_queries)}개 생성")
-                queries_to_try.extend(new_queries)
-
-        # 최종 평가
-        final_evaluation = self.supervisor.evaluate_search_quality(
-            search_results=all_results,
-            query=f"{country} {product_name} {research_type}",
-            research_type=research_type,
-        )
-
-        print(f"\n{'=' * 60}")
-        print(f"📊 최종 결과:")
-        print(f"   - 총 반복: {iteration}회")
-        print(f"   - 수집 결과: {len(all_results)}개")
-        print(f"   - 최종 점수: {final_evaluation['quality_score']}/100")
-        print(f"   - 신뢰도: {final_evaluation.get('confidence', 'N/A')}")
-        print(f"{'=' * 60}\n")
+                print("Search error:", e)
+                continue
 
         return {
-            "all_results": all_results,
-            "iterations": iteration,
-            "final_evaluation": final_evaluation,
-            "search_log": search_log,
+            "results": all_results,
+            "total_found": len(all_results)
         }
 
-    # ----------------------------------------------------------
-    # 최신 규제 검색 (슈퍼바이저 적용)
-    # ----------------------------------------------------------
-    def search_latest_regulation(
-        self, country: str, product_name: str, hs_code: str
+    # 검증된 결과를 기반으로 LLM 요약 생성
+    def _analyze(
+        self, results: List[Dict], analysis_type: str, context: str, country_code: str
     ) -> Dict:
-        print(f"\n[Deep Research] 최신 규제 검색")
-        print(f"국가: {country}, 품목: {product_name}")
+        """
+        검색 결과를 Supervisor로 검증한 뒤,
+        검증된 출처만 기반으로 LLM 요약 생성.
 
-        initial_queries = [
-            f"{country} {product_name} 수입 규제 2025 변경",
-            f"{country} 식품 수입 규제 최신 2025",
-            f"{country} HS {hs_code[:4]} 관세 2025",
-        ]
+        결과 구조:
+        {
+            "latest_info": "...",
+            "source": "...",
+            "confidence": "...",
+            "urls": [...],
+            "validation": {...}
+        }
+        """
 
-        # 슈퍼바이저 기반 검색
-        search_result = self._iterative_search(
-            initial_queries=initial_queries,
-            research_type="규제 정보",
-            country=country,
-            product_name=product_name,
-        )
-
-        if not search_result["all_results"]:
+        # 결과 없음
+        if not results:
             return {
-                "latest_info": "최신 규제 정보를 찾을 수 없습니다.",
+                "latest_info": f"No data for {analysis_type}",
+                "source": "N/A",
+                "confidence": "no_data",
+                "urls": []
+            }
+
+        urls = [r.get("url", "") for r in results]
+        source_type = "regulation" if "regulation" in analysis_type.lower() else "price_risk"
+
+        validation = self.supervisor.validate_source(urls, country_code, source_type)
+
+        # 공공기관/국제기구 출처 없음 → 사용 불가
+        valid_urls = validation["valid_urls"]
+        if not valid_urls:
+            return {
+                "latest_info": f"No valid public sources for {analysis_type}",
                 "source": "N/A",
                 "confidence": "low",
-                "date": datetime.now().strftime("%Y-%m-%d"),
                 "urls": [],
-                "supervisor_log": search_result["search_log"],
-                "quality_score": 0,
+                "warnings": validation["warnings"]
             }
 
-        # GPT 분석
-        analysis = self._analyze_search_results(
-            search_result["all_results"], country, product_name
+        # 검증된 결과만 필터링
+        valid_results = [r for r in results if r.get("url") in valid_urls]
+
+        # LLM 입력용 포맷 구성
+        formatted = "\n".join(
+            f"[{i+1}] {r.get('title','N/A')}\n"
+            f"{(r.get('content') or '')[:200]}...\n"
+            f"URL: {r.get('url','')}"
+            for i, r in enumerate(valid_results[:5])
         )
 
-        # 슈퍼바이저 메타데이터 추가
-        analysis["supervisor_log"] = search_result["search_log"]
-        analysis["quality_score"] = search_result["final_evaluation"]["quality_score"]
-        analysis["confidence"] = search_result["final_evaluation"].get(
-            "confidence", "medium"
-        )
+        # 영어 프롬프트 — LLM에게 전달
+        prompt = f"""
+You are an analytical research assistant specializing in verified, source-based factual synthesis.
+Your task is to create a **strictly evidence-grounded summary** based ONLY on the *public institution–verified* search results provided below.
+DO NOT use background knowledge, prior training data, assumptions, or anything not explicitly contained in the given text.
+---
 
-        return analysis
+### Context
+{context}
 
-    # ----------------------------------------------------------
-    # 가격 추세 검색 (슈퍼바이저 적용)
-    # ----------------------------------------------------------
-    def search_price_trend(self, country: str, product_name: str) -> Dict:
-        print(f"\n[Deep Research] 가격 추세 검색")
+### Analysis Type
+{analysis_type}
 
-        initial_queries = [
-            f"{country} {product_name} 수입 가격 2025",
-            f"{country} {product_name} 시장 가격 동향",
-            f"{product_name} price trend {country} 2024 2025",
+### Verified Search Results
+(Only the URLs approved by source validation)
+{formatted}
+
+---
+
+### STRICT RULES — FOLLOW EXACTLY
+1. **Use ONLY the information shown above.**  
+- If a fact is not explicitly included, it MUST NOT appear in the summary.
+
+2. **ABSOLUTELY NO GUESSING or FILLING GAPS.**  
+- No speculation, no implied interpretation, no generic statements.
+
+3. **All insights must be traceable to the text above.**  
+- Every claim must be directly grounded in the provided content.
+
+4. **Include numerical data whenever available.**  
+Examples:
+- Percentages
+- Growth rates
+- Year-over-year changes
+- Import/export volumes
+- Market size figures
+
+5. **Be concise, factual, and source-based.**  
+- No adjectives without numerical support.
+- No filler statements (“important”, “big market”, “strong demand”).
+
+6. **If information is missing, explicitly state that it is not available.**
+
+---
+
+### OUTPUT FORMAT (JSON only)
+Return a clean JSON object with NO extra explanations:
+
+{{
+"latest_info": "Factual summary using ONLY the provided data, including numerical metrics.",
+"source": "Primary or most authoritative source name (from the list above)",
+"confidence": "high/medium/low",
+"urls": {valid_urls[:3]}
+}}
+
+Make sure the JSON is valid and parseable.
+"""
+
+        # LLM 응답 처리
+        response = safe_llm_invoke(self.llm, prompt)
+        parsed = safe_json_parse(response)
+
+        parsed["urls"] = valid_urls[:3]
+        parsed["validation"] = validation
+        return parsed
+
+    # 검색 종류별 API
+
+    def search_regulation(self, country, product, hs_code, country_code):
+        """규제 정보 검색 (공공기관 only)"""
+        queries = [
+            f"{country} {product} import regulation {hs_code}",
+            f"{country} {hs_code} certification requirement"
         ]
-
-        search_result = self._iterative_search(
-            initial_queries=initial_queries,
-            research_type="가격 추세",
-            country=country,
-            product_name=product_name,
+        raw = self._iterative_search(queries, "regulation info", country_code)
+        return self._analyze(
+            raw["results"], "Regulation", f"{country} {product}", country_code
         )
 
-        if not search_result["all_results"]:
-            return {
-                "latest_info": "가격 정보를 찾을 수 없습니다.",
-                "source": "N/A",
-                "confidence": "low",
-                "trend": "unknown",
-                "supervisor_log": search_result["search_log"],
-                "quality_score": 0,
-            }
-
-        analysis = self._analyze_price_results(
-            search_result["all_results"], country, product_name
-        )
-
-        analysis["supervisor_log"] = search_result["search_log"]
-        analysis["quality_score"] = search_result["final_evaluation"]["quality_score"]
-
-        return analysis
-
-    # ----------------------------------------------------------
-    # 시장 리스크 검색 (슈퍼바이저 적용)
-    # ----------------------------------------------------------
-    def search_market_risk(self, country: str, product_name: str) -> Dict:
-        print(f"\n[Deep Research] 시장 리스크 검색")
-
-        initial_queries = [
-            f"{country} 식품 시장 리스크 2025",
-            f"{country} 경제 전망 2025",
-            f"{country} {product_name} 시장 위험 요인",
+    def search_price(self, country, product, country_code):
+        """가격 추세 검색 (공공기관 + 국제기구 허용)"""
+        queries = [
+            f"{country} {product} price trend 2024",
+            f"{country} {product} price statistics"
         ]
-
-        search_result = self._iterative_search(
-            initial_queries=initial_queries,
-            research_type="시장 리스크",
-            country=country,
-            product_name=product_name,
+        raw = self._iterative_search(queries, "price trend", country_code)
+        return self._analyze(
+            raw["results"], "Price", f"{country} {product}", country_code
         )
 
-        if not search_result["all_results"]:
-            return {
-                "latest_info": "리스크 정보를 찾을 수 없습니다.",
-                "source": "N/A",
-                "confidence": "low",
-                "risk_level": "unknown",
-                "supervisor_log": search_result["search_log"],
-                "quality_score": 0,
-            }
+    def search_risk(self, country, product, country_code):
+        """시장 리스크 검색"""
+        queries = [
+            f"{country} market risk 2024",
+            f"{country} trade barrier {product}"
+        ]
+        raw = self._iterative_search(queries, "market risk", country_code)
+        return self._analyze(
+            raw["results"], "Risk", country, country_code
+        )
 
-        analysis = self._analyze_risk_results(search_result["all_results"], country)
+    # 전체 분석 실행
 
-        analysis["supervisor_log"] = search_result["search_log"]
-        analysis["quality_score"] = search_result["final_evaluation"]["quality_score"]
-
-        return analysis
-
-    # ----------------------------------------------------------
-    # GPT 분석 로직 (기존 유지)
-    # ----------------------------------------------------------
-    def _analyze_search_results(self, results: List, country: str, product_name: str):
-        formatted = self._format_results(results)
-
-        prompt = f"""
-다음은 {country} {product_name} 수입 규제에 대한 검색 결과입니다.
-
-{formatted}
-
-위 정보를 바탕으로 최신 규제 사항(2024~2025)을 정리하세요.
-
-JSON 형식으로 출력:
-{{
-  "latest_info": "...",
-  "source": "...",
-  "confidence": "high/medium/low",
-  "date": "YYYY-MM-DD",
-  "key_changes": ["...", "..."],
-  "urls": ["...", "..."]
-}}
-"""
-
-        try:
-            res = self.llm.invoke(prompt).content.strip()
-            if "```json" in res:
-                res = res.split("```json")[1].split("```")[0]
-            return json.loads(res)
-        except:
-            return {
-                "latest_info": formatted[:300],
-                "source": "multiple sources",
-                "confidence": "medium",
-                "date": datetime.now().strftime("%Y-%m-%d"),
-                "urls": [],
-            }
-
-    def _analyze_price_results(self, results, country, product_name):
-        formatted = self._format_results(results)
-
-        prompt = f"""
-다음은 {country} {product_name} 가격 동향 검색 결과입니다.
-
-{formatted}
-
-JSON 형식으로 출력:
-{{
-  "latest_info": "...",
-  "source": "...",
-  "confidence": "high/medium/low",
-  "trend": "상승/하락/안정"
-}}
-"""
-
-        try:
-            res = self.llm.invoke(prompt).content.strip()
-            if "```json" in res:
-                res = res.split("```json")[1].split("```")[0]
-            return json.loads(res)
-        except:
-            return {
-                "latest_info": "가격 분석 실패",
-                "source": "N/A",
-                "confidence": "low",
-                "trend": "unknown",
-            }
-
-    def _analyze_risk_results(self, results, country):
-        formatted = self._format_results(results)
-
-        prompt = f"""
-다음은 {country} 시장 리스크 검색 결과입니다.
-
-{formatted}
-
-JSON 형식으로 출력:
-{{
-  "latest_info": "...",
-  "source": "...",
-  "confidence": "high/medium/low",
-  "risk_level": "high/medium/low",
-  "key_risks": ["...", "..."]
-}}
-"""
-
-        try:
-            res = self.llm.invoke(prompt).content.strip()
-            if "```json" in res:
-                res = res.split("```json")[1].split("```")[0]
-            return json.loads(res)
-        except:
-            return {
-                "latest_info": "리스크 분석 실패",
-                "source": "N/A",
-                "confidence": "low",
-                "risk_level": "unknown",
-                "key_risks": [],
-            }
-
-    def _format_results(self, results: List) -> str:
-        formatted = []
-        for i, r in enumerate(results[:10], 1):
-            if isinstance(r, dict):
-                title = r.get("title", "N/A")
-                content = r.get("content", "")
-                url = r.get("url", "")
-                formatted.append(f"[{i}] {title}\n{content[:250]}...\nURL: {url}\n")
-        return "\n".join(formatted)
-
-    # ----------------------------------------------------------
-    # 전체 연구 실행
-    # ----------------------------------------------------------
     def run_all_research(
-        self,
-        country: str,
-        product_name: str,
-        hs_code: str,
-        extra_analysis: List[str],
-        table_image_hint: Optional[Dict] = None,
+        self, country: str, product: str, hs_code: str, extra: List[str], country_code: str
     ) -> Dict:
-        results = {}
+        """
+        사용자의 요청에 따라
+        규제 / 가격 / 리스크 분석을 모두 수행 후 결과 반환.
+        """
 
-        results["latest_regulation"] = self.search_latest_regulation(
-            country, product_name, hs_code
-        )
+        result = {
+            "latest_regulation": self.search_regulation(
+                country, product, hs_code, country_code
+            )
+        }
 
-        if "가격 추세" in extra_analysis:
-            results["price_trend"] = self.search_price_trend(country, product_name)
+        if "가격 추세" in extra:
+            result["price_trend"] = self.search_price(country, product, country_code)
 
-        if "시장 리스크" in extra_analysis:
-            results["market_risk"] = self.search_market_risk(country, product_name)
+        if "시장 리스크" in extra:
+            result["market_risk"] = self.search_risk(country, product, country_code)
 
-        # 표/이미지 페이지 정보 추가
-        if table_image_hint:
-            results["table_image_hint"] = table_image_hint
-
-        return results
-
-
-# ----------------------------------------------------------
-# 테스트 코드
-# ----------------------------------------------------------
-if __name__ == "__main__":
-    from dotenv import load_dotenv
-
-    load_dotenv()
-
-    dr_engine = DeepResearchEngine()
-
-    result = dr_engine.run_all_research(
-        country="일본",
-        product_name="견과류 조제품",
-        hs_code="2008190000",
-        extra_analysis=["시장 리스크", "가격 추세"],
-        table_image_hint={
-            "2024_kati_JP.pdf": {
-                "table_pages": [1, 2, 3, 4],
-                "image_pages": [12, 16, 18],
-            }
-        },
-    )
-
-    out_path = os.path.join(OUTPUT_DIR, "deep_research_result.json")
-    with open(out_path, "w", encoding="utf-8") as f:
-        json.dump(result, f, ensure_ascii=False, indent=2)
-
-    print(f"\nDeep Research 결과 저장 완료: {out_path}")
+        result["validation_summary"] = self.supervisor.get_validation_summary()
+        return result

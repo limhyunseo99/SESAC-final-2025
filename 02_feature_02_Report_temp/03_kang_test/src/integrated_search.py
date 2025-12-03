@@ -10,9 +10,6 @@ from deep_research import DeepResearchEngine
 
 load_dotenv()
 
-# ---------------------------------------------------------
-# table_image_index.json 로드
-# ---------------------------------------------------------
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 TABLE_INDEX_PATH = os.path.join(BASE_DIR, "metadata", "table_image_index.json")
 VECTORDB_DIR = os.path.join(BASE_DIR, "vectordb_store")
@@ -29,10 +26,7 @@ def load_table_image_index():
 
 TABLE_IMAGE_INDEX = load_table_image_index()
 
-
-# ---------------------------------------------------------
 # QueryGenerator (프롬프트 최신화)
-# ---------------------------------------------------------
 class QueryGenerator:
     def __init__(self, model: str = "gpt-4o-mini"):
         self.llm = ChatOpenAI(model=model, temperature=0.3)
@@ -98,9 +92,7 @@ Your output must always be a single Korean query string.
         return text
 
 
-# ---------------------------------------------------------
 # Integrated Search Engine
-# ---------------------------------------------------------
 class IntegratedSearchEngine:
     def __init__(self, vectordb_manager: VectorDBManager, data_loader: DataLoader):
         self.vectordb = vectordb_manager
@@ -108,9 +100,7 @@ class IntegratedSearchEngine:
         self.base_search = BaseSearchEngine(vectordb_manager)
         self.query_gen = QueryGenerator()
 
-    # ---------------------------------------------------------
     # 파일명 기준 표/이미지 페이지 조회
-    # ---------------------------------------------------------
     def get_table_image_hint(self, source: str, country_code: str, year):
         try:
             source = source.upper()
@@ -132,9 +122,7 @@ class IntegratedSearchEngine:
             print(f"⚠ 표/이미지 페이지 조회 실패: {e}")
             return {}
 
-    # ---------------------------------------------------------
     # 메인 처리
-    # ---------------------------------------------------------
     def search_all(self, user_input: Dict) -> Dict:
         country_name = user_input["country"]
         country_code = self.data_loader.normalize_country(country_name)
@@ -142,9 +130,7 @@ class IntegratedSearchEngine:
         extra_analysis = user_input.get("extra_analysis", [])
         sns_keyword = user_input.get("sns_keyword")
 
-        # ---------------------------------------------------------
         # 프롬프트 생성용 payload
-        # ---------------------------------------------------------
         payload = {
             "country_name_kor": country_name,
             "hs_code": hs_code,
@@ -159,15 +145,11 @@ class IntegratedSearchEngine:
             "custom_request_text": sns_keyword,
         }
 
-        # ---------------------------------------------------------
         # 1) GPT 검색 쿼리 생성
-        # ---------------------------------------------------------
         query_text = self.query_gen.generate_queries(payload)
         queries = {"market": query_text}
-
-        # ---------------------------------------------------------
+        
         # 2) VectorDB 검색
-        # ---------------------------------------------------------
         vectordb_results = self.base_search.search_all_sections(
             queries=queries,
             country=country_code,
@@ -175,9 +157,7 @@ class IntegratedSearchEngine:
             k_per_section=5,
         )
 
-        # ---------------------------------------------------------
         # 3) 국가정보 (JSON)
-        # ---------------------------------------------------------
         country_info = self.data_loader.load_country_info(country_code)
 
         sections = {}
@@ -187,9 +167,7 @@ class IntegratedSearchEngine:
             "COUNTRY_INFO": 1 if country_info else 0,
         }
 
-        # ---------------------------------------------------------
         # 4) 표/이미지 힌트 수집
-        # ---------------------------------------------------------
         table_image_hint = {}
 
         for section_name, docs in vectordb_results.items():
@@ -228,9 +206,7 @@ class IntegratedSearchEngine:
 
         empty_sections = [name for name, docs in vectordb_results.items() if not docs]
 
-        # ---------------------------------------------------------
         # 최종 결과 반환 (Deep Research 단계에서 반드시 필요!)
-        # ---------------------------------------------------------
         return {
             "request_info": {
                 "country_name": country_name,
@@ -244,9 +220,8 @@ class IntegratedSearchEngine:
             "sections_needing_deep_research": empty_sections,
             "sources_used": sources_used,
             "table_image_hint": table_image_hint,
-            # ---------------------------------------------------------
+
             # 여기부터 Deep Research 전달용 메타데이터 추가
-            # ---------------------------------------------------------
             "deep_research_payload": {
                 "country": country_name,
                 "country_code": country_code,
@@ -285,7 +260,7 @@ if __name__ == "__main__":
         "country": "일본",
         "hs_code": "2008190000",
         "extra_analysis": ["시장 리스크", "가격 추세"],
-        "sns_keyword": "과일 수요",
+        "sns_keyword": "바나나우유",
     }
 
     result = search_engine.search_all(test_input)
@@ -298,15 +273,13 @@ if __name__ == "__main__":
     print("==============================\n")
     dr = DeepResearchEngine()
 
-    # ----------------------------------------------------
     # Deep Research 호출
-    # ----------------------------------------------------
 
     dr = DeepResearchEngine()
 
     dr_result = dr.run_all_research(
         country=result["deep_research_payload"]["country"],
-        product_name="견과류 조제품",
+        product_name="바나나우유",
         hs_code=result["deep_research_payload"]["hs_code"],
         extra_analysis=result["deep_research_payload"]["extra_analysis"],
     )

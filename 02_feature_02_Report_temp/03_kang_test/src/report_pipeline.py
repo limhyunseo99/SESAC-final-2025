@@ -1,92 +1,99 @@
 # report_pipeline.py
-import os
-import json
+"""
+보고서 생성 전체 파이프라인
+- VectorDB 기반 RAG 검색
+- Deep Research 웹 최신 정보 검색
+- Draft 생성 → Deep Research 반영 → 최종 보고서 조립
+- PDF / TXT 파일 출력까지 수행
+"""
 
+import os
 from vectordb_manager import VectorDBManager
 from data_loader import DataLoader
 from integrated_search import IntegratedSearchEngine
 from deep_research import DeepResearchEngine
 from report_generator import ReportGenerator
+from pdf_exporter import export_to_pdf
 
 
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-VECTORDB_DIR = os.path.join(BASE_DIR, "vectordb_store")
-OUTPUT_DIR = os.path.join(BASE_DIR, "output")
+def run_pipeline(user_input=None):
+    """전체 보고서 생성 파이프라인"""
+    print("\n=== Report Generation Pipeline Start ===\n")
 
+    # 기본 입력값 설정
+    if user_input is None:
+        user_input = {
+            "country": "Japan",
+            "hs_code": "2008190000",
+            "extra_analysis": ["시장 리스크", "가격 추세"],
+            "sns_keyword": "바나나우유",
+        }
 
-def run_pipeline():
-    print("\n==============================")
-    print("Report Generation Pipeline Start")
-    print("==============================\n")
-
-    # -------------------------------------------------------
-    # 1) VectorDB 로드
-    # -------------------------------------------------------
-    vectordb = VectorDBManager(persist_dir=VECTORDB_DIR)
+    # VectorDB 로드 및 RAG 검색 준비
+    vectordb = VectorDBManager(persist_dir="vectordb_store")
     vectordb.load_vectorstore()
 
     loader = DataLoader()
     search_engine = IntegratedSearchEngine(vectordb, loader)
 
-    # -------------------------------------------------------
-    # 2) 테스트 사용자 입력값
-    # -------------------------------------------------------
-    user_input = {
-        "country": "일본",
-        "hs_code": "2008190000",
-        "extra_analysis": ["시장 리스크", "가격 추세"],
-        "sns_keyword": "견과류 수요",
-    }
-
-    # -------------------------------------------------------
-    # 3) 통합 검색 실행
-    # -------------------------------------------------------
+    print("Step 1: Running integrated RAG search...")
     result = search_engine.search_all(user_input)
 
-    # -------------------------------------------------------
-    # 4) Deep Research 실행
-    # -------------------------------------------------------
+    # result 예시 구조:
+    # {
+    #   "request_info": {...},
+    #   "country_background": {...},
+    #   "sections": {...},
+    #   "table_image_hint": {...}
+    # }
+
+    print("Step 2: Running Deep Research...")
     dr = DeepResearchEngine()
     dr_result = dr.run_all_research(
         country=result["request_info"]["country_name"],
-        product_name="견과류 조제품",
+        product=result["request_info"].get("product_name", "Processed Nuts"),
         hs_code=result["request_info"]["hs_code"],
-        extra_analysis=result["request_info"]["extra_analysis"],
+        extra=result["request_info"]["extra_analysis"],
+        country_code=result["request_info"]["country_code"],
     )
 
-    # -------------------------------------------------------
-    # 5) 보고서 생성
-    # -------------------------------------------------------
+    print("Step 3: Generating report draft...")
     rg = ReportGenerator()
-
-    initial = rg.generate_initial_draft(
-        result["country_background"], result["request_info"]
+    draft = rg.generate_draft_with_rag(
+        country_info=result["country_background"],
+        sections=result["sections"],
+        table_image_hint=result.get("table_image_hint", {}),
+        request_info=result["request_info"],
     )
 
-    enhanced = rg.enhance_with_documents(
-        initial, result["sections"], result["table_image_hint"]
+    print("Step 4: Integrating Deep Research...")
+    updated = rg.integrate_deep_research(draft, dr_result)
+
+    print("Step 5: Final assembly...")
+    final_report, validation = rg.assemble_final_report(
+        updated, result["request_info"]
     )
 
-    deep_added = rg.integrate_deep_research(enhanced, dr_result)
+    # Executive Summary 검증 실패 시 재생성
+    if not validation["passed"] and validation["score"] < 60:
+        print("Validation failed — regenerating Executive Summary...")
+        final_report = rg.regenerate_with_feedback(
+            final_report, validation, result["request_info"]
+        )
 
-    final = rg.assemble_final_report(deep_added, result["request_info"])
+    # 출력 폴더 생성
+    os.makedirs("output", exist_ok=True)
 
-    # -------------------------------------------------------
-    # 6) 결과 저장
-    # -------------------------------------------------------
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
-    out_path = os.path.join(OUTPUT_DIR, "final_report.txt")
+    # TXT 저장
+    with open("output/final_report.txt", "w", encoding="utf-8") as f:
+        f.write(final_report)
 
-    with open(out_path, "w", encoding="utf-8") as f:
-        f.write(final)
+    # PDF 저장
+    try:
+        export_to_pdf(final_report, "output/final_report.pdf", result["request_info"])
+    except Exception as e:
+        print("PDF failed:", e)
 
-    print("\n==============================")
-    print("Report Generated Successfully")
-    print(f"Location: {out_path}")
-    print("==============================\n")
+    print("\n=== Report Generation Complete ===\n")
 
-    return final
-
-
-if __name__ == "__main__":
-    run_pipeline()
+    return final_report, validation

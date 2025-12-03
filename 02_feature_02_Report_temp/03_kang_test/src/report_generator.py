@@ -1,138 +1,257 @@
-# report_generator.py
+# report_generator.py (프로덕션 안정화 버전)
 import json
+import re
 from langchain_openai import ChatOpenAI
+from langchain_core.messages import AIMessage
+from supervisor import Supervisor
+
+class SafePromptBuilder:
+    @staticmethod
+    def escape_json(d):
+        try:
+            return "```json\n" + json.dumps(d, ensure_ascii=False, indent=2) + "\n```"
+        except:
+            return "[JSON ERROR]"
+
+    @staticmethod
+    def safe_invoke(llm, prompt):
+        try:
+            res = llm.invoke(prompt)
+            return res.content if isinstance(res, AIMessage) else str(res)
+        except Exception as e:
+            raise RuntimeError(f"LLM CALL FAILED: {e}")
+
+
+class FootnoteManager:
+    def __init__(self):
+        self.footnotes = {}
+        self.counter = 0
+
+    def add_url(self, u):
+        if u not in self.footnotes:
+            self.counter += 1
+            self.footnotes[u] = self.counter
+        return self.footnotes[u]
+
+    def extract_and_number_urls(self, text):
+        pattern = r"https?://[^\s\)\"']+"
+
+        def rep(m):
+            idx = self.add_url(m.group(0))
+            return f"[{idx}]"
+
+        return re.sub(pattern, rep, text)
+
+    def generate_footnotes(self):
+        if not self.footnotes:
+            return ""
+        lines = ["\n## Reference Links\n"]
+        for url, idx in sorted(self.footnotes.items(), key=lambda x: x[1]):
+            lines.append(f"[{idx}] {url}")
+        return "\n".join(lines)
 
 
 class ReportGenerator:
-    def __init__(self, model="gpt-4o-mini"):
-        self.llm = ChatOpenAI(model=model, temperature=0)
+    def __init__(self):
+        self.llm_draft = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+        self.llm_final = ChatOpenAI(model="gpt-5", temperature=0)
+        self.prompt_builder = SafePromptBuilder()
+        self.foot = FootnoteManager()
+        self.supervisor = Supervisor(model="gpt-4o-mini")
 
-    # -----------------------------------------------------
-    # 1) 국가정보 기반 초안 생성
-    # -----------------------------------------------------
-    def generate_initial_draft(self, country_info: dict, request_info: dict) -> str:
-        """
-        국가정보 JSON(country_background)을 기반으로
-        보고서 초안을 생성하는 단계.
-        """
+    def generate_draft_with_rag(self, country_info, sections, table_hint, req):
+        country_data = self.prompt_builder.escape_json(country_info)
+        req_json = self.prompt_builder.escape_json(req)
+        hint_json = self.prompt_builder.escape_json(table_hint)
+        section_summary = self._summarize_sections(sections)
 
         prompt = f"""
-당신은 국가별 수출 전략 보고서를 작성하는 전문 분석가입니다.
+You are an expert in *Export Market Strategy Reports*.
 
-다음은 해당 국가의 공식 국가정보 데이터(JSON)입니다:
+Use the following structured information:
 
-{json.dumps(country_info, ensure_ascii=False, indent=2)}
+[COUNTRY INFO]
+{country_data}
 
-사용자 요청 정보는 다음과 같습니다:
+[USER REQUEST]
+{req_json}
 
-{json.dumps(request_info, ensure_ascii=False, indent=2)}
+[RAG RESULTS]
+{section_summary}
 
-위 데이터를 기반으로 다음 항목을 포함한 '초안 보고서'를 작성하세요:
+[TABLE/IMAGE REFERENCES]
+{hint_json}
 
-1. 국가 개요
-2. 식품 시장 규모 & 성장 흐름
-3. 수입 구조 및 한국과의 교역 현황
-4. 소비자 성향 / 식문화 핵심 특징
-5. FTA·관세·수입규제 관련 기본 정보
-6. 분석 대상 품목(HS 코드)과 연관된 시장 적합성 평가
+WRITING RULES:
+1. All numeric data must be specific (e.g., “123,800,000 people”, “as of 2024”).
+2. All statistics from RAG must include citations: 
+   Format → [KATI 2024 Japan p.12], [KOTRA 2023].
+3. Add table/graph references:
+   - [📊 Table: filename p.X]
+   - [📈 Chart: filename p.X]
+4. Use comparative analysis (Korea vs competitors, YoY changes).
+5. Provide concrete evidence. Avoid vague language.
 
-아직 KATI·KOTRA 문서나 최신 Deep Research 정보는 반영하지 마세요.
+PROHIBITED:
+- vague terms (“approximately”, “roughly”)
+- numbers without sources
+- generic statements without data
+
+REPORT STRUCTURE:
+# {req.get("country_name")} Export Market Strategy Report
+
+## 1. Executive Summary  
+(Min 300 characters, at least 3 numerical metrics)
+
+## 2. Country & Market Overview
+### 2.1 Basic Country Information
+### 2.2 Food Market Size & Growth
+
+## 3. HS {req.get("hs_code")} Product Fit Assessment
+
+## 4. Market Size & Forecast
+
+## 5. Distribution Channels & Competition
+
+## 6. Regulatory & Certification Requirements
+
+## 7. Consumer Trends
+
+## 8. Strategic Recommendations  
+(General strategy only — *no short-term strategy section*)
+
+Write the full draft now.
 """
 
-        result = self.llm.invoke(prompt)
-        return result.content.strip()
+        return self.prompt_builder.safe_invoke(self.llm_draft, prompt)
 
-    # -----------------------------------------------------
-    # 2) RAG(KATI/KOTRA/국가정보) 기반 보정 섹션 생성
-    # -----------------------------------------------------
-    def enhance_with_documents(
-        self, draft: str, sections: dict, table_image_hint: dict
-    ) -> str:
-        """
-        VectorDB 검색 결과(KATI/KOTRA 등)를 기반으로
-        초안을 보정하여 세부 시장 분석을 추가한다.
-        """
+    def integrate_deep_research(self, draft, deep_result):
+        deep_json = self.prompt_builder.escape_json(deep_result)
 
         prompt = f"""
-아래는 현재 보고서 초안입니다:
+You will now integrate latest Deep Research results into the draft report.
 
+[DRAFT]
 {draft}
 
-다음은 RAG(VectorDB 검색) 결과입니다.
-각 섹션에는 문서 내용과 메타데이터가 포함됩니다:
+[DEEP RESEARCH RESULTS]
+{deep_json}
 
-{json.dumps(sections, ensure_ascii=False, indent=2)}
+UPDATE RULES:
+1. Add a regulatory update box:
+⚠️ Major Regulatory Updates (2024–2025)
 
-표·이미지 페이지 정보는 다음과 같습니다:
+[date] [description]
 
-{json.dumps(table_image_hint, ensure_ascii=False, indent=2)}
+Source: [URL]
 
-요청:
-- 초안에 RAG 결과의 수치·그래프·통계·시장 분석 내용을 반영하여 품질을 높여라.
-- 표/이미지 페이지 번호도 참고하여 “근거가 있는 문장”을 작성해라.
-- 중복 없이 자연스럽게 서술하라.
+markdown
+코드 복사
+
+2. Price trends must include numerical direction (e.g., “+12% YoY”).
+
+3. Risk level classification:
+🔴 High Risk: ...
+🟡 Medium Risk: ...
+🟢 Low Risk: ...
+
+python
+코드 복사
+
+4. Add a new section:
+## 9. Latest Insights (Deep Research)
+### 9.1 Regulation Updates
+### 9.2 Price Trend Analysis
+### 9.3 Market Risk Evaluation
+
+5. Keep URLs as-is (footnote conversion later).
+
+Update the entire report accordingly.
 """
 
-        result = self.llm.invoke(prompt)
-        return result.content.strip()
+        updated = self.prompt_builder.safe_invoke(self.llm_draft, prompt)
+        return self.foot.extract_and_number_urls(updated)
 
-    # -----------------------------------------------------
-    # 3) Deep Research 반영 (최신 정보 덮어쓰기)
-    # -----------------------------------------------------
-    def integrate_deep_research(self, draft: str, deep_result: dict) -> str:
-        """
-        최신 규제/위험/가격 동향을 보고서 본문에 반영.
-        """
+    def assemble_final_report(self, draft_text, req):
+        country = req.get("country_name")
+        hs = req.get("hs_code")
 
         prompt = f"""
-다음은 현재까지 보정된 보고서 본문입니다:
+You will refine and finalize the full export strategy report.
 
-{draft}
+[DRAFT REPORT]
+{draft_text}
 
-그리고 다음은 Deep Research 검색 결과입니다:
+FINALIZATION RULES:
 
-{json.dumps(deep_result, ensure_ascii=False, indent=2)}
+1. Executive Summary MUST include:
+   - Market size with year + currency
+   - Korea’s ranking or market share
+   - Three key opportunities (with data)
+   - Two major risks
+   - One-sentence strategic recommendation
 
-요청:
-- 초안에 최신 규제/가격 추세/시장 리스크 정보를 자연스럽게 추가하라.
-- "최신 발표", "2025년 기준"과 같은 최신성을 나타내는 문장으로 보완하라.
+2. Minimum section length:
+   - Major sections: 500+ characters
+   - Subsections: 300+ characters
+
+3. Strategic recommendations should be actionable (no 3-month section required).
+
+4. Add reference section:
+10. References
+KATI, "{country} Market Report 2024", 2024
+
+KOTRA, "{country} Market Trends 2023", 2023
+
+php
+코드 복사
+
+Produce the final polished report.
 """
 
-        result = self.llm.invoke(prompt)
-        return result.content.strip()
+        final_report = self.prompt_builder.safe_invoke(self.llm_final, prompt)
 
-    # -----------------------------------------------------
-    # 4) 최종 보고서 조립
-    # -----------------------------------------------------
-    def assemble_final_report(self, final_text: str, request_info: dict) -> str:
-        """
-        최종적으로 통일된 형식의 보고서로 정리한다.
-        """
+        exec_summary = self._extract_exec_summary(final_report)
+        validation = self.supervisor.validate_executive_summary(exec_summary)
 
-        hs = request_info["hs_code"]
-        country = request_info["country_name"]
+        notes = self.foot.generate_footnotes()
+        if notes:
+            final_report += "\n\n" + notes
 
-        prompt = f"""
-다음 내용을 기반으로 최종 보고서를 완성하세요:
+        return final_report, validation
 
-{final_text}
+    def _summarize_sections(self, sections):
+        if not sections:
+            return "No RAG results found."
 
-요구되는 최종 보고서 구성은 다음과 같다:
+        out = []
+        for name, docs in sections.items():
+            out.append(f"\n[{name}]")
+            if not docs:
+                out.append("  (No content)")
+                continue
 
-1. 요약(Executive Summary)
-2. 국가 및 시장 개요
-3. 분석 대상 품목(HS {hs}) 적합성 평가
-4. 시장 규모 · 성장 전망
-5. 유통구조 & 주요 경쟁국
-6. 규제 및 인증 요건
-7. 가격 추세
-8. 시장 리스크
-9. 전략 제언
+            for i, d in enumerate(docs[:3], 1):
+                try:
+                    if isinstance(d, dict):
+                        content = d.get("content", "")[:200]
+                        source = d.get("source", "Unknown")
+                        year = d.get("year", "N/A")
+                        file = d.get("file_name", "N/A")
+                    else:
+                        content = getattr(d, "page_content", "")[:200]
+                        meta = getattr(d, "metadata", {})
+                        source = meta.get("source", "Unknown")
+                        year = meta.get("year", "N/A")
+                        file = meta.get("file_name", "N/A")
 
-국가명: {country}
+                    out.append(f"{i}. [{source} {year}] {file}\n   {content}...")
+                except Exception as e:
+                    out.append(f"{i}. ERROR: {e}")
 
-보고서를 잘 정리된 단일 문서 형태로 출력하세요.
-"""
+        return "\n".join(out)
 
-        result = self.llm.invoke(prompt)
-        return result.content.strip()
+    def _extract_exec_summary(self, text):
+        pattern = r"##\s*(?:1\.)?\s*Executive Summary\s*\n(.*?)(?=\n##|\Z)"
+        m = re.search(pattern, text, re.DOTALL | re.IGNORECASE)
+        return m.group(1).strip() if m else text[:500]
