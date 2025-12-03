@@ -1,0 +1,33 @@
+{
+  "latest_regulation": {
+    "latest_info": "일본은 2025년까지 캐슈너트 알레르기 표시를 의무화할 계획이며, 수입식품에 대한 감시지도계획을 2025년 4월 1일부터 시행할 예정이다.",
+    "source": "COVUE, 일본 후생노동성",
+    "confidence": "high",
+    "date": "2023-10-01",
+    "key_changes": [
+      "캐슈너트 알레르기 표시 의무화 추진 (2025년까지)",
+      "2025년 4월 1일부터 1년간 수입식품 감시지도계획 시행"
+    ],
+    "urls": [
+      "https://covue.com/ko/blog/importing-food-in-japan-restricted-and-prohibited-items/",
+      "https://www.kmi.re.kr/globalnews/posts/view.do?rbsIdx=1&key=%EA%B3%84%ED%9A%8D%EC%9D%80&idx=24930"
+    ]
+  },
+  "price_trend": {
+    "latest_info": "일본의 수입은 2025년 10월에 9,998.1억 엔으로 상승하여, 이전 달의 9,648.3억 엔 및 1년 전 동월의 9,897.9억 엔을 기록하며 9개월래 최고치를 기록했습니다.",
+    "source": "https://ko.tradingeconomics.com/japan/imports",
+    "confidence": "high",
+    "trend": "상승"
+  },
+  "market_risk": {
+    "latest_info": "2025년 일본 경제는 긍정적인 모멘텀으로 시작하였으나, 민간소비 회복 지연과 해외경제 둔화로 인해 성장세가 둔화될 가능성이 있음.",
+    "source": "한국은행 및 여러 경제 분석 자료",
+    "confidence": "medium",
+    "risk_level": "medium",
+    "key_risks": [
+      "소비자 물가 상승으로 인한 인플레이션 압력",
+      "해외 경제 둔화에 따른 수출 감소",
+      "정치적 불확실성에 따른 투자 심리 위축"
+    ]
+  }
+}
