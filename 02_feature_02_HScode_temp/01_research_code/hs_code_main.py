@@ -3,7 +3,7 @@ from json_parser import parse_llm_hs_result
 
 def hs_main(product_detail: str):
     QDRANT_URL = "https://933ad41b-bc00-4b42-a9b6-da3f661283ce.us-west-2-0.aws.cloud.qdrant.io:6333"
-    QDRANT_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2Nlc3MiOiJtIn0.W0VJE7ks-1kOeFbvUXwiGzpYt79HsSxMZNN4Cz-5JH4"
+    QDRANT_API_KEY = ""
 
     # 예측기 생성
     predictor = HSRagPredictor(
