@@ -1,0 +1,3211 @@
+[제01류] 제1류 살아 있는 동물
+제1류는 살아 있는 모든 동물을 포함하되 다음은 제외한다: 어류·갑각류·연체동물 등 수생 무척추동물(→ 제3류), 미생물 배양체 등(→ hs_code 3002), 서커스·동물쇼단의 동물(→ hs_code 9508) 수송 중 죽은 동물은 식용 가능 → hs_code 0201~0205·0207·0208·0410 그러나 식용 불가 → hs_code 0511 즉, “살아 있는 척추·육상동물” 중심이며 예외 규정이 분류 핵심이다.
+
+[호] 01호: 살아 있는 말ㆍ당나귀ㆍ노새ㆍ버새
+[소호] 0121: 번식용
+- 0101211000: 농가 사육용
+- 0101219000: 기타
+[소호] 0129: 기타
+- 0101291000: 경주말
+- 0101299000: 기타
+[소호] 0130: 당나귀
+- 0101300000: 당나귀
+[소호] 0190: 기타
+- 0101900000: 기타
+[호] 02호: 살아 있는 소
+[소호] 0221: 번식용
+- 0102211000: 젖소
+- 0102212000: 육우(肉牛)
+- 0102219000: 기타
+[소호] 0229: 기타
+- 0102291000: 젖소
+- 0102292000: 육우(肉牛)
+- 0102299000: 기타
+[소호] 0231: 번식용
+- 0102310000: 번식용
+[소호] 0239: 기타
+- 0102391000: 젖소
+- 0102392000: 육우(肉牛)
+- 0102399000: 기타
+[소호] 0290: 기타
+- 0102901000: 번식용
+- 0102909010: 젖소
+- 0102909020: 육우(肉牛)
+- 0102909090: 기타
+[호] 03호: 살아 있는 돼지
+[소호] 0310: 번식용
+- 0103100000: 번식용
+[소호] 0391: 중량이 50킬로그램 미만인 것
+- 0103910000: 중량이 50킬로그램 미만인 것
+[소호] 0392: 중량이 50킬로그램 이상인 것
+- 0103920000: 중량이 50킬로그램 이상인 것
+[호] 04호: 살아 있는 면양과 염소
+[소호] 0410: 면양
+- 0104101000: 번식용
+- 0104109000: 기타
+[소호] 0420: 염소
+- 0104201000: 젖염소
+- 0104209000: 기타
+[호] 05호: 살아 있는 가금(家禽)류[닭(갈루스 도메스티쿠스(Gallus domesticus)종으로 한정한다)ㆍ오리ㆍ거위ㆍ칠면조ㆍ기니아새로 한정한다]
+[소호] 0511: 닭[갈루스 도메스티쿠스(Gallus domesticus)종으로 한정한다]
+- 0105111000: 번식용
+- 0105119000: 기타
+[소호] 0512: 칠면조
+- 0105120000: 칠면조
+[소호] 0513: 오리
+- 0105131000: 번식용
+- 0105139000: 기타
+[소호] 0514: 거위
+- 0105140000: 거위
+[소호] 0515: 기니아새
+- 0105150000: 기니아새
+[소호] 0594: 닭[갈루스 도메스티쿠스(Gallus domesticus)종으로 한정한다]
+- 0105941000: 번식용
+- 0105949000: 기타
+[소호] 0599: 기타
+- 0105991010: 번식용
+- 0105991090: 기타
+- 0105992000: 칠면조
+- 0105999000: 기타
+[호] 06호: 그 밖의 살아 있는 동물
+[소호] 0611: 영장류
+- 0106110000: 영장류
+[소호] 0612: 고래ㆍ돌고래ㆍ쇠돌고래(고래목의 포유동물), 매너티ㆍ듀공(바다소목의 포유동물), 물개ㆍ바다사자ㆍ바다코끼리(기각아목의 포유동물)
+- 0106121000: 고래ㆍ돌고래ㆍ쇠돌고래(고래목의 포유동물), 매너티ㆍ듀공(바다소목의 포유동물)
+- 0106122000: 물개, 바다사자와 바다코끼리(기각아목의 포유동물)
+[소호] 0613: 낙타와 그 밖의 낙타과의 동물[카멜리대(Camelidae)과]
+- 0106130000: 낙타와 그 밖의 낙타과의 동물[카멜리대(Camelidae)과]
+[소호] 0614: 토끼
+- 0106141000: 번식용
+- 0106149000: 기타
+[소호] 0619: 기타
+- 0106191000: 개
+- 0106193000: 사슴
+- 0106194000: 곰
+- 0106195010: 번식용
+- 0106195090: 기타
+- 0106196010: 번식용
+- 0106196090: 기타
+- 0106199000: 기타
+[소호] 0620: 파충류(뱀과 거북을 포함한다)
+- 0106201000: 뱀
+- 0106202000: 자라
+- 0106203000: 거북
+- 0106209000: 기타
+[소호] 0631: 맹금류
+- 0106310000: 맹금류
+[소호] 0632: 앵무류[패럿류(parrots)ㆍ패러키트류(parakeets)ㆍ금강앵무류ㆍ유황앵무류를 포함한다]
+- 0106320000: 앵무류[패럿류(parrots)ㆍ패러키트류(parakeets)ㆍ금강앵무류ㆍ유황앵무류를 포함한다]
+[소호] 0633: 타조와 에뮤(emus)[드로마이어스 노배홀란디애(Dromaius novaehollandiae)]
+- 0106330000: 타조와 에뮤(emus)[드로마이어스 노배홀란디애(Dromaius novaehollandiae)]
+[소호] 0639: 기타
+- 0106390000: 기타
+[소호] 0641: 벌
+- 0106410000: 벌
+[소호] 0649: 기타
+- 0106490000: 기타
+[소호] 0690: 기타
+- 0106901000: 양서류
+- 0106903010: 갯지렁이
+- 0106903020: 실지렁이
+- 0106903090: 기타
+- 0106909000: 기타
+
+[제02류] 제2류 육과 식용 설육(屑肉)
+제2류는 식용 가능한 육·도체·분할육·설육 및 그 가루를 포함하며 다음은 제외한다: 어류 등 수산 동물 → 03류, 식용 불가 육·설육 → hs_code 0511, 비식용 육에서 얻은 가루·펠릿 → hs_code 2301, 장·방광·위 → hs_code 0504, 분리 제시된 비계 → hs_code 15류, 일부는 hs_code 0209,  설육은 저장·용도에 따라 hs_code 0510, hs_code 3001, hs_code 0511 등으로 분류. 조리되지 않은 신선·냉장·냉동·염장·건조·훈제 육류는 제2류 유지. 조리 또는 비규정 보존처리된 육은 → 16류. 혼합육(예: 돼지 비계 + 가금육)도 제2류. MAP 포장도 신선/냉장 상태면 제2류.
+
+[호] 01호: 쇠고기(신선한 것이나 냉장한 것으로 한정한다)
+[소호] 0110: 도체(屠體)와 이분도체(二分屠體)
+- 0201100000: 도체(屠體)와 이분도체(二分屠體)
+[소호] 0120: 그 밖의 것으로서 뼈째로 절단한 것
+- 0201201000: 갈비
+- 0201209000: 기타
+[소호] 0130: 뼈 없는 것
+- 0201300000: 뼈 없는 것
+[호] 02호: 쇠고기(냉동한 것으로 한정한다)
+[소호] 0210: 도체(屠體)와 이분도체(二分屠體)
+- 0202100000: 도체(屠體)와 이분도체(二分屠體)
+[소호] 0220: 그 밖의 것으로서 뼈째로 절단한 것
+- 0202201000: 갈비
+- 0202209000: 기타
+[소호] 0230: 뼈 없는 것
+- 0202300000: 뼈 없는 것
+[호] 03호: 돼지고기(신선한 것, 냉장하거나 냉동한 것으로 한정한다)
+[소호] 0311: 도체(屠體)와 이분도체(二分屠體)
+- 0203110000: 도체(屠體)와 이분도체(二分屠體)
+[소호] 0312: 넓적다리살ㆍ어깨살과 이를 절단한 것(뼈가 있는 것으로 한정한다)
+- 0203120000: 넓적다리살ㆍ어깨살과 이를 절단한 것(뼈가 있는 것으로 한정한다)
+[소호] 0319: 기타
+- 0203191000: 삼겹살
+- 0203199000: 기타
+[소호] 0321: 도체(屠體)와 이분도체(二分屠體)
+- 0203210000: 도체(屠體)와 이분도체(二分屠體)
+[소호] 0322: 넓적다리살ㆍ어깨살과 이를 절단한 것(뼈가 있는 것으로 한정한다)
+- 0203220000: 넓적다리살ㆍ어깨살과 이를 절단한 것(뼈가 있는 것으로 한정한다)
+[소호] 0329: 기타
+- 0203291000: 삼겹살
+- 0203299000: 기타
+[호] 04호: 면양과 염소의 고기(신선한 것, 냉장하거나 냉동한 것으로 한정한다)
+[소호] 0410: 어린 면양의 도체(屠體)와 이분도체(二分屠體)(신선한 것이나 냉장한 것으로 한정한다)
+- 0204100000: 어린 면양의 도체(屠體)와 이분도체(二分屠體)(신선한 것이나 냉장한 것으로 한정한다)
+[소호] 0421: 도체(屠體)와 이분도체(二分屠體)
+- 0204210000: 도체(屠體)와 이분도체(二分屠體)
+[소호] 0422: 그 밖의 것으로서 뼈째로 절단한 것
+- 0204220000: 그 밖의 것으로서 뼈째로 절단한 것
+[소호] 0423: 뼈 없는 것
+- 0204230000: 뼈 없는 것
+[소호] 0430: 어린 면양의 도체(屠體)와 이분도체(二分屠體)(냉동한 것으로 한정한다)
+- 0204300000: 어린 면양의 도체(屠體)와 이분도체(二分屠體)(냉동한 것으로 한정한다)
+[소호] 0441: 도체(屠體)와 이분도체(二分屠體)
+- 0204410000: 도체(屠體)와 이분도체(二分屠體)
+[소호] 0442: 그 밖의 것으로서 뼈째로 절단한 것
+- 0204420000: 그 밖의 것으로서 뼈째로 절단한 것
+[소호] 0443: 뼈 없는 것
+- 0204430000: 뼈 없는 것
+[소호] 0450: 염소의 고기
+- 0204500000: 염소의 고기
+[호] 05호: 말ㆍ당나귀ㆍ노새ㆍ버새의 고기(신선한 것, 냉장하거나 냉동한 것으로 한정한다)
+[소호] 0500: 말ㆍ당나귀ㆍ노새ㆍ버새의 고기(신선한 것, 냉장하거나 냉동한 것으로 한정한다)
+- 0205000000: 말ㆍ당나귀ㆍ노새ㆍ버새의 고기(신선한 것, 냉장하거나 냉동한 것으로 한정한다)
+[호] 06호: 소ㆍ돼지ㆍ면양ㆍ염소ㆍ말ㆍ당나귀ㆍ노새ㆍ버새의 식용 설육(屑肉)(신선한 것, 냉장하거나 냉동한 것으로 한정한다)
+[소호] 0610: 소의 것(신선한 것이나 냉장한 것으로 한정한다)
+- 0206100000: 소의 것(신선한 것이나 냉장한 것으로 한정한다)
+[소호] 0621: 혀
+- 0206210000: 혀
+[소호] 0622: 간
+- 0206220000: 간
+[소호] 0629: 기타
+- 0206291000: 꼬리
+- 0206292000: 족
+- 0206299000: 기타
+[소호] 0630: 돼지의 것(신선한 것이나 냉장한 것으로 한정한다)
+- 0206300000: 돼지의 것(신선한 것이나 냉장한 것으로 한정한다)
+[소호] 0641: 간
+- 0206410000: 간
+[소호] 0649: 기타
+- 0206491000: 족
+- 0206499000: 기타
+[소호] 0680: 기타(신선한 것이나 냉장한 것으로 한정한다)
+- 0206800000: 기타(신선한 것이나 냉장한 것으로 한정한다)
+[소호] 0690: 기타(냉동한 것으로 한정한다)
+- 0206900000: 기타(냉동한 것으로 한정한다)
+[호] 07호: 제0105호의 가금(家禽)류의 육과 식용 설육(屑肉)(신선한 것, 냉장하거나 냉동한 것으로 한정한다)
+[소호] 0711: 절단하지 않은 육(신선한 것이나 냉장한 것으로 한정한다)
+- 0207110000: 절단하지 않은 육(신선한 것이나 냉장한 것으로 한정한다)
+[소호] 0712: 절단하지 않은 육(냉동한 것으로 한정한다)
+- 0207120000: 절단하지 않은 육(냉동한 것으로 한정한다)
+[소호] 0713: 절단육과 설육(屑肉)(신선한 것이나 냉장한 것으로 한정한다)
+- 0207131000: 절단육
+- 0207132010: 간
+- 0207132090: 기타
+[소호] 0714: 절단육과 설육(屑肉)(냉동한 것으로 한정한다)
+- 0207141010: 다리
+- 0207141020: 가슴
+- 0207141030: 날개
+- 0207141090: 기타
+- 0207142010: 간
+- 0207142090: 기타
+[소호] 0724: 절단하지 않은 육(신선한 것이나 냉장한 것으로 한정한다)
+- 0207240000: 절단하지 않은 육(신선한 것이나 냉장한 것으로 한정한다)
+[소호] 0725: 절단하지 않은 육(냉동한 것으로 한정한다)
+- 0207250000: 절단하지 않은 육(냉동한 것으로 한정한다)
+[소호] 0726: 절단육과 설육(屑肉)(신선한 것이나 냉장한 것으로 한정한다)
+- 0207261000: 절단육
+- 0207262010: 간
+- 0207262090: 기타
+[소호] 0727: 절단육과 설육(屑肉)(냉동한 것으로 한정한다)
+- 0207271000: 절단육
+- 0207272010: 간
+- 0207272090: 기타
+[소호] 0741: 절단하지 않은 육(신선한 것이나 냉장한 것으로 한정한다)
+- 0207410000: 절단하지 않은 육(신선한 것이나 냉장한 것으로 한정한다)
+[소호] 0742: 절단하지 않은 육(냉동한 것으로 한정한다)
+- 0207420000: 절단하지 않은 육(냉동한 것으로 한정한다)
+[소호] 0743: 지방간(신선한 것이나 냉장한 것으로 한정한다)
+- 0207430000: 지방간(신선한 것이나 냉장한 것으로 한정한다)
+[소호] 0744: 기타(신선한 것이나 냉장한 것으로 한정한다)
+- 0207441000: 절단육
+- 0207442010: 간
+- 0207442090: 기타
+[소호] 0745: 기타(냉동한 것으로 한정한다)
+- 0207451000: 절단육
+- 0207452010: 간
+- 0207452090: 기타
+[소호] 0751: 절단하지 않은 육(신선한 것이나 냉장한 것으로 한정한다)
+- 0207510000: 절단하지 않은 육(신선한 것이나 냉장한 것으로 한정한다)
+[소호] 0752: 절단하지 않은 육(냉동한 것으로 한정한다)
+- 0207520000: 절단하지 않은 육(냉동한 것으로 한정한다)
+[소호] 0753: 지방간(신선한 것이나 냉장한 것으로 한정한다)
+- 0207530000: 지방간(신선한 것이나 냉장한 것으로 한정한다)
+[소호] 0754: 기타(신선한 것이나 냉장한 것으로 한정한다)
+- 0207541000: 절단육
+- 0207542010: 간
+- 0207542090: 기타
+[소호] 0755: 기타(냉동한 것으로 한정한다)
+- 0207551000: 절단육
+- 0207552010: 간
+- 0207552090: 기타
+[소호] 0760: 기니아새의 것
+- 0207601000: 절단하지 않은 육(신선한 것이나 냉장한 것으로 한정한다)
+- 0207602000: 절단하지 않은 육(냉동한 것으로 한정한다)
+- 0207603100: 절단육
+- 0207603210: 간
+- 0207603290: 기타
+- 0207604100: 절단육
+- 0207604210: 간
+- 0207604290: 기타
+[호] 08호: 그 밖의 육과 식용 설육(屑肉)(신선한 것, 냉장하거나 냉동한 것으로 한정한다)
+[소호] 0810: 토끼의 것
+- 0208100000: 토끼의 것
+[소호] 0830: 영장류의 것
+- 0208300000: 영장류의 것
+[소호] 0840: 고래ㆍ돌고래ㆍ쇠돌고래(고래목의 포유동물), 매너티·듀공(바다소목의 포유동물), 물개ㆍ바다사자ㆍ바다코끼리(기각아목의 포유동물)의 것
+- 0208401000: 고래 ？ 돌고래ㆍ쇠돌고래(고래목의 포유동물), 매너티·듀공(바다소목의 포유동물)의 것
+- 0208402000: 물개ㆍ바다사자ㆍ바다코끼리(기각아목의 포유동물)의 것
+[소호] 0850: 파충류의 것(뱀과 거북을 포함한다)
+- 0208500000: 파충류의 것(뱀과 거북을 포함한다)
+[소호] 0860: 낙타와 그 밖의 낙타과[카멜리대(Camelidae)과]의 것
+- 0208600000: 낙타와 그 밖의 낙타과[카멜리대(Camelidae)과]의 것
+[소호] 0890: 기타
+- 0208901000: 사슴의 것
+- 0208909010: 해양동물의 것
+- 0208909090: 기타
+[호] 09호: 살코기가 없는 돼지 비계와 가금(家禽)의 비계(기름을 빼지 않은 것이나 그 밖의 방법으로 추출하지 않은 것으로서 신선한 것ㆍ냉장하거나 냉동한 것ㆍ염장하거나 염수장한 것ㆍ건조하거나 훈제한 것으로 한정한다)
+[소호] 0910: 돼지의 것
+- 0209100000: 돼지의 것
+[소호] 0990: 기타
+- 0209900000: 기타
+[호] 10호: 육과 식용 설육(屑肉)(염장하거나 염수장한 것ㆍ건조하거나 훈제한 것으로 한정한다), 육이나 설육(屑肉)의 식용 고운 가루ㆍ거친 가루
+[소호] 1011: 넓적다리살ㆍ어깨살과 이를 절단한 것(뼈가 있는 것으로 한정한다)
+- 0210110000: 넓적다리살ㆍ어깨살과 이를 절단한 것(뼈가 있는 것으로 한정한다)
+[소호] 1012: 복부살(삼겹살)과 이를 절단한 것
+- 0210120000: 복부살(삼겹살)과 이를 절단한 것
+[소호] 1019: 기타
+- 0210190000: 기타
+[소호] 1020: 쇠고기
+- 0210201000: 건조하거나 훈제한 것
+- 0210209000: 기타
+[소호] 1091: 영장류의 것
+- 0210910000: 영장류의 것
+[소호] 1092: 고래ㆍ돌고래ㆍ쇠돌고래(고래목의 포유동물), 매너티ㆍ듀공(바다소목의 포유동물), 물개ㆍ바다사자ㆍ바다코끼리(기각아목의 포유동물)의 것
+- 0210921000: 고래 ？ 돌고래ㆍ쇠돌고래(고래목의 포유동물), 매너티ㆍ듀공(바다소목의 포유동물)의 것
+- 0210922000: 물개ㆍ바다사자ㆍ바다코끼리(기각아목의 포유동물)의 것
+[소호] 1093: 파충류의 것(뱀과 거북을 포함한다)
+- 0210930000: 파충류의 것(뱀과 거북을 포함한다)
+[소호] 1099: 기타
+- 0210991010: 소의 것
+- 0210991090: 기타
+- 0210999020: 가금(家禽)류의 것
+- 0210999090: 기타
+
+[제03류] 제3류 어류ㆍ갑각류ㆍ연체동물과 그 밖의 수생(水生) 무척추동물
+제3류는 식용·공업용·부화용·관상용의 수산동물을 포함하며 다음은 제외한다: 식용 불가 죽은 수산동물 → 05류, 조리/비규정 보존처리 어류 → 16류, 비식용 어란·어백 → hs_code 0511, 식용 어란·어백(비조제)은 제3류. 조제된 어란·캐비어 → hs_code 1604. 훈제·데침·증기 처리된 비조리 제품은 각각 → hs_code 0305, hs_code 0306, hs_code 0307, hs_code 0308. 조리된 수산물에서 얻은 가루·펠릿 → hs_code 0309. MAP 포장된 신선 어류는 제3류. 추가 제외: 포유동물 → hs_code 0106,  포유동물의 육류 → hs_code 0208, hs_code 0210, 미끼용 어란 → hs_code 0511, 비식용 가루·펠릿 → hs_code 2301
+
+[호] 01호: 활어
+[소호] 0111: 민물의 것
+- 0301111000: 비단잉어
+- 0301119000: 기타
+[소호] 0119: 기타
+- 0301190000: 기타
+[소호] 0191: 송어[살모 트루타(Salmo trutta)ㆍ옹코링쿠스 미키스(Oncorhynchus mykiss)ㆍ옹코링쿠스 클라키(Oncorhynchus clarki)ㆍ옹코링쿠스 아구아보니타(Oncorhynchus aguabonita)ㆍ옹코링쿠스 길래(Oncorhynchus gilae)ㆍ옹코링쿠스 아파케(Oncorhynchus apache)ㆍ옹코링쿠스 크리소가스터(Oncorhynchus chrysogaster)]
+- 0301910000: 송어[살모 트루타(Salmo trutta)ㆍ옹코링쿠스 미키스(Oncorhynchus mykiss)ㆍ옹코링쿠스 클라키(Oncorhynchus clarki)ㆍ옹코링쿠스 아구아보니타(Oncorhynchus aguabonita)ㆍ옹코링쿠스 길래(Oncorhynchus gilae)ㆍ옹코링쿠스 아파케(Oncorhynchus apache)ㆍ옹코링쿠스 크리소가스터(Oncorhynchus chrysogaster)]
+[소호] 0192: 뱀장어[앙귈라(Anguilla)속]
+- 0301921000: 실뱀장어(한 마리당 0.3그램 이하인 것으로서 양식용으로 한정한다)
+- 0301922000: 새끼뱀장어(한 마리당 0.3그램 초과 50그램 이하인 것으로서 양식용으로 한정한다)
+- 0301929010: 실뱀장어(양식용은 제외한다)
+- 0301929090: 기타
+[소호] 0193: 잉어[사이프리너스(Cyprinus)속·카라시우스(Carassius)속·크테노파린고돈 이델루스(Ctenopharyngodon idellus)·하이포프탈미크티스(Hypophthalmichthys)속·시리누스(Cirrhinus)속·마일로파린고돈 피세우스(Mylopharyngodon piceus)·카틀라 카틀라(Catla catla)·라베오(Labeo)속·오스테오킬루스 하셀티(Osteochilus hasselti)·렙토바르부스 호에베니(Leptobarbus hoeveni)·메갈로브라마(Megalobrama)속]
+- 0301931000: 붕어[카라시우스(Carassius)속]
+- 0301939000: 기타
+[소호] 0194: 대서양 참다랑어와 태평양 참다랑어[터너스 티너스 (Thunnus thynnus)ㆍ터너스 오리엔탈리스(Thunnus orientalis)]
+- 0301940000: 대서양 참다랑어와 태평양 참다랑어[터너스 티너스 (Thunnus thynnus)ㆍ터너스 오리엔탈리스(Thunnus orientalis)]
+[소호] 0195: 남방 참다랑어[터너스 맥코이(Thunnus maccoyii)]
+- 0301950000: 남방 참다랑어[터너스 맥코이(Thunnus maccoyii)]
+[소호] 0199: 기타
+- 0301992000: 방어
+- 0301994010: 치어(稚魚)(양식용으로 한정한다)
+- 0301994091: 참돔[파그루스 마조르(Pagrus major)]
+- 0301994099: 기타
+- 0301995000: 붕장어
+- 0301996000: 갯장어
+- 0301997000: 먹장어
+- 0301998000: 넙치류[플루로넥티대(Pleuronectidae)과ㆍ바디대(Bothidae)과ㆍ사이노글로시대(Cynoglossidae)과ㆍ솔레이대(Soleidae)과ㆍ스코프탈미대(Scophthalmidae)과ㆍ시타리대(Citharidae)과]
+- 0301999010: 능성어
+- 0301999020: 복어
+- 0301999040: 볼락(적어를 포함한다)
+- 0301999051: 치어(稚魚)(양식용으로 한정한다)
+- 0301999059: 기타
+- 0301999060: 숭어
+- 0301999070: 미꾸라지
+- 0301999080: 메기
+- 0301999091: 노래미[헥사그라모스(Hexagrammos)속ㆍ아그라무스(Agrammus)속]
+- 0301999092: 붕어[카라시우스(Carassius)속은 제외한다]
+- 0301999095: 민어(Argyrosomus japonicus와 Sciaenops ocellatus은 제외한다)
+- 0301999096: 남방먹조기
+- 0301999097: 점성어
+- 0301999099: 기타
+[호] 02호: 신선하거나 냉장한 어류[제0304호의 어류의 필레(fillet)와 그 밖의 어육은 제외한다]
+[소호] 0211: 송어[살모 트루타(Salmo trutta)ㆍ옹코링쿠스 미키스(Oncorhynchus mykiss)ㆍ옹코링쿠스 클라키(Oncorhynchus clarki)ㆍ옹코링쿠스 아구아보니타(Oncorhynchus aguabonita)ㆍ옹코링쿠스 길래(Oncorhynchus gilae)ㆍ옹코링쿠스 아파케(Oncorhynchus apache)ㆍ옹코링쿠스 크리소가스터(Oncorhynchus chrysogaster)]
+- 0302110000: 송어[살모 트루타(Salmo trutta)ㆍ옹코링쿠스 미키스(Oncorhynchus mykiss)ㆍ옹코링쿠스 클라키(Oncorhynchus clarki)ㆍ옹코링쿠스 아구아보니타(Oncorhynchus aguabonita)ㆍ옹코링쿠스 길래(Oncorhynchus gilae)ㆍ옹코링쿠스 아파케(Oncorhynchus apache)ㆍ옹코링쿠스 크리소가스터(Oncorhynchus chrysogaster)]
+[소호] 0213: 태평양 연어[옹코링쿠스 넬카(Oncorhynchus nerka)ㆍ옹코링쿠스 고르부스카(Oncorhynchus gorbuscha)ㆍ옹코링쿠스 케타(Oncorhynchus keta)ㆍ옹코링쿠스 차비차(Oncorhynchus tschawytscha)ㆍ옹코링쿠스 키수츠(Oncorhynchus kisutch)ㆍ옹코링쿠스 마소(Oncorhynchus masou)ㆍ옹코링쿠스 로두루스(Oncorhynchus rhodurus)]
+- 0302130000: 태평양 연어[옹코링쿠스 넬카(Oncorhynchus nerka)ㆍ옹코링쿠스 고르부스카(Oncorhynchus gorbuscha)ㆍ옹코링쿠스 케타(Oncorhynchus keta)ㆍ옹코링쿠스 차비차(Oncorhynchus tschawytscha)ㆍ옹코링쿠스 키수츠(Oncorhynchus kisutch)ㆍ옹코링쿠스 마소(Oncorhynchus masou)ㆍ옹코링쿠스 로두루스(Oncorhynchus rhodurus)]
+[소호] 0214: 대서양 연어[살모 살라(Salmo salar)]와 다뉴브 연어[후코 후코(Hucho hucho)]
+- 0302140000: 대서양 연어[살모 살라(Salmo salar)]와 다뉴브 연어[후코 후코(Hucho hucho)]
+[소호] 0219: 기타
+- 0302190000: 기타
+[소호] 0221: 넙치[레인하드티우스 히포글러소이데스(Reinhardtius hippoglossoides)ㆍ히포글러서스 히포글러서스(Hippoglossus hippoglossus)ㆍ히포글러서스 스테노레피스(Hippoglossus stenolepis)]
+- 0302210000: 넙치[레인하드티우스 히포글러소이데스(Reinhardtius hippoglossoides)ㆍ히포글러서스 히포글러서스(Hippoglossus hippoglossus)ㆍ히포글러서스 스테노레피스(Hippoglossus stenolepis)]
+[소호] 0222: 가자미[플루로넥테스 플라테사(Pleuronectes platessa)]
+- 0302220000: 가자미[플루로넥테스 플라테사(Pleuronectes platessa)]
+[소호] 0223: 서대[솔레아(Solea)속]
+- 0302230000: 서대[솔레아(Solea)속]
+[소호] 0224: 터벗(turbots)[프세타 맥시마(Psetta maxima)]
+- 0302240000: 터벗(turbots)[프세타 맥시마(Psetta maxima)]
+[소호] 0229: 기타
+- 0302290000: 기타
+[소호] 0231: 날개다랑어나 긴지느러미 다랑어[터너스 알라룽가(Thunnus alalunga)]
+- 0302310000: 날개다랑어나 긴지느러미 다랑어[터너스 알라룽가(Thunnus alalunga)]
+[소호] 0232: 황다랑어[터너스 알바카레스(Thunnus albacares)]
+- 0302320000: 황다랑어[터너스 알바카레스(Thunnus albacares)]
+[소호] 0233: 가다랑어(줄무늬 버니토)[카추워누스 펠라미스(Katsuwonus pelamis)]
+- 0302330000: 가다랑어(줄무늬 버니토)[카추워누스 펠라미스(Katsuwonus pelamis)]
+[소호] 0234: 눈다랑어[터너스 오베서스(Thunnus obesus)]
+- 0302340000: 눈다랑어[터너스 오베서스(Thunnus obesus)]
+[소호] 0235: 대서양 참다랑어와 태평양 참다랑어[터너스 티너스 (Thunnus thynnus)ㆍ터너스 오리엔탈리스(Thunnus orientalis)]
+- 0302351000: 대서양 참다랑어[터너스 티너스 (Thunnus thynnus)]
+- 0302352000: 태평양 참다랑어[터너스 오리엔탈리스(Thunnus orientalis)]
+[소호] 0236: 남방 참다랑어[터너스 맥코이(Thunnus maccoyii)]
+- 0302360000: 남방 참다랑어[터너스 맥코이(Thunnus maccoyii)]
+[소호] 0239: 기타
+- 0302390000: 기타
+[소호] 0241: 청어[클루페아 하렌구스(Clupea harengus)ㆍ클루페아 팔라시(Clupea pallasii)]
+- 0302410000: 청어[클루페아 하렌구스(Clupea harengus)ㆍ클루페아 팔라시(Clupea pallasii)]
+[소호] 0242: 멸치[엔그라울리스(Engraulis)속]
+- 0302420000: 멸치[엔그라울리스(Engraulis)속]
+[소호] 0243: 정어리[사르디나 필차르두스(Sardina pilchardus)ㆍ사르디노프스(Sardinops)속], 사르디넬라[사르디넬라(Sardinella)속], 브리스링(brisling)이나 스프랫(sprats)[스프라투스 스프라투스(Sprattus sprattus)]
+- 0302430000: 정어리[사르디나 필차르두스(Sardina pilchardus)ㆍ사르디노프스(Sardinops)속], 사르디넬라[사르디넬라(Sardinella)속], 브리스링(brisling)이나 스프랫(sprats)[스프라투스 스프라투스(Sprattus sprattus)]
+[소호] 0244: 고등어[스콤버 스콤브루스(Scomber scombrus)ㆍ스콤버 오스트랄라시쿠스(Scomber australasicus)ㆍ스콤버 자포니쿠스(Scomber japonicus)]
+- 0302440000: 고등어[스콤버 스콤브루스(Scomber scombrus)ㆍ스콤버 오스트랄라시쿠스(Scomber australasicus)ㆍ스콤버 자포니쿠스(Scomber japonicus)]
+[소호] 0245: 전갱이[트라커러스(Trachurus)속]
+- 0302450000: 전갱이[트라커러스(Trachurus)속]
+[소호] 0246: 날쌔기[라키센트론 카나둠(Rachycentron canadum)]
+- 0302460000: 날쌔기[라키센트론 카나둠(Rachycentron canadum)]
+[소호] 0247: 황새치[자이피어스 글래디어스(Xiphias gladius)]
+- 0302470000: 황새치[자이피어스 글래디어스(Xiphias gladius)]
+[소호] 0249: 기타
+- 0302491000: 삼치[스콤버로모러스(Scomberomorus)속]
+- 0302492000: 병어[팜푸스(Pampus)속]
+- 0302493000: 꽁치[콜로라비스 사이라(Cololabis saira)]
+- 0302499000: 기타
+[소호] 0251: 대구[가두스 모르화(Gadus morhua)ㆍ가두스 오각(Gadus ogac)ㆍ가두스 마크로세팔루스(Gadus macrocephalus)]
+- 0302510000: 대구[가두스 모르화(Gadus morhua)ㆍ가두스 오각(Gadus ogac)ㆍ가두스 마크로세팔루스(Gadus macrocephalus)]
+[소호] 0252: 해덕[멜라노그라무스 애그레피누스(Melanogrammus aeglefinus)]
+- 0302520000: 해덕[멜라노그라무스 애그레피누스(Melanogrammus aeglefinus)]
+[소호] 0253: 검정대구[폴라치우스 비렌스(Pollachius virens)]
+- 0302530000: 검정대구[폴라치우스 비렌스(Pollachius virens)]
+[소호] 0254: 민대구[메루키우스(Merluccius)속ㆍ유르피키스(Urophycis)속]
+- 0302540000: 민대구[메루키우스(Merluccius)속ㆍ유르피키스(Urophycis)속]
+[소호] 0255: 명태[테라그라 찰코그라마(Theragra chalcogramma)]
+- 0302550000: 명태[테라그라 찰코그라마(Theragra chalcogramma)]
+[소호] 0256: 블루 화이팅스(blue whitings)[마이크로메시스티우스 포우타소우(Micromesistius poutassou)ㆍ마이크로메시스티우스 오스트랄리스(Micromesistius australis)]
+- 0302560000: 블루 화이팅스(blue whitings)[마이크로메시스티우스 포우타소우(Micromesistius poutassou)ㆍ마이크로메시스티우스 오스트랄리스(Micromesistius australis)]
+[소호] 0259: 기타
+- 0302590000: 기타
+[소호] 0271: 틸라피아[오레오크로미스(Oreochromis)속]
+- 0302710000: 틸라피아[오레오크로미스(Oreochromis)속]
+[소호] 0272: 메기[판가시우스(Pangasius)속ㆍ실루러스(Silurus)속ㆍ클라리아스(Clarias)속ㆍ익타루러스(Ictalurus)속]
+- 0302720000: 메기[판가시우스(Pangasius)속ㆍ실루러스(Silurus)속ㆍ클라리아스(Clarias)속ㆍ익타루러스(Ictalurus)속]
+[소호] 0273: 잉어[사이프리너스(Cyprinus)속ㆍ카라시우스(Carassius)속ㆍ크테노파린고돈 이델루스(Ctenopharyngodon idellus)ㆍ하이포프탈미크티스(Hypophthalmichthys)속ㆍ시리누스(Cirrhinus)속ㆍ마일로파린고돈 피세우스(Mylopharyngodon piceus)ㆍ카틀라 카틀라(Catla catla)ㆍ라베오(Labeo)속ㆍ오스테오킬루스 하셀티(Osteochilus hasselti)ㆍ렙토바르부스 호에베니(Leptobarbus hoeveni)ㆍ메갈로브라마(Megalobrama)속]
+- 0302730000: 잉어[사이프리너스(Cyprinus)속ㆍ카라시우스(Carassius)속ㆍ크테노파린고돈 이델루스(Ctenopharyngodon idellus)ㆍ하이포프탈미크티스(Hypophthalmichthys)속ㆍ시리누스(Cirrhinus)속ㆍ마일로파린고돈 피세우스(Mylopharyngodon piceus)ㆍ카틀라 카틀라(Catla catla)ㆍ라베오(Labeo)속ㆍ오스테오킬루스 하셀티(Osteochilus hasselti)ㆍ렙토바르부스 호에베니(Leptobarbus hoeveni)ㆍ메갈로브라마(Megalobrama)속]
+[소호] 0274: 뱀장어[앙귈라(Anguilla)속]
+- 0302740000: 뱀장어[앙귈라(Anguilla)속]
+[소호] 0279: 기타
+- 0302790000: 기타
+[소호] 0281: 곱상어와 그 밖의 상어
+- 0302810000: 곱상어와 그 밖의 상어
+[소호] 0282: 가오리와 홍어[라지대(Rajidae)과]
+- 0302820000: 가오리와 홍어[라지대(Rajidae)과]
+[소호] 0283: 이빨고기[디소스티쿠스(Dissostichus)속]
+- 0302830000: 이빨고기[디소스티쿠스(Dissostichus)속]
+[소호] 0284: 농어[디센트라르쿠스(Dicentrarchus)속]
+- 0302840000: 농어[디센트라르쿠스(Dicentrarchus)속]
+[소호] 0285: 돔[스파리대(Sparidae)과]
+- 0302850000: 돔[스파리대(Sparidae)과]
+[소호] 0289: 기타
+- 0302891000: 방어
+- 0302892000: 갈치
+- 0302893000: 붕장어
+- 0302894000: 갯장어
+- 0302895000: 학꽁치(Hyporhampus sajori)
+- 0302896000: 돔[스파리대(Sparidae)과는 제외한다]
+- 0302899020: 복어
+- 0302899040: 아귀
+- 0302899090: 기타
+[소호] 0291: 간ㆍ어란(魚卵)ㆍ어백(魚白)
+- 0302911000: 간
+- 0302912000: 어란(魚卵)ㆍ어백(魚白)
+[소호] 0292: 상어 지느러미
+- 0302920000: 상어 지느러미
+[소호] 0299: 기타
+- 0302990000: 기타
+[호] 03호: 냉동어류[제0304호의 어류의 필레(fillet)와 기타 어육은 제외한다]
+[소호] 0311: 소크아이 연어[홍연어(red salmon)][옹코링쿠스 넬카(Oncorhynchus nerka)]
+- 0303110000: 소크아이 연어[홍연어(red salmon)][옹코링쿠스 넬카(Oncorhynchus nerka)]
+[소호] 0312: 그 밖의 태평양 연어[옹코링쿠스 고르부스카(Oncorhynchus gorbuscha)ㆍ옹코링쿠스 케타(Oncorhynchus keta)ㆍ옹코링쿠스 차비차(Oncorhynchus tschawytscha)ㆍ옹코링쿠스 키수츠(Oncorhynchus kisutch)ㆍ옹코링쿠스 마소(Oncorhynchus masou)ㆍ옹코링쿠스 로두루스(Oncorhynchus rhodurus)]
+- 0303120000: 그 밖의 태평양 연어[옹코링쿠스 고르부스카(Oncorhynchus gorbuscha)ㆍ옹코링쿠스 케타(Oncorhynchus keta)ㆍ옹코링쿠스 차비차(Oncorhynchus tschawytscha)ㆍ옹코링쿠스 키수츠(Oncorhynchus kisutch)ㆍ옹코링쿠스 마소(Oncorhynchus masou)ㆍ옹코링쿠스 로두루스(Oncorhynchus rhodurus)]
+[소호] 0313: 대서양 연어[살모 살라(Salmo salar)]와 다뉴브 연어[후코 후코(Hucho hucho)]
+- 0303130000: 대서양 연어[살모 살라(Salmo salar)]와 다뉴브 연어[후코 후코(Hucho hucho)]
+[소호] 0314: 송어[살모 트루타(Salmo trutta)ㆍ옹코링쿠스 미키스(Oncorhynchus mykiss)ㆍ옹코링쿠스 클라키(Oncorhynchus clarki)ㆍ옹코링쿠스 아구아보니타(Oncorhynchus aguabonita)ㆍ옹코링쿠스 길래(Oncorhynchus gilae)ㆍ옹코링쿠스 아파케(Oncorhynchus apache)ㆍ옹코링쿠스 크리소가스터(Oncorhynchus chrysogaster)]
+- 0303140000: 송어[살모 트루타(Salmo trutta)ㆍ옹코링쿠스 미키스(Oncorhynchus mykiss)ㆍ옹코링쿠스 클라키(Oncorhynchus clarki)ㆍ옹코링쿠스 아구아보니타(Oncorhynchus aguabonita)ㆍ옹코링쿠스 길래(Oncorhynchus gilae)ㆍ옹코링쿠스 아파케(Oncorhynchus apache)ㆍ옹코링쿠스 크리소가스터(Oncorhynchus chrysogaster)]
+[소호] 0319: 기타
+- 0303190000: 기타
+[소호] 0323: 틸라피아[오레오크로미스(Oreochromis)속]
+- 0303230000: 틸라피아[오레오크로미스(Oreochromis)속]
+[소호] 0324: 메기[판가시우스(Pangasius)속ㆍ실루러스(Silurus)속ㆍ클라리아스(Clarias)속ㆍ익타루러스(Ictalurus)속]
+- 0303240000: 메기[판가시우스(Pangasius)속ㆍ실루러스(Silurus)속ㆍ클라리아스(Clarias)속ㆍ익타루러스(Ictalurus)속]
+[소호] 0325: 잉어[사이프리너스(Cyprinus)속ㆍ카라시우스(Carassius)속ㆍ크테노파린고돈 이델루스(Ctenopharyngodon idellus)ㆍ하이포프탈미크티스(Hypophthalmichthys)속ㆍ시리누스(Cirrhinus)속ㆍ마일로파린고돈 피세우스(Mylopharyngodon piceus)ㆍ카틀라 카틀라(Catla catla)ㆍ라베오(Labeo)속ㆍ오스테오킬루스 하셀티(Osteochilus hasselti)ㆍ렙토바르부스 호에베니(Leptobarbus hoeveni)ㆍ메갈로브라마(Megalobrama)속]
+- 0303250000: 잉어[사이프리너스(Cyprinus)속ㆍ카라시우스(Carassius)속ㆍ크테노파린고돈 이델루스(Ctenopharyngodon idellus)ㆍ하이포프탈미크티스(Hypophthalmichthys)속ㆍ시리누스(Cirrhinus)속ㆍ마일로파린고돈 피세우스(Mylopharyngodon piceus)ㆍ카틀라 카틀라(Catla catla)ㆍ라베오(Labeo)속ㆍ오스테오킬루스 하셀티(Osteochilus hasselti)ㆍ렙토바르부스 호에베니(Leptobarbus hoeveni)ㆍ메갈로브라마(Megalobrama)속]
+[소호] 0326: 뱀장어[앙귈라(Anguilla)속]
+- 0303260000: 뱀장어[앙귈라(Anguilla)속]
+[소호] 0329: 기타
+- 0303290000: 기타
+[소호] 0331: 넙치[레인하드티우스 히포글러소이데스(Reinhardtius hippoglossoides)ㆍ히포글러서스 히포글러서스(Hippoglossus hippoglossus)ㆍ히포글러서스 스테노레피스(Hippoglossus stenolepis)]
+- 0303310000: 넙치[레인하드티우스 히포글러소이데스(Reinhardtius hippoglossoides)ㆍ히포글러서스 히포글러서스(Hippoglossus hippoglossus)ㆍ히포글러서스 스테노레피스(Hippoglossus stenolepis)]
+[소호] 0332: 가자미[플루로넥테스 플라테사(Pleuronectes platessa)]
+- 0303320000: 가자미[플루로넥테스 플라테사(Pleuronectes platessa)]
+[소호] 0333: 서대[솔레아(Solea)속]
+- 0303330000: 서대[솔레아(Solea)속]
+[소호] 0334: 터벗(turbots)[프세타 맥시마(Psetta maxima)]
+- 0303340000: 터벗(turbots)[프세타 맥시마(Psetta maxima)]
+[소호] 0339: 기타
+- 0303391000: 가자미[플루로넥테스 플라테사(Pleuronectes platessa)를 제외한다]
+- 0303399000: 기타
+[소호] 0341: 날개다랑어나 긴지느러미 다랑어[터너스 알라룽가(Thunnus alalunga)]
+- 0303410000: 날개다랑어나 긴지느러미 다랑어[터너스 알라룽가(Thunnus alalunga)]
+[소호] 0342: 황다랑어[터너스 알바카레스(Thunnus albacares)]
+- 0303420000: 황다랑어[터너스 알바카레스(Thunnus albacares)]
+[소호] 0343: 가다랑어(줄무늬 버니토)[카추워누스 펠라미스(Katsuwonus pelamis)]
+- 0303430000: 가다랑어(줄무늬 버니토)[카추워누스 펠라미스(Katsuwonus pelamis)]
+[소호] 0344: 눈다랑어[터너스 오베서스(Thunnus obesus)]
+- 0303440000: 눈다랑어[터너스 오베서스(Thunnus obesus)]
+[소호] 0345: 대서양 참다랑어와 태평양 참다랑어[터너스 티너스(Thunnus thynnus)ㆍ터너스 오리엔탈리스(Thunnus orientalis)]
+- 0303451000: 대서양 참다랑어[터너스 티너스(Thunnus thynnus)]
+- 0303452000: 태평양 참다랑어[터너스 오리엔탈리스(Thunnus orientalis)]
+[소호] 0346: 남방 참다랑어[터너스 맥코이(Thunnus maccoyii)]
+- 0303460000: 남방 참다랑어[터너스 맥코이(Thunnus maccoyii)]
+[소호] 0349: 기타
+- 0303490000: 기타
+[소호] 0351: 청어[클루페아 하렌구스(Clupea harengus)ㆍ클루페아 팔라시(Clupea pallasii)]
+- 0303510000: 청어[클루페아 하렌구스(Clupea harengus)ㆍ클루페아 팔라시(Clupea pallasii)]
+[소호] 0353: 정어리[사르디나 필차르두스(Sardina pilchardus)ㆍ사르디노프스(Sardinops)속], 사르디넬라[사르디넬라(Sardinella)속], 브리스링(brisling)이나 스프랫(sprats)[스프라투스 스프라투스(Sprattus sprattus)]
+- 0303530000: 정어리[사르디나 필차르두스(Sardina pilchardus)ㆍ사르디노프스(Sardinops)속], 사르디넬라[사르디넬라(Sardinella)속], 브리스링(brisling)이나 스프랫(sprats)[스프라투스 스프라투스(Sprattus sprattus)]
+[소호] 0354: 고등어[스콤버 스콤브루스(Scomber scombrus)ㆍ스콤버 오스트랄라시쿠스(Scomber australasicus)ㆍ스콤버 자포니쿠스(Scomber japonicus)]
+- 0303540000: 고등어[스콤버 스콤브루스(Scomber scombrus)ㆍ스콤버 오스트랄라시쿠스(Scomber australasicus)ㆍ스콤버 자포니쿠스(Scomber japonicus)]
+[소호] 0355: 전갱이[트라커러스(Trachurus)속]
+- 0303550000: 전갱이[트라커러스(Trachurus)속]
+[소호] 0356: 날쌔기[라키센트론 카나둠(Rachycentron canadum)]
+- 0303560000: 날쌔기[라키센트론 카나둠(Rachycentron canadum)]
+[소호] 0357: 황새치[자이피어스 글래디어스(Xiphias gladius)]
+- 0303570000: 황새치[자이피어스 글래디어스(Xiphias gladius)]
+[소호] 0359: 기타
+- 0303591000: 삼치[스콤버로모러스(Scomberomorus)속]
+- 0303592000: 꽁치[콜로라비스 사이라(Cololabis saira)]
+- 0303599000: 기타
+[소호] 0363: 대구[가두스 모르화(Gadus morhua)ㆍ가두스 오각(Gadus ogac)ㆍ가두스 마크로세팔루스(Gadus macrocephalus)]
+- 0303630000: 대구[가두스 모르화(Gadus morhua)ㆍ가두스 오각(Gadus ogac)ㆍ가두스 마크로세팔루스(Gadus macrocephalus)]
+[소호] 0364: 해덕[멜라노그라무스 애그레피누스(Melanogrammus aeglefinus)]
+- 0303640000: 해덕[멜라노그라무스 애그레피누스(Melanogrammus aeglefinus)]
+[소호] 0365: 검정대구[폴라치우스 비렌스(Pollachius virens)]
+- 0303650000: 검정대구[폴라치우스 비렌스(Pollachius virens)]
+[소호] 0366: 민대구[메루키우스(Merluccius)속ㆍ유르피키스(Urophycis)속]
+- 0303660000: 민대구[메루키우스(Merluccius)속ㆍ유르피키스(Urophycis)속]
+[소호] 0367: 명태[테라그라 찰코그라마(Theragra chalcogramma)]
+- 0303670000: 명태[테라그라 찰코그라마(Theragra chalcogramma)]
+[소호] 0368: 블루 화이팅스(blue whitings)[마이크로메시스티우스 포우타소우(Micromesistius poutassou)ㆍ마이크로메시스티우스 오스트랄리스(Micromesistius australis)]
+- 0303680000: 블루 화이팅스(blue whitings)[마이크로메시스티우스 포우타소우(Micromesistius poutassou)ㆍ마이크로메시스티우스 오스트랄리스(Micromesistius australis)]
+[소호] 0369: 기타
+- 0303691000: 새꼬리민태
+- 0303699000: 기타
+[소호] 0381: 곱상어와 그 밖의 상어
+- 0303810000: 곱상어와 그 밖의 상어
+[소호] 0382: 가오리와 홍어[라지대(Rajidae)과]
+- 0303821000: 가오리
+- 0303822000: 홍어
+[소호] 0383: 이빨고기[디소스티쿠스(Dissostichus)속]
+- 0303830000: 이빨고기[디소스티쿠스(Dissostichus)속]
+[소호] 0384: 농어[디센트라르쿠스(Dicentrarchus)속]
+- 0303840000: 농어[디센트라르쿠스(Dicentrarchus)속]
+[소호] 0389: 기타
+- 0303891000: 은대구
+- 0303892000: 갈치
+- 0303893010: 옥돔[브랜치오스테거스 자포니커스(Branchiostegus Japonicus)]
+- 0303893020: 옥두어[브랜치오스테거스 알부스(Branchiostegus albus)]
+- 0303893090: 기타
+- 0303894000: 붕장어
+- 0303895010: 참조기[라리미크티스 폴리악티스(Larimichthys polyactis)]
+- 0303895020: 부세[라리미크티스 크로세아(Larimichthys crocea)]
+- 0303895090: 기타
+- 0303896000: 학꽁치(Hyporhampus sajori)
+- 0303898000: 복어
+- 0303899010: 보리멸
+- 0303899020: 홍살치
+- 0303899030: 달고기
+- 0303899040: 임연수어
+- 0303899050: 볼낙(적어를 포함한다)
+- 0303899060: 아귀
+- 0303899070: 먹장어(대서양 또는 태평양)
+- 0303899080: 밀크피쉬
+- 0303899091: 민어
+- 0303899092: 까나리
+- 0303899093: 이빨고기[디소스티쿠스(Dissostichus)속은 제외한다]
+- 0303899099: 기타
+[소호] 0391: 간ㆍ어란(魚卵)ㆍ어백(魚白)
+- 0303911000: 간
+- 0303912010: 명란
+- 0303912090: 기타
+[소호] 0392: 상어 지느러미
+- 0303920000: 상어 지느러미
+[소호] 0399: 기타
+- 0303990000: 기타
+[호] 04호: 어류의 필레(fillet)와 그 밖의 어육(잘게 썰었는지에 상관없으며, 신선한 것ㆍ냉장한 것ㆍ냉동한 것으로 한정한다)
+[소호] 0431: 틸라피아[오레오크로미스(Oreochromis)속]
+- 0304310000: 틸라피아[오레오크로미스(Oreochromis)속]
+[소호] 0432: 메기[판가시우스(Pangasius)속ㆍ실루러스(Silurus)속ㆍ클라리아스(Clarias)속ㆍ익타루러스(Ictalurus)속]
+- 0304320000: 메기[판가시우스(Pangasius)속ㆍ실루러스(Silurus)속ㆍ클라리아스(Clarias)속ㆍ익타루러스(Ictalurus)속]
+[소호] 0433: 나일 퍼치[라테스 니로티쿠스(Lates niloticus)]
+- 0304330000: 나일 퍼치[라테스 니로티쿠스(Lates niloticus)]
+[소호] 0439: 기타
+- 0304390000: 기타
+[소호] 0441: 태평양 연어[옹코링쿠스 넬카(Oncorhynchus nerka)ㆍ옹코링쿠스 고르부스카(Oncorhynchus gorbuscha)ㆍ옹코링쿠스 케타(Oncorhynchus keta)ㆍ옹코링쿠스 차비차(Oncorhynchus tschawytscha)ㆍ옹코링쿠스 키수츠(Oncorhynchus kisutch)ㆍ옹코링쿠스 마소(Oncorhynchus masou)ㆍ옹코링쿠스 로두루스(Oncorhynchus rhodurus)], 대서양 연어[살모 살라(Salmo salar)], 다뉴브 연어[후코 후코(Hucho hucho)]
+- 0304410000: 태평양 연어[옹코링쿠스 넬카(Oncorhynchus nerka)ㆍ옹코링쿠스 고르부스카(Oncorhynchus gorbuscha)ㆍ옹코링쿠스 케타(Oncorhynchus keta)ㆍ옹코링쿠스 차비차(Oncorhynchus tschawytscha)ㆍ옹코링쿠스 키수츠(Oncorhynchus kisutch)ㆍ옹코링쿠스 마소(Oncorhynchus masou)ㆍ옹코링쿠스 로두루스(Oncorhynchus rhodurus)], 대서양 연어[살모 살라(Salmo salar)], 다뉴브 연어[후코 후코(Hucho hucho)]
+[소호] 0442: 송어[살모 트루타(Salmo trutta)ㆍ옹코링쿠스 미키스(Oncorhynchus mykiss)ㆍ옹코링쿠스 클라키(Oncorhynchus clarki)ㆍ옹코링쿠스 아구아보니타(Oncorhynchus aguabonita)ㆍ옹코링쿠스 길래(Oncorhynchus gilae)ㆍ옹코링쿠스 아파케(Oncorhynchus apache)ㆍ옹코링쿠스 크리소가스터(Oncorhynchus chrysogaster)]
+- 0304420000: 송어[살모 트루타(Salmo trutta)ㆍ옹코링쿠스 미키스(Oncorhynchus mykiss)ㆍ옹코링쿠스 클라키(Oncorhynchus clarki)ㆍ옹코링쿠스 아구아보니타(Oncorhynchus aguabonita)ㆍ옹코링쿠스 길래(Oncorhynchus gilae)ㆍ옹코링쿠스 아파케(Oncorhynchus apache)ㆍ옹코링쿠스 크리소가스터(Oncorhynchus chrysogaster)]
+[소호] 0443: 넙치류[플루로넥티대(Pleuronectidae)과ㆍ바디대(Bothidae)과ㆍ사이노글로시대(Cynoglossidae)과ㆍ솔레이대(Soleidae)과ㆍ스코프탈미대(Scophthalmidae)과ㆍ시타리대(Citharidae)과]
+- 0304431000: 가자미
+- 0304439000: 기타
+[소호] 0444: 브레그마세로티대(Bregmacerotidae)과ㆍ유클리티대(Euclichthyidae)과ㆍ가디대(Gadidae)과ㆍ마크로우리대(Macrouridae)과ㆍ멜라노니대(Melanonidae)과ㆍ메르루치대(Merlucciidae)과ㆍ모리대(Moridae)과ㆍ무라에놀레피디대(Muraenolepididae)과의 어류
+- 0304440000: 브레그마세로티대(Bregmacerotidae)과ㆍ유클리티대(Euclichthyidae)과ㆍ가디대(Gadidae)과ㆍ마크로우리대(Macrouridae)과ㆍ멜라노니대(Melanonidae)과ㆍ메르루치대(Merlucciidae)과ㆍ모리대(Moridae)과ㆍ무라에놀레피디대(Muraenolepididae)과의 어류
+[소호] 0445: 황새치[자이피어스 글래디어스(Xiphias gladius)]
+- 0304450000: 황새치[자이피어스 글래디어스(Xiphias gladius)]
+[소호] 0446: 이빨고기[디소스티쿠스(Dissostichus)속]
+- 0304460000: 이빨고기[디소스티쿠스(Dissostichus)속]
+[소호] 0447: 곱상어와 그 밖의 상어
+- 0304470000: 곱상어와 그 밖의 상어
+[소호] 0448: 가오리와 홍어[라지대(Rajidae)과]
+- 0304480000: 가오리와 홍어[라지대(Rajidae)과]
+[소호] 0449: 기타
+- 0304491000: 붕장어
+- 0304492000: 참다랑어
+- 0304499000: 기타
+[소호] 0451: 틸라피아[오레오크로미스(Oreochromis)속], 메기[판가시우스(Pangasius)속ㆍ실루러스(Silurus)속ㆍ클라리아스(Clarias)속ㆍ익타루러스(Ictalurus)속], 잉어[사이프리너스(Cyprinus)속ㆍ카라시우스(Carassius)속ㆍ크테노파린고돈 이델루스(Ctenopharyngodon idellus)ㆍ하이포프탈미크티스(Hypophthalmichthys)속ㆍ시리누스(Cirrhinus)속ㆍ마일로파린고돈 피세우스(Mylopharyngodon piceus)ㆍ카틀라 카틀라(Catla catla)ㆍ라베오(Labeo)속ㆍ오스테오킬루스 하셀티(Osteochilus hasselti)ㆍ렙토바르부스 호에베니(Leptobarbus hoeveni)ㆍ메갈로브라마(Megalobrama)속], 뱀장어[앙귈라(Anguilla)속], 나일 퍼치[라테스 니로티쿠스(Lates niloticus)], 가물치[카나(Channa)속]
+- 0304511000: 연육
+- 0304519000: 기타
+[소호] 0452: 연어과
+- 0304520000: 연어과
+[소호] 0453: 브레그마세로티대(Bregmacerotidae)과ㆍ유클리티대(Euclichthyidae)과ㆍ가디대(Gadidae)과ㆍ마크로우리대(Macrouridae)과ㆍ멜라노니대(Melanonidae)과ㆍ메르루치대(Merlucciidae)과ㆍ모리대(Moridae)과ㆍ무라에놀레피디대(Muraenolepididae)과의 어류
+- 0304530000: 브레그마세로티대(Bregmacerotidae)과ㆍ유클리티대(Euclichthyidae)과ㆍ가디대(Gadidae)과ㆍ마크로우리대(Macrouridae)과ㆍ멜라노니대(Melanonidae)과ㆍ메르루치대(Merlucciidae)과ㆍ모리대(Moridae)과ㆍ무라에놀레피디대(Muraenolepididae)과의 어류
+[소호] 0454: 황새치[자이피어스 글래디어스(Xiphias gladius)]
+- 0304540000: 황새치[자이피어스 글래디어스(Xiphias gladius)]
+[소호] 0455: 이빨고기[디소스티쿠스(Dissostichus)속]
+- 0304550000: 이빨고기[디소스티쿠스(Dissostichus)속]
+[소호] 0456: 곱상어와 그 밖의 상어
+- 0304560000: 곱상어와 그 밖의 상어
+[소호] 0457: 가오리와 홍어[라지대(Rajidae)과]
+- 0304573000: 연육
+- 0304579000: 기타
+[소호] 0459: 기타
+- 0304591000: 붕장어
+- 0304592000: 가자미
+- 0304593010: 연육
+- 0304593090: 기타
+- 0304599010: 연육
+- 0304599090: 기타
+[소호] 0461: 틸라피아[오레오크로미스(Oreochromis)속]
+- 0304610000: 틸라피아[오레오크로미스(Oreochromis)속]
+[소호] 0462: 메기[판가시우스(Pangasius)속ㆍ실루러스(Silurus)속ㆍ클라리아스(Clarias)속ㆍ익타루러스(Ictalurus)속]
+- 0304620000: 메기[판가시우스(Pangasius)속ㆍ실루러스(Silurus)속ㆍ클라리아스(Clarias)속ㆍ익타루러스(Ictalurus)속]
+[소호] 0463: 나일 퍼치[라테스 니로티쿠스(Lates niloticus)]
+- 0304630000: 나일 퍼치[라테스 니로티쿠스(Lates niloticus)]
+[소호] 0469: 기타
+- 0304690000: 기타
+[소호] 0471: 대구[가두스 모르화(Gadus morhua)ㆍ가두스 오각(Gadus ogac)ㆍ가두스 마크로세팔루스(Gadus macrocephalus)]
+- 0304710000: 대구[가두스 모르화(Gadus morhua)ㆍ가두스 오각(Gadus ogac)ㆍ가두스 마크로세팔루스(Gadus macrocephalus)]
+[소호] 0472: 해덕[멜라노그라무스 애그레피누스(Melanogrammus aeglefinus)]
+- 0304720000: 해덕[멜라노그라무스 애그레피누스(Melanogrammus aeglefinus)]
+[소호] 0473: 검정대구[폴라치우스 비렌스(Pollachius virens)]
+- 0304730000: 검정대구[폴라치우스 비렌스(Pollachius virens)]
+[소호] 0474: 민대구[메루키우스(Merluccius)속ㆍ유르피키스(Urophycis)속]
+- 0304740000: 민대구[메루키우스(Merluccius)속ㆍ유르피키스(Urophycis)속]
+[소호] 0475: 명태[테라그라 찰코그라마(Theragra chalcogramma)]
+- 0304750000: 명태[테라그라 찰코그라마(Theragra chalcogramma)]
+[소호] 0479: 기타
+- 0304790000: 기타
+[소호] 0481: 태평양 연어[옹코링쿠스 넬카(Oncorhynchus nerka)ㆍ옹코링쿠스 고르부스카(Oncorhynchus gorbuscha)ㆍ옹코링쿠스 케타(Oncorhynchus keta)ㆍ옹코링쿠스 차비차(Oncorhynchus tschawytscha)ㆍ옹코링쿠스 키수츠(Oncorhynchus kisutch)ㆍ옹코링쿠스 마소(Oncorhynchus masou)ㆍ옹코링쿠스 로두루스(Oncorhynchus rhodurus)], 대서양 연어[살모 살라(Salmo salar)], 다뉴브 연어[후코 후코(Hucho hucho)]
+- 0304810000: 태평양 연어[옹코링쿠스 넬카(Oncorhynchus nerka)ㆍ옹코링쿠스 고르부스카(Oncorhynchus gorbuscha)ㆍ옹코링쿠스 케타(Oncorhynchus keta)ㆍ옹코링쿠스 차비차(Oncorhynchus tschawytscha)ㆍ옹코링쿠스 키수츠(Oncorhynchus kisutch)ㆍ옹코링쿠스 마소(Oncorhynchus masou)ㆍ옹코링쿠스 로두루스(Oncorhynchus rhodurus)], 대서양 연어[살모 살라(Salmo salar)], 다뉴브 연어[후코 후코(Hucho hucho)]
+[소호] 0482: 송어[살모 트루타(Salmo trutta)ㆍ옹코링쿠스 미키스(Oncorhynchus mykiss)ㆍ옹코링쿠스 클라키(Oncorhynchus clarki)ㆍ옹코링쿠스 아구아보니타(Oncorhynchus aguabonita)ㆍ옹코링쿠스 길래(Oncorhynchus gilae)ㆍ옹코링쿠스 아파케(Oncorhynchus apache)ㆍ옹코링쿠스 크리소가스터(Oncorhynchus chrysogaster)]
+- 0304820000: 송어[살모 트루타(Salmo trutta)ㆍ옹코링쿠스 미키스(Oncorhynchus mykiss)ㆍ옹코링쿠스 클라키(Oncorhynchus clarki)ㆍ옹코링쿠스 아구아보니타(Oncorhynchus aguabonita)ㆍ옹코링쿠스 길래(Oncorhynchus gilae)ㆍ옹코링쿠스 아파케(Oncorhynchus apache)ㆍ옹코링쿠스 크리소가스터(Oncorhynchus chrysogaster)]
+[소호] 0483: 넙치류[플루로넥티대(Pleuronectidae)과ㆍ바디대(Bothidae)과ㆍ사이노글로시대(Cynoglossidae)과ㆍ솔레이대(Soleidae)과ㆍ스코프탈미대(Scophthal midae)과ㆍ시타리대(Citharidae)과]
+- 0304831000: 가자미
+- 0304839000: 기타
+[소호] 0484: 황새치[자이피어스 글래디어스(Xiphias gladius)]
+- 0304840000: 황새치[자이피어스 글래디어스(Xiphias gladius)]
+[소호] 0485: 이빨고기[디소스티쿠스(Dissostichus)속]
+- 0304850000: 이빨고기[디소스티쿠스(Dissostichus)속]
+[소호] 0486: 청어[클루페아 하렌구스(Clupea harengus)ㆍ클루페아 팔라시(Clupea pallasii)]
+- 0304860000: 청어[클루페아 하렌구스(Clupea harengus)ㆍ클루페아 팔라시(Clupea pallasii)]
+[소호] 0487: 다랑어[터너스(Thunnus)속의 것으로 한정한다]ㆍ가다랑어(줄무늬 버니토)[카추워누스 펠라미스(Katsuwonus pelamis)]
+- 0304871000: 참다랑어
+- 0304879000: 기타
+[소호] 0488: 곱상어, 그 밖의 상어, 가오리와 홍어[라지대(Rajidae)과]
+- 0304881000: 곱상어, 그 밖의 상어
+- 0304889000: 기타
+[소호] 0489: 기타
+- 0304891000: 붕장어의 것
+- 0304892000: 이빨고기[디소스티쿠스(Dissostichus)속은 제외한다]의 것
+- 0304893000: 틸라피아[오레오크로미스(Oreochromis)속은 제외한다]의 것
+- 0304894000: 쥐치의 것
+- 0304895000: 고등어의 것
+- 0304899000: 기타
+[소호] 0491: 황새치[자이피어스 글래디어스(Xiphias gladius)]
+- 0304911000: 냉동 연육
+- 0304919000: 기타
+[소호] 0492: 이빨고기[디소스티쿠스(Dissostichus)속]
+- 0304921000: 냉동 연육
+- 0304929000: 기타
+[소호] 0493: 틸라피아[오레오크로미스(Oreochromis)속], 메기[판가시우스(Pangasius)속ㆍ실루러스(Silurus)속ㆍ클라리아스(Clarias)속ㆍ익타루러스(Ictalurus)속], 잉어[사이프리너스(Cyprinus)속ㆍ카라시우스(Carassius)속ㆍ크테노파린고돈 이델루스(Ctenopharyngodon idellus)ㆍ하이포프탈미크티스(Hypophthalmichthys)속ㆍ시리누스(Cirrhinus)속ㆍ마일로파린고돈 피세우스(Mylopharyngodon piceus)ㆍ카틀라 카틀라(Catla catla)ㆍ라베오(Labeo)속ㆍ오스테오킬루스 하셀티(Osteochilus hasselti)ㆍ렙토바르부스 호에베니(Leptobarbus hoeveni)ㆍ메갈로브라마(Megalobrama)속], 뱀장어[앙귈라(Anguilla)속], 나일 퍼치[라테스 니로티쿠스(Lates niloticus)], 가물치[카나(Channa)속]
+- 0304931000: 냉동 연육
+- 0304939000: 기타
+[소호] 0494: 명태[테라그라 찰코그라마(Theragra chalcogramma)]
+- 0304941000: 냉동 연육
+- 0304949000: 기타
+[소호] 0495: 브레그마세로티대(Bregmacerotidae)과ㆍ유클리티대(Euclichthyidae)과ㆍ가디대(Gadidae)과ㆍ마크로우리대(Macrouridae)과ㆍ멜라노니대(Melanonidae)과ㆍ메르루치대(Merlucciidae)과ㆍ모리대(Moridae)과ㆍ무라에놀레피디대(Muraenolepididae)과의 어류[명태(테라그라 찰코그라마(Theragra chalcogramma)는 제외한다]
+- 0304951000: 냉동 연육
+- 0304959000: 기타
+[소호] 0496: 곱상어와 그 밖의 상어
+- 0304960000: 곱상어와 그 밖의 상어
+[소호] 0497: 가오리와 홍어[라지대(Rajidae)과]
+- 0304970000: 가오리와 홍어[라지대(Rajidae)과]
+[소호] 0499: 기타
+- 0304991000: 냉동 연육
+- 0304999000: 기타
+[호] 05호: 건조한 어류, 염장이나 염수장한 어류, 훈제한 어류(훈제과정 중이나 훈제 전에 조리한 것인지에 상관없다)
+[소호] 0520: 어류의 간ㆍ어란(魚卵)ㆍ어백(魚白)(건조한 것ㆍ훈제한 것ㆍ염장이나 염수장한 것으로 한정한다)
+- 0305201000: 간
+- 0305202000: 건조한 어란(魚卵)과 어백(魚白)
+- 0305203000: 훈제한 어란(魚卵)과 어백(魚白)
+- 0305204010: 명태의 것
+- 0305204020: 조기의 것
+- 0305204030: 청어의 것
+- 0305204090: 기타
+[소호] 0531: 틸라피아[오레오크로미스(Oreochromis)속], 메기[판가시우스(Pangasius)속ㆍ실루러스(Silurus)속ㆍ클라리아스(Clarias)속ㆍ익타루러스(Ictalurus)속], 잉어[사이프리너스(Cyprinus)속ㆍ카라시우스(Carassius)속ㆍ크테노파린고돈 이델루스(Ctenopharyngodon idellus)ㆍ하이포프탈미크티스(Hypophthalmichthys)속ㆍ시리누스(Cirrhinus)속ㆍ마일로파린고돈 피세우스(Mylopharyngodon piceus)ㆍ카틀라 카틀라(Catla catla)ㆍ라베오(Labeo)속ㆍ오스테오킬루스 하셀티(Osteochilus hasselti)ㆍ렙토바르부스 호에베니(Leptobarbus hoeveni)ㆍ메갈로브라마(Megalobrama)속], 뱀장어[앙귈라(Anguilla)속], 나일 퍼치[라테스 니로티쿠스(Lates niloticus)], 가물치[카나(Channa)속]
+- 0305311000: 건조한 것
+- 0305312000: 염장이나 염수장한 것
+[소호] 0532: 브레그마세로티대(Bregmacerotidae)과ㆍ유클리티대(Euclichthyidae)과ㆍ가디대(Gadidae)과ㆍ마크로우리대(Macrouridae)과ㆍ멜라노니대(Melanonidae)과ㆍ메르루치대(Merlucciidae)과ㆍ모리대(Moridae)과ㆍ무라에놀레피디대(Muraenolepididae)과의 어류
+- 0305321000: 건조한 것
+- 0305322000: 염장이나 염수장한 것
+[소호] 0539: 기타
+- 0305391000: 건조한 것
+- 0305392000: 염장이나 염수장한 것
+[소호] 0541: 태평양 연어[옹코링쿠스 넬카(Oncorhynchus nerka)ㆍ옹코링쿠스 고르부스카(Oncorhynchus gorbuscha)ㆍ옹코링쿠스 케타(Oncorhynchus keta)ㆍ옹코링쿠스 차비차(Oncorhynchus tschawytscha)ㆍ옹코링쿠스 키수츠(Oncorhynchus kisutch)ㆍ옹코링쿠스 마소(Oncorhynchus masou)ㆍ옹코링쿠스 로두루스(Oncorhynchus rhodurus)], 대서양 연어[살모 살라(Salmo salar)], 다뉴브 연어[후코 후코(Hucho hucho)]
+- 0305410000: 태평양 연어[옹코링쿠스 넬카(Oncorhynchus nerka)ㆍ옹코링쿠스 고르부스카(Oncorhynchus gorbuscha)ㆍ옹코링쿠스 케타(Oncorhynchus keta)ㆍ옹코링쿠스 차비차(Oncorhynchus tschawytscha)ㆍ옹코링쿠스 키수츠(Oncorhynchus kisutch)ㆍ옹코링쿠스 마소(Oncorhynchus masou)ㆍ옹코링쿠스 로두루스(Oncorhynchus rhodurus)], 대서양 연어[살모 살라(Salmo salar)], 다뉴브 연어[후코 후코(Hucho hucho)]
+[소호] 0542: 청어[클루페아 하렌구스(Clupea harengus)ㆍ클루페아 팔라시(Clupea pallasii)]
+- 0305420000: 청어[클루페아 하렌구스(Clupea harengus)ㆍ클루페아 팔라시(Clupea pallasii)]
+[소호] 0543: 송어[살모 트루타(Salmo trutta)ㆍ옹코링쿠스 미키스(Oncorhynchus mykiss)ㆍ옹코링쿠스 클라키(Oncorhynchus clarki)ㆍ옹코링쿠스 아구아보니타(Oncorhynchus aguabonita)ㆍ옹코링쿠스 길래(Oncorhynchus gilae)ㆍ옹코링쿠스 아파케(Oncorhynchus apache)ㆍ옹코링쿠스 크리소가스터(Oncorhynchus chrysogaster)]
+- 0305430000: 송어[살모 트루타(Salmo trutta)ㆍ옹코링쿠스 미키스(Oncorhynchus mykiss)ㆍ옹코링쿠스 클라키(Oncorhynchus clarki)ㆍ옹코링쿠스 아구아보니타(Oncorhynchus aguabonita)ㆍ옹코링쿠스 길래(Oncorhynchus gilae)ㆍ옹코링쿠스 아파케(Oncorhynchus apache)ㆍ옹코링쿠스 크리소가스터(Oncorhynchus chrysogaster)]
+[소호] 0544: 틸라피아[오레오크로미스(Oreochromis)속], 메기[판가시우스(Pangasius)속ㆍ실루러스(Silurus)속ㆍ클라리아스(Clarias)속ㆍ익타루러스(Ictalurus)속], 잉어[사이프리너스(Cyprinus)속ㆍ카라시우스(Carassius)속ㆍ크테노파린고돈 이델루스(Ctenopharyngodon idellus)ㆍ하이포프탈미크티스(Hypophthalmichthys)속ㆍ시리누스(Cirrhinus)속ㆍ마일로파린고돈 피세우스(Mylopharyngodon piceus)ㆍ카틀라 카틀라(Catla catla)ㆍ라베오(Labeo)속ㆍ오스테오킬루스 하셀티(Osteochilus hasselti)ㆍ렙토바르부스 호에베니(Leptobarbus hoeveni)ㆍ메갈로브라마(Megalobrama)속], 뱀장어[앙귈라(Anguilla)속], 나일 퍼치[라테스 니로티쿠스(Lates niloticus)], 가물치[카나(Channa)속]
+- 0305440000: 틸라피아[오레오크로미스(Oreochromis)속], 메기[판가시우스(Pangasius)속ㆍ실루러스(Silurus)속ㆍ클라리아스(Clarias)속ㆍ익타루러스(Ictalurus)속], 잉어[사이프리너스(Cyprinus)속ㆍ카라시우스(Carassius)속ㆍ크테노파린고돈 이델루스(Ctenopharyngodon idellus)ㆍ하이포프탈미크티스(Hypophthalmichthys)속ㆍ시리누스(Cirrhinus)속ㆍ마일로파린고돈 피세우스(Mylopharyngodon piceus)ㆍ카틀라 카틀라(Catla catla)ㆍ라베오(Labeo)속ㆍ오스테오킬루스 하셀티(Osteochilus hasselti)ㆍ렙토바르부스 호에베니(Leptobarbus hoeveni)ㆍ메갈로브라마(Megalobrama)속], 뱀장어[앙귈라(Anguilla)속], 나일 퍼치[라테스 니로티쿠스(Lates niloticus)], 가물치[카나(Channa)속]
+[소호] 0549: 기타
+- 0305491000: 멸치
+- 0305492000: 명태
+- 0305499000: 기타
+[소호] 0551: 대구[가두스 모르화(Gadus morhua)ㆍ가두스 오각(Gadus ogac)ㆍ가두스 마크로세팔루스(Gadus macrocephalus)]
+- 0305510000: 대구[가두스 모르화(Gadus morhua)ㆍ가두스 오각(Gadus ogac)ㆍ가두스 마크로세팔루스(Gadus macrocephalus)]
+[소호] 0552: 틸라피아[오레오크로미스(Oreochromis)속], 메기[판가시우스(Pangasius)속ㆍ실루러스(Silurus)속ㆍ클라리아스(Clarias)속ㆍ익타루러스(Ictalurus)속], 잉어[사이프리너스(Cyprinus)속ㆍ카라시우스(Carassius)속ㆍ크테노파린고돈 이델루스(Ctenopharyngodon idellus)ㆍ하이포프탈미크티스(Hypophthalmichthys)속ㆍ시리누스(Cirrhinus)속ㆍ마일로파린고돈 피세우스(Mylopharyngodon piceus)ㆍ카틀라 카틀라(Catla catla)ㆍ라베오(Labeo)속ㆍ오스테오킬루스 하셀티(Osteochilus hasselti)ㆍ렙토바르부스 호에베니(Leptobarbus hoeveni)ㆍ메갈로브라마(Megalobrama)속], 뱀장어[앙귈라(Anguilla)속], 나일 퍼치[라테스 니로티쿠스(Lates niloticus)], 가물치[카나(Channa)속]
+- 0305520000: 틸라피아[오레오크로미스(Oreochromis)속], 메기[판가시우스(Pangasius)속ㆍ실루러스(Silurus)속ㆍ클라리아스(Clarias)속ㆍ익타루러스(Ictalurus)속], 잉어[사이프리너스(Cyprinus)속ㆍ카라시우스(Carassius)속ㆍ크테노파린고돈 이델루스(Ctenopharyngodon idellus)ㆍ하이포프탈미크티스(Hypophthalmichthys)속ㆍ시리누스(Cirrhinus)속ㆍ마일로파린고돈 피세우스(Mylopharyngodon piceus)ㆍ카틀라 카틀라(Catla catla)ㆍ라베오(Labeo)속ㆍ오스테오킬루스 하셀티(Osteochilus hasselti)ㆍ렙토바르부스 호에베니(Leptobarbus hoeveni)ㆍ메갈로브라마(Megalobrama)속], 뱀장어[앙귈라(Anguilla)속], 나일 퍼치[라테스 니로티쿠스(Lates niloticus)], 가물치[카나(Channa)속]
+[소호] 0553: 대구[가두스 모르화(Gadus morhua)ㆍ가두스 오각(Gadus ogac)ㆍ가두스 마크로세팔루스(Gadus macrocephalus)] 이외의 브레그마세로티대(Bregmacerotidae)과ㆍ유클리티대(Euclichthyidae)과ㆍ가디대(Gadidae)과ㆍ마크로우리대(Macrouridae)과ㆍ멜라노니대(Melanonidae)과ㆍ메르루치대(Merlucciidae)과ㆍ모리대(Moridae)과ㆍ무라에놀레피디대(Muraenolepididae)과의 어류
+- 0305531000: 명태(북어)
+- 0305539000: 기타
+[소호] 0554: 청어[클루페아 하렌구스(Clupea harengus)ㆍ클루페아 팔라시(Clupea pallasii)], 멸치[엔그라울리스(Engraulis)속], 정어리[사르디나 필차르두스(Sardina pilchardus)ㆍ사르디노프스(Sardinops)속], 사르디넬라[사르디넬라(Sardinella)속], 브리스링(brisling)이나 스프랫(sprats)[스프라투스 스프라투스(Sprattus sprattus)], 고등어[스콤버 스콤브루스(Scomber scombrus)ㆍ스콤버 오스트랄라시쿠스(Scomber australasicus)ㆍ스콤버 자포니쿠스(Scomber japonicus)], 줄무늬 고등어(Indian mackerels)[라스트렐리거(Rastrelliger)속], 삼치[스콤버로모러스(Scomberomorus)속], 전갱이[트라커러스(Trachurus)속], 줄전갱이류[카랑크스(Caranx)속], 날쌔기[라키센트론 카나둠(Rachycentron canadum)], 병어[팜푸스(Pampus)속], 꽁치[콜로라비스 사이라(Cololabis saira)], 가라지[데캅테러스(Decapterus)속], 열빙어[말로투스 빌로서스(Mallotus villosus)]...
+- 0305541000: 멸치[엔그라울리스(Engraulis)속]
+- 0305549000: 기타
+[소호] 0559: 기타
+- 0305594000: 조기(굴비)
+- 0305595000: 복어
+- 0305596000: 갯장어
+- 0305597000: 까나리
+- 0305598000: 베도라치(실치)
+- 0305599000: 기타
+[소호] 0561: 청어[클루페아 하렌구스(Clupea harengus)ㆍ클루페아 팔라시(Clupea pallasii)]
+- 0305610000: 청어[클루페아 하렌구스(Clupea harengus)ㆍ클루페아 팔라시(Clupea pallasii)]
+[소호] 0562: 대구[가두스 모르화(Gadus morhua)ㆍ가두스 오각(Gadus ogac)ㆍ가두스 마크로세팔루스(Gadus macrocephalus)]
+- 0305620000: 대구[가두스 모르화(Gadus morhua)ㆍ가두스 오각(Gadus ogac)ㆍ가두스 마크로세팔루스(Gadus macrocephalus)]
+[소호] 0563: 멸치[엔그라울리스(Engraulis)속]
+- 0305631000: 멸치젓
+- 0305639000: 기타
+[소호] 0564: 틸라피아[오레오크로미스(Oreochromis)속], 메기[판가시우스(Pangasius)속ㆍ실루러스(Silurus)속ㆍ클라리아스(Clarias)속ㆍ익타루러스(Ictalurus)속], 잉어[사이프리너스(Cyprinus)속ㆍ카라시우스(Carassius)속ㆍ크테노파린고돈 이델루스(Ctenopharyngodon idellus)ㆍ하이포프탈미크티스(Hypophthalmichthys)속ㆍ시리누스(Cirrhinus)속ㆍ마일로파린고돈 피세우스(Mylopharyngodon piceus)ㆍ카틀라 카틀라(Catla catla)ㆍ라베오(Labeo)속ㆍ오스테오킬루스 하셀티(Osteochilus hasselti)ㆍ렙토바르부스 호에베니(Leptobarbus hoeveni)ㆍ메갈로브라마(Megalobrama)속], 뱀장어[앙귈라(Anguilla)속], 나일 퍼치[라테스 니로티쿠스(Lates niloticus)], 가물치[카나(Channa)속]
+- 0305640000: 틸라피아[오레오크로미스(Oreochromis)속], 메기[판가시우스(Pangasius)속ㆍ실루러스(Silurus)속ㆍ클라리아스(Clarias)속ㆍ익타루러스(Ictalurus)속], 잉어[사이프리너스(Cyprinus)속ㆍ카라시우스(Carassius)속ㆍ크테노파린고돈 이델루스(Ctenopharyngodon idellus)ㆍ하이포프탈미크티스(Hypophthalmichthys)속ㆍ시리누스(Cirrhinus)속ㆍ마일로파린고돈 피세우스(Mylopharyngodon piceus)ㆍ카틀라 카틀라(Catla catla)ㆍ라베오(Labeo)속ㆍ오스테오킬루스 하셀티(Osteochilus hasselti)ㆍ렙토바르부스 호에베니(Leptobarbus hoeveni)ㆍ메갈로브라마(Megalobrama)속], 뱀장어[앙귈라(Anguilla)속], 나일 퍼치[라테스 니로티쿠스(Lates niloticus)], 가물치[카나(Channa)속]
+[소호] 0569: 기타
+- 0305691000: 연어
+- 0305692000: 송어
+- 0305693000: 갈치
+- 0305694000: 정어리
+- 0305695000: 고등어
+- 0305696000: 조기
+- 0305698000: 꽁치(학꽁치를 포함한다)
+- 0305699000: 기타
+[소호] 0571: 상어 지느러미
+- 0305711000: 훈제한 것
+- 0305712000: 건조한 것
+- 0305713000: 염장이나 염수장한 것
+[소호] 0572: 어류의 머리ㆍ꼬리ㆍ부레
+- 0305720000: 어류의 머리ㆍ꼬리ㆍ부레
+[소호] 0579: 기타
+- 0305790000: 기타
+[호] 06호: 갑각류(껍데기가 붙어 있는 것인지에 상관없으며 살아 있는 것과 신선한 것·냉장한 것·냉동한 것·건조한 것·염장이나 염수장한 것), 훈제한 갑각류(껍데기가 붙어 있는 것인지 또는 훈제 전이나 훈제과정 중에 조리한 것인지에 상관없다), 껍데기가 붙어 있는 상태로 물에 찌거나 삶은 갑각류(냉장한 것·냉동한 것·건조한 것·염장이나 염수장한 것인지에 상관없다)
+[소호] 0611: 닭새우류[팔리누루스(Palinurus)속ㆍ파누리루스(Panulirus)속ㆍ자수스(Jasus)속]
+- 0306111000: 훈제한 것
+- 0306119000: 기타
+[소호] 0612: 바닷가재[호마루스(Homarus)속]
+- 0306121000: 훈제한 것
+- 0306129000: 기타
+[소호] 0614: 게
+- 0306141010: 훈제한 것
+- 0306141090: 기타
+- 0306142000: 왕게
+- 0306143010: 훈제한 것
+- 0306143090: 기타
+- 0306149010: 훈제한 것
+- 0306149090: 기타
+[소호] 0615: 노르웨이 바닷가재[네프로프스 노르베지쿠스(Nephrops norvegicus)]
+- 0306151000: 훈제한 것
+- 0306159000: 기타
+[소호] 0616: 냉수성(冷水性) 새우류[판달러스(Pandalus)속ㆍ크란곤 크란곤(Crangon crangon)]
+- 0306161010: 훈제한 것
+- 0306161090: 기타
+- 0306169010: 훈제한 것
+- 0306169090: 기타
+[소호] 0617: 그 밖의 새우류
+- 0306171010: 훈제한 것
+- 0306171090: 기타
+- 0306179010: 훈제한 것
+- 0306179091: 흰다리새우[리토페나에우스 바나메이(Litopenaeus vannamei)]
+- 0306179099: 기타
+[소호] 0619: 기타
+- 0306191000: 훈제한 것
+- 0306199000: 기타
+[소호] 0631: 닭새우류[팔리누루스(Palinurus)속ㆍ파누리루스(Panulirus)속ㆍ자수스(Jasus)속]
+- 0306310000: 닭새우류[팔리누루스(Palinurus)속ㆍ파누리루스(Panulirus)속ㆍ자수스(Jasus)속]
+[소호] 0632: 바닷가재[호마루스(Homarus)속]
+- 0306320000: 바닷가재[호마루스(Homarus)속]
+[소호] 0633: 게
+- 0306331000: 꽃게[포르투누스 트리투버큘라투스(Portunus trituberculatus)]
+- 0306332000: 대게
+- 0306339000: 기타
+[소호] 0634: 노르웨이 바닷가재[네프로프스 노르베지쿠스(Nephrops norvegicus)]
+- 0306340000: 노르웨이 바닷가재[네프로프스 노르베지쿠스(Nephrops norvegicus)]
+[소호] 0635: 냉수성(冷水性) 새우류[판달러스(Pandalus)속ㆍ크란곤 크란곤(Crangon crangon)]
+- 0306350000: 냉수성(冷水性) 새우류[판달러스(Pandalus)속ㆍ크란곤 크란곤(Crangon crangon)]
+[소호] 0636: 그 밖의 새우류
+- 0306360000: 그 밖의 새우류
+[소호] 0639: 기타
+- 0306390000: 기타
+[소호] 0691: 닭새우류[팔리누루스(Palinurus)속ㆍ파누리루스(Panulirus)속ㆍ자수스(Jasus)속]
+- 0306910000: 닭새우류[팔리누루스(Palinurus)속ㆍ파누리루스(Panulirus)속ㆍ자수스(Jasus)속]
+[소호] 0692: 바닷가재[호마루스(Homarus)속]
+- 0306920000: 바닷가재[호마루스(Homarus)속]
+[소호] 0693: 게
+- 0306930000: 게
+[소호] 0694: 노르웨이 바닷가재[네프로프스 노르베지쿠스(Nephrops norvegicus)]
+- 0306940000: 노르웨이 바닷가재[네프로프스 노르베지쿠스(Nephrops norvegicus)]
+[소호] 0695: 새우류
+- 0306951020: 건조한 것
+- 0306951030: 염장이나 염수장한 것
+- 0306951040: 훈제한 것
+- 0306959020: 건조한 것
+- 0306959030: 염장이나 염수장한 것
+- 0306959040: 훈제한 것
+[소호] 0699: 기타
+- 0306992000: 건조한 것
+- 0306993000: 염장이나 염수장한 것
+- 0306994000: 훈제한 것
+[호] 07호: 연체동물(껍데기가 붙어 있는지에 상관없으며 살아 있는 것과 신선한 것ㆍ냉장이나 냉동한 것ㆍ건조한 것ㆍ염장이나 염수장한 것), 훈제한 연체동물(껍데기가 붙어 있는 것인지 또는 훈제 전이나 훈제과정 중에 조리한 것인지에 상관없다)
+[소호] 0711: 살아 있는 것, 신선한 것, 냉장한 것
+- 0307111010: 종패용
+- 0307111090: 기타
+- 0307119000: 기타
+[소호] 0712: 냉동한 것
+- 0307120000: 냉동한 것
+[소호] 0719: 기타
+- 0307192000: 건조한 것
+- 0307193000: 염장이나 염수장한 것
+- 0307194000: 훈제한 것
+[소호] 0721: 살아 있는 것, 신선한 것, 냉장한 것
+- 0307211000: 펙텐(Pecten)ㆍ클라미스(Chlamys)ㆍ플라코펙텐(Placopecten)속의 것
+- 0307219000: 기타
+[소호] 0722: 냉동한 것
+- 0307221000: 펙텐(Pecten)ㆍ클라미스(Chlamys)ㆍ플라코펙텐(Placopecten)속의 것
+- 0307229000: 기타
+[소호] 0729: 기타
+- 0307291000: 펙텐(Pecten)ㆍ클라미스(Chlamys)ㆍ플라코펙텐(Placopecten)속의 것
+- 0307299000: 기타
+[소호] 0731: 살아 있는 것, 신선한 것, 냉장한 것
+- 0307310000: 살아 있는 것, 신선한 것, 냉장한 것
+[소호] 0732: 냉동한 것
+- 0307320000: 냉동한 것
+[소호] 0739: 기타
+- 0307392000: 건조한 것
+- 0307399000: 기타
+[소호] 0742: 살아있는 것, 신선한 것, 냉장한 것
+- 0307421010: 세피아 오피시날리스(Sepia officinalis)ㆍ로시아 마크로소마(Rossia macrosoma)ㆍ세피올라(Sepiola)속
+- 0307421090: 기타
+- 0307422010: 옴마스트레페스(Ommastrephes)속ㆍ로리고(Loligo)속ㆍ노토토다루스(Nototodarus)속ㆍ세피오투디스(Sepioteuthis)속
+- 0307422090: 기타
+[소호] 0743: 냉동한 것
+- 0307431010: 세피아 오피시날리스(Sepia officinalis)ㆍ로시아 마크로소마(Rossia macrosoma)ㆍ세피올라(Sepiola)속
+- 0307431090: 기타
+- 0307432010: 옴마스트레페스(Ommastrephes)속ㆍ로리고(Loligo)속ㆍ노토토다루스(Nototodarus)속ㆍ세피오투디스(Sepioteuthis)속
+- 0307432090: 기타
+[소호] 0749: 기타
+- 0307492010: 갑오징어[세피아 오피시날리스(Sepia officinalis)ㆍ로시아 마크로소마(Rossia macrosoma)ㆍ세피올라(Sepiola)속]와 오징어[옴마스트레페스(Ommastrephes)속ㆍ로리고(Loligo)속ㆍ노토토다루스(Nototodarus)속ㆍ세피오투디스(Sepioteuthis)속]
+- 0307492090: 기타
+- 0307493010: 갑오징어[세피아 오피시날리스(Sepia officinalis)ㆍ로시아 마크로소마(Rossia macrosoma)ㆍ세피올라(Sepiola)속]와 오징어[옴마스트레페스(Ommastrephes)속ㆍ로리고(Loligo)속ㆍ노토토다루스(Nototodarus)속ㆍ세피오투디스(Sepioteuthis)속]
+- 0307493090: 기타
+- 0307494010: 갑오징어[세피아 오피시날리스(Sepia officinalis)ㆍ로시아 마크로소마(Rossia macrosoma)ㆍ세피올라(Sepiola)속]와 오징어[옴마스트레페스(Ommastrephes)속ㆍ로리고(Loligo)속ㆍ노토토다루스(Nototodarus)속ㆍ세피오투디스(Sepioteuthis)속]
+- 0307494090: 기타
+[소호] 0751: 살아 있는 것, 신선한 것, 냉장한 것
+- 0307511000: 낙지
+- 0307512000: 주꾸미
+- 0307519000: 기타
+[소호] 0752: 냉동한 것
+- 0307521000: 문어
+- 0307522000: 낙지
+- 0307523000: 주꾸미
+- 0307529000: 기타
+[소호] 0759: 기타
+- 0307592000: 건조한 것
+- 0307599000: 기타
+[소호] 0760: 달팽이(바다달팽이는 제외한다)
+- 0307600000: 달팽이(바다달팽이는 제외한다)
+[소호] 0771: 살아 있는 것, 신선한 것, 냉장한 것
+- 0307711000: 백합
+- 0307712010: 종패용
+- 0307712090: 기타
+- 0307713000: 새조개
+- 0307714000: 바지락
+- 0307715000: 개조개
+- 0307719000: 기타
+[소호] 0772: 냉동한 것
+- 0307721000: 새조개
+- 0307722000: 개량조개
+- 0307723000: 바지락
+- 0307724000: 피조개
+- 0307725000: 개조개
+- 0307729000: 기타
+[소호] 0779: 기타
+- 0307792010: 개량조개
+- 0307792020: 바지락
+- 0307792090: 기타
+- 0307793010: 개량조개
+- 0307793020: 바지락
+- 0307793090: 기타
+- 0307794010: 새조개
+- 0307794090: 기타
+[소호] 0781: 살아있거나, 신선하거나 냉장한 전복[할리오티스(Haliotis)속]
+- 0307810000: 살아있거나, 신선하거나 냉장한 전복[할리오티스(Haliotis)속]
+[소호] 0782: 살아있거나, 신선하거나 냉장한 수정고둥류[스트롬버스(Strombus)속]
+- 0307820000: 살아있거나, 신선하거나 냉장한 수정고둥류[스트롬버스(Strombus)속]
+[소호] 0783: 냉동한 전복[할리오티스(Haliotis)속]
+- 0307830000: 냉동한 전복[할리오티스(Haliotis)속]
+[소호] 0784: 냉동한 수정고둥류[스트롬버스(Strombus)속]
+- 0307840000: 냉동한 수정고둥류[스트롬버스(Strombus)속]
+[소호] 0787: 그 밖의 전복[할리오티스(Haliotis)속]
+- 0307871000: 건조한 것
+- 0307872000: 염장이나 염수장한 것
+- 0307873000: 훈제한 것
+[소호] 0788: 그 밖의 수정고둥류[스트롬버스(Strombus)속]
+- 0307881000: 건조한 것
+- 0307882000: 염장이나 염수장한 것
+- 0307883000: 훈제한 것
+[소호] 0791: 살아 있는 것, 신선한 것, 냉장한 것
+- 0307911000: 소라
+- 0307912010: 종패용
+- 0307912090: 기타
+- 0307913000: 조개관자
+- 0307914000: 재첩
+- 0307919000: 기타
+[소호] 0792: 냉동한 것
+- 0307921000: 조개관자
+- 0307922000: 소라
+- 0307929000: 기타
+[소호] 0799: 기타
+- 0307992100: 조개관자
+- 0307992900: 기타
+- 0307993000: 염장이나 염수장한 것
+- 0307994110: 밀폐용기에 넣은 것
+- 0307994120: 밀폐용기에 넣지 않은 것
+- 0307994900: 기타
+[호] 08호: 수생(水生) 무척추동물(갑각류와 연체동물은 제외하며, 살아 있는 것과 신선한 것·냉장한 것·냉동한 것·건조한 것, 염장이나 염수장한 것), 훈제한 수생(水生) 무척추동물(갑각류와 연체동물은 제외하며, 훈제 전이나 훈제과정 중에 조리한 것인지에 상관없다)
+[소호] 0811: 살아 있는 것, 신선한 것, 냉장한 것
+- 0308110000: 살아 있는 것, 신선한 것, 냉장한 것
+[소호] 0812: 냉동한 것
+- 0308120000: 냉동한 것
+[소호] 0819: 기타
+- 0308192000: 건조한 것
+- 0308193000: 염장이나 염수장한 것
+- 0308194000: 훈제한 것
+[소호] 0821: 살아 있는 것, 신선한 것, 냉장한 것
+- 0308210000: 살아 있는 것, 신선한 것, 냉장한 것
+[소호] 0822: 냉동한 것
+- 0308220000: 냉동한 것
+[소호] 0829: 기타
+- 0308292000: 건조한 것
+- 0308293000: 염장이나 염수장한 것
+- 0308294000: 훈제한 것
+[소호] 0830: 해파리[로필레마(Rhopilema)속]
+- 0308301000: 살아 있는 것, 신선한 것, 냉장한 것
+- 0308302000: 냉동한 것
+- 0308303000: 건조한 것
+- 0308304000: 염장이나 염수장한 것
+- 0308305000: 훈제한 것
+[소호] 0890: 기타
+- 0308901011: 종묘(種苗)
+- 0308901019: 기타
+- 0308901090: 기타
+- 0308902010: 우렁쉥이(멍게)
+- 0308902090: 기타
+- 0308903000: 건조한 것
+- 0308904000: 염장이나 염수장한 것
+- 0308905000: 훈제한 것
+[호] 09호: 어류ㆍ갑각류ㆍ연체동물과 그 밖의 수생무척추동물의 고운 가루ㆍ거친 가루와 펠릿(pellet)(식용에 적합한 것으로 한정한다)
+[소호] 0910: 어류의 것
+- 0309100000: 어류의 것
+[소호] 0990: 기타
+- 0309901000: 갑각류의 것
+- 0309902000: 연체동물의 것
+- 0309909000: 기타
+
+[제04류] 제4류 낙농품, 새의 알, 천연꿀, 다른 류로 분류되지 않은 식용인 동물성 생산품
+제4류는 낙농품, 새의 알, 천연꿀, 기타 일부 동물성 생산품을 포함. 다음은 제외한다: 조제식료품 → hs_code 1901, 유지방 치환 제품 → hs_code 1901, hs_code 2106, 아이스크림 및 빙과류 → hs_code 2105, 의약품 → 30류, 카세인·밀크알부민 등 → hs_code 3501, hs_code 3502, hs_code 3913, 유당 95% 초과 유장 제품 → hs_code 1702
+
+[호] 01호: 밀크와 크림(농축하지 않은 것으로서 설탕이나 그 밖의 감미료를 첨가하지 않은 것으로 한정한다)
+[소호] 0110: 지방분이 전 중량의 100분의 1 이하인 것
+- 0401100000: 지방분이 전 중량의 100분의 1 이하인 것
+[소호] 0120: 지방분이 전 중량의 100분의 1 초과 100분의 6 이하인 것
+- 0401200000: 지방분이 전 중량의 100분의 1 초과 100분의 6 이하인 것
+[소호] 0140: 지방분이 전 중량의 100분의 6 초과 100분의 10 이하인 것
+- 0401401000: 냉동크림
+- 0401409000: 기타
+[소호] 0150: 지방분이 전 중량의 100분의 10을 초과하는 것
+- 0401501000: 냉동크림
+- 0401509000: 기타
+[호] 02호: 밀크와 크림(농축하였거나 설탕이나 그 밖의 감미료를 첨가한 것으로 한정한다)
+[소호] 0210: 가루 모양ㆍ알갱이 모양이나 그 밖의 고체 상태인 것으로서 지방분이 전 중량의 100분의 1.5 이하인 것
+- 0402101010: 탈지(脫脂)분유
+- 0402101090: 기타
+- 0402109000: 기타
+[소호] 0221: 설탕이나 그 밖의 감미료를 첨가하지 않은 것
+- 0402211000: 전지분유
+- 0402219000: 기타
+[소호] 0229: 기타
+- 0402290000: 기타
+[소호] 0291: 설탕이나 그 밖의 감미료를 첨가하지 않은 것
+- 0402911000: 무가당연유(無加糖煉乳)
+- 0402919000: 기타
+[소호] 0299: 기타
+- 0402991000: 가당연유(加糖煉乳)
+- 0402999000: 기타
+[호] 03호: 요구르트, 버터밀크ㆍ응고밀크와 응고크림ㆍ케피어(kephir)와 그 밖의 발효되거나 산성화된 밀크와 크림(농축한 것인지 또는 설탕이나 그 밖의 감미료를 첨가한 것인지 또는 향ㆍ과실ㆍ견과류ㆍ코코아를 첨가한 것인지에 상관없다)
+[소호] 0320: 요구르트
+- 0403201000: 액체 상태인 것
+- 0403202000: 냉동한 것
+- 0403209000: 기타
+[소호] 0390: 기타
+- 0403901000: 버터밀크
+- 0403909000: 기타
+[호] 04호: 유장(농축한 것인지 또는 설탕이나 그 밖의 감미료를 첨가한 것인지에 상관없다)과 따로 분류된 것 외의 천연밀크의 성분을 함유하는 물품(설탕이나 그 밖의 감미료를 첨가한 것인지에 상관없다)
+[소호] 0410: 유장과 변성유장(농축한 것인지 또는 설탕이나 그 밖의 감미료를 첨가한 것인지에 상관없다)
+- 0404101011: 사료용
+- 0404101019: 기타
+- 0404101091: 사료용
+- 0404101099: 기타
+- 0404102111: 사료용
+- 0404102119: 기타
+- 0404102121: 사료용
+- 0404102129: 기타
+- 0404102131: 사료용
+- 0404102139: 기타
+- 0404102191: 사료용
+- 0404102199: 기타
+- 0404102910: 사료용
+- 0404102990: 기타
+[소호] 0490: 기타
+- 0404901000: 지방분이 전 중량의 100분의 1.5 이하인 것
+- 0404902000: 지방분이 전 중량의 100분의 1.5를 초과하는 것
+[호] 05호: 버터와 그 밖의 지방과 기름(밀크에서 얻은 것으로 한정한다), 데어리 스프레드(dairy spread)
+[소호] 0510: 버터
+- 0405100000: 버터
+[소호] 0520: 데어리 스프레드(dairy spread)
+- 0405200000: 데어리 스프레드(dairy spread)
+[소호] 0590: 기타
+- 0405900000: 기타
+[호] 06호: 치즈와 커드(curd)
+[소호] 0610: 신선한(숙성되지 않은 것이나 처리하지 않은 것) 치즈(유장치즈를 포함한다)와 커드(curd)
+- 0406101010: 모차렐라 치즈(Mozzarella cheese)
+- 0406101020: 크림 치즈
+- 0406101090: 기타
+- 0406102000: 커드(curd)
+[소호] 0620: 갈았거나 가루 모양으로 한 모든 종류의 치즈
+- 0406200000: 갈았거나 가루 모양으로 한 모든 종류의 치즈
+[소호] 0630: 가공치즈(갈았거나 가루 모양의 것은 제외한다)
+- 0406300000: 가공치즈(갈았거나 가루 모양의 것은 제외한다)
+[소호] 0640: 블루바인 치즈(blue-veined cheese)와 페니실리움 로우크포티(Penicillium roqueforti)로 생산된 바인(vein)을 함유한 그 밖의 치즈
+- 0406400000: 블루바인 치즈(blue-veined cheese)와 페니실리움 로우크포티(Penicillium roqueforti)로 생산된 바인(vein)을 함유한 그 밖의 치즈
+[소호] 0690: 그 밖의 치즈
+- 0406901000: 체더 치즈(Cheddar cheese)
+- 0406902000: 하우다 치즈(Gouda cheese)
+- 0406903000: 카망베르 치즈(Camembert cheese)
+- 0406904000: 에멘탈 치즈(Emmental cheese)
+- 0406909000: 기타
+[호] 07호: 새의 알(껍질이 붙은 것으로서 신선한 것, 보존처리하거나 조리한 것으로 한정한다)
+[소호] 0711: 닭[갈루스 도메스티쿠스(Gallus domesticus)종으로 한정한다]의 것
+- 0407110000: 닭[갈루스 도메스티쿠스(Gallus domesticus)종으로 한정한다]의 것
+[소호] 0719: 기타
+- 0407190000: 기타
+[소호] 0721: 닭[갈루스 도메스티쿠스(Gallus domesticus)종으로 한정한다]의 것
+- 0407210000: 닭[갈루스 도메스티쿠스(Gallus domesticus)종으로 한정한다]의 것
+[소호] 0729: 기타
+- 0407290000: 기타
+[소호] 0790: 기타
+- 0407900000: 기타
+[호] 08호: 새의 알(껍질이 붙지 않은 것)과 알의 노른자위(신선한 것, 건조한 것, 물에 삶았거나 찐 것, 성형한 것, 냉동한 것이나 그 밖의 보존처리를 한 것으로 한정하며, 설탕이나 그 밖의 감미료를 첨가한 것인지에 상관없다)
+[소호] 0811: 건조한 것
+- 0408110000: 건조한 것
+[소호] 0819: 기타
+- 0408190000: 기타
+[소호] 0891: 건조한 것
+- 0408910000: 건조한 것
+[소호] 0899: 기타
+- 0408991000: 닭[갈루스 도메스티쿠스(Gallus domesticus)종으로 한정한다]의 것
+- 0408999000: 기타
+[호] 09호: 천연꿀
+[소호] 0900: 천연꿀
+- 0409000000: 천연꿀
+[호] 10호: 곤충과 그 밖의 식용인 동물성 생산품(따로 분류되지 않은 것으로 한정한다)
+[소호] 1010: 곤충
+- 0410100000: 곤충
+[소호] 1090: 기타
+- 0410901000: 칼새둥지
+- 0410902000: 로열젤리
+- 0410909000: 기타
+
+[제05류] 제5류 다른 류로 분류되지 않은 동물성 생산품
+제5류는 식용이 아닌 동물성 재료를 분류하며, 다음은 제외한다: 동물성 지방 → 02류, 15류, 식용 동물껍질 → 02류, 조리된 경우 16류. 식용 어류 부위 → 03류. 건조 장기(의료용) → 30류. 동물성 비료 → 31류. 원피 → 41류. 모피 → 43류. 섬유용 동물성 재료. 천연·양식 진주 → 71류
+
+[호] 01호: 사람 머리카락(가공하지 않은 것으로 한정하며, 세척이나 세정을 했는지에 상관없다)과 그 웨이스트(waste)
+[소호] 0100: 사람 머리카락(가공하지 않은 것으로 한정하며, 세척이나 세정을 했는지에 상관없다)과 그 웨이스트(waste)
+- 0501000000: 사람 머리카락(가공하지 않은 것으로 한정하며, 세척이나 세정을 했는지에 상관없다)과 그 웨이스트(waste)
+[호] 02호: 돼지털ㆍ멧돼지털ㆍ오소리털과 그 밖의 브러시 제조용 동물의 털과 이들의 웨이스트(waste)
+[소호] 0210: 돼지털ㆍ멧돼지털과 이들의 웨이스트(waste)
+- 0502100000: 돼지털ㆍ멧돼지털과 이들의 웨이스트(waste)
+[소호] 0290: 기타
+- 0502900000: 기타
+[호] 04호: 동물(어류는 제외한다)의 장ㆍ방광ㆍ위의 전체나 부분(신선한 것ㆍ냉장이나 냉동한 것ㆍ염장이나 염수장한 것ㆍ건조한 것ㆍ훈제한 것으로 한정한다)
+[소호] 0400: 동물(어류는 제외한다)의 장ㆍ방광ㆍ위의 전체나 부분(신선한 것ㆍ냉장이나 냉동한 것ㆍ염장이나 염수장한 것ㆍ건조한 것ㆍ훈제한 것으로 한정한다)
+- 0504001010: 소의 것
+- 0504001021: 소시지 케이싱용
+- 0504001029: 기타
+- 0504001031: 소시지 케이싱용
+- 0504001039: 기타
+- 0504001090: 기타
+- 0504002000: 방광
+- 0504003000: 위
+[호] 05호: 새의 깃털이나 솜털이 붙은 가죽과 그 밖의 부분, 깃털과 그 부분(가장자리를 정리했는지에 상관없다), 새의 솜털(청정ㆍ소독ㆍ보존을 위한 처리 이상의 가공을 하지 않은 것으로 한정한다), 새의 깃털이나 그 부분의 가루와 웨이스트(waste)
+[소호] 0510: 솜털과 충전재용 깃털
+- 0505100000: 솜털과 충전재용 깃털
+[소호] 0590: 기타
+- 0505901000: 깃털 가루
+- 0505909000: 기타
+[호] 06호: 뼈와 혼코어(horn-core)[가공하지 않은 것, 탈지(脫脂)한 것, 단순히 정리한 것(특정한 형상으로 깎은 것은 제외한다), 산(酸)처리를 하거나 탈교한(degelatinised) 것], 이들의 가루와 웨이스트(waste)
+[소호] 0610: 골소(骨素)와 뼈[산(酸)처리한 것으로 한정한다]
+- 0506100000: 골소(骨素)와 뼈[산(酸)처리한 것으로 한정한다]
+[소호] 0690: 기타
+- 0506901020: 소의 것
+- 0506901090: 기타
+- 0506902000: 뼛가루
+- 0506909000: 기타
+[호] 07호: 아이보리(ivory)ㆍ귀갑(龜甲)ㆍ고래수염과 그 털ㆍ뿔(horn)ㆍ사슴뿔ㆍ발굽ㆍ발톱ㆍ부리(가공하지 않은 것과 단순히 정리한 것으로 한정하며, 특정한 모양으로 깎은 것은 제외한다), 이들의 가루와 웨이스트(waste)
+[소호] 0710: 아이보리(ivory), 아이보리(ivory) 가루와 웨이스트(waste)
+- 0507101000: 상아
+- 0507109000: 기타
+[소호] 0790: 기타
+- 0507901110: 전지(全枝)
+- 0507901190: 기타
+- 0507901200: 녹각
+- 0507902010: 귀갑(龜甲)과 귀판(龜板)
+- 0507902020: 고래수염과 그 털
+- 0507902090: 기타
+[호] 08호: 산호와 이와 유사한 물품(가공하지 않은 것과 단순히 정리한 것으로 한정하며, 더 이상의 가공을 한 것은 제외한다), 연체동물ㆍ갑각류ㆍ극피동물의 껍데기와 오징어뼈(가공하지 않은 것과 단순히 정리한 것으로 한정하며, 특정한 모양으로 깎은 것은 제외한다)와 이들의 가루와 웨이스트(waste)
+[소호] 0800: 산호와 이와 유사한 물품(가공하지 않은 것과 단순히 정리한 것으로 한정하며, 더 이상의 가공을 한 것은 제외한다), 연체동물ㆍ갑각류ㆍ극피동물의 껍데기와 오징어뼈(가공하지 않은 것과 단순히 정리한 것으로 한정하며, 특정한 모양으로 깎은 것은 제외한다)와 이들의 가루와 웨이스트(waste)
+- 0508001000: 산호
+- 0508002010: 진주패각
+- 0508002020: 청패각(전복)
+- 0508002030: 첩패각과 지첩패각
+- 0508002040: 야광패각(소라)
+- 0508002050: 트로커스(Trocus) 패각
+- 0508002060: 아고야(Agoya) 패각
+- 0508002070: 민물패각[메가로나이아스네보사(Megalonaiasnervosa), 앰브레마프리카타(Amblemaplicata), 콰드루라 콰드루라(Quadrula quadrula)속]
+- 0508002090: 기타
+- 0508009000: 기타
+[호] 10호: 용연향(ambergris)ㆍ해리향(castoreum)ㆍ시빗(civet)과 사향, 캔대리디즈(cantharides), 쓸개즙(건조했는지에 상관없다), 의약품 제조용 선(腺)이나 그 밖의 동물성 생산품(신선한 것, 냉장ㆍ냉동이나 그 밖의 방법으로 일시적으로 보존하기 위하여 처리한 것으로 한정한다)
+[소호] 1000: 용연향(ambergris)ㆍ해리향(castoreum)ㆍ시빗(civet)과 사향, 캔대리디즈(cantharides), 쓸개즙(건조했는지에 상관없다), 의약품 제조용 선(腺)이나 그 밖의 동물성 생산품(신선한 것, 냉장ㆍ냉동이나 그 밖의 방법으로 일시적으로 보존하기 위하여 처리한 것으로 한정한다)
+- 0510003000: 사향
+- 0510004000: 우황
+- 0510009000: 기타
+[호] 11호: 따로 분류되지 않은 동물성 생산품과 제1류나 제3류의 동물의 사체로서 식용에 적합하지 않은 것
+[소호] 1110: 소의 정액
+- 0511100000: 소의 정액
+[소호] 1191: 어류ㆍ갑각류ㆍ연체동물이나 그 밖의 수생(水生) 무척추동물의 생산품, 제3류에 해당하는 동물의 사체
+- 0511911010: 브라인 슈림프(brine shrimp) 알
+- 0511911090: 기타
+- 0511912000: 어류의 웨이스트(waste)
+- 0511919000: 기타
+[소호] 1199: 기타
+- 0511991000: 동물의 피
+- 0511992010: 돼지의 정액
+- 0511992090: 기타
+- 0511993010: 소의 것
+- 0511993020: 돼지의 것
+- 0511993090: 기타
+- 0511994000: 동물의 건(腱)과 근(筋)
+- 0511995030: 정돈한 말의 털
+- 0511995090: 기타
+- 0511996000: 동물성의 해면
+- 0511999010: 잠종(蠶種)
+- 0511999020: 누에번데기
+- 0511999030: 동물의 사체(제3류 물품의 사체는 제외한다)
+- 0511999040: 원피의 페어링(paring)과 이와 유사한 웨이스트(waste)
+- 0511999090: 기타
+
+[제06류] 제6류 살아 있는 수목과 그 밖의 식물, 인경(鱗莖)ㆍ뿌리와 이와 유사한 물품, 절화(切花)와 장식용 잎
+제6류는 장식용·재배용 살아 있는 식물 및 절화류를 포함하며 다음은 제외한다: 종자·열매·지하경·구근 등 → 12류. 식용 채소(감자·양파 등) → 07류. 치커리 뿌리 → hs_code 1212. 꽃다발·화환 등은 6류에 포함된다.
+
+[호] 01호: 인경(鱗莖)ㆍ괴경(塊莖)ㆍ괴근(塊根)ㆍ구경(球莖)ㆍ관근(冠根)ㆍ근경(根莖)으로서 휴면(休眠)상태이거나 자라고 있거나 꽃이 피어 있는 것, 치커리ㆍ치커리 뿌리(제1212호의 뿌리는 제외한다)
+[소호] 0110: 인경(鱗莖)ㆍ괴경(塊莖)ㆍ괴근(塊根)ㆍ구경(球莖)ㆍ관근(冠根)ㆍ근경(根莖)으로서 휴면(休眠)상태인 것
+- 0601101000: 튤립의 것
+- 0601102000: 백합의 것
+- 0601104000: 히아신스의 것
+- 0601105000: 글라디올러스의 것
+- 0601106000: 아이리스의 것
+- 0601107000: 프리지어의 것
+- 0601108000: 수선화의 것
+- 0601109000: 기타
+[소호] 0120: 인경(鱗莖)ㆍ괴경(塊莖)ㆍ괴근(塊根)ㆍ구경(球莖)ㆍ관근(冠根)ㆍ근경(根莖)으로서 자라고 있거나 꽃이 피어 있는 것, 치커리ㆍ치커리 뿌리
+- 0601201000: 튤립의 것
+- 0601202000: 백합의 것
+- 0601207000: 아이리스의 것
+- 0601208000: 프리지어의 것
+- 0601209010: 수선화의 것
+- 0601209090: 기타
+[호] 02호: 그 밖의 살아 있는 식물(뿌리를 포함한다)ㆍ꺾꽂이용 가지ㆍ접붙임용 가지, 버섯의 종균(種菌)
+[소호] 0210: 뿌리가 없는 꺾꽂이용 가지와 접붙임용 가지
+- 0602100000: 뿌리가 없는 꺾꽂이용 가지와 접붙임용 가지
+[소호] 0220: 수목과 관목(식용 과실이나 견과류의 것으로서 접목했는지에 상관없다)
+- 0602201000: 사과나무
+- 0602202000: 배나무
+- 0602203000: 복숭아나무
+- 0602204000: 포도나무
+- 0602206000: 귤나무
+- 0602209000: 기타
+[소호] 0230: 철쭉과 진달래속의 식물(접목했는지에 상관없다)
+- 0602300000: 철쭉과 진달래속의 식물(접목했는지에 상관없다)
+[소호] 0240: 장미(접목했는지에 상관없다)
+- 0602400000: 장미(접목했는지에 상관없다)
+[소호] 0290: 기타
+- 0602901010: 난초
+- 0602901020: 카네이션
+- 0602901030: 구즈마니아
+- 0602901040: 안개초
+- 0602901050: 국화
+- 0602901060: 선인장류
+- 0602901090: 기타
+- 0602902010: 분재용
+- 0602902021: 단풍나무
+- 0602902029: 기타
+- 0602902090: 기타
+- 0602909010: 목단
+- 0602909030: 뽕나무
+- 0602909040: 버섯의 종균(種菌)
+- 0602909050: 잔디
+- 0602909090: 기타
+[호] 03호: 절화(切花)와 꽃봉오리(신선한 것과 건조ㆍ염색ㆍ표백ㆍ침투나 그 밖의 가공을 한 것으로서 꽃다발용이나 장식용에 적합한 것으로 한정한다)
+[소호] 0311: 장미
+- 0603110000: 장미
+[소호] 0312: 카네이션
+- 0603120000: 카네이션
+[소호] 0313: 난
+- 0603131000: 심비디움(Cymbidiums)
+- 0603132000: 팔레놉시스(Phalaenopsis)
+- 0603139000: 기타
+[소호] 0314: 국화
+- 0603140000: 국화
+[소호] 0315: 백합[릴리움(Lilium)속]
+- 0603150000: 백합[릴리움(Lilium)속]
+[소호] 0319: 기타
+- 0603191000: 튤립
+- 0603199000: 기타
+[소호] 0390: 기타
+- 0603900000: 기타
+[호] 04호: 식물의 잎ㆍ가지와 그 밖의 부분(꽃과 꽃봉오리가 없는 것으로 한정한다), 풀ㆍ이끼ㆍ지의(地衣)(신선한 것과 건조ㆍ염색ㆍ표백ㆍ침투나 그 밖의 가공을 한 것으로서 꽃다발용이나 장식용에 적합한 것으로 한정한다)
+[소호] 0420: 신선한 것
+- 0604201000: 이끼와 지의(地衣)
+- 0604202000: 식물의 잎
+- 0604209000: 기타
+[소호] 0490: 기타
+- 0604901000: 이끼와 지의(地衣)
+- 0604909000: 기타
+
+[제07류] 제7류 식용의 채소ㆍ뿌리ㆍ괴경(塊莖)
+제7류는 신선·냉장·냉동·건조·일시보존 채소를 포함. 다음은 제외한다: 치커리·치커리 뿌리 → hs_code 0601, hs_code 1212. 곡물·사탕무 등 공업용 식물 → 10류, hs_code 1212. 약용 식물 → hs_code 1211. 해초·조류 → hs_code 1212. 사료용 작물 → hs_code 1214. 뿌리·괴경 가루·플레이크 등 → hs_code 1106. 조제/보존 처리 채소 → 20류. MAP 포장 신선 채소는 제7류로 포함시킨다.
+
+[호] 01호: 감자(신선한 것이나 냉장한 것으로 한정한다)
+[소호] 0110: 종자용
+- 0701100000: 종자용
+[소호] 0190: 기타
+- 0701900000: 기타
+[호] 02호: 토마토(신선한 것이나 냉장한 것으로 한정한다)
+[소호] 0200: 토마토(신선한 것이나 냉장한 것으로 한정한다)
+- 0702001000: 방울토마토
+- 0702009000: 기타
+[호] 03호: 양파ㆍ샬롯(shallot)ㆍ마늘ㆍ리크(leek)와 그 밖의 파속의 채소(신선한 것이나 냉장한 것으로 한정한다)
+[소호] 0310: 양파와 샬롯(shallot)
+- 0703101010: 껍질을 벗긴 것
+- 0703101090: 기타
+- 0703103000: 샬롯(shallot)
+[소호] 0320: 마늘
+- 0703201000: 껍질을 깐 것
+- 0703209000: 기타
+[소호] 0390: 리크(leek)와 그 밖의 파속의 채소
+- 0703901000: 리크(leek)
+- 0703902000: 대파
+- 0703903000: 쪽파
+- 0703909000: 기타
+[호] 04호: 양배추ㆍ꽃양배추ㆍ콜라비(kohlrabi)ㆍ케일(kale)과 그 밖에 이와 유사한 식용 배추속(신선한 것이나 냉장한 것으로 한정한다)
+[소호] 0410: 꽃양배추와 브로콜리(broccoli)
+- 0704100000: 꽃양배추와 브로콜리(broccoli)
+[소호] 0420: 방울다다기 양배추
+- 0704200000: 방울다다기 양배추
+[소호] 0490: 기타
+- 0704901000: 양배추
+- 0704902000: 배추
+- 0704909000: 기타
+[호] 05호: 상추[락투카 사티바(Lactuca sativa)]와 치커리(chicory)[시커리엄(Cichorium)속](신선한 것이나 냉장한 것으로 한정한다)
+[소호] 0511: 결구(結球) 상추
+- 0705110000: 결구(結球) 상추
+[소호] 0519: 기타
+- 0705190000: 기타
+[소호] 0521: 위트루프 치커리(Witloof chicory)[시코리엄 인티부스 변종 포리오섬(Cichorium intybus var. foliosum)]
+- 0705210000: 위트루프 치커리(Witloof chicory)[시코리엄 인티부스 변종 포리오섬(Cichorium intybus var. foliosum)]
+[소호] 0529: 기타
+- 0705290000: 기타
+[호] 06호: 당근ㆍ순무ㆍ샐러드용 비트(beetroot)ㆍ선모(仙茅)ㆍ셀러리액(celeriac)ㆍ무와 그 밖에 이와 유사한 식용 뿌리(신선한 것이나 냉장한 것으로 한정한다)
+[소호] 0610: 당근과 순무
+- 0706101000: 당근
+- 0706102000: 순무
+[소호] 0690: 기타
+- 0706901000: 무
+- 0706902000: 고추냉이와 겨자무
+- 0706903000: 더덕
+- 0706904000: 도라지
+- 0706909000: 기타
+[호] 07호: 오이류(신선한 것이나 냉장한 것으로 한정한다)
+[소호] 0700: 오이류(신선한 것이나 냉장한 것으로 한정한다)
+- 0707000000: 오이류(신선한 것이나 냉장한 것으로 한정한다)
+[호] 08호: 채두류(菜豆類)(꼬투리가 있는지에 상관없으며 신선한 것이나 냉장한 것으로 한정한다)
+[소호] 0810: 완두[피섬 새티범(Pisum sativum)]
+- 0708100000: 완두[피섬 새티범(Pisum sativum)]
+[소호] 0820: 콩[비그나(Vigna)속ㆍ파세러스(Phaseolus)속)]
+- 0708200000: 콩[비그나(Vigna)속ㆍ파세러스(Phaseolus)속)]
+[소호] 0890: 그 밖의 채두류(菜豆類)
+- 0708900000: 그 밖의 채두류(菜豆類)
+[호] 09호: 그 밖의 채소(신선한 것이나 냉장한 것으로 한정한다)
+[소호] 0920: 아스파라거스(asparagus)
+- 0709200000: 아스파라거스(asparagus)
+[소호] 0930: 가지(에그플랜트)
+- 0709300000: 가지(에그플랜트)
+[소호] 0940: 셀러리(celery)[셀러리액(celeriac)은 제외한다]
+- 0709400000: 셀러리(celery)[셀러리액(celeriac)은 제외한다]
+[소호] 0951: 아가리쿠스(Agaricus)속의 버섯
+- 0709517000: 양송이 버섯
+- 0709519000: 기타
+[소호] 0952: 볼레투스(Boletus)속의 버섯
+- 0709520000: 볼레투스(Boletus)속의 버섯
+[소호] 0953: 칸타렐루스(Cantharellus)속의 버섯
+- 0709530000: 칸타렐루스(Cantharellus)속의 버섯
+[소호] 0954: 표고버섯(Lentinus edodes)
+- 0709540000: 표고버섯(Lentinus edodes)
+[소호] 0955: 송이버섯(Tricholoma matsutake, Tricholoma magnivelare, Tricholoma anatolicum, Tricholoma dulciolens, Tricholoma caligatum)
+- 0709550000: 송이버섯(Tricholoma matsutake, Tricholoma magnivelare, Tricholoma anatolicum, Tricholoma dulciolens, Tricholoma caligatum)
+[소호] 0956: 송로버섯[튜버(Tuber) 속]
+- 0709560000: 송로버섯[튜버(Tuber) 속]
+[소호] 0959: 기타
+- 0709593000: 영지버섯
+- 0709594010: 큰느타리버섯
+- 0709594090: 기타
+- 0709595000: 팽이버섯
+- 0709599000: 기타
+[소호] 0960: 고추류[캡시컴(Capsicum)속]의 열매나 피멘타(Pimenta)속의 열매
+- 0709601000: 단고추(벨타입으로 한정한다)
+- 0709609000: 기타
+[소호] 0970: 시금치류
+- 0709700000: 시금치류
+[소호] 0991: 글로브 아티초크(globe artichoke)
+- 0709910000: 글로브 아티초크(globe artichoke)
+[소호] 0992: 올리브
+- 0709920000: 올리브
+[소호] 0993: 호박류[쿠쿠르비타(Cucurbita)속]
+- 0709930000: 호박류[쿠쿠르비타(Cucurbita)속]
+[소호] 0999: 기타
+- 0709991000: 고사리
+- 0709992000: 고비
+- 0709993000: 깻잎
+- 0709999000: 기타
+[호] 10호: 냉동채소(조리하지 않은 것이나 물에 삶거나 쪄서 조리한 것으로 한정한다)
+[소호] 1010: 감자
+- 0710100000: 감자
+[소호] 1021: 완두[피섬 새티범(Pisum sativum)]
+- 0710210000: 완두[피섬 새티범(Pisum sativum)]
+[소호] 1022: 콩[비그나(Vigna)속ㆍ파세러스(Phaseolus)속)]
+- 0710220000: 콩[비그나(Vigna)속ㆍ파세러스(Phaseolus)속)]
+[소호] 1029: 기타
+- 0710290000: 기타
+[소호] 1030: 시금치류
+- 0710300000: 시금치류
+[소호] 1040: 스위트콘
+- 0710400000: 스위트콘
+[소호] 1080: 그 밖의 채소
+- 0710801000: 양파
+- 0710802000: 마늘
+- 0710804000: 당근
+- 0710805000: 고사리
+- 0710806000: 송이버섯
+- 0710807000: 고추류[캡시컴(Capsicum)속]의 열매나 피멘타(Pimenta)속의 열매
+- 0710808010: 취(참취, 개미취, 곰취, 미역취)
+- 0710808020: 고려엉겅퀴(곤드레)
+- 0710809010: 대파
+- 0710809090: 기타
+[소호] 1090: 채소류의 혼합물
+- 0710900000: 채소류의 혼합물
+[호] 11호: 일시적으로 보존하기 위하여 처리한 채소(그 상태로는 식용에 적합하지 않은 것으로 한정한다)
+[소호] 1120: 올리브
+- 0711200000: 올리브
+[소호] 1140: 오이류
+- 0711400000: 오이류
+[소호] 1151: 아가리쿠스(Agaricus)속의 버섯
+- 0711510000: 아가리쿠스(Agaricus)속의 버섯
+[소호] 1159: 기타
+- 0711591000: 송로(松露)
+- 0711599000: 기타
+[소호] 1190: 그 밖의 채소와 채소류의 혼합물
+- 0711901000: 마늘
+- 0711903000: 죽순
+- 0711904000: 당근
+- 0711905010: 고사리
+- 0711905020: 고비
+- 0711905091: 고추류[캡시컴(Capsicum)속]의 열매나 피멘타(Pimenta)속의 열매
+- 0711905099: 기타
+- 0711909000: 채소류의 혼합물
+[호] 12호: 건조한 채소(원래 모양인 것, 절단한 것, 얇게 썬 것, 부순 것, 가루 모양인 것으로 한정하며, 더 이상 조제한 것은 제외한다)
+[소호] 1220: 양파
+- 0712200000: 양파
+[소호] 1231: 아가리쿠스(Agaricus)속의 버섯
+- 0712311000: 양송이 버섯
+- 0712319000: 기타
+[소호] 1232: 목이버섯[오리쿨라리아(Auricularia)속]
+- 0712320000: 목이버섯[오리쿨라리아(Auricularia)속]
+[소호] 1233: 젤리균류[트레멜라(Tremella)속]
+- 0712330000: 젤리균류[트레멜라(Tremella)속]
+[소호] 1234: 표고버섯(Lentinus edodes)
+- 0712340000: 표고버섯(Lentinus edodes)
+[소호] 1239: 기타
+- 0712391010: 송이버섯
+- 0712391030: 영지버섯
+- 0712391040: 느타리버섯
+- 0712391050: 팽이버섯
+- 0712391090: 기타
+- 0712392000: 송로(松露)
+[소호] 1290: 그 밖의 채소와 채소류의 혼합물
+- 0712901000: 마늘
+- 0712902010: 고사리
+- 0712902020: 무
+- 0712902030: 대파
+- 0712902040: 당근
+- 0712902050: 호박
+- 0712902060: 양배추
+- 0712902070: 토란줄기
+- 0712902080: 고구마줄기
+- 0712902091: 스위트콘(종자용)
+- 0712902092: 스위트콘(기타)
+- 0712902093: 감자
+- 0712902094: 고비
+- 0712902095: 더덕
+- 0712902096: 취(참취, 개미취, 곰취, 미역취)
+- 0712902097: 고려엉겅퀴(곤드레)
+- 0712902099: 기타
+- 0712909000: 채소류의 혼합물
+[호] 13호: 건조한 채두류(菜豆類)(꼬투리가 없는 것으로서 껍질을 제거한 것인지 또는 쪼갠 것인지에 상관없다)
+[소호] 1310: 완두[피섬 새티범(Pisum sativum)]
+- 0713101000: 종자용
+- 0713102000: 사료용
+- 0713109000: 기타
+[소호] 1320: 병아리콩[가반조스(garbanzos)]
+- 0713200000: 병아리콩[가반조스(garbanzos)]
+[소호] 1331: 녹두[비그나 멍고(엘) 헤파(Vigna mungo (L) Hepper)종ㆍ비그나 라디에이타(엘) 윌크젝(Vigna radiata (L) Wilczek)종]
+- 0713311000: 종자용
+- 0713319000: 기타
+[소호] 1332: 팥[아주기(Adzuki)][파세러스(Phaseolus)ㆍ비그나 앵구라리스(Vigna angularis)]
+- 0713321000: 종자용
+- 0713329000: 기타
+[소호] 1333: 강낭콩(흰 완두콩을 포함한다)[파세러스 불가리스(Phaseolus vulgaris)]
+- 0713331000: 종자용
+- 0713339000: 기타
+[소호] 1334: 밤바라콩[비그나 서브터라니아(Vigna subterranea)ㆍ보안드제이아 서브터라니아(Voandzeia subterranea)]
+- 0713340000: 밤바라콩[비그나 서브터라니아(Vigna subterranea)ㆍ보안드제이아 서브터라니아(Voandzeia subterranea)]
+[소호] 1335: 동부콩[비그나 운구이쿨라타(Vigna unguiculata)]
+- 0713350000: 동부콩[비그나 운구이쿨라타(Vigna unguiculata)]
+[소호] 1339: 기타
+- 0713390000: 기타
+[소호] 1340: 렌즈콩
+- 0713400000: 렌즈콩
+[소호] 1350: 누에콩[비시아 파바 변종 메이저(Vicia faba var. major)]과 말먹이용 누에콩[비시아 파바 변종 에퀴나(Vicia faba var. equina)ㆍ비시아 파바 변종 마이너(Vicia faba var. minor)]
+- 0713500000: 누에콩[비시아 파바 변종 메이저(Vicia faba var. major)]과 말먹이용 누에콩[비시아 파바 변종 에퀴나(Vicia faba var. equina)ㆍ비시아 파바 변종 마이너(Vicia faba var. minor)]
+[소호] 1360: 비둘기콩[카자누스 카잔(Cajanus cajan)]
+- 0713600000: 비둘기콩[카자누스 카잔(Cajanus cajan)]
+[소호] 1390: 기타
+- 0713900000: 기타
+[호] 14호: 매니옥(manioc)ㆍ칡뿌리ㆍ살렙(salep)ㆍ돼지감자(Jerusalem artichoke)ㆍ고구마와 그 밖에 이와 유사한 전분이나 이눌린(inulin)을 다량 함유한 뿌리ㆍ괴경(塊莖)[얇게 썬 것이나 펠릿(pellet) 모양인지에 상관없으며 신선한 것, 냉장한 것ㆍ냉동한 것, 건조한 것으로 한정한다], 사고야자(sago)의 심(pith)
+[소호] 1410: 매니옥(manioc)[카사바(cassava)]
+- 0714101000: 신선한 것
+- 0714102010: 칩
+- 0714102020: 펠릿(pellet)
+- 0714102090: 기타
+- 0714103000: 냉장한 것
+- 0714104000: 냉동한 것
+[소호] 1420: 고구마
+- 0714201000: 신선한 것
+- 0714202000: 건조한 것
+- 0714203000: 냉장한 것
+- 0714204000: 냉동한 것
+[소호] 1430: 얌[디오스코레아(Dioscorea)속]
+- 0714301000: 냉동한 것
+- 0714309000: 기타
+[소호] 1440: 토란[콜로카시아(Colocasia)속]
+- 0714401000: 냉동한 것
+- 0714409000: 기타
+[소호] 1450: 아메리카 토란[크산토소마(Xanthosoma)속]
+- 0714501000: 냉동한 것
+- 0714509000: 기타
+[소호] 1490: 기타
+- 0714901010: 냉동한 것
+- 0714901090: 기타
+- 0714909010: 냉동한 것
+- 0714909090: 기타
+
+[제08류] 제8류 식용의 과실과 견과류, 감귤류ㆍ멜론의 껍질
+제8류는 신선·냉동·건조·일시보존 과실 및 견과류를 포함한다. 다음은 제외한다: 삼투 탈수 과실 → 20류.  토마토·호박·가지 등 → 07류. 커피·바닐라·주니퍼 등 → 09류. 채유용 열매·의료용 열매 → 12류. 코코아두 → hs_code 1801. 과실 가루·플레이크 → hs_code 1106. 볶은 과실·견과류 → hs_code 2101. 기타 가공·보존처리 과실 → hs_code 20류. MAP 포장 신선 과실은 제8류로 포함시킨다.
+
+[호] 01호: 코코넛ㆍ브라질너트ㆍ캐슈너트(cashew nut)(신선한 것이나 건조한 것으로 한정하며, 껍데기나 껍질을 벗겼는지에 상관없다)
+[소호] 0111: 말린 것
+- 0801110000: 말린 것
+[소호] 0112: 내피[내과피(內果皮)]를 벗기지 않은 것
+- 0801120000: 내피[내과피(內果皮)]를 벗기지 않은 것
+[소호] 0119: 기타
+- 0801190000: 기타
+[소호] 0121: 껍데기를 벗기지 않은 것
+- 0801210000: 껍데기를 벗기지 않은 것
+[소호] 0122: 껍데기를 벗긴 것
+- 0801220000: 껍데기를 벗긴 것
+[소호] 0131: 껍데기를 벗기지 않은 것
+- 0801310000: 껍데기를 벗기지 않은 것
+[소호] 0132: 껍데기를 벗긴 것
+- 0801320000: 껍데기를 벗긴 것
+[호] 02호: 그 밖의 견과류(신선하거나 건조한 것으로 한정하며, 껍데기나 껍질을 벗겼는지에 상관없다)
+[소호] 0211: 껍데기를 벗기지 않은 것
+- 0802110000: 껍데기를 벗기지 않은 것
+[소호] 0212: 껍데기를 벗긴 것
+- 0802120000: 껍데기를 벗긴 것
+[소호] 0221: 껍데기를 벗기지 않은 것
+- 0802210000: 껍데기를 벗기지 않은 것
+[소호] 0222: 껍데기를 벗긴 것
+- 0802220000: 껍데기를 벗긴 것
+[소호] 0231: 껍데기를 벗기지 않은 것
+- 0802310000: 껍데기를 벗기지 않은 것
+[소호] 0232: 껍데기를 벗긴 것
+- 0802320000: 껍데기를 벗긴 것
+[소호] 0241: 껍데기를 벗기지 않은 것
+- 0802410000: 껍데기를 벗기지 않은 것
+[소호] 0242: 껍데기를 벗긴 것
+- 0802420000: 껍데기를 벗긴 것
+[소호] 0251: 껍데기를 벗기지 않은 것
+- 0802510000: 껍데기를 벗기지 않은 것
+[소호] 0252: 껍데기를 벗긴 것
+- 0802520000: 껍데기를 벗긴 것
+[소호] 0261: 껍데기를 벗기지 않은 것
+- 0802610000: 껍데기를 벗기지 않은 것
+[소호] 0262: 껍데기를 벗긴 것
+- 0802620000: 껍데기를 벗긴 것
+[소호] 0270: 콜라 너트(kola nut)[콜라(Cola)속]
+- 0802700000: 콜라 너트(kola nut)[콜라(Cola)속]
+[소호] 0280: 빈랑자(areca nut)
+- 0802800000: 빈랑자(areca nut)
+[소호] 0291: 잣(껍데기를 벗기지 않은 것)
+- 0802910000: 잣(껍데기를 벗기지 않은 것)
+[소호] 0292: 잣(껍데기를 벗긴 것)
+- 0802920000: 잣(껍데기를 벗긴 것)
+[소호] 0299: 기타
+- 0802991010: 껍데기를 벗기지 않은 것
+- 0802991020: 껍데기를 벗긴 것
+- 0802999000: 기타
+[호] 03호: 바나나[플랜틴(plantain)을 포함하며, 신선하거나 건조한 것으로 한정한다]
+[소호] 0310: 플랜틴(plantain)
+- 0803100000: 플랜틴(plantain)
+[소호] 0390: 기타
+- 0803900000: 기타
+[호] 04호: 대추야자ㆍ무화과ㆍ파인애플ㆍ아보카도(avocado)ㆍ구아바(guava)ㆍ망고(mango)ㆍ망고스틴(mangosteen)(신선하거나 건조한 것으로 한정한다)
+[소호] 0410: 대추야자
+- 0804100000: 대추야자
+[소호] 0420: 무화과
+- 0804200000: 무화과
+[소호] 0430: 파인애플
+- 0804300000: 파인애플
+[소호] 0440: 아보카도(avocado)
+- 0804400000: 아보카도(avocado)
+[소호] 0450: 구아바(guava)ㆍ망고(mango)ㆍ망고스틴(mangosteen)
+- 0804501000: 구아바(guava)
+- 0804502000: 망고(mango)
+- 0804503000: 망고스틴(mangosteen)
+[호] 05호: 감귤류의 과실(신선하거나 건조한 것으로 한정한다)
+[소호] 0510: 오렌지
+- 0805100000: 오렌지
+[소호] 0521: 만다린(mandarins)[탄제린(tangerines)ㆍ세트수머(satsumas)를 포함한다]
+- 0805211000: 감귤
+- 0805219000: 기타
+[소호] 0522: 클레멘타인(clementine)
+- 0805220000: 클레멘타인(clementine)
+[소호] 0529: 기타
+- 0805290000: 기타
+[소호] 0540: 그레이프프루트(grapefruit)와 포멜로(pomelo)
+- 0805400000: 그레이프프루트(grapefruit)와 포멜로(pomelo)
+[소호] 0550: 레몬[시트러스 리몬(Citrus limon)ㆍ시트러스 리머늄(Citrus limonum)], 라임(lime)[시트러스 오란티폴리아(Citrus aurantifolia)ㆍ시트러스 라티폴리아(Citrus latifolia)]
+- 0805501000: 레몬[시트러스 리몬(Citrus limon)ㆍ시트러스 리머늄(Citrus limonum)]
+- 0805502010: 시트러스 오란티폴리아(Citrus aurantifolia)
+- 0805502020: 시트러스 라티폴리아(Citrus latifolia)
+[소호] 0590: 기타
+- 0805900000: 기타
+[호] 06호: 포도(신선하거나 건조한 것으로 한정한다)
+[소호] 0610: 신선한 것
+- 0806100000: 신선한 것
+[소호] 0620: 건조한 것
+- 0806200000: 건조한 것
+[호] 07호: 멜론(수박을 포함한다)과 포포(papaw)[파파야(papaya)](신선한 것으로 한정한다)
+[소호] 0711: 수박
+- 0807110000: 수박
+[소호] 0719: 기타
+- 0807191000: 참외
+- 0807199000: 기타
+[소호] 0720: 포포(papaw)[파파야(papaya)]
+- 0807200000: 포포(papaw)[파파야(papaya)]
+[호] 08호: 사과ㆍ배ㆍ마르멜로(quince)(신선한 것으로 한정한다)
+[소호] 0810: 사과
+- 0808100000: 사과
+[소호] 0830: 배
+- 0808300000: 배
+[소호] 0840: 마르멜로(quince)
+- 0808400000: 마르멜로(quince)
+[호] 09호: 살구ㆍ체리ㆍ복숭아[넥터린(nectarine)을 포함한다]ㆍ자두ㆍ슬로(sloe)(신선한 것으로 한정한다)
+[소호] 0910: 살구
+- 0809100000: 살구
+[소호] 0921: 신 체리[프루너스 체라서스(Prunus cerasus)]
+- 0809210000: 신 체리[프루너스 체라서스(Prunus cerasus)]
+[소호] 0929: 기타
+- 0809290000: 기타
+[소호] 0930: 복숭아[넥터린(nectarine)을 포함한다]
+- 0809300000: 복숭아[넥터린(nectarine)을 포함한다]
+[소호] 0940: 자두와 슬로(sloe)
+- 0809401000: 자두
+- 0809402000: 슬로(sloe)
+[호] 10호: 그 밖의 과실(신선한 것으로 한정한다)
+[소호] 1010: 초본류 딸기
+- 0810100000: 초본류 딸기
+[소호] 1020: 나무딸기ㆍ검은나무딸기ㆍ오디ㆍ로간베리(loganberry)
+- 0810200000: 나무딸기ㆍ검은나무딸기ㆍ오디ㆍ로간베리(loganberry)
+[소호] 1030: 흑색ㆍ백색ㆍ적색의 커런트(currant)와 구즈베리(gooseberry)
+- 0810300000: 흑색ㆍ백색ㆍ적색의 커런트(currant)와 구즈베리(gooseberry)
+[소호] 1040: 크랜베리(cranberry)ㆍ빌베리(bilberry)와 그 밖의 박시니엄(Vaccinium)속의 과실
+- 0810400000: 크랜베리(cranberry)ㆍ빌베리(bilberry)와 그 밖의 박시니엄(Vaccinium)속의 과실
+[소호] 1050: 키위프루트(kiwifruit)
+- 0810500000: 키위프루트(kiwifruit)
+[소호] 1060: 두리안(durian)
+- 0810600000: 두리안(durian)
+[소호] 1070: 감
+- 0810701000: 단감
+- 0810709000: 기타
+[소호] 1090: 기타
+- 0810903000: 대추
+- 0810905000: 매실
+- 0810909000: 기타
+[호] 11호: 냉동 과실과 냉동 견과류(조리하지 않은 것이나 물에 삶거나 찐 것으로 한정하며, 설탕이나 그 밖의 감미료를 첨가했는지에 상관없다)
+[소호] 1110: 초본류 딸기
+- 0811100000: 초본류 딸기
+[소호] 1120: 나무딸기, 검은나무딸기, 오디, 로간베리(loganberry), 흑색ㆍ백색ㆍ적색의 커런트(currant), 구즈베리(gooseberry)
+- 0811200000: 나무딸기, 검은나무딸기, 오디, 로간베리(loganberry), 흑색ㆍ백색ㆍ적색의 커런트(currant), 구즈베리(gooseberry)
+[소호] 1190: 기타
+- 0811901000: 밤
+- 0811902000: 대추
+- 0811903000: 잣
+- 0811909000: 기타
+[호] 12호: 일시적으로 보존하기 위하여 처리한 과실과 견과류(그 상태로는 식용에 적합하지 않은 것으로 한정한다)
+[소호] 1210: 체리
+- 0812100000: 체리
+[소호] 1290: 기타
+- 0812901000: 초본류 딸기
+- 0812909000: 기타
+[호] 13호: 건조한 과실(제0801호부터 제0806호까지에 해당하는 것은 제외한다), 이 류의 견과류나 건조한 과실의 혼합물
+[소호] 1310: 살구
+- 0813100000: 살구
+[소호] 1320: 프룬(prune)
+- 0813200000: 프룬(prune)
+[소호] 1330: 사과
+- 0813300000: 사과
+[소호] 1340: 그 밖의 과실
+- 0813401000: 감
+- 0813402000: 대추
+- 0813409000: 기타
+[소호] 1350: 이 류의 견과류나 건조한 과실의 혼합물
+- 0813500000: 이 류의 견과류나 건조한 과실의 혼합물
+[호] 14호: 감귤류의 껍질과 멜론(수박을 포함한다)의 껍질(신선한 것, 냉동하거나 건조한 것, 염수ㆍ유황수나 그 밖의 저장용액으로 일시적으로 보존하기 위하여 처리한 것으로 한정한다)
+[소호] 1400: 감귤류의 껍질과 멜론(수박을 포함한다)의 껍질(신선한 것, 냉동하거나 건조한 것, 염수ㆍ유황수나 그 밖의 저장용액으로 일시적으로 보존하기 위하여 처리한 것으로 한정한다)
+- 0814001000: 감귤류의 껍질
+- 0814002000: 멜론(수박을 포함한다)의 껍질
+
+[제09류] 제9류 커피ㆍ차ㆍ마테(mate)ㆍ향신료
+제9류는 커피·차·마테·향신료를 포함한다. 혼합 향신료는 “본질적 특성” 기준으로 분류하며 다음은 제외한다: 파슬리·딜 등 채소 향료 → 07류. 겨자종자 → hs_code 1207, 겨자가루 → hs_code 2103. 홉 → hs_code 1210. 의료·향료용 식물 → hs_code 1211. 혼합 조미료 → hs_code 2103. 본질적 특성이 제9류가 아닌 혼합 → hs_code 2106
+
+[호] 01호: 커피(볶았는지, 카페인을 제거했는지에 상관없다), 커피의 껍데기와 껍질, 커피를 함유한 커피 대용물(커피의 포함비율은 상관없다)
+[소호] 0111: 카페인을 제거하지 않은 것
+- 0901110000: 카페인을 제거하지 않은 것
+[소호] 0112: 카페인을 제거한 것
+- 0901120000: 카페인을 제거한 것
+[소호] 0121: 카페인을 제거하지 않은 것
+- 0901210000: 카페인을 제거하지 않은 것
+[소호] 0122: 카페인을 제거한 것
+- 0901220000: 카페인을 제거한 것
+[소호] 0190: 기타
+- 0901901000: 커피의 껍데기와 껍질
+- 0901902000: 커피를 함유한 커피 대용물
+[호] 02호: 차류(맛과 향을 첨가했는지에 상관없다)
+[소호] 0210: 녹차(발효하지 않은 것으로서 내용물의 무게가 3킬로그램 이하로 내용물에 직접 접하여 포장된 것으로 한정한다)
+- 0902100000: 녹차(발효하지 않은 것으로서 내용물의 무게가 3킬로그램 이하로 내용물에 직접 접하여 포장된 것으로 한정한다)
+[소호] 0220: 그 밖의 녹차(발효하지 않은 것으로 한정한다)
+- 0902200000: 그 밖의 녹차(발효하지 않은 것으로 한정한다)
+[소호] 0230: 홍차(발효차)와 부분 발효차(내용물의 무게가 3킬로그램 이하로 내용물에 직접 접하여 포장된 것으로 한정한다)
+- 0902300000: 홍차(발효차)와 부분 발효차(내용물의 무게가 3킬로그램 이하로 내용물에 직접 접하여 포장된 것으로 한정한다)
+[소호] 0240: 그 밖의 홍차(발효차)와 그 밖의 부분 발효차
+- 0902400000: 그 밖의 홍차(발효차)와 그 밖의 부분 발효차
+[호] 03호: 마테(mate)
+[소호] 0300: 마테(mate)
+- 0903000000: 마테(mate)
+[호] 04호: 후추[파이퍼(Piper)속의 것으로 한정한다], 건조하거나 부수거나 잘게 부순 고추류[캡시컴(Capsicum)속]의 열매나 피멘타(Pimenta)속의 열매
+[소호] 0411: 부수지도 잘게 부수지도 않은 것
+- 0904110000: 부수지도 잘게 부수지도 않은 것
+[소호] 0412: 부수거나 잘게 부순 것
+- 0904120000: 부수거나 잘게 부순 것
+[소호] 0421: 건조한 것(부수지도 잘게 부수지도 않은 것)
+- 0904210000: 건조한 것(부수지도 잘게 부수지도 않은 것)
+[소호] 0422: 부수거나 잘게 부순 것
+- 0904220000: 부수거나 잘게 부순 것
+[호] 05호: 바닐라
+[소호] 0510: 부수지도 잘게 부수지도 않은 것
+- 0905100000: 부수지도 잘게 부수지도 않은 것
+[소호] 0520: 부수거나 잘게 부순 것
+- 0905200000: 부수거나 잘게 부순 것
+[호] 06호: 계피와 계피나무의 꽃
+[소호] 0611: 계피[신나모멈 제이나이쿰 블룸(Cinnamomum zeylanicum Blume)]
+- 0906110000: 계피[신나모멈 제이나이쿰 블룸(Cinnamomum zeylanicum Blume)]
+[소호] 0619: 기타
+- 0906190000: 기타
+[소호] 0620: 부수거나 잘게 부순 것
+- 0906200000: 부수거나 잘게 부순 것
+[호] 07호: 정향(丁香)(과실ㆍ꽃ㆍ꽃대로 한정한다)
+[소호] 0710: 부수지도 잘게 부수지도 않은 것
+- 0907100000: 부수지도 잘게 부수지도 않은 것
+[소호] 0720: 부수거나 잘게 부순 것
+- 0907200000: 부수거나 잘게 부순 것
+[호] 08호: 육두구(肉荳？)ㆍ메이스(mace)ㆍ소두구(小荳？)
+[소호] 0811: 부수지도 잘게 부수지도 않은 것
+- 0908110000: 부수지도 잘게 부수지도 않은 것
+[소호] 0812: 부수거나 잘게 부순 것
+- 0908120000: 부수거나 잘게 부순 것
+[소호] 0821: 부수지도 잘게 부수지도 않은 것
+- 0908210000: 부수지도 잘게 부수지도 않은 것
+[소호] 0822: 부수거나 잘게 부순 것
+- 0908220000: 부수거나 잘게 부순 것
+[소호] 0831: 부수지도 잘게 부수지도 않은 것
+- 0908310000: 부수지도 잘게 부수지도 않은 것
+[소호] 0832: 부수거나 잘게 부순 것
+- 0908320000: 부수거나 잘게 부순 것
+[호] 09호: 아니스(anise)ㆍ대회향(大茴香)ㆍ회향(茴香)ㆍ코리앤더(coriander)ㆍ커민(cumin)ㆍ캐러웨이(caraway)의 씨와 주니퍼(juniper)의 열매
+[소호] 0921: 부수지도 잘게 부수지도 않은 것
+- 0909210000: 부수지도 잘게 부수지도 않은 것
+[소호] 0922: 부수거나 잘게 부순 것
+- 0909220000: 부수거나 잘게 부순 것
+[소호] 0931: 부수지도 잘게 부수지도 않은 것
+- 0909310000: 부수지도 잘게 부수지도 않은 것
+[소호] 0932: 부수거나 잘게 부순 것
+- 0909320000: 부수거나 잘게 부순 것
+[소호] 0961: 부수지도 잘게 부수지도 않은 것
+- 0909611000: 아니스(anise)나 대회향(大茴香)의 씨
+- 0909612000: 캐러웨이(caraway)의 씨
+- 0909613000: 회향(茴香)의 씨와 주니퍼(juniper)의 열매
+[소호] 0962: 부수거나 잘게 부순 것
+- 0909621000: 아니스(anise)나 대회향(大茴香)의 씨
+- 0909622000: 캐러웨이(caraway)의 씨
+- 0909623000: 회향(茴香)의 씨와 주니퍼(juniper)의 열매
+[호] 10호: 생강ㆍ사프란(saffron)ㆍ심황[강황(薑黃)]ㆍ타임(thyme)ㆍ월계수 잎ㆍ카레와 그 밖의 향신료
+[소호] 1011: 부수지도 잘게 부수지도 않은 것
+- 0910111000: 신선한 것이나 냉장한 것
+- 0910112000: 건조한 것
+- 0910113000: 냉동한 것
+- 0910119000: 기타
+[소호] 1012: 부수거나 잘게 부순 것
+- 0910121000: 신선한 것이나 냉장한 것
+- 0910122000: 건조한 것
+- 0910123000: 냉동한 것
+- 0910129000: 기타
+[소호] 1020: 사프란(saffron)
+- 0910200000: 사프란(saffron)
+[소호] 1030: 심황[강황(薑黃)]
+- 0910300000: 심황[강황(薑黃)]
+[소호] 1091: 혼합물(제9류의 주 제1호나목의 것으로 한정한다)
+- 0910911000: 카레
+- 0910919000: 기타
+[소호] 1099: 기타
+- 0910991000: 타임과 월계수의 잎
+- 0910999000: 기타
+
+[제10류] 제10류 곡물
+제10류는 모든 곡립(다발·이삭 포함)을 분류하며, 미성숙 곡물도 포함(스위트콘 제외 → hs_code 07류). 쌀(현미·정미·반숙미 등): 추가 가공 없음 → hs_code 1006. 껍질 제거만 한 퀴노아 → hs_code 1008. 다음은 제외한다: 외피 제거 이상의 가공 곡물 → hs_code 1104 등. 곡물 가루·플레이크 등 → hs_code 1106, hs_code 1214. 조제된 곡물 → 20류
+
+[호] 01호: 밀과 메슬린(meslin)
+[소호] 0111: 종자
+- 1001110000: 종자
+[소호] 0119: 기타
+- 1001190000: 기타
+[소호] 0191: 종자
+- 1001911000: 메슬린(meslin)
+- 1001919000: 기타
+[소호] 0199: 기타
+- 1001991010: 메슬린(meslin)
+- 1001991090: 기타
+- 1001992010: 메슬린(meslin)
+- 1001992090: 기타
+- 1001999010: 메슬린(meslin)
+- 1001999090: 기타
+[호] 02호: 호밀
+[소호] 0210: 종자
+- 1002100000: 종자
+[소호] 0290: 기타
+- 1002900000: 기타
+[호] 03호: 보리
+[소호] 0310: 종자
+- 1003101000: 맥주보리
+- 1003102000: 겉보리
+- 1003103000: 쌀보리
+- 1003109000: 기타
+[소호] 0390: 기타
+- 1003901000: 맥주보리
+- 1003902000: 겉보리
+- 1003903000: 쌀보리
+- 1003909000: 기타
+[호] 04호: 귀리
+[소호] 0410: 종자
+- 1004100000: 종자
+[소호] 0490: 기타
+- 1004900000: 기타
+[호] 05호: 옥수수
+[소호] 0510: 종자용
+- 1005100000: 종자용
+[소호] 0590: 기타
+- 1005901000: 사료용
+- 1005902000: 팝콘용
+- 1005909000: 기타
+[호] 06호: 쌀
+[소호] 0610: 벼
+- 1006100000: 벼
+[소호] 0620: 현미
+- 1006201000: 메현미
+- 1006202000: 찰현미
+[소호] 0630: 정미(연마ㆍ광택 여부에 상관없다)
+- 1006301000: 멥쌀
+- 1006302000: 찹쌀
+[소호] 0640: 쇄미(broken rice)
+- 1006400000: 쇄미(broken rice)
+[호] 07호: 수수
+[소호] 0710: 종자
+- 1007100000: 종자
+[소호] 0790: 기타
+- 1007900000: 기타
+[호] 08호: 메밀ㆍ밀리트(millet)ㆍ카나리시드(canary seed)와 그 밖의 곡물
+[소호] 0810: 메밀
+- 1008100000: 메밀
+[소호] 0821: 종자
+- 1008211000: 조
+- 1008219000: 기타
+[소호] 0829: 기타
+- 1008291000: 조
+- 1008299000: 기타
+[소호] 0830: 카나리시드(canary seed)
+- 1008300000: 카나리시드(canary seed)
+[소호] 0840: 포니오(Fonio)[디지타리아(Digitaria)속]
+- 1008400000: 포니오(Fonio)[디지타리아(Digitaria)속]
+[소호] 0850: 퀴노아(quinoa)[체노포디움 퀴노아(Chenopodium quinoa)]
+- 1008500000: 퀴노아(quinoa)[체노포디움 퀴노아(Chenopodium quinoa)]
+[소호] 0860: 라이밀(triticale)
+- 1008600000: 라이밀(triticale)
+[소호] 0890: 그 밖의 곡물
+- 1008900000: 그 밖의 곡물
+
+[제11류] 제11류 제분공업의 생산품과 맥아, 전분, 이눌린(inulin), 밀의 글루텐(gluten)
+제11류는 다음을 포함한다: 곡물(제10류) 및 스위트콘(제7류)의 제분 생산품(고운 가루, 거친 가루, 부순 알곡 등), 곡물로부터 제조된 물품(맥아, 전분, 글루텐 등),  채두류·감자·과실 등 다른 식물 원료를 제분한 물품. 다음은 제외한다: 커피 대용 볶은 맥아 → hs_code 0901, hs_code 2101. 곡물 껍질 → hs_code 1213. 조제 가루·곡물 조제품 → hs_code 1901. 타피오카 → hs_code 1903. 퍼프드라이스·콘플레이크·불거밀 등 → hs_code 1904. 조제·보존처리 채소 → hs_code 2001, hs_code 2004, hs_code 2005. 제분 잔재물 → hs_code 2302. 의약품 → hs_code 30류. 향료·화장품계 물품 → hs_code 33류
+
+[호] 01호: 밀가루나 메슬린(meslin) 가루
+[소호] 0100: 밀가루나 메슬린(meslin) 가루
+- 1101001000: 밀가루
+- 1101002000: 메슬린(meslin) 가루
+[호] 02호: 곡물의 고운 가루[밀가루나 메슬린(meslin) 가루는 제외한다]
+[소호] 0220: 옥수수가루
+- 1102200000: 옥수수가루
+[소호] 0290: 기타
+- 1102901000: 보릿가루
+- 1102902000: 쌀가루
+- 1102903000: 호밀가루
+- 1102909000: 기타
+[호] 03호: 곡물의 부순 알곡ㆍ거친 가루ㆍ펠릿(pellet)
+[소호] 0311: 밀로 만든 것
+- 1103110000: 밀로 만든 것
+[소호] 0313: 옥수수로 만든 것
+- 1103130000: 옥수수로 만든 것
+[소호] 0319: 그 밖의 곡물로 만든 것
+- 1103191000: 보리로 만든 것
+- 1103192000: 귀리로 만든 것
+- 1103193000: 쌀로 만든 것
+- 1103199000: 기타
+[소호] 0320: 펠릿(pellet)
+- 1103201000: 밀로 만든 것
+- 1103202000: 쌀로 만든 것
+- 1103203000: 보리로 만든 것
+- 1103209000: 기타
+[호] 04호: 그 밖의 가공한 곡물[예: 껍질을 벗긴 것ㆍ압착한 것ㆍ플레이크(flake) 모양인 것ㆍ진주 모양인 것ㆍ얇은 조각으로 만든 것ㆍ거칠게 빻은 것(제1006호의 쌀은 제외한다)], 곡물의 씨눈으로서 원래 모양인 것ㆍ압착한 것ㆍ플레이크(flake) 모양인 것ㆍ잘게 부순 것
+[소호] 0412: 귀리로 만든 것
+- 1104120000: 귀리로 만든 것
+[소호] 0419: 그 밖의 곡물로 만든 것
+- 1104191000: 쌀로 만든 것
+- 1104192000: 보리로 만든 것
+- 1104199000: 기타
+[소호] 0422: 귀리로 만든 것
+- 1104220000: 귀리로 만든 것
+[소호] 0423: 옥수수로 만든 것
+- 1104230000: 옥수수로 만든 것
+[소호] 0429: 그 밖의 곡물로 만든 것
+- 1104291000: 율무로 만든 것
+- 1104292000: 보리로 만든 것
+- 1104299000: 기타
+[소호] 0430: 곡물의 씨눈[원래 모양인 것ㆍ압착한 것ㆍ플레이크(flake) 모양인 것ㆍ잘게 부순 것으로 한정한다]
+- 1104301000: 쌀로 만든 것
+- 1104309000: 기타
+[호] 05호: 감자의 고운 가루ㆍ거친 가루ㆍ가루ㆍ플레이크(flake)ㆍ알갱이ㆍ펠릿(pellet)
+[소호] 0510: 고운 가루ㆍ거친 가루ㆍ가루
+- 1105100000: 고운 가루ㆍ거친 가루ㆍ가루
+[소호] 0520: 플레이크(flake)ㆍ알갱이ㆍ펠릿(pellet)
+- 1105200000: 플레이크(flake)ㆍ알갱이ㆍ펠릿(pellet)
+[호] 06호: 건조한 채두류(菜豆類)(제0713호의 것), 사고(sago)ㆍ뿌리나 괴경(塊莖)(제0714호의 것), 제8류 물품의 고운 가루ㆍ거친 가루ㆍ가루
+[소호] 0610: 건조한 채두류(菜豆類)의 것(제0713호의 것으로 한정한다)
+- 1106100000: 건조한 채두류(菜豆類)의 것(제0713호의 것으로 한정한다)
+[소호] 0620: 사고(sago)ㆍ뿌리나 괴경(塊莖)의 것(제0714호의 것으로 한정한다)
+- 1106201000: 칡뿌리의 것
+- 1106209000: 기타
+[소호] 0630: 제8류 물품의 것
+- 1106300000: 제8류 물품의 것
+[호] 07호: 맥아(볶은 것인지에 상관없다)
+[소호] 0710: 볶지 않은 것
+- 1107100000: 볶지 않은 것
+[소호] 0720: 볶은 것
+- 1107201000: 훈연(燻煙)한 것
+- 1107209000: 기타
+[호] 08호: 전분과 이눌린(inulin)
+[소호] 0811: 밀로 만든 것
+- 1108110000: 밀로 만든 것
+[소호] 0812: 옥수수로 만든 것
+- 1108121000: 식품용
+- 1108129000: 기타
+[소호] 0813: 감자로 만든 것
+- 1108130000: 감자로 만든 것
+[소호] 0814: 매니옥(manioc)[카사바(cassava)]으로 만든 것
+- 1108141000: 식품용
+- 1108149000: 기타
+[소호] 0819: 그 밖의 전분
+- 1108191000: 고구마로 만든 것
+- 1108199000: 기타
+[소호] 0820: 이눌린(inulin)
+- 1108200000: 이눌린(inulin)
+[호] 09호: 밀의 글루텐(gluten)(건조했는지에 상관없다)
+[소호] 0900: 밀의 글루텐(gluten)(건조했는지에 상관없다)
+- 1109000000: 밀의 글루텐(gluten)(건조했는지에 상관없다)
+
+[제12류] 제12류 채유(採油)에 적합한 종자와 과실, 각종 종자와 과실, 공업용ㆍ의약용 식물, 짚과 사료용 식물
+제12류는 식용/공업용 유지를 채취하는 종자 및 과실을 포함한다.(파종용인지 여부와 관계 없음) 예: 대두, 땅콩, 유채씨 등. 다음은 제외한다: 식용 견과류 → hs_code 0801, hs_code 0802. 올리브 → 07류 또는 20류. 채유할 수 있으나 주 용도가 채유용이 아닌 종자 (살구·자두·복숭아 핵 등) → hs_code 1212. 코코아두 → hs_code 1801. 채유용 잔재물(박 등)은 → hs_code 2304·2305·2306
+
+[호] 01호: 대두(부수었는지에 상관없다)
+[소호] 0110: 종자
+- 1201101000: 콩나물용
+- 1201109000: 기타
+[소호] 0190: 기타
+- 1201901000: 채유용과 탈지대두박(脫脂大豆粕)용
+- 1201902000: 사료용
+- 1201903000: 콩나물용
+- 1201909000: 기타
+[호] 02호: 땅콩(볶거나 그 밖의 조리를 한 것은 제외하며, 껍데기를 벗겼는지, 부수었는지에 상관없다)
+[소호] 0230: 종자
+- 1202301000: 꼬투리를 벗기지 않은 것
+- 1202302000: 꼬투리를 벗긴 것(부수었는지에 상관없다)
+[소호] 0241: 꼬투리를 벗기지 않은 것
+- 1202410000: 꼬투리를 벗기지 않은 것
+[소호] 0242: 꼬투리를 벗긴 것(부수었는지에 상관없다)
+- 1202420000: 꼬투리를 벗긴 것(부수었는지에 상관없다)
+[호] 03호: 코프라(copra)
+[소호] 0300: 코프라(copra)
+- 1203000000: 코프라(copra)
+[호] 04호: 아마씨(부수었는지에 상관없다)
+[소호] 0400: 아마씨(부수었는지에 상관없다)
+- 1204000000: 아마씨(부수었는지에 상관없다)
+[호] 05호: 유채(rape, colza)씨(부수었는지에 상관없다)
+[소호] 0510: 저에루크산(low erucic acid) 유채(rape, colza)의 씨
+- 1205101000: 사료작물 재배용 종자
+- 1205109000: 기타
+[소호] 0590: 기타
+- 1205901000: 사료작물 재배용 종자
+- 1205909000: 기타
+[호] 06호: 해바라기씨(부수었는지에 상관없다)
+[소호] 0600: 해바라기씨(부수었는지에 상관없다)
+- 1206000000: 해바라기씨(부수었는지에 상관없다)
+[호] 07호: 그 밖의 채유(採油)에 적합한 종자와 과실(부수었는지에 상관없다)
+[소호] 0710: 팜너트(palm nut)와 핵(核)
+- 1207100000: 팜너트(palm nut)와 핵(核)
+[소호] 0721: 종자
+- 1207210000: 종자
+[소호] 0729: 기타
+- 1207291000: 사료용
+- 1207299000: 기타
+[소호] 0730: 피마자
+- 1207300000: 피마자
+[소호] 0740: 참깨
+- 1207400000: 참깨
+[소호] 0750: 겨자씨
+- 1207500000: 겨자씨
+[소호] 0760: 잇꽃[카르타무스 틴크토리우스(Carthamus tinctorius)] 종자
+- 1207600000: 잇꽃[카르타무스 틴크토리우스(Carthamus tinctorius)] 종자
+[소호] 0770: 멜론 종자
+- 1207700000: 멜론 종자
+[소호] 0791: 양귀비씨
+- 1207910000: 양귀비씨
+[소호] 0799: 기타
+- 1207991000: 들깨
+- 1207992000: 시어너트(shea nut)[캐리트너트(karite nut)]
+- 1207999000: 기타
+[호] 08호: 채유(採油)에 적합한 종자와 과실의 고운 가루와 거친 가루(겨자의 고운 가루와 거친 가루는 제외한다)
+[소호] 0810: 대두로 만든 것
+- 1208100000: 대두로 만든 것
+[소호] 0890: 기타
+- 1208901000: 고추ㆍ단고추류(Capsicum annuum)의 종자
+- 1208909000: 기타
+[호] 09호: 파종용 종자ㆍ과실ㆍ포자(胞子)
+[소호] 0910: 사탕무 종자
+- 1209100000: 사탕무 종자
+[소호] 0921: 루우산(lucerne)(알팔파) 종자
+- 1209210000: 루우산(lucerne)(알팔파) 종자
+[소호] 0922: 클로버(clover)[트리폴리엄(Trifolium)속] 종자
+- 1209220000: 클로버(clover)[트리폴리엄(Trifolium)속] 종자
+[소호] 0923: 페스큐(fescue) 종자
+- 1209230000: 페스큐(fescue) 종자
+[소호] 0924: 켄터키블루그래스(kentucky blue grass)[포아프래텐시스 엘(Poa pratensis L.)] 종자
+- 1209240000: 켄터키블루그래스(kentucky blue grass)[포아프래텐시스 엘(Poa pratensis L.)] 종자
+[소호] 0925: 라이그래스(rye grass) 종자[로리엄 멀티플로럼 램(Lolium multiflorum Lam)ㆍ로리엄 페레네 엘(Lolium perenne L.)]
+- 1209250000: 라이그래스(rye grass) 종자[로리엄 멀티플로럼 램(Lolium multiflorum Lam)ㆍ로리엄 페레네 엘(Lolium perenne L.)]
+[소호] 0929: 기타
+- 1209291000: 루핀(lupine) 종자
+- 1209292000: 수단그래스(Sudan grass) 종자
+- 1209293000: 오차드그래스(orchard grass) 종자
+- 1209294000: 티모디그래스(timothy grass) 종자
+- 1209299000: 기타
+[소호] 0930: 화초용 초본(草本)식물의 종자
+- 1209300000: 화초용 초본(草本)식물의 종자
+[소호] 0991: 채소 종자
+- 1209911010: 양파 종자
+- 1209911090: 기타
+- 1209912000: 무 종자
+- 1209913000: 고추ㆍ단고추류(Capsicum annuum)의 종자
+- 1209914000: 양배추 종자
+- 1209915000: 토마토 종자
+- 1209919000: 기타
+[소호] 0999: 기타
+- 1209991010: 참나무
+- 1209991090: 기타
+- 1209992000: 과수목의 종자
+- 1209993000: 담배 종자
+- 1209994000: 잔디 종자
+- 1209999000: 기타
+[호] 10호: 홉(hop)[신선하거나 건조한 것으로서 잘게 부순 것인지 또는 가루나 펠릿(pellet) 모양인지에 상관없다], 루플린(lupulin)
+[소호] 1010: 홉(hop)[잘게 부순 것ㆍ가루 모양ㆍ펠릿(pellet) 모양은 제외한다]
+- 1210100000: 홉(hop)[잘게 부순 것ㆍ가루 모양ㆍ펠릿(pellet) 모양은 제외한다]
+[소호] 1020: 홉(hop)[잘게 부순 것ㆍ가루 모양ㆍ펠릿(pellet) 모양으로 한정한다], 루플린(lupulin)
+- 1210201000: 홉(hop)
+- 1210202000: 루플린(lupulin)
+[호] 11호: 주로 향료용ㆍ의료용ㆍ살충용ㆍ살균용과 그 밖에 이와 유사한 용도에 적합한 식물과 그 부분(종자와 과실을 포함하고, 신선한 것ㆍ냉장한 것ㆍ냉동한 것ㆍ건조한 것에 한정하며, 절단하거나 잘게 부순 것인지 또는 가루로 된 것인지에 상관없다)
+[소호] 1120: 인삼
+- 1211201110: 산양삼(山養蔘)
+- 1211201120: 새싹삼
+- 1211201190: 기타
+- 1211201211: 본삼
+- 1211201219: 기타
+- 1211201291: 본삼
+- 1211201299: 기타
+- 1211201311: 본삼
+- 1211201319: 기타
+- 1211201391: 본삼
+- 1211201399: 기타
+- 1211202110: 가루
+- 1211202120: 태블릿이나 캡슐
+- 1211202190: 기타
+- 1211202210: 가루
+- 1211202220: 태블릿이나 캡슐
+- 1211202290: 기타
+- 1211203100: 인삼잎과 줄기
+- 1211203200: 종자
+- 1211209300: 신선ㆍ냉장하거나 건조한 것
+- 1211209900: 기타
+[소호] 1130: 코카잎
+- 1211301000: 신선ㆍ냉장하거나 건조한 것
+- 1211309000: 기타
+[소호] 1140: 양귀비줄기
+- 1211401000: 신선ㆍ냉장하거나 건조한 것
+- 1211409000: 기타
+[소호] 1150: 마황(麻黃)
+- 1211501000: 신선ㆍ냉장하거나 건조한 것
+- 1211509000: 기타
+[소호] 1160: 아프리카 체리(Prunus africana)나무의 껍질
+- 1211601000: 신선ㆍ냉장하거나 건조한 것
+- 1211609000: 기타
+[소호] 1190: 기타
+- 1211901100: 부자(附子)
+- 1211901200: 황련(黃連)
+- 1211901300: 원지(遠志)
+- 1211901400: 패모(貝母)
+- 1211901500: 두충(杜沖)
+- 1211901600: 감초
+- 1211901700: 사인(砂仁)
+- 1211901800: 산조인(酸棗仁)
+- 1211901910: 용안육(龍眼肉)
+- 1211901920: 산사자(山査子)
+- 1211901930: 연자육(蓮子肉)
+- 1211901940: 박하
+- 1211901950: 초피(椒皮)
+- 1211901960: 건조한 도라지
+- 1211901970: 구기자
+- 1211901980: 오미자
+- 1211901991: 사군자(使君子)
+- 1211901992: 백수오
+- 1211901993: 하수오
+- 1211901999: 기타
+- 1211909010: 식용에 적합한 것
+- 1211909090: 기타
+[호] 12호: 로커스트콩(locust bean)ㆍ해초류와 그 밖의 조류(藻類)ㆍ사탕무와 사탕수수(신선한 것ㆍ냉장한 것ㆍ냉동한 것ㆍ건조한 것으로서 잘게 부수었는지에 상관없다), 주로 식용에 적합한 과실의 핵(核)과 그 밖의 식물성 생산품[볶지 않은 시코리엄 인티부스 새티범(Cichorium intybus sativum) 변종의 치커리(chicory) 뿌리를 포함한다]으로서 따로 분류되지 않은 것
+[소호] 1221: 식용
+- 1212211010: 건조한 것
+- 1212211020: 냉장한 것
+- 1212211030: 냉동한 것
+- 1212211090: 기타
+- 1212212010: 건조한 것
+- 1212212020: 염장한 것
+- 1212212030: 냉장한 것
+- 1212212040: 냉동한 것
+- 1212212090: 기타
+- 1212213010: 건조한 것
+- 1212213020: 냉장한 것
+- 1212213030: 냉동한 것
+- 1212213090: 기타
+- 1212214010: 신선한 것
+- 1212214020: 냉장한 것
+- 1212214030: 냉동한 것
+- 1212214090: 기타
+- 1212215010: 염장한 것
+- 1212215020: 냉장한 것
+- 1212215030: 냉동한 것
+- 1212215090: 기타
+- 1212216010: 냉동한 것
+- 1212216090: 기타
+- 1212217011: 냉동한 것
+- 1212217019: 기타
+- 1212217021: 냉동한 것
+- 1212217029: 기타
+- 1212217031: 냉동한 것
+- 1212217039: 기타
+- 1212218011: 냉동한 것
+- 1212218019: 기타
+- 1212218021: 냉동한 것
+- 1212218029: 기타
+- 1212218031: 냉동한 것
+- 1212218039: 기타
+- 1212219011: 냉동한 것
+- 1212219019: 기타
+- 1212219091: 냉동한 것
+- 1212219099: 기타
+[소호] 1229: 기타
+- 1212291010: 냉동한 것
+- 1212291090: 기타
+- 1212292010: 냉동한 것
+- 1212292090: 기타
+- 1212293010: 냉동한 것
+- 1212293090: 기타
+- 1212294010: 냉동한 것
+- 1212294090: 기타
+- 1212295010: 냉동한 것
+- 1212295090: 기타
+- 1212296010: 냉동한 것
+- 1212296090: 기타
+- 1212297011: 냉동한 것
+- 1212297019: 기타
+- 1212297021: 냉동한 것
+- 1212297029: 기타
+- 1212297031: 냉동한 것
+- 1212297039: 기타
+- 1212298011: 냉동한 것
+- 1212298019: 기타
+- 1212298021: 냉동한 것
+- 1212298029: 기타
+- 1212298031: 냉동한 것
+- 1212298039: 기타
+- 1212299011: 냉동한 것
+- 1212299019: 기타
+- 1212299091: 냉동한 것
+- 1212299099: 기타
+[소호] 1291: 사탕무
+- 1212910000: 사탕무
+[소호] 1292: 로커스트콩(locust bean)(캐롭)
+- 1212920000: 로커스트콩(locust bean)(캐롭)
+[소호] 1293: 사탕수수
+- 1212930000: 사탕수수
+[소호] 1294: 치커리(chicory) 뿌리
+- 1212940000: 치커리(chicory) 뿌리
+[소호] 1299: 기타
+- 1212992000: 곤약
+- 1212993000: 꽃가루
+- 1212996000: 살구ㆍ복숭아[넥터린(nectarine)을 포함한다]ㆍ자두의 핵(核)
+- 1212999000: 기타
+[호] 13호: 곡물의 짚과 껍질[조제하지 않은 것으로 한정하며, 절단하거나 잘게 부수거나 압착한 것인지 또는 펠릿(pellet) 모양인지에 상관없다]
+[소호] 1300: 곡물의 짚과 껍질[조제하지 않은 것으로 한정하며, 절단하거나 잘게 부수거나 압착한 것인지 또는 펠릿(pellet) 모양인지에 상관없다]
+- 1213000000: 곡물의 짚과 껍질[조제하지 않은 것으로 한정하며, 절단하거나 잘게 부수거나 압착한 것인지 또는 펠릿(pellet) 모양인지에 상관없다]
+[호] 14호: 스위드(swede)ㆍ맹골드(mangold)ㆍ사료용 뿌리채소류(根菜類)ㆍ건초ㆍ루우산(lucerne)(알팔파)ㆍ클로버(clover)ㆍ샌포인(sainfoin)ㆍ사료용 케일(kale)ㆍ루핀(lupine)ㆍ베치(vetch)와 이와 유사한 사료용 식물[펠릿(pellet) 모양인지에 상관없다]
+[소호] 1410: 루우산(lucerne)(알팔파)의 거친 가루와 펠릿(pellet)
+- 1214101000: 사료용
+- 1214109000: 기타
+[소호] 1490: 기타
+- 1214901000: 사료용 뿌리채소류
+- 1214909011: 사료용
+- 1214909019: 기타
+- 1214909090: 기타
+
+[제13류] 제13류 락(lac), 검ㆍ수지ㆍ그 밖의 식물성 수액과 추출물(extract)
+제13류는 식물성 수액, 검(gum), 수지(resin), 추출물(extract) 등을 포함하며, 주요 예: 감초·홉·알로에 추출물, 아편 등. 다음은 제외한다: 감초 추출물 중 자당 10% 초과 또는 과자 형태 → hs_code 1704. 맥아 추출물 → hs_code 1901. 커피·차·마테 추출물 → hs_code 2101. 알코올음료용 추출물 → 22류. 장뇌·글리시리진 등 → hs_code 2914, hs_code 2938. 알칼로이드 50% 이상 팝피 농축물 → hs_code 2939. 의약품·혈액형 분류 시약 → hs_code 3003, hs_code 3004, hs_code 3822. 유연용·염색용 추출물 → hs_code 3201, hs_code 3203. 정유·향료 제품 → 33류. 천연고무·구아율·치클 등 → hs_code 4001
+
+[호] 01호: 락(lac), 천연 검ㆍ수지ㆍ검 수지ㆍ올레오레진(oleoresin)[예: 발삼(balsam)]
+[소호] 0120: 아라비아 검
+- 1301200000: 아라비아 검
+[소호] 0190: 기타
+- 1301901000: 올레오레진(oleoresin)
+- 1301902010: 쉘락(shellac)
+- 1301902090: 기타
+- 1301909000: 기타
+[호] 02호: 식물성 수액과 추출물(extract), 펙틴질, 펙티닝산염(pectinate)과 펙틴산염(pectate), 식물성 원료에서 얻은 한천ㆍ그 밖의 점질물과 시커너(thickener)(변성 가공했는지에 상관없다)
+[소호] 0211: 아편
+- 1302110000: 아편
+[소호] 0212: 감초로 만든 것
+- 1302120000: 감초로 만든 것
+[소호] 0213: 홉(hop)으로 만든 것
+- 1302130000: 홉(hop)으로 만든 것
+[소호] 0214: 마황(麻黃)으로 만든 것
+- 1302140000: 마황(麻黃)으로 만든 것
+[소호] 0219: 기타
+- 1302191110: 인삼 추출물(extract)
+- 1302191120: 인삼 추출물(extract) 가루
+- 1302191190: 기타
+- 1302191210: 홍삼 추출물(extract)
+- 1302191220: 홍삼 추출물(extract) 가루
+- 1302191290: 기타
+- 1302191900: 기타
+- 1302192000: 캐슈너트 쉘액(cashew nut shell liquid)
+- 1302193000: 생칠(生漆)
+- 1302199010: 알로에 수액과 추출물(extract)
+- 1302199020: 콜라 추출물(extract)
+- 1302199031: 당귀(當歸) 추출물
+- 1302199032: 오미자(五味子) 추출물
+- 1302199033: 작약(芍藥) 추출물
+- 1302199034: 천궁(川芎) 추출물
+- 1302199035: 황기(黃？) 추출물
+- 1302199039: 기타
+- 1302199091: 바닐라 올레오레진이나 바닐라 추출물(extract)
+- 1302199099: 기타
+[소호] 0220: 펙틴질ㆍ펙티닝산염(pectinate)과 펙틴산염(pectate)
+- 1302200000: 펙틴질ㆍ펙티닝산염(pectinate)과 펙틴산염(pectate)
+[소호] 0231: 한천
+- 1302311000: 실 한천
+- 1302312000: 가루 한천
+- 1302319000: 기타
+[소호] 0232: 로커스트콩(locust bean)ㆍ로커스트콩(locust bean)의 씨나 구아(guar)의 씨로부터 얻은 점질물과 시커너(thickener)(변성 가공했는지에 상관없다)
+- 1302320000: 로커스트콩(locust bean)ㆍ로커스트콩(locust bean)의 씨나 구아(guar)의 씨로부터 얻은 점질물과 시커너(thickener)(변성 가공했는지에 상관없다)
+[소호] 0239: 기타
+- 1302390000: 기타
+
+[제14류] 제14류 식물성 편조물(編組物)용 재료와 다른 류로 분류되지 않은 식물성 생산품
+이 류에는 다음을 포함한다: 편조물·브러시·충전재용 원료 또는 간단한 가공 식물성 재료. 조각, 단추, 장신구 제조용 종자·껍질·핵. 다른 류에 속하지 않는 기타 식물성 생산품 제외: 직물 제조용 또는 방직용으로 가공된 식물성 재료
+
+[호] 01호: 편조물(編組物)에 주로 사용되는 식물성 재료[예: 대나무, 등나무, 갈대, 골풀, 버드나무 가지(osier), 라피아(raffia), 청정ㆍ표백ㆍ염색한 곡물의 짚과 라임나무(lime) 껍질]
+[소호] 0110: 대나무
+- 1401102000: 청환죽(靑丸竹)
+- 1401109000: 기타
+[소호] 0120: 등나무
+- 1401200000: 등나무
+[소호] 0190: 기타
+- 1401900000: 기타
+[호] 04호: 따로 분류되지 않은 식물성 생산품
+[소호] 0420: 면(綿) 린터(linter)
+- 1404200000: 면(綿) 린터(linter)
+[소호] 0490: 기타
+- 1404901000: 조각용 종자ㆍ껍질ㆍ너트(예: 상아야자)
+- 1404902010: 닥나무나 꾸지나무(paper mulberry) 껍질
+- 1404902090: 기타
+- 1404903010: 떡갈잎
+- 1404903020: 청미래덩굴잎
+- 1404903090: 기타
+- 1404904000: 충전용으로 주로 사용되는 식물성 재료[예: 케이폭(kapok)ㆍ식물성？헤어ㆍ거머리말][층상(層狀)으로 한 것인지 또는 지지물을 사용했는지에 상관없다]
+- 1404905000: 비나 브러시를 만드는 데 주로 사용되는 식물성 재료[예: 수수류ㆍ피아사바(piassava)ㆍ카우치 그라스(couch-grass)ㆍ이스틸리(istle)](다발이나 꾸러미 상태인지에 상관없다)
+- 1404906010: 오배자(五倍子)
+- 1404906020: 아몬드 껍질(almond hull)
+- 1404906090: 기타
+- 1404909000: 기타
+
+[제15류] 제15류 동물성ㆍ식물성ㆍ미생물성 지방과 기름 및이들의 분해생산물, 조제한 식용 지방과 동물성ㆍ식물성 왁스
+다음 포함: 가공하지 않거나 정제/처리한 지방·기름, 지방·기름의 분해생성물(예: 가공 전 글리세롤), 조제 식용 지방·기름(예: 마가린), 동물·식물성 왁스, 지방성 물질·왁스 가공 시 발생한 잔유물. 제외: 살코기 없는 돼지·가금 비계 → hs_code 0209. 밀크버터·유지방 → hs_code 0405. 코코아 버터 → hs_code 1804. 유지박 → hs_code 2301, hs_code 2304~2306. 정제 부산물·산유·조제왁스·비누·화장품 등 → hs_code 3003, hs_code 3004, hs_code 3303~3307, hs_code 3403. 팩티스 → hs_code 4002 (식용/비식용과 상관없이, 제외에 해당하지 않으면 대부분 15류)
+
+[호] 01호: 돼지의 지방[라드(lard)를 포함한다]과 가금(家禽)의 지방(제0209호나 제1503호의 것은 제외한다)
+[소호] 0110: 라드(lard)
+- 1501101000: 산가(酸價)가 1 이하인 것
+- 1501109000: 기타
+[소호] 0120: 그 밖의 돼지의 지방
+- 1501200000: 그 밖의 돼지의 지방
+[소호] 0190: 기타
+- 1501900000: 기타
+[호] 02호: 소ㆍ면양ㆍ염소의 지방(제1503호의 것은 제외한다)
+[소호] 0210: 탤로우(tallow)
+- 1502101010: 산가(酸價)가 2 이하인 것
+- 1502101090: 기타
+- 1502109000: 기타
+[소호] 0290: 기타
+- 1502901000: 소의 것
+- 1502909000: 기타
+[호] 03호: 라드스테아린(lard stearin), 라드유(lard oil), 올레오스테아린(oleostearin), 올레오유(oleo-oil), 탤로우유(tallow oil)로서 유화ㆍ혼합이나 그 밖의 조제를 하지 않은 것
+[소호] 0300: 라드스테아린(lard stearin), 라드유(lard oil), 올레오스테아린(oleostearin), 올레오유(oleo-oil), 탤로우유(tallow oil)로서 유화ㆍ혼합이나 그 밖의 조제를 하지 않은 것
+- 1503002000: 라드유(lard oil)
+- 1503009000: 기타
+[호] 04호: 어류나 바다에서 사는 포유동물의 지방과 기름 및 그 분획물(정제했는지에 상관없으며 화학적으로 변성 가공한 것은 제외한다)
+[소호] 0410: 어류의 간유(肝油)와 그 분획물
+- 1504101000: 상어의 간유(肝油)와 그 분획물
+- 1504109000: 기타
+[소호] 0420: 어류의 지방과 기름 및 그 분획물[간유(肝油)는 제외한다]
+- 1504200000: 어류의 지방과 기름 및 그 분획물[간유(肝油)는 제외한다]
+[소호] 0430: 바다에서 사는 포유동물의 지방과 기름 및 그 분획물
+- 1504301000: 고래기름과 그 분획물
+- 1504309000: 기타
+[호] 05호: 울그리스(wool grease)와 이것에서 얻은 지방성 물질[라놀린(lanolin)을 포함한다]
+[소호] 0500: 울그리스(wool grease)와 이것에서 얻은 지방성 물질[라놀린(lanolin)을 포함한다]
+- 1505001000: 가공하지 않은 울그리스(wool grease)
+- 1505009000: 기타
+[호] 06호: 그 밖의 동물성 지방과 기름 및 그 분획물(정제했는지에 상관없으며 화학적으로 변성 가공한 것은 제외한다)
+[소호] 0600: 그 밖의 동물성 지방과 기름 및 그 분획물(정제했는지에 상관없으며 화학적으로 변성 가공한 것은 제외한다)
+- 1506001000: 우각유(neat's foot oil)와 그 분획물
+- 1506009000: 기타
+[호] 07호: 대두유와 그 분획물(정제했는지에 상관없으며 화학적으로 변성 가공한 것은 제외한다)
+[소호] 0710: 조유(粗油)[검(gum)질을 제거했는지에 상관없다]
+- 1507101000: 식품용
+- 1507102000: 바이오디젤 제조용
+- 1507109000: 기타
+[소호] 0790: 기타
+- 1507901010: 식품용
+- 1507901020: 바이오디젤 제조용
+- 1507901090: 기타
+- 1507909000: 기타
+[호] 08호: 땅콩기름과 그 분획물(정제했는지에 상관없으며 화학적으로 변성 가공한 것은 제외한다)
+[소호] 0810: 조유(粗油)
+- 1508100000: 조유(粗油)
+[소호] 0890: 기타
+- 1508901000: 정제유(精製油)
+- 1508909000: 기타
+[호] 09호: 올리브유와 그 분획물(정제했는지에 상관없으며 화학적으로 변성 가공한 것은 제외한다)
+[소호] 0920: 엑스트라 버진 올리브유
+- 1509200000: 엑스트라 버진 올리브유
+[소호] 0930: 버진 올리브유
+- 1509300000: 버진 올리브유
+[소호] 0940: 그 밖의 버진 올리브유
+- 1509400000: 그 밖의 버진 올리브유
+[소호] 0990: 기타
+- 1509900000: 기타
+[호] 10호: 그 밖의 올리브유와 그 분획물(올리브에서 얻은 것으로서 정제했는지에 상관없으며 화학적으로 변성 가공한 것은 제외하고, 이들의 기름이나 그 분획물이 제1509호의 기름이나 그 분획물과 혼합된 것을 포함한다)
+[소호] 1010: 올리브 퍼미스 조유(粗油)
+- 1510100000: 올리브 퍼미스 조유(粗油)
+[소호] 1090: 기타
+- 1510900000: 기타
+[호] 11호: 팜유와 그 분획물(정제했는지에 상관없으며 화학적으로 변성 가공한 것은 제외한다)
+[소호] 1110: 조유(粗油)
+- 1511100000: 조유(粗油)
+[소호] 1190: 기타
+- 1511901000: 팜 올레인(palm olein)
+- 1511902000: 팜 스테아린(palm stearin)
+- 1511909000: 기타
+[호] 12호: 해바라기씨유ㆍ잇꽃유ㆍ목화씨유와 그 분획물(정제했는지에 상관없으며 화학적으로 변성 가공한 것은 제외한다)
+[소호] 1211: 조유(粗油)
+- 1512111000: 해바라기씨유
+- 1512112000: 잇꽃유
+[소호] 1219: 기타
+- 1512191010: 해바라기씨유
+- 1512191020: 잇꽃유
+- 1512199010: 해바라기씨유
+- 1512199020: 잇꽃유
+[소호] 1221: 조유(粗油)[고시폴(gossypol)을 제거했는지에 상관없다]
+- 1512210000: 조유(粗油)[고시폴(gossypol)을 제거했는지에 상관없다]
+[소호] 1229: 기타
+- 1512291000: 정제유(精製油)
+- 1512299000: 기타
+[호] 13호: 야자[코프라(copra)]유, 팜핵유(palm kernel oil), 바바수유(babassu oil)와 이들의 분획물(정제했는지에 상관없으며 화학적으로 변성 가공한 것은 제외한다)
+[소호] 1311: 조유(粗油)
+- 1513110000: 조유(粗油)
+[소호] 1319: 기타
+- 1513191000: 정제유(精製油)
+- 1513199000: 기타
+[소호] 1321: 조유(粗油)
+- 1513211000: 팜핵유(palm kernel oil)
+- 1513212000: 바바수유(babassu oil)
+[소호] 1329: 기타
+- 1513291010: 팜핵유(palm kernel oil)
+- 1513291020: 바바수유(babassu oil)
+- 1513299000: 기타
+[호] 14호: 유채유(rape oil, colza oil), 겨자유와 이들의 분획물(정제했는지에 상관없으며 화학적으로 변성 가공한 것은 제외한다)
+[소호] 1411: 조유(粗油)
+- 1514110000: 조유(粗油)
+[소호] 1419: 기타
+- 1514191000: 정제유(精製油)
+- 1514199000: 기타
+[소호] 1491: 조유(粗油)
+- 1514911000: 그 밖의 유채유(rape oil, colza oil)
+- 1514912000: 겨자유
+[소호] 1499: 기타
+- 1514991010: 그 밖의 유채유(rape oil, colza oil)
+- 1514991020: 겨자유
+- 1514999000: 기타
+[호] 15호: 그 밖의 비휘발성인 식물성ㆍ미생물성 지방과 기름[호호바유(jojoba oil)를 포함한다]과 그 분획물(정제했는지에 상관없으며 화학적으로 변성 가공한 것은 제외한다)
+[소호] 1511: 조유(粗油)
+- 1515110000: 조유(粗油)
+[소호] 1519: 기타
+- 1515190000: 기타
+[소호] 1521: 조유(粗油)
+- 1515210000: 조유(粗油)
+[소호] 1529: 기타
+- 1515290000: 기타
+[소호] 1530: 피마자유와 그 분획물
+- 1515300000: 피마자유와 그 분획물
+[소호] 1550: 참기름과 그 분획물
+- 1515500000: 참기름과 그 분획물
+[소호] 1560: 미생물성 지방과 기름 및 이들의 분획물
+- 1515600000: 미생물성 지방과 기름 및 이들의 분획물
+[소호] 1590: 기타
+- 1515901000: 들기름과 그 분획물
+- 1515909010: 쌀겨기름과 그 분획물
+- 1515909020: 동백유와 그 분획물
+- 1515909030: 호호바유(jojoba oil)와 그 분획물
+- 1515909040: 동유(tung oil)와 그 분획물
+- 1515909090: 기타
+[호] 16호: 동물성ㆍ식물성ㆍ미생물성 지방과 기름 및 이들의 분획물[전체적으로나 부분적으로 수소를 첨가한 것, 인터에스텔화한(inter-esterified) 것, 리에스텔화한(re-esterified) 것, 엘라이딘화한(elaidinised) 것으로 한정하며, 정제했는지에 상관없으며 더 이상 가공한 것은 제외한다]
+[소호] 1610: 동물성 지방과 기름 및 이들의 분획물
+- 1516101000: 우지(牛脂)와 그 분획물
+- 1516102000: 고래기름과 그 분획물
+- 1516109000: 기타
+[소호] 1620: 식물성 지방과 기름 및 이들의 분획물
+- 1516201010: 땅콩기름과 그 분획물
+- 1516201020: 해바라기씨유와 그 분획물
+- 1516201030: 유채유(rape oil, colza oil)와 그 분획물
+- 1516201040: 들기름과 그 분획물
+- 1516201050: 참기름과 그 분획물
+- 1516202010: 야자[코프라(copra)]유와 그 분획물
+- 1516202020: 팜유와 그 분획물
+- 1516202030: 옥수수유와 그 분획물
+- 1516202040: 목화씨유와 그 분획물
+- 1516202050: 대두유와 그 분획물
+- 1516202090: 기타
+[소호] 1630: 미생물성 지방과 기름 및 이들의 분획물
+- 1516300000: 미생물성 지방과 기름 및 이들의 분획물
+[호] 17호: 마가린, 동물성ㆍ식물성ㆍ미생물성 지방이나 기름 또는 이 류의 다른 지방이나 기름의 분획물로 만든 식용 혼합물이나 조제품(제1516호의 식용 지방이나 기름 또는 이들의 분획물은 제외한다)
+[소호] 1710: 마가린(액상 마가린은 제외한다)
+- 1517100000: 마가린(액상 마가린은 제외한다)
+[소호] 1790: 기타
+- 1517901000: 이미테이션 라드
+- 1517902000: 쇼트닝
+- 1517909000: 기타
+[호] 18호: 동물성ㆍ식물성ㆍ미생물성 지방과 기름 및 이들의 분획물(끓이거나 산화ㆍ탈수ㆍ황화ㆍ취입하거나 진공상태나 불활성 가스에서 가열중합하거나 그 밖의 화학적 변성을 한 것으로 한정하며, 제1516호의 물품은 제외한다), 따로 분류되지 않은 것으로서 식용에 적합하지 않은 동물성ㆍ식물성ㆍ미생물성 지방이나 기름 또는 이 류의 다른 지방이나 기름의 분획물의 혼합물이나 조제품
+[소호] 1800: 동물성ㆍ식물성ㆍ미생물성 지방과 기름 및 이들의 분획물(끓이거나 산화ㆍ탈수ㆍ황화ㆍ취입하거나 진공상태나 불활성 가스에서 가열중합하거나 그 밖의 화학적 변성을 한 것으로 한정하며, 제1516호의 물품은 제외한다), 따로 분류되지 않은 것으로서 식용에 적합하지 않은 동물성ㆍ식물성ㆍ미생물성 지방이나 기름 또는 이 류의 다른 지방이나 기름의 분획물의 혼합물이나 조제품
+- 1518001000: 탈수피마자유
+- 1518002000: 에폭시화(epoxidised)한 대두유
+- 1518009010: 사료용
+- 1518009090: 기타
+[호] 20호: 글리세롤(glycerol)(가공하지 않은 것으로 한정한다), 글리세롤 수(水), 글리세롤 폐액(廢液)
+[소호] 2000: 글리세롤(glycerol)(가공하지 않은 것으로 한정한다), 글리세롤 수(水), 글리세롤 폐액(廢液)
+- 1520000000: 글리세롤(glycerol)(가공하지 않은 것으로 한정한다), 글리세롤 수(水), 글리세롤 폐액(廢液)
+[호] 21호: 식물성 왁스[트리글리세라이드(triglyceride)는 제외한다]ㆍ밀랍(蜜蠟)과 그 밖의 곤충 왁스ㆍ고래 왁스(정제했는지 또는 착색했는지에 상관없다)
+[소호] 2110: 식물성 왁스
+- 1521101000: 카나버 왁스
+- 1521102000: 팜왁스
+- 1521109000: 기타
+[소호] 2190: 기타
+- 1521901000: 고래 왁스
+- 1521902000: 밀랍(蜜蠟)
+- 1521909000: 기타
+[호] 22호: 데그라스(degras), 지방성 물질이나 동물성ㆍ식물성 왁스를 처리할 때 생기는 잔유물
+[소호] 2200: 데그라스(degras), 지방성 물질이나 동물성ㆍ식물성 왁스를 처리할 때 생기는 잔유물
+- 1522000000: 데그라스(degras), 지방성 물질이나 동물성ㆍ식물성 왁스를 처리할 때 생기는 잔유물
+
+[제16류] 제16류 육류ㆍ어류ㆍ갑각류ㆍ연체동물이나 그 밖의 수생(水生) 무척추동물 또는 곤충의 조제품
+다음 포함: 소시지 및 유사 조제품, 조리(굽기·튀김·삶기 등)된 육·설육·어류·갑각류 등, 추출물·마리네이드·캐비어·조미 제품, 육/어류 등을 균질화한 조제품, 육·어류 등을 20% 초과 포함한 ‘조제식(prepared meal)’. 제외: 생육·비조제 → 02류, 03류. 생선·갑각류 조리/훈제 규정에 따라 hs_code 0305~0309. 식용 고운 가루·거친 가루(육 → hs_code 0210, 어류 → hs_code 0309, 곤충 → hs_code 0410).  비식용 가루 → hs_code 0511, hs_code 2301. 사료용 조제품 → hs_code 2309. 의약품 → 30류
+
+[호] 01호: 소시지나 그 밖에 이와 유사한 물품[육ㆍ설육(屑肉)ㆍ피ㆍ곤충으로 조제한 것으로 한정한다]과 이들 물품을 기본 재료로 한 조제 식료품
+[소호] 0100: 소시지나 그 밖에 이와 유사한 물품[육ㆍ설육(屑肉)ㆍ피ㆍ곤충으로 조제한 것으로 한정한다]과 이들 물품을 기본 재료로 한 조제 식료품
+- 1601001000: 소시지
+- 1601009000: 기타
+[호] 02호: 그 밖의 조제하거나 보존처리한 육ㆍ설육(屑肉)ㆍ피ㆍ곤충
+[소호] 0210: 균질화한 조제품
+- 1602100000: 균질화한 조제품
+[소호] 0220: 동물 간으로 만든 것
+- 1602201000: 밀폐용기에 넣은 것
+- 1602209000: 기타
+[소호] 0231: 칠면조로 만든 것
+- 1602311000: 밀폐용기에 넣은 것
+- 1602319000: 기타
+[소호] 0232: 닭[갈루스 도메스티쿠스(Gallus domesticus)종의 것으로 한정한다]으로 만든 것
+- 1602321010: 삼계탕
+- 1602321090: 기타
+- 1602329000: 기타
+[소호] 0239: 기타
+- 1602391000: 밀폐용기에 넣은 것
+- 1602399000: 기타
+[소호] 0241: 넓적다리살과 그 절단육
+- 1602411000: 밀폐용기에 넣은 것
+- 1602419000: 기타
+[소호] 0242: 어깨살과 그 절단육
+- 1602421000: 밀폐용기에 넣은 것
+- 1602429000: 기타
+[소호] 0249: 기타(혼합물을 포함한다)
+- 1602491000: 밀폐용기에 넣은 것
+- 1602499000: 기타
+[소호] 0250: 소로 만든 것
+- 1602501000: 밀폐용기에 넣은 것
+- 1602509000: 기타
+[소호] 0290: 기타(동물의 피 조제품을 포함한다)
+- 1602901000: 밀폐용기에 넣은 것
+- 1602909000: 기타
+[호] 03호: 육ㆍ어류ㆍ갑각류ㆍ연체동물이나 그 밖의 수생(水生) 무척추동물의 추출물(extract)과 즙
+[소호] 0300: 육ㆍ어류ㆍ갑각류ㆍ연체동물이나 그 밖의 수생(水生) 무척추동물의 추출물(extract)과 즙
+- 1603001000: 육 추출물(extract)
+- 1603002000: 육즙
+- 1603003000: 어류의 추출물(extract)
+- 1603004000: 어류의 즙
+- 1603009000: 기타
+[호] 04호: 조제하거나 보존처리한 어류, 캐비어, 어란(魚卵)으로 조제한 캐비어 대용물
+[소호] 0411: 연어
+- 1604111000: 밀폐용기에 넣은 것
+- 1604119000: 기타
+[소호] 0412: 청어
+- 1604121000: 밀폐용기에 넣은 것
+- 1604129000: 기타
+[소호] 0413: 정어리ㆍ사르디넬라(Sardinella)ㆍ브리스링(brisling)ㆍ스프랫(sprat)
+- 1604131000: 밀폐용기에 넣은 것
+- 1604139000: 기타
+[소호] 0414: 다랑어ㆍ가다랑어ㆍ버니토(bonito)[사르다(Sarda)속]
+- 1604141011: 기름에 담근 것
+- 1604141012: 삶은 것
+- 1604141019: 기타
+- 1604141021: 기름에 담근 것
+- 1604141029: 기타
+- 1604141031: 기름에 담근 것
+- 1604141039: 기타
+- 1604149000: 기타
+[소호] 0415: 고등어
+- 1604151000: 밀폐용기에 넣은 것
+- 1604159000: 기타
+[소호] 0416: 멸치
+- 1604161000: 밀폐용기에 넣은 것
+- 1604169000: 기타
+[소호] 0417: 뱀장어
+- 1604171000: 밀폐용기에 넣은 것
+- 1604179000: 기타
+[소호] 0418: 상어 지느러미
+- 1604180000: 상어 지느러미
+[소호] 0419: 기타
+- 1604191010: 꽁치
+- 1604191020: 전갱이
+- 1604191090: 기타
+- 1604199010: 쥐치포
+- 1604199090: 기타
+[소호] 0420: 그 밖의 조제하거나 보존처리한 어류
+- 1604201000: 생선 페이스트(paste)
+- 1604202000: 생선 마리네이드(marinade)
+- 1604203000: 생선소시지
+- 1604204010: 게맛의 것
+- 1604204090: 기타
+- 1604209000: 기타
+[소호] 0431: 캐비어
+- 1604310000: 캐비어
+[소호] 0432: 캐비어 대용물
+- 1604320000: 캐비어 대용물
+[호] 05호: 조제하거나 보존처리한 갑각류ㆍ연체동물ㆍ그 밖의 수생(水生) 무척추동물
+[소호] 0510: 게
+- 1605101010: 밀폐용기에 넣은 것
+- 1605101091: 붉은대게살
+- 1605101099: 기타
+- 1605109000: 기타
+[소호] 0521: 밀폐용기에 넣지 않은 것
+- 1605211000: 빵가루나 반죽을 입힌 것
+- 1605219000: 기타
+[소호] 0529: 기타
+- 1605290000: 기타
+[소호] 0530: 바닷가재
+- 1605301000: 밀폐용기에 넣은 것
+- 1605309000: 기타
+[소호] 0540: 그 밖의 갑각류
+- 1605401000: 밀폐용기에 넣은 것
+- 1605409000: 기타
+[소호] 0551: 굴
+- 1605511000: 밀폐용기에 넣은 것
+- 1605519000: 기타
+[소호] 0552: 가리비과의 조개(여왕 가리비과 조개를 포함한다)
+- 1605520000: 가리비과의 조개(여왕 가리비과 조개를 포함한다)
+[소호] 0553: 홍합
+- 1605531000: 밀폐용기에 넣은 것
+- 1605539000: 기타
+[소호] 0554: 갑오징어와 오징어
+- 1605541000: 갑오징어
+- 1605542010: 밀폐용기에 넣은 것
+- 1605542091: 조미오징어
+- 1605542099: 기타
+[소호] 0555: 문어
+- 1605550000: 문어
+[소호] 0556: 클램(clam), 새조개, 피조개
+- 1605561010: 밀폐용기에 넣은 것
+- 1605561090: 기타
+- 1605562010: 밀폐용기에 넣은 것
+- 1605562090: 기타
+- 1605569010: 밀폐용기에 넣은 것
+- 1605569090: 기타
+[소호] 0557: 전복
+- 1605571000: 밀폐용기에 넣은 것
+- 1605579000: 기타
+[소호] 0558: 달팽이(바다달팽이는 제외한다)
+- 1605581000: 밀폐용기에 넣은 것
+- 1605589000: 기타
+[소호] 0559: 기타
+- 1605591010: 밀폐용기에 넣은 것
+- 1605591090: 기타
+- 1605592010: 밀폐용기에 넣은 것
+- 1605592090: 기타
+- 1605599010: 밀폐용기에 넣은 것
+- 1605599090: 기타
+[소호] 0561: 해삼
+- 1605611000: 밀폐용기에 넣은 것
+- 1605619000: 기타
+[소호] 0562: 성게
+- 1605621000: 밀폐용기에 넣은 것
+- 1605629000: 기타
+[소호] 0563: 해파리
+- 1605631000: 밀폐용기에 넣은 것
+- 1605639000: 기타
+[소호] 0569: 기타
+- 1605690000: 기타
+
+[제17류] 제17류 당류(糖類)와 설탕과자
+다음 포함: 자당, 유당, 맥아당, 포도당, 과당, 설탕 시럽, 인조꿀, 캐러멜, 당밀, 설탕과자(캔디 등). 제외: 코코아/초콜릿 함유 설탕과자 → hs_code 1806. 19·20·21·22류의 단맛 첨가 조제품. 단맛 사료 → hs_code 2309. 화학적으로 순수한 당류 → hs_code 2940. 설탕함유 의약품 → hs_code 30류
+
+[호] 01호: 사탕수수당이나 사탕무당, 화학적으로 순수한 자당(蔗糖)(고체 상태인 것으로 한정한다)
+[소호] 0112: 사탕무당
+- 1701121000: 편광도수가 98.5도 이하인 것
+- 1701122000: 편광도수가 98.5도를 초과하는 것
+[소호] 0113: 이 류의 소호주 제2호에 규정된 사탕수수당
+- 1701130000: 이 류의 소호주 제2호에 규정된 사탕수수당
+[소호] 0114: 그 밖의 사탕수수당
+- 1701141000: 편광도수가 98.5도 이하인 것
+- 1701142000: 편광도수가 98.5도를 초과하는 것
+[소호] 0191: 향미제(香味劑)나 착색제가 첨가된 것
+- 1701910000: 향미제(香味劑)나 착색제가 첨가된 것
+[소호] 0199: 기타
+- 1701990000: 기타
+[호] 02호: 그 밖의 당류(糖類)[화학적으로 순수한 유당(乳糖)ㆍ맥아당ㆍ포도당ㆍ과당을 포함하며, 고체상태인 것으로 한정한다], 당시럽[향미제(香味劑)나 착색제를 첨가하지 않은 것으로 한정한다], 인조꿀(천연꿀을 혼합했는지에 상관없다), 캐러멜당
+[소호] 0211: 건조 상태에서 측정한 유당(乳糖)[무수유당(無水乳糖)]의 함유량이 전 중량의 100분의 99 이상인 것
+- 1702111000: 유당(乳糖)
+- 1702119000: 유당(乳糖)시럽
+[소호] 0219: 기타
+- 1702191000: 유당(乳糖)
+- 1702199000: 유당(乳糖)시럽
+[소호] 0220: 단풍당과 단풍당시럽
+- 1702201000: 단풍당
+- 1702202000: 단풍당시럽
+[소호] 0230: 포도당과 포도당시럽(과당을 함유하지 않거나 건조 상태에서 과당의 함유량이 전 중량의 100분의 20 미만인 것으로 한정한다)
+- 1702301000: 포도당
+- 1702302000: 포도당시럽
+[소호] 0240: 포도당과 포도당시럽(건조 상태에서 과당의 함유량이 전 중량의 100분의 20 이상 100분의 50 미만인 것으로 한정한다). 다만, 전화당(轉化糖)은 제외한다.
+- 1702401000: 포도당
+- 1702402000: 포도당시럽
+[소호] 0250: 화학적으로 순수한 과당
+- 1702500000: 화학적으로 순수한 과당
+[소호] 0260: 그 밖의 과당과 과당시럽(건조 상태에서 과당의 함유량이 전 중량의 100분의 50을 초과하는 것으로 한정한다). 다만, 전화당(轉化糖)은 제외한다.
+- 1702601000: 과당
+- 1702602000: 과당시럽
+[소호] 0290: 기타[전화당(轉化糖)과 그 밖의 당류(糖類)와 당시럽 혼합물(건조 상태에서 과당의 함유량이 전 중량의 100분의 50인 것으로 한정한다)을 포함한다]
+- 1702901000: 인조꿀
+- 1702902000: 캐러멜당
+- 1702903000: 맥아당
+- 1702909000: 기타
+[호] 03호: 당밀(糖蜜)[당류(糖類)를 추출하거나 정제할 때 생긴 것으로 한정한다]
+[소호] 0310: 사탕수수에서 생긴 당밀(糖蜜)
+- 1703101000: 주정 제조용
+- 1703109000: 기타
+[소호] 0390: 기타
+- 1703901000: 주정 제조용
+- 1703909000: 기타
+[호] 04호: 설탕과자(백색 초콜릿을 포함하며, 코코아를 함유한 것은 제외한다)
+[소호] 0410: 추잉껌(당을 도포하였는지에 상관없다)
+- 1704100000: 추잉껌(당을 도포하였는지에 상관없다)
+[소호] 0490: 기타
+- 1704901000: 감초 추출물(과자로 만들어진 것은 제외한다)
+- 1704902010: 드롭스(drops)
+- 1704902020: 캐러멜
+- 1704902090: 기타
+- 1704909000: 기타
+
+[제18류] 제18류 코코아와 그 조제품
+다음 포함: 코코아두, 코코아 버터·유지, 코코아 함유 조제품(함량 무관). 제외: 요구르트 → hs_code 0403. 백색 초콜릿 → hs_code 1704. 곡물·유제품 조제품 중 코코아 함량 기준 해당 시 → hs_code 1901. 코코아 ≤6% 포함 곡물류 → hs_code 1904. 코코아 함유 베이커리 → hs_code 1905. 코코아 함유 아이스크림 → hs_code 2105. 코코아 함유 음료 → 22류. 의약품 → hs_code 3003, hs_code 3004. 테오브로민 → hs_code 2939
+
+[호] 01호: 코코아두(원래 모양이나 부순 것으로서 생 것이나 볶은 것으로 한정한다)
+[소호] 0100: 코코아두(원래 모양이나 부순 것으로서 생 것이나 볶은 것으로 한정한다)
+- 1801001000: 생 것
+- 1801002000: 볶은 것
+[호] 02호: 코코아의 껍데기와 껍질, 그 밖의 코코아 웨이스트(waste)
+[소호] 0200: 코코아의 껍데기와 껍질, 그 밖의 코코아 웨이스트(waste)
+- 1802001000: 코코아의 껍데기와 껍질
+- 1802009000: 기타
+[호] 03호: 코코아 페이스트(paste)[탈지(脫脂)한 것인지에 상관없다]
+[소호] 0310: 탈지(脫脂)하지 않은 것
+- 1803100000: 탈지(脫脂)하지 않은 것
+[소호] 0320: 전부나 일부를 탈지(脫脂)한 것
+- 1803200000: 전부나 일부를 탈지(脫脂)한 것
+[호] 04호: 코코아 버터, 지방과 기름
+[소호] 0400: 코코아 버터, 지방과 기름
+- 1804000000: 코코아 버터, 지방과 기름
+[호] 05호: 코코아 가루(설탕이나 그 밖의 감미료를 첨가한 것은 제외한다)
+[소호] 0500: 코코아 가루(설탕이나 그 밖의 감미료를 첨가한 것은 제외한다)
+- 1805000000: 코코아 가루(설탕이나 그 밖의 감미료를 첨가한 것은 제외한다)
+[호] 06호: 초콜릿과 코코아를 함유한 그 밖의 조제 식료품
+[소호] 0610: 코코아 가루(설탕이나 그 밖의 감미료를 첨가한 것으로 한정한다)
+- 1806100000: 코코아 가루(설탕이나 그 밖의 감미료를 첨가한 것으로 한정한다)
+[소호] 0620: 그 밖의 조제 식료품[무게가 2킬로그램을 초과하는 것으로서 블록 모양ㆍ슬래브 모양ㆍ막대(bar) 모양인 것과 용기에 들어 있거나 내용물에 직접 접하여 포장된 것으로서 내용물의 무게가 2킬로그램을 초과하는 액체ㆍ페이스트(paste)ㆍ가루ㆍ알갱이나 그 밖의 벌크 상태인 것으로 한정한다]
+- 1806201000: 초콜릿과 초콜릿 과자
+- 1806209010: 코코아 조제품(밀크분의 함유량이 전 중량의 100분의 50 이상의 것으로 한정한다)
+- 1806209090: 기타
+[소호] 0631: 다른 것으로 속을 채운 것
+- 1806311000: 초콜릿과 초콜릿 과자
+- 1806319000: 기타
+[소호] 0632: 속을 채우지 않은 것
+- 1806321000: 초콜릿과 초콜릿 과자
+- 1806329000: 기타
+[소호] 0690: 기타
+- 1806901000: 초콜릿과 초콜릿 과자
+- 1806902111: 조제 분유
+- 1806902119: 기타
+- 1806902191: 오트밀의 것
+- 1806902199: 기타
+- 1806902210: 보릿가루의 것
+- 1806902290: 기타
+- 1806902910: 맥아 추출물(extract)의 것
+- 1806902920: 제0401호부터 제0404호까지에 해당하는 물품의 조제 식료품
+- 1806902991: 오트밀의 것
+- 1806902992: 보릿가루의 것
+- 1806902999: 기타
+- 1806903010: 곡물이나 곡물 가공품을 팽창시키거나 볶아서 얻은 조제 식료품
+- 1806903091: 낱알 모양의 쌀
+- 1806903099: 기타
+- 1806909010: 코코아 조제품(밀크분의 함유량이 100분의 50 이상의 것)
+- 1806909090: 기타
+
+[제19류] 제19류 곡물ㆍ고운 가루ㆍ전분ㆍ밀크의 조제품과 베이커리 제품
+포함: 곡물·가루·전분 기반 조제품, 시리얼 조제품, 베이커리류(비스킷·케이크 등), 파스타·누들(속을 채운 것 포함). 제외: 육/어류 20% 초과 조제품 → 16류. 코코아 40% 이상 조제품 → hs_code 1806. 커피·커피대용물 포함 제품 → hs_code 0901, hs_code 2101. 디저트믹스 등 전분 비사용류 → hs_code 2106. 사료용 비스킷 → hs_code 2309. 의약품 → 30류
+
+[호] 01호: 맥아 추출물(extract)과 고운 가루ㆍ부순 알곡ㆍ거친 가루ㆍ전분이나 맥아 추출물(extract)의 조제 식료품[코코아를 함유하지 않은 것이나 완전히 탈지(脫脂)한 상태에서 측정한 코코아의 함유량이 전 중량의 100분의 40 미만인 것으로 따로 분류되지 않은 것으로 한정한다], 제0401호부터 제0404호까지에 해당하는 물품의 조제 식료품[코코아를 함유하지 않은 것이나 완전히 탈지(脫脂)한 상태에서 측정한 코코아의 함유량이 전 중량의 100분의 5 미만인 것으로 따로 분류되지 않은 것으로 한정한다]
+[소호] 0110: 영유아ㆍ어린이용 조제 식료품(소매용으로 한정한다)
+- 1901101010: 조제 분유
+- 1901101090: 기타
+- 1901109010: 오트밀의 것
+- 1901109090: 기타
+[소호] 0120: 제1905호의 베이커리제품 제조용 혼합물과 가루반죽
+- 1901201000: 쌀가루의 것
+- 1901202000: 보릿가루의 것
+- 1901209000: 기타
+[소호] 0190: 기타
+- 1901901000: 맥아 추출물(extract)
+- 1901902010: 지방분이 전 중량의 100분의 30 이하인 것
+- 1901902020: 지방분이 전 중량의 100분의 30을 초과하는 것
+- 1901909010: 오트밀
+- 1901909091: 쌀가루의 것
+- 1901909092: 보릿가루의 것
+- 1901909099: 기타
+[호] 02호: 파스타[조리한 것인지 또는 육(肉)이나 그 밖의 물품으로 속을 채운 것인지에 상관없으며 스파게티ㆍ마카로니ㆍ누들ㆍ라자니아(lasagne)ㆍ뇨키(gnocchi)ㆍ라비올리(ravioli)ㆍ카넬로니(cannelloni) 등과 같이 그 밖의 방법으로 조제한 것을 포함한다]와 쿠스쿠스(couscous)(조제한 것인지에 상관없다)
+[소호] 0211: 새의 알을 넣은 것
+- 1902111000: 스파게티
+- 1902112000: 마카로니
+- 1902119000: 기타
+[소호] 0219: 기타
+- 1902191000: 국수
+- 1902192000: 당면
+- 1902193000: 냉면
+- 1902199000: 기타
+[소호] 0220: 속을 채운 파스타(조리한 것인지 또는 그 밖의 방법으로 조제한 것인지에 상관없다)
+- 1902200000: 속을 채운 파스타(조리한 것인지 또는 그 밖의 방법으로 조제한 것인지에 상관없다)
+[소호] 0230: 그 밖의 파스타
+- 1902301010: 라면
+- 1902301090: 기타
+- 1902309000: 기타
+[소호] 0240: 쿠스쿠스(couscous)
+- 1902400000: 쿠스쿠스(couscous)
+[호] 03호: 타피오카와 전분으로 조제한 타피오카 대용물[플레이크(flake) 모양ㆍ낱알 모양ㆍ진주 모양ㆍ무거리 모양ㆍ그 밖에 이와 유사한 모양의 것으로 한정한다]
+[소호] 0300: 타피오카와 전분으로 조제한 타피오카 대용물[플레이크(flake) 모양ㆍ낱알 모양ㆍ진주 모양ㆍ무거리 모양ㆍ그 밖에 이와 유사한 모양의 것으로 한정한다]
+- 1903001000: 타피오카
+- 1903009000: 기타
+[호] 04호: 곡물이나 곡물 가공품을 팽창시키거나 볶아서 얻은 조제 식료품[예: 콘 플레이크(corn flake)]과 낱알 모양이나 플레이크(flake) 모양이나 그 밖의 가공한 곡물(옥수수는 제외하며 고운 가루ㆍ부순 알곡ㆍ거친 가루는 제외하고 사전조리나 그 밖의 방법으로 조제한 것으로서 따로 분류되지 않은 것으로 한정한다)
+[소호] 0410: 곡물이나 곡물가공품을 팽창시키거나 볶아서 얻은 조제 식료품
+- 1904101000: 콘 플레이크(corn flake)
+- 1904102000: 콘 칩
+- 1904103000: 튀긴 쌀
+- 1904109000: 기타
+[소호] 0420: 볶지 않은 곡물 플레이크(flake)의 조제 식료품ㆍ볶지 않은 곡물 플레이크(flake)와 볶은 곡물 플레이크(flake)나 팽창된 곡물의 혼합물로 만든 조제 식료품
+- 1904201000: 무슬리(Musli) 형태의 조제 식료품
+- 1904209000: 기타
+[소호] 0430: 불거 밀(bulgur wheat)
+- 1904300000: 불거 밀(bulgur wheat)
+[소호] 0490: 기타
+- 1904901010: 찌거나 삶은 쌀
+- 1904901090: 기타
+- 1904909000: 기타
+[호] 05호: 빵ㆍ파이ㆍ케이크ㆍ비스킷과 그 밖의 베이커리 제품(코코아를 함유하였는지에 상관없다), 성찬용 웨이퍼ㆍ제약용에 적합한 빈 캡슐ㆍ실링웨이퍼(sealing wafer)ㆍ라이스페이퍼(rice paper)와 그 밖에 이와 유사한 물품
+[소호] 0510: 귀리빵
+- 1905100000: 귀리빵
+[소호] 0520: 생강과자(gingerbread)와 그 밖에 이와 유사한 것
+- 1905200000: 생강과자(gingerbread)와 그 밖에 이와 유사한 것
+[소호] 0531: 스위트 비스킷
+- 1905310000: 스위트 비스킷
+[소호] 0532: 와플과 웨이퍼
+- 1905320000: 와플과 웨이퍼
+[소호] 0540: 러스크(rusk)ㆍ토스트 빵과 그 밖에 이와 유사한 토스트 물품
+- 1905400000: 러스크(rusk)ㆍ토스트 빵과 그 밖에 이와 유사한 토스트 물품
+[소호] 0590: 기타
+- 1905901010: 빵
+- 1905901020: 건빵
+- 1905901030: 페이스트리와 케이크
+- 1905901040: 비스킷, 쿠키와 크래커
+- 1905901050: 쌀과자
+- 1905901090: 기타
+- 1905909010: 제약용에 적합한 빈 캡슐
+- 1905909020: 라이스 페이퍼
+- 1905909090: 기타
+
+[제20류] 제20류 채소ㆍ과실ㆍ견과류나 식물의그 밖의 부분의 조제품
+다음 포함: 식초·초산 조제 채소·과실, 설탕 조제(시럽·당장), 잼·젤리·마말레이드·퓨레·페이스트, 균질화 채소·과실, 과채 주스(알코올 ≤0.5%), 기타 조제/보존 식물성 제품, 삼투 탈수 과실. 제외: 육/어류 20% 초과 포함 → 16류. 과일 타르트 등 페이스트리 → hs_code 1905. 수프·브로드·균질 혼합조제품 → hs_code 2104. 알코올 0.5% 초과 주스 → 22류
+
+[호] 01호: 식초나 초산으로 조제하거나 보존처리한 채소ㆍ과실ㆍ견과류와 그 밖의 식용에 적합한 식물의 부분
+[소호] 0110: 오이류
+- 2001100000: 오이류
+[소호] 0190: 기타
+- 2001901000: 과실과 견과류
+- 2001909010: 쪽파
+- 2001909020: 토마토
+- 2001909030: 꽃양배추
+- 2001909040: 스위트콘
+- 2001909050: 염교(rakkyo)
+- 2001909060: 마늘
+- 2001909070: 양파
+- 2001909090: 기타
+[호] 02호: 조제하거나 보존처리한 토마토(식초나 초산으로 처리한 것은 제외한다)
+[소호] 0210: 토마토의 전체나 조각
+- 2002100000: 토마토의 전체나 조각
+[소호] 0290: 기타
+- 2002901000: 토마토 페이스트(paste)(브릭스(brix) 값이 100분의 24 이상인 것으로 한정한다)
+- 2002909000: 기타
+[호] 03호: 조제하거나 보존처리한 버섯과 송로(松露)(식초나 초산으로 처리한 것은 제외한다)
+[소호] 0310: 아가리쿠스(Agaricus)속의 버섯
+- 2003104000: 양송이 버섯
+- 2003109000: 기타
+[소호] 0390: 기타
+- 2003901000: 표고버섯
+- 2003902000: 송이버섯
+- 2003903000: 송로(松露)
+- 2003909000: 기타
+[호] 04호: 조제하거나 보존처리한 그 밖의 채소(식초나 초산으로 처리한 것은 제외하고, 냉동한 것으로 한정하며, 제2006호의 물품은 제외한다)
+[소호] 0410: 감자
+- 2004100000: 감자
+[소호] 0490: 그 밖의 채소와 채소의 혼합물
+- 2004901000: 스위트콘
+- 2004909000: 기타
+[호] 05호: 조제하거나 보존처리한 그 밖의 채소(식초나 초산으로 처리한 것은 제외하고, 냉동하지 않은 것으로 한정하며, 제2006호의 물품은 제외한다)
+[소호] 0510: 균질화한 채소
+- 2005101000: 유아용 퓨레콘(pureed corn)
+- 2005109000: 기타
+[소호] 0520: 감자
+- 2005201000: 플레이크로 만든 감자크로켓
+- 2005209000: 기타
+[소호] 0540: 완두[피섬 새티범(Pisum sativum)]
+- 2005400000: 완두[피섬 새티범(Pisum sativum)]
+[소호] 0551: 꼬투리를 벗긴 콩
+- 2005511000: 녹두
+- 2005512000: 팥
+- 2005519000: 기타
+[소호] 0559: 기타
+- 2005591000: 녹두
+- 2005592000: 팥
+- 2005599000: 기타
+[소호] 0560: 아스파라거스(asparagus)
+- 2005600000: 아스파라거스(asparagus)
+[소호] 0570: 올리브
+- 2005700000: 올리브
+[소호] 0580: 스위트콘[자메이스 변종 사카라타(Zea mays var. saccharata)]
+- 2005800000: 스위트콘[자메이스 변종 사카라타(Zea mays var. saccharata)]
+[소호] 0591: 죽순
+- 2005910000: 죽순
+[소호] 0599: 기타
+- 2005991000: 김치
+- 2005992000: 사우어크라우트(sauerkraut)
+- 2005994000: 고려엉겅퀴(곤드레)
+- 2005999000: 기타
+[호] 06호: 설탕으로 보존처리한 채소ㆍ과실ㆍ견과류ㆍ과피와 식물의 그 밖의 부분[드레인한(drained) 것, 설탕을 입히거나 설탕에 절인 것]
+[소호] 0600: 설탕으로 보존처리한 채소ㆍ과실ㆍ견과류ㆍ과피와 식물의 그 밖의 부분[드레인한(drained) 것, 설탕을 입히거나 설탕에 절인 것]
+- 2006001000: 마롱 글라세(marrons glaces)
+- 2006002000: 파인애플
+- 2006003000: 생강
+- 2006004000: 연근
+- 2006005000: 완두[피섬 새티범(Pisum sativum)]
+- 2006006010: 꼬투리를 벗긴 콩
+- 2006006090: 기타
+- 2006007000: 아스파라거스(asparagus)
+- 2006008000: 올리브
+- 2006009010: 스위트콘[자메이스 변종 사카라타(Zea mays var. saccharata)]
+- 2006009020: 죽순
+- 2006009030: 그 밖의 채소
+- 2006009090: 기타
+[호] 07호: 잼ㆍ과실젤리ㆍ마멀레이드(marmalade)ㆍ과실이나 견과류의 퓨레(puree)ㆍ과실이나 견과류의 페이스트(paste)(조리해서 얻은 것으로 한정하며, 설탕이나 그 밖의 감미료를 첨가했는지에 상관없다)
+[소호] 0710: 균질화한 조제품
+- 2007100000: 균질화한 조제품
+[소호] 0791: 감귤류의 과실
+- 2007911000: 잼ㆍ과실젤리와 마멀레이드(marmalade)
+- 2007919000: 기타
+[소호] 0799: 기타
+- 2007991000: 잼ㆍ과실젤리와 마멀레이드(marmalade)
+- 2007999000: 기타
+[호] 08호: 그 밖의 방법으로 조제하거나 보존처리한 과실ㆍ견과류와 그 밖의 식용에 적합한 식물의 부분(설탕이나 그 밖의 감미료나 주정을 첨가했는지에 상관없으며 따로 분류되지 않은 것으로 한정한다)
+[소호] 0811: 땅콩
+- 2008111000: 피넛 버터
+- 2008119000: 기타
+[소호] 0819: 기타(혼합물을 포함한다)
+- 2008191000: 밤
+- 2008192000: 코코넛
+- 2008193000: 볶은 참깨가루
+- 2008199000: 기타
+[소호] 0820: 파인애플
+- 2008200000: 파인애플
+[소호] 0830: 감귤류 과실
+- 2008301000: 유자
+- 2008309000: 기타
+[소호] 0840: 배
+- 2008400000: 배
+[소호] 0850: 살구
+- 2008500000: 살구
+[소호] 0860: 체리
+- 2008600000: 체리
+[소호] 0870: 복숭아[넥터린(nectarine)을 포함한다]
+- 2008701000: 설탕을 첨가하여 밀폐용기에 넣은 것
+- 2008709000: 기타
+[소호] 0880: 초본류 딸기
+- 2008800000: 초본류 딸기
+[소호] 0891: 팜 하트(palm heart)
+- 2008910000: 팜 하트(palm heart)
+[소호] 0893: 크랜베리(cranberry)[바치니움 매크로카르폰(Vaccinium macrocarpon)ㆍ바치니움 옥시코코스(Vaccinium oxycoccos), 링곤베리(lingonberry)[바치니움 비티스-이다에아(Vaccinium vitis-idaea)]
+- 2008930000: 크랜베리(cranberry)[바치니움 매크로카르폰(Vaccinium macrocarpon)ㆍ바치니움 옥시코코스(Vaccinium oxycoccos), 링곤베리(lingonberry)[바치니움 비티스-이다에아(Vaccinium vitis-idaea)]
+[소호] 0897: 혼합물
+- 2008971010: 설탕을 첨가한 밀폐용기에 넣은 것
+- 2008971090: 기타
+- 2008972000: 과실 샐러드
+- 2008979000: 기타
+[소호] 0899: 기타
+- 2008991000: 포도
+- 2008992000: 사과
+- 2008993000: 팝콘
+- 2008994000: 소금에 절인 초피
+- 2008995010: 김
+- 2008995090: 기타
+- 2008999000: 기타
+[호] 09호: 과실·견과류 주스(포도즙과 코코넛 워터를 포함한다)·채소 주스[발효하지 않고 주정을 함유하지 않은 것(설탕이나 그 밖의 감미료를 첨가했는지에 상관없다)]
+[소호] 0911: 냉동한 것
+- 2009110000: 냉동한 것
+[소호] 0912: 냉동하지 않은 것으로서 브릭스(Brix) 값이 20 이하인 것
+- 2009120000: 냉동하지 않은 것으로서 브릭스(Brix) 값이 20 이하인 것
+[소호] 0919: 기타
+- 2009190000: 기타
+[소호] 0921: 브릭스(Brix) 값이 20 이하인 것
+- 2009210000: 브릭스(Brix) 값이 20 이하인 것
+[소호] 0929: 기타
+- 2009290000: 기타
+[소호] 0931: 브릭스(Brix) 값이 20 이하인 것
+- 2009311000: 레몬주스
+- 2009312000: 라임주스
+- 2009319000: 기타
+[소호] 0939: 기타
+- 2009391000: 레몬주스
+- 2009392000: 라임주스
+- 2009399000: 기타
+[소호] 0941: 브릭스(Brix) 값이 20 이하인 것
+- 2009410000: 브릭스(Brix) 값이 20 이하인 것
+[소호] 0949: 기타
+- 2009490000: 기타
+[소호] 0950: 토마토주스
+- 2009500000: 토마토주스
+[소호] 0961: 브릭스(Brix) 값이 30 이하인 것
+- 2009610000: 브릭스(Brix) 값이 30 이하인 것
+[소호] 0969: 기타
+- 2009690000: 기타
+[소호] 0971: 브릭스(Brix) 값이 20 이하인 것
+- 2009710000: 브릭스(Brix) 값이 20 이하인 것
+[소호] 0979: 기타
+- 2009790000: 기타
+[소호] 0981: 크랜베리(cranberry)[바치니움 매크로카르폰(Vaccinium macrocarpon)ㆍ바치니움 옥시코코스(Vaccinium oxycoccos)] 주스, 링곤베리(lingonberry)[바치니움 비티스-이다에아(Vaccinium vitis-idaea)] 주스
+- 2009810000: 크랜베리(cranberry)[바치니움 매크로카르폰(Vaccinium macrocarpon)ㆍ바치니움 옥시코코스(Vaccinium oxycoccos)] 주스, 링곤베리(lingonberry)[바치니움 비티스-이다에아(Vaccinium vitis-idaea)] 주스
+[소호] 0989: 기타
+- 2009891010: 복숭아주스
+- 2009891020: 딸기주스
+- 2009891030: 코코넛 주스(코코넛 워터를 포함한다)
+- 2009891090: 기타
+- 2009892000: 채소 주스
+[소호] 0990: 혼합 주스
+- 2009901010: 오렌지주스를 주요 재료로 만든 것
+- 2009901020: 사과주스를 주요 재료로 만든 것
+- 2009901030: 포도주스를 주요 재료로 만든 것
+- 2009901090: 기타
+- 2009902000: 채소로 만든 것
+- 2009909000: 기타
+
+[제21류] 제21류 각종 조제 식료품
+이 류는 기타 식료품의 집합. 다음 제외: 혼합 건조 채소 → hs_code 0712. 커피 함유 커피대용물 → hs_code 0901. 향 첨가 차 → hs_code 0902. 향신료 → hs_code 0904~0910. 육/어류 20% 초과 조제품(소스·수프 제외) → 16류. 담배대용물 → hs_code 2404. 의약품 → hs_code 3003, hs_code 3004. 조제 효소 → hs_code 3507. 주의: 균질화 혼합 조제식료품(영유아용)은 hs_code 2104
+
+[호] 01호: 커피ㆍ차ㆍ마테(mate)의 추출물(extract)ㆍ에센스(essence)ㆍ농축물과 이것들을 기본 재료로 한 조제품, 커피ㆍ차ㆍ마테(mate)를 기본 재료로 한 조제품, 볶은 치커리(chicory)ㆍ그 밖의 볶은 커피 대용물과 이들의 추출물(extract)ㆍ에센스(essence)ㆍ농축물
+[소호] 0111: 추출물(extract)ㆍ에센스(essence)ㆍ농축물
+- 2101111000: 인스턴트 커피
+- 2101119000: 기타
+[소호] 0112: 추출물(extract)ㆍ에센스(essence)ㆍ농축물을 기본 재료로 하거나 커피를 기본 재료로 한 조제품
+- 2101121000: 인스턴트 커피의 조제품
+- 2101129010: 밀크ㆍ크림 또는 이들의 대용물을 함유한 것
+- 2101129090: 기타
+[소호] 0120: 차나 마테(mate)의 추출물(extract)ㆍ에센스(essence)ㆍ농축물, 이들을 기본 재료로 한 조제품, 차나 마테(mate)를 기본 재료로 한 조제품
+- 2101201000: 설탕ㆍ레몬이나 이들의 대용물을 함유한 것
+- 2101209011: 티백 포장의 것
+- 2101209019: 기타
+- 2101209090: 기타
+[소호] 0130: 볶은 치커리(chicory)ㆍ그 밖의 볶은 커피 대용물과 이들의 추출물(extract)ㆍ에센스(essence)ㆍ농축물
+- 2101301000: 보리의 것
+- 2101309000: 기타
+[호] 02호: 효모(활성이거나 불활성인 것), 그 밖의 단세포 미생물(죽은 것으로 한정하며, 제3002호의 백신은 제외한다)과 조제한 베이킹 파우더
+[소호] 0210: 활성 효모
+- 2102101000: 양조효모
+- 2102102000: 증류효모
+- 2102103000: 제빵효모
+- 2102104000: 배양효모
+- 2102109000: 기타
+[소호] 0220: 불활성 효모와 그 밖의 죽은 단세포 미생물
+- 2102201000: 불활성 효모
+- 2102202000: 누룩
+- 2102203010: 태블릿(tablet) 모양의 것
+- 2102203090: 기타
+- 2102204010: 태블릿(tablet) 모양의 것
+- 2102204090: 기타
+- 2102209000: 기타
+[소호] 0230: 조제한 베이킹 파우더
+- 2102300000: 조제한 베이킹 파우더
+[호] 03호: 소스와 소스용 조제품, 혼합조미료, 겨자의 고운 가루ㆍ거친 가루와 조제한 겨자
+[소호] 0310: 간장
+- 2103100000: 간장
+[소호] 0320: 토마토 케첩과 그 밖의 토마토 소스
+- 2103201000: 토마토 케첩
+- 2103202000: 그 밖의 토마토 소스
+[소호] 0330: 겨자의 고운 가루ㆍ거친 가루와 조제한 겨자
+- 2103301000: 겨자의 고운 가루ㆍ거친 가루
+- 2103302000: 조제한 겨자
+[소호] 0390: 기타
+- 2103901010: 된장
+- 2103901020: 춘장
+- 2103901030: 고추장
+- 2103901090: 기타
+- 2103909010: 마요네스
+- 2103909020: 인스턴트 카레
+- 2103909030: 혼합조미료
+- 2103909040: 메주
+- 2103909050: 고추다진양념
+- 2103909090: 기타
+[호] 04호: 수프ㆍ브로드(broth)와 수프ㆍ브로드(broth)용 조제품, 균질화한 혼합 조제 식료품
+[소호] 0410: 수프ㆍ브로드(broth)와 수프ㆍ브로드(broth)용 조제품
+- 2104101000: 육류로 만든 것
+- 2104102000: 어류로 만든 것
+- 2104103000: 채소로 만든 것
+- 2104109000: 기타
+[소호] 0420: 균질화한 혼합 조제 식료품
+- 2104200000: 균질화한 혼합 조제 식료품
+[호] 05호: 아이스크림과 그 밖의 빙과류(코코아를 함유했는지에 상관없다)
+[소호] 0500: 아이스크림과 그 밖의 빙과류(코코아를 함유했는지에 상관없다)
+- 2105001010: 코코아를 함유하지 않은 것
+- 2105001090: 기타
+- 2105009010: 코코아를 함유하지 않은 것
+- 2105009090: 기타
+[호] 06호: 따로 분류되지 않은 조제 식료품
+[소호] 0610: 단백질 농축물과 텍스처화한(textured) 단백질계 물질
+- 2106101000: 두부
+- 2106109020: 단백질 농축물
+- 2106109030: 텍스처화한(textured) 단백질계 물질
+[소호] 0690: 기타
+- 2106901010: 콜라 베이스
+- 2106901020: 과일향의 음료베이스
+- 2106901090: 기타
+- 2106902000: 당시럽[향미제(香味劑)나 착색제를 첨가한 것으로 한정한다]
+- 2106903011: 인삼차
+- 2106903019: 기타
+- 2106903021: 홍삼차
+- 2106903029: 기타
+- 2106909010: 커피크리머
+- 2106909021: 버터 함량이 전 중량의 100분의 30 이하인 것
+- 2106909022: 버터 함량이 전 중량의 100분의 30 초과 100분의 70 이하인 것
+- 2106909023: 버터 함량이 전 중량의 100분의 70을 초과하는 것
+- 2106909030: 아이스크림 제조용 조제품
+- 2106909040: 자기소화효모(autolyzed yeast)와 그 밖의 효모 추출물(extract)
+- 2106909050: 향미(香味)용 조제품
+- 2106909060: 도토리 가루
+- 2106909070: 알로에를 기본 재료로 한 조제품
+- 2106909080: 음료 제조용 조제품[방향성(芳香性) 물질을 기본 재료로 한 것은 제외하며, 알코올 용량이 전 용량의 100분의 0.5를 초과하는 것으로 한정한다]
+- 2106909091: 로열젤리, 벌꿀조제품의 것
+- 2106909099: 기타
+
+[제22류] 제22류 음료ㆍ주류ㆍ식초
+4대 그룹: 비알코올 음료·얼음, 발효 음료(맥주·와인·사이다 등), 증류주·리큐르·에틸알코올, 식초·식초 대용품. 제외: 액체 낙농품 → 04류. 조리용 변성 음료(요리용 와인·꼬냑) → hs_code 2103. 의약품 → 30류. 향료·화장품 → hs_code 33류
+
+[호] 01호: 물(천연이나 인조 광천수와 탄산수를 포함하며, 설탕이나 그 밖의 감미료 또는 맛이나 향을 첨가하지 않은 것으로 한정한다)과 얼음과 눈
+[소호] 0110: 광천수와 탄산수
+- 2201100000: 광천수와 탄산수
+[소호] 0190: 기타
+- 2201901000: 얼음과 눈
+- 2201909000: 기타
+[호] 02호: 설탕이나 그 밖의 감미료 또는 맛이나 향을 첨가한 물(광천수와 탄산수를 포함한다)과 그 밖의 알코올을 함유하지 않은 음료(제2009호의 과실ㆍ견과류 주스와 채소 주스는 제외한다)
+[소호] 0210: 설탕이나 그 밖의 감미료 또는 맛이나 향을 첨가한 물(광천수와 탄산수를 포함한다)
+- 2202101000: 색깔을 입힌 것
+- 2202109000: 기타
+[소호] 0291: 알코올을 함유하지 않은 맥주
+- 2202910000: 알코올을 함유하지 않은 맥주
+[소호] 0299: 기타
+- 2202991000: 인삼음료
+- 2202992000: 과실주스 음료
+- 2202993000: 식혜
+- 2202999000: 기타
+[호] 03호: 맥주
+[소호] 0300: 맥주
+- 2203000000: 맥주
+[호] 04호: 포도주(생포도로 제조한 것으로 한정하며, 알코올로 강화한 포도주를 포함한다)와 포도즙(제2009호의 것은 제외한다)
+[소호] 0410: 발포성(發泡性) 포도주
+- 2204100000: 발포성(發泡性) 포도주
+[소호] 0421: 2리터 이하의 용기에 넣은 것
+- 2204211000: 붉은 포도주
+- 2204212000: 흰 포도주
+- 2204219000: 기타
+[소호] 0422: 2리터 초과 10리터 이하의 용기에 넣은 것
+- 2204221000: 붉은 포도주
+- 2204222000: 흰 포도주
+- 2204229000: 기타
+[소호] 0429: 기타
+- 2204291000: 붉은 포도주
+- 2204292000: 흰 포도주
+- 2204299000: 기타
+[소호] 0430: 그 밖의 포도즙
+- 2204300000: 그 밖의 포도즙
+[호] 05호: 베르무트(vermouth)와 그 밖에 이와 유사한 포도주[생포도로 제조한 것으로서 식물이나 방향성(芳香性) 물질로 맛이나 향을 첨가한 것으로 한정한다]
+[소호] 0510: 2리터 이하의 용기에 넣은 것
+- 2205100000: 2리터 이하의 용기에 넣은 것
+[소호] 0590: 기타
+- 2205900000: 기타
+[호] 06호: 그 밖의 발효주[예: 사과술ㆍ배술ㆍ미드(mead)ㆍ청주(sake)], 따로 분류되지 않은 발효주의 혼합물, 발효주와 알코올을 함유하지 않은 음료와의 혼합물
+[소호] 0600: 그 밖의 발효주[예: 사과술ㆍ배술ㆍ미드(mead)ㆍ청주(sake)], 따로 분류되지 않은 발효주의 혼합물, 발효주와 알코올을 함유하지 않은 음료와의 혼합물
+- 2206001010: 사과술
+- 2206001020: 배술
+- 2206001090: 기타
+- 2206002010: 청주
+- 2206002020: 약주
+- 2206002030: 탁주
+- 2206002090: 기타
+- 2206009010: 와인쿨러(제2009호나 제2202호의 물품을 첨가한 것으로 한정하며, 포도를 원료로 한 것을 포함한다)
+- 2206009090: 기타
+[호] 07호: 변성하지 않은 에틸알코올(알코올의 용량이 전 용량의 100분의 80 이상인 것으로 한정한다), 변성 에틸알코올과 그 밖의 변성 주정(알코올의 용량은 상관없다)
+[소호] 0710: 변성하지 않은 에틸알코올(알코올의 용량이 전 용량의 100분의 80 이상인 것으로 한정한다)
+- 2207101000: 조주정(粗酒精)
+- 2207109010: 주류 제조용 발효주정
+- 2207109090: 기타
+[소호] 0720: 변성 에틸알코올과 그 밖의 변성 주정(알코올의 용량은 상관없다)
+- 2207200000: 변성 에틸알코올과 그 밖의 변성 주정(알코올의 용량은 상관없다)
+[호] 08호: 변성하지 않은 에틸알코올(알코올의 용량이 전 용량의 100분의 80 미만인 것으로 한정한다), 증류주ㆍ리큐르(liqueur)와 그 밖의 주정음료
+[소호] 0820: 포도주나 포도즙을 짜낸 찌꺼기에서 얻은 증류주
+- 2208201000: 꼬냑
+- 2208209000: 기타
+[소호] 0830: 위스키류
+- 2208301000: 스카치 위스키
+- 2208302000: 버본 위스키
+- 2208303000: 라이(rye) 위스키
+- 2208309000: 기타
+[소호] 0840: 럼(rum)과 발효된 사탕수수제품을 증류하여 얻은 그 밖의 증류주
+- 2208400000: 럼(rum)과 발효된 사탕수수제품을 증류하여 얻은 그 밖의 증류주
+[소호] 0850: 진(gin)과 제네바(geneva)
+- 2208500000: 진(gin)과 제네바(geneva)
+[소호] 0860: 보드카
+- 2208600000: 보드카
+[소호] 0870: 리큐르(liqueur)류와 코디얼(cordial)
+- 2208701000: 인삼주
+- 2208702000: 오가피주
+- 2208709000: 기타
+[소호] 0890: 기타
+- 2208901000: 브랜디류(소호 제2208.20호의 것은 제외한다)
+- 2208904000: 소주
+- 2208906000: 고량주
+- 2208907000: 데낄라
+- 2208909000: 기타
+[호] 09호: 식초와 초산으로 만든 식초 대용물
+[소호] 0900: 식초와 초산으로 만든 식초 대용물
+- 2209001000: 양조식초
+- 2209009000: 기타
