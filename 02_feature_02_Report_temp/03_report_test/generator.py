@@ -218,7 +218,7 @@ class ReportGenerator:
 ## 6. 진출 전략
 - 진출 유망 세그먼트, 가격·채널 전략, 파트너십 전략, 리스크 관리 방안을 최소 400자 이상으로 제시합니다.
 
-위 구조와 원칙을 모두 지키면서, 마크다운 형식으로 초안 보고서를 작성하십시오.
+위 구조와 원칙을 모두 지키면서, 마크다운 형식으로 초안 보고서를 작성하십시오. 
 """
 
             draft = self._invoke_llm(self.llm_draft, prompt)
@@ -874,3 +874,51 @@ class ReportGenerator:
         except Exception as e:
             logger.error(f"PDF 생성 실패: {e}")
             raise
+# -------------------------------------------------------------
+# 🔥 Streamlit(app.py)에서 generator.py를 실행할 수 있도록 하는 메인 엔트리포인트
+# -------------------------------------------------------------
+if __name__ == "__main__":
+
+    # 1) app.py에서 전달된 JSON 경로 받기
+    payload_path = sys.argv[1]
+
+    # 2) 입력값(payload) 로드
+    with open(payload_path, "r", encoding="utf-8") as f:
+        payload = json.load(f)
+
+    # 3) ReportGenerator 인스턴스 생성
+    generator = ReportGenerator()
+
+    # ---------------------------------------------------------
+    # 4) 🔥 RAG → Draft → Deep Research → Final → PDF 생성
+    #    (당신의 실제 파이프라인에 맞게 아래 로직을 연결)
+    # ---------------------------------------------------------
+
+    # (1) RAG 및 데이터 로딩 (예: DataLoader)
+    rag_result = payload.get("rag_result", {})  # 필요 시 실제 RAG 수행 코드로 교체
+    generator.set_rag_sources(rag_result)
+
+    # (2) Draft 생성
+    draft = generator.generate_draft(rag_result, payload)
+
+    # (3) Deep Research 통합 (payload["deep_result"] 존재 시)
+    deep_result = payload.get("deep_result", {})
+    final_draft = generator.integrate_deep_research(draft, deep_result)
+
+    # (4) 최종 편집
+    final_report, summary_validation = generator.finalize(final_draft, payload)
+
+    # ---------------------------------------------------------
+    # 5) PDF 출력 (파일 위치: output/report.pdf)
+    # ---------------------------------------------------------
+    os.makedirs("output", exist_ok=True)
+    pdf_path = "output/report.pdf"
+
+    generator.export_pdf(
+        markdown_text=final_report,
+        output_path=pdf_path,
+        metadata=payload
+    )
+
+    # 6) 결과 출력 → Streamlit(app.py)에서 확인됨
+    print(f"PDF 생성 완료 → {pdf_path}")

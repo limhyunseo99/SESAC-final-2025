@@ -1,1 +1,25 @@
-﻿sk-[A-Za-z0-9]{20,} ==
+﻿# requirements.txt
+# GlobalPath AI 의존성
+
+# Streamlit
+streamlit>=1.28.0
+
+# LangChain
+langchain>=0.1.0
+langchain-openai>=0.0.5
+langchain-core>=0.1.0
+
+# Vector Store
+qdrant-client>=1.7.0
+
+# Web Search
+tavily-python>=0.3.0
+
+# PDF 처리
+PyMuPDF>=1.23.0
+reportlab>=4.0.0
+PyPDF2>=3.0.0
+
+# 기타
+python-dotenv>=1.0.0
+openai>=1.10.0
