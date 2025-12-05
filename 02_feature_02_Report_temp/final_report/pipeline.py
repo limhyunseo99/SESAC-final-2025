@@ -1,134 +1,145 @@
 # pipeline.py
-# 연구 파이프라인 통합 (Scoping + Research + Reflection)
+# 검증 강화 버전: Supervisor가 각 단계 승인
+# 프롬프트 3개로 축소 + 이모지 활용
 
 import os
 import asyncio
 import logging
-from typing import Dict, List, Optional, Callable, Any
+import re
+import time
+from typing import Dict, List, Optional, Callable, Any, Tuple
 from dataclasses import dataclass, field
-from datetime import datetime
 
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage
+from langchain_core.documents import Document
 from tavily import TavilyClient
 
 from config import Config, DataLoader, Supervisor
 from vectorstore import QdrantVectorDB
-from logger import ResearchLogger, PipelineStage
+from logger import ResearchLogger
+from prompts import get_section_prompt, FINAL_REPORT_PROMPT
+from supervisor import StrategySelector
 
 logger = logging.getLogger(__name__)
 
-# 타입 정의
 ProgressCallback = Callable[[str, str, float], None]
 
+ANALYSIS_OPTIONS = {
+    "regulation": "규제",
+    "risk": "시장리스크",
+    "price": "가격추세",
+    "demand": "수요전망",
+}
 
-# =============================================================================
-# 상태 정의
-# =============================================================================
+class PipelineStage:
+    """파이프라인 단계 정의"""
+    INPUT_PARSING = "input_parsing" 
+    QUERY_GENERATION = "query_generation"
+    DRAFT_GENERATION = "draft_generation"
+    KATI_VERIFICATION = "kati_verification"
+    PDF_ENHANCEMENT = "pdf_enhancement"
+    WEB_SEARCH = "web_search"
+    EVALUATION = "evaluation"
+    FINAL_REPORT = "final_report"
+
 @dataclass
 class SectionResult:
-    """섹션 연구 결과"""
+    """섹션 결과 - 단계별 버전 관리"""
     key: str
     title: str
-    summary: str = ""
-    rag_docs: List[Dict] = field(default_factory=list)
-    web_info: Optional[Dict] = None
+    
+    # 각 단계별 내용과 품질 점수
+    draft: str = ""
+    draft_score: int = 0
+    
+    kati_verified: str = ""
+    kati_score: int = 0
+    
+    pdf_enhanced: str = ""
+    pdf_score: int = 0
+    
+    web_enhanced: str = ""
+    web_score: int = 0
+    
+    # 최종 선택된 버전
+    final: str = ""
+    final_score: int = 0
+    final_version: str = ""  # "draft", "kati", "pdf", "web"
+    
+    citations: List[str] = field(default_factory=list)
+    evaluation: Dict = field(default_factory=dict)
     success: bool = False
 
 
 @dataclass
 class PipelineState:
-    """파이프라인 전체 상태"""
+    """파이프라인 상태"""
     country: str
+    country_code: str
     hs_code: str
     item: str
-    country_code: str = ""
-    brief: str = ""
+    options: List[str] = field(default_factory=list)
     sections: Dict[str, SectionResult] = field(default_factory=dict)
     final_report: str = ""
+    all_citations: List[str] = field(default_factory=list)
     errors: List[str] = field(default_factory=list)
+    log_path: str = ""
 
 
-# =============================================================================
-# 섹션 정의
-# =============================================================================
-SECTIONS = [
-    ("overview", "국가 및 시장 개요"),
-    ("suitability", "품목 적합성 평가"),
-    ("market_size", "시장 규모 및 성장 전망"),
-    ("distribution", "유통 구조"),
-    ("regulation", "규제 요건"),
-    ("price", "가격 추세"),
-    ("risk", "리스크 분석"),
-    ("demand", "수요 전망"),
-]
-
-WEB_SECTIONS = ["regulation", "price", "risk", "demand"]  # 웹 검색이 필요한 섹션
-
-
-# =============================================================================
-# 웹 검색 (Tavily)
-# =============================================================================
 class WebSearcher:
-    """Tavily 기반 웹 검색"""
+    """공공기관 전용 Tavily 검색"""
     
     def __init__(self):
         self.client = TavilyClient(api_key=Config.TAVILY_API_KEY) if Config.TAVILY_API_KEY else None
-        self.supervisor = Supervisor()
     
-    def search(self, query: str, top_k: int = 5) -> List[Dict]:
-        """웹 검색 실행"""
+    def search_public_only(self, query: str, top_k: int = 5) -> List[Dict]:
+        """공공기관 도메인만 검색"""
         if not self.client:
             return []
+        
         try:
-            result = self.client.search(query=query, max_results=top_k)
-            return result.get("results", []) if result else []
+            enhanced_query = f"{query} site:go.kr OR site:gov OR site:or.kr OR site:kotra.or.kr"
+            result = self.client.search(query=enhanced_query, max_results=top_k * 2)
+            
+            if not result or "results" not in result:
+                return []
+            
+            filtered = []
+            for r in result["results"]:
+                url = r.get("url", "").lower()
+                if any(domain in url for domain in Config.PUBLIC_DOMAINS):
+                    filtered.append({
+                        "content": r.get("content", ""),
+                        "url": r.get("url", ""),
+                        "title": r.get("title", ""),
+                    })
+            
+            return filtered[:top_k]
+        
         except Exception as e:
             logger.error(f"웹 검색 실패: {e}")
             return []
-    
-    def analyze(self, section_key: str, country: str, product: str, hs_code: str) -> Dict:
-        """섹션별 웹 분석"""
-        queries = {
-            "regulation": f"{country} {product} import regulation certification HS {hs_code}",
-            "price": f"{country} {product} import price trend wholesale HS {hs_code}",
-            "risk": f"{country} {product} market risk political economic HS {hs_code}",
-            "demand": f"{country} {product} demand forecast growth HS {hs_code}",
-        }
-        
-        query = queries.get(section_key, f"{country} {product} {section_key}")
-        results = self.search(query)
-        
-        text = "\n".join([r.get("content", "") for r in results])
-        urls = [r.get("url", "") for r in results]
-        trust = self.supervisor.score_web_result(text, urls)
-        
-        return {
-            "text": text,
-            "urls": urls,
-            "trust": trust,
-            "use": trust.get("grade") == "High"
-        }
 
 
-# =============================================================================
-# 연구 파이프라인
-# =============================================================================
 class ResearchPipeline:
-    """통합 연구 파이프라인"""
+    """연구 파이프라인 - 검증 강화 버전"""
     
     def __init__(self, vectordb: Optional[QdrantVectorDB] = None):
         self.vectordb = vectordb or QdrantVectorDB()
         self.web = WebSearcher()
         self.llm_fast = ChatOpenAI(model=Config.MODEL_FAST, temperature=0)
         self.llm_smart = ChatOpenAI(model=Config.MODEL_SMART, temperature=0)
+        self.strategy_selector = StrategySelector()
+        
+        # 품질 기준
+        self.MIN_SCORE = 70  # 최소 통과 점수
+        self.IMPROVEMENT_THRESHOLD = 5  # 개선 최소 폭 (점)
         
         # 로거 초기화
         self.research_logger: Optional[ResearchLogger] = None
         self.supervisor: Optional[Supervisor] = None
-    # -------------------------------------------------------------------------
-    # 메인 실행
-    # -------------------------------------------------------------------------
+    
     def run(self, payload: Dict, callback: Optional[ProgressCallback] = None) -> Dict:
         """동기 실행"""
         return asyncio.run(self.run_async(payload, callback))
@@ -140,271 +151,463 @@ class ResearchPipeline:
         self.research_logger = ResearchLogger()
         self.supervisor = Supervisor(self.research_logger)
         self.research_logger.log_user_input(payload)
-    
+        self.research_logger.log_stage_start(PipelineStage.INPUT_PARSING, payload)
+        
+        start_time = time.time()
+        
         # 상태 초기화
         country_name = payload.get("country", "미국")
         state = PipelineState(
-            country=payload.get("country", ""),
+            country=country_name,
+            country_code=DataLoader.normalize_country(country_name),
             hs_code=payload.get("hs_code", ""),
             item=payload.get("item", "제품"),
+            options=payload.get("options", []),
         )
         
-        try:
-            state.country_code = DataLoader.normalize_country(state.country)
-        except:
-            state.country_code = "US"
+        self.research_logger.log_stage_end(
+            PipelineStage.INPUT_PARSING,
+            {"country_code": state.country_code},
+            (time.time() - start_time) * 1000
+        )
         
-        total_steps = len(SECTIONS) + 2  # 섹션 + 브리프 + 최종보고서
+        # 기본 섹션 + 선택 옵션
+        sections_to_process = [
+            ("overview", "국가 및 시장 개요"),
+            ("market_size", "시장 규모"),
+            ("distribution", "유통 구조"),
+        ]
+        
+        for opt_key, opt_name in ANALYSIS_OPTIONS.items():
+            if opt_key in state.options:
+                sections_to_process.append((opt_key, opt_name))
+        
+        total_steps = len(sections_to_process) * 4 + 1
         current = 0
         
-        # 2. 브리프 생성
-        if callback:
-            callback("brief", "🎯 연구 브리프 생성 중...", current / total_steps)
-        
-        state.brief = await self._generate_brief(state)
-        current += 1
-        
-        if callback:
-            callback("brief", "🎯 연구 브리프 완료", current / total_steps)
-        
-        # 3. 섹션별 연구 (병렬)
-        tasks = []
-        for key, title in SECTIONS:
-            tasks.append(self._research_section(key, title, state))
-        
-        results = await asyncio.gather(*tasks, return_exceptions=True)
-        
-        for i, result in enumerate(results):
-            key, title = SECTIONS[i]
-            current += 1
+        # 섹션별 처리 (검증 강화)
+        for key, title in sections_to_process:
+            section = SectionResult(key=key, title=title)
             
-            if isinstance(result, SectionResult):
-                state.sections[key] = result
-                status = "✅" if result.success else "⚠️"
-            else:
-                state.sections[key] = SectionResult(key=key, title=title, summary="분석 실패")
-                state.errors.append(str(result))
-                status = "❌"
+            # 로거에 섹션 시작 기록
+            self.research_logger.start_section(key, title)
             
+            # 전략 가져오기
+            strategy = self.strategy_selector.get_strategy(key)
+            logger.info(f"📋 섹션 {key}: {strategy['reason']}")
+            
+            # 🔥 검증 강화 파이프라인
+            await self._process_section_with_validation(section, state, strategy, callback, current, total_steps)
+            
+            # 로거에 섹션 완료 기록
+            self.research_logger.end_section(
+                key,
+                section.final_score,
+                section.evaluation.get("grade", "F"),
+                section.success,
+                section.citations
+            )
+            
+            state.sections[key] = section
+            state.all_citations.extend(section.citations)
+            current += 4
+        
+        # 최종 보고서 생성 (Supervisor 승인된 섹션만)
+        if callback:
+            callback("report", "최종 보고서 생성 중...", (total_steps - 1) / total_steps)
+        
+        self.research_logger.log_stage_start("final_report")
+        report_start = time.time()
+        state.final_report = await self._generate_final_report(state)
+        self.research_logger.log_stage_end(
+            "final_report",
+            {"report_length": len(state.final_report)},
+            (time.time() - report_start) * 1000
+        )
+        
+        if callback:
+            callback("done", "완료", 1.0)
+        
+        # 로그 저장
+        if self.research_logger:
+            try:
+                state.log_path = self.research_logger.finalize()
+            except Exception as e:
+                logger.error(f"로그 저장 실패: {e}")
+                state.log_path = ""
+        
+        return self._to_output(state)
+    
+    async def _process_section_with_validation(
+        self, 
+        section: SectionResult, 
+        state: PipelineState,
+        strategy: Dict,
+        callback: Optional[ProgressCallback],
+        current: int,
+        total: int
+    ):
+        """🔥 검증 강화 섹션 처리 - 각 단계마다 Supervisor 검증"""
+        
+        key = section.key
+        title = section.title
+        
+        # ============================================================
+        # 단계 1: Draft 생성 + Supervisor 검증 ⭐
+        # ============================================================
+        if strategy.get("use_json", True):
             if callback:
-                callback(key, f"{status} {title}", current / total_steps)
-        
-        # 4. 최종 보고서
-        if callback:
-            callback("report", "📄 최종 보고서 생성 중...", current / total_steps)
-        
-        state.final_report = await self._generate_report(state)
-        
-        if callback:
-            callback("report", "📄 보고서 완료", 1.0)
-        
-        return self._to_dict(state)
-    
-    # -------------------------------------------------------------------------
-    # 브리프 생성
-    # -------------------------------------------------------------------------
-    async def _generate_brief(self, state: PipelineState) -> str:
-        """연구 브리프 생성"""
-        prompt = f"""
-당신은 KOTRA 시장분석 전문가입니다.
-
-[분석 대상]
-- 국가: {state.country}
-- HS Code: {state.hs_code}
-- 품목: {state.item}
-
-위 정보를 바탕으로 시장조사 브리프를 200자 내외로 작성하세요.
-포함: 조사 목적, 핵심 분석 항목, 기대 결과물
-"""
-        response = await self.llm_fast.ainvoke([HumanMessage(content=prompt)])
-        return response.content.strip()
-    
-    # -------------------------------------------------------------------------
-    # 섹션 연구
-    # -------------------------------------------------------------------------
-    async def _research_section(self, key: str, title: str, state: PipelineState) -> SectionResult:
-        """단일 섹션 연구"""
-        result = SectionResult(key=key, title=title)
-        
-        try:
-            # RAG 검색
-            query = self._build_query(key, state)
-            docs = self.vectordb.search(query, state.country_code, k=5)
-            result.rag_docs = [{"content": d.page_content, "meta": d.metadata} for d in docs]
+                callback(key, f"✍️ {title}: 초안 생성 중...", current / total)
             
-            # 웹 검색 (해당 섹션만)
-            if key in WEB_SECTIONS:
-                result.web_info = self.web.analyze(key, state.country, state.item, state.hs_code)
+            draft_content, draft_citations = await self._generate_section(
+                key, state, mode="draft"
+            )
             
-            # 요약 생성
-            result.summary = await self._summarize_section(result, state)
-            result.success = bool(result.summary and len(result.summary) > 50)
+            # Supervisor 검증
+            draft_eval = self.supervisor.evaluate_content(
+                content=draft_content,
+                source_type="json",
+                metadata={"section": key, "step": "draft"}
+            )
             
-        except Exception as e:
-            logger.error(f"섹션 {key} 오류: {e}")
-            result.summary = "분석 중 오류 발생"
+            section.draft = draft_content
+            section.draft_score = draft_eval.get("score", 0)
+            section.citations.extend(draft_citations)
+            
+            logger.info(f"✅ {key} Draft: {section.draft_score}점 ({draft_eval.get('grade', 'F')})")
+            
+            # 최소 기준 미달 시 경고
+            if section.draft_score < self.MIN_SCORE:
+                logger.warning(f"⚠️ {key} Draft 품질 미달 ({section.draft_score}점) - 계속 진행")
         
-        return result
-    
-    def _build_query(self, key: str, state: PipelineState) -> str:
-        """섹션별 RAG 쿼리 생성"""
-        base = f"{state.country} {state.item} HS {state.hs_code}"
+        # ============================================================
+        # 단계 2: KATI 검증 + Supervisor 검증 ⭐
+        # ============================================================
+        if strategy.get("use_kati", False) and section.draft:
+            if callback:
+                callback(key, f"🔍 {title}: KATI 검증 중...", (current + 1) / total)
+            
+            kati_content, kati_citations = await self._generate_section(
+                key, state, mode="verify", existing_content=section.draft
+            )
+            
+            # Supervisor 검증
+            kati_eval = self.supervisor.evaluate_content(
+                content=kati_content,
+                source_type="kati",
+                metadata={"section": key, "step": "kati"}
+            )
+            
+            section.kati_verified = kati_content
+            section.kati_score = kati_eval.get("score", 0)
+            section.citations.extend(kati_citations)
+            
+            logger.info(f"✅ {key} KATI: {section.kati_score}점 ({kati_eval.get('grade', 'F')})")
+            
+            # 개선되지 않으면 draft로 롤백
+            if section.kati_score < section.draft_score - self.IMPROVEMENT_THRESHOLD:
+                logger.warning(f"⚠️ {key} KATI 검증 후 품질 하락 → Draft 유지")
+                section.kati_verified = section.draft
+                section.kati_score = section.draft_score
         
-        suffixes = {
-            "overview": "시장 개요 동향 경제 소비",
-            "suitability": "적합성 경쟁력 수입 수출",
-            "market_size": "시장 규모 성장률 통계",
-            "distribution": "유통 채널 공급망 소매",
-            "regulation": "규제 인증 라벨링 위생",
-            "price": "가격 추세 단가 경쟁력",
-            "risk": "리스크 위험 변동 경쟁",
-            "demand": "수요 전망 소비 성장",
+        # ============================================================
+        # 단계 3: PDF 보완 + Supervisor 검증 ⭐
+        # ============================================================
+        if strategy.get("use_pdf", False):
+            if callback:
+                callback(key, f"📚 {title}: PDF 보완 중...", (current + 2) / total)
+            
+            base_content = section.kati_verified or section.draft
+            pdf_content, pdf_citations = await self._generate_section(
+                key, state, mode="enhance_pdf", existing_content=base_content
+            )
+            
+            # Supervisor 검증
+            pdf_eval = self.supervisor.evaluate_content(
+                content=pdf_content,
+                source_type="pdf",
+                metadata={"section": key, "step": "pdf"}
+            )
+            
+            section.pdf_enhanced = pdf_content
+            section.pdf_score = pdf_eval.get("score", 0)
+            section.citations.extend(pdf_citations)
+            
+            logger.info(f"✅ {key} PDF: {section.pdf_score}점 ({pdf_eval.get('grade', 'F')})")
+            
+            # 개선되지 않으면 이전 버전 유지
+            prev_score = section.kati_score or section.draft_score
+            if section.pdf_score < prev_score - self.IMPROVEMENT_THRESHOLD:
+                logger.warning(f"⚠️ {key} PDF 보완 후 품질 하락 → 이전 버전 유지")
+                section.pdf_enhanced = base_content
+                section.pdf_score = prev_score
+        
+        # ============================================================
+        # 단계 4: Web 보완 + Supervisor 최종 검증 ⭐
+        # ============================================================
+        if strategy.get("use_web", False):
+            if callback:
+                callback(key, f"🌐 {title}: 웹 보완 중...", (current + 3) / total)
+            
+            base_content = section.pdf_enhanced or section.kati_verified or section.draft
+            web_content, web_citations = await self._generate_section(
+                key, state, mode="enhance_web", existing_content=base_content
+            )
+            
+            # Supervisor 최종 검증
+            web_eval = self.supervisor.evaluate_content(
+                content=web_content,
+                source_type="web",
+                metadata={"section": key, "step": "web"}
+            )
+            
+            section.web_enhanced = web_content
+            section.web_score = web_eval.get("score", 0)
+            section.citations.extend(web_citations)
+            
+            logger.info(f"✅ {key} Web: {section.web_score}점 ({web_eval.get('grade', 'F')})")
+            
+            # 개선되지 않으면 이전 버전 유지
+            prev_score = section.pdf_score or section.kati_score or section.draft_score
+            if section.web_score < prev_score - self.IMPROVEMENT_THRESHOLD:
+                logger.warning(f"⚠️ {key} Web 보완 후 품질 하락 → 이전 버전 유지")
+                section.web_enhanced = base_content
+                section.web_score = prev_score
+        
+        # ============================================================
+        # 최종: 가장 높은 점수 버전 선택 🏆
+        # ============================================================
+        versions = [
+            ("draft", section.draft, section.draft_score),
+            ("kati", section.kati_verified, section.kati_score),
+            ("pdf", section.pdf_enhanced, section.pdf_score),
+            ("web", section.web_enhanced, section.web_score),
+        ]
+        
+        # 점수 순 정렬
+        versions.sort(key=lambda x: x[2], reverse=True)
+        best_version, best_content, best_score = versions[0]
+        
+        section.final = best_content
+        section.final_score = best_score
+        section.final_version = best_version
+        section.success = best_score >= self.MIN_SCORE
+        
+        section.evaluation = {
+            "score": best_score,
+            "grade": self._score_to_grade(best_score),
+            "version": best_version,
+            "all_scores": {v[0]: v[2] for v in versions}
         }
         
-        return f"{base} {suffixes.get(key, '')}"
+        if section.success:
+            logger.info(f"🏆 {key} 최종: {best_version.upper()} 버전 선택 ({best_score}점)")
+        else:
+            logger.error(f"❌ {key} 최종: 모든 버전 품질 미달 (최고 {best_score}점)")
     
-    async def _summarize_section(self, section: SectionResult, state: PipelineState) -> str:
-        """섹션 요약 생성"""
-        rag_text = "\n".join([d["content"][:500] for d in section.rag_docs[:2]]) if section.rag_docs else ""
-        web_text = section.web_info.get("text", "")[:500] if section.web_info else ""
+    async def _generate_section(
+        self,
+        section_key: str,
+        state: PipelineState,
+        mode: str,
+        existing_content: str = ""
+    ) -> Tuple[str, List[str]]:
+        """섹션 생성 (통합 프롬프트 사용)"""
         
-        if not rag_text and not web_text:
-            return "자료 부족"
+        # 데이터 검색
+        if mode == "draft":
+            filter_type = "country_info"
+        elif mode == "verify":
+            filter_type = "kati"
+        elif mode == "enhance_pdf":
+            filter_type = "kotra"
+        elif mode == "enhance_web":
+            # 웹 검색
+            query = f"{state.country} {state.item} {section_key} 최신"
+            web_results = self.web.search_public_only(query, top_k=5)
+            
+            if not web_results:
+                return existing_content, []
+            
+            context = "\n\n".join([
+                f"🌐 [출처: {r.get('url', 'N/A')}]\n제목: {r.get('title', '')}\n{r.get('content', '')}"
+                for r in web_results
+            ])
+            
+            prompt = get_section_prompt(
+                mode=mode,
+                context=context,
+                existing_content=existing_content,
+                country=state.country,
+                item=state.item,
+                section_key=section_key,
+                country_code=state.country_code,
+                hs_code=state.hs_code
+            )
+            
+            response = await self.llm_smart.ainvoke([HumanMessage(content=prompt)])
+            citations = [f"웹: {r.get('url', 'N/A')}" for r in web_results]
+            
+            return response.content.strip(), citations
+        else:
+            filter_type = "country_info"
         
-        prompt = f"""
-[{section.title}] 섹션 요약
-
-국가: {state.country} | 품목: {state.item} | HS: {state.hs_code}
-
-[RAG 자료]
-{rag_text or "없음"}
-
-[웹 검색]
-{web_text or "없음"}
-
-위 자료를 바탕으로 400-600자의 KOTRA 스타일 분석문을 작성하세요.
-사실 기반으로만 작성하고, 불확실한 내용은 제외하세요.
-"""
-        response = await self.llm_fast.ainvoke([HumanMessage(content=prompt)])
-        return response.content.strip()
-    
-    # -------------------------------------------------------------------------
-    # 최종 보고서
-    # -------------------------------------------------------------------------
-    async def _generate_report(self, state: PipelineState) -> str:
-        """최종 보고서 생성"""
-        sections_md = "\n\n".join([
-            f"## {s.title}\n{s.summary}"
-            for s in state.sections.values() if s.success
+        # 벡터 검색
+        docs = self.vectordb.retrieve(
+            query=f"{state.country} {state.item} {section_key}",
+            top_k=5,
+            filter_dict={"type": filter_type, "country_code": state.country_code}
+        )
+        
+        if not docs:
+            if existing_content:
+                return existing_content, []
+            return f"{state.country}의 {section_key} 정보를 찾을 수 없습니다.", []
+        
+        # 컨텍스트 구성
+        context = "\n\n".join([
+            f"📊 [출처: {d.metadata.get('source', filter_type)}]\n{d.page_content}"
+            for d in docs
         ])
         
-        prompt = f"""
-KOTRA 스타일의 시장진출 보고서를 작성하세요.
-
-[연구 브리프]
-{state.brief}
-
-[섹션별 분석]
-{sections_md}
-
-[작성 지침]
-1. 요약(Executive Summary): 400자
-2. 각 섹션 내용 통합
-3. 전략 제언: 500자
-
-마크다운 형식으로 작성하세요.
-"""
-        response = await self.llm_smart.ainvoke([HumanMessage(content=prompt)])
-        return response.content.strip()
+        # 프롬프트 생성
+        prompt = get_section_prompt(
+            mode=mode,
+            context=context,
+            existing_content=existing_content,
+            country=state.country,
+            item=state.item,
+            section_key=section_key,
+            country_code=state.country_code,
+            hs_code=state.hs_code
+        )
+        
+        # LLM 호출
+        llm = self.llm_smart if mode in ["verify", "enhance_web"] else self.llm_fast
+        response = await llm.ainvoke([HumanMessage(content=prompt)])
+        
+        # 출처 수집
+        citations = [
+            d.metadata.get("citation", d.metadata.get("source", filter_type))
+            for d in docs
+        ]
+        
+        return response.content.strip(), citations
     
-    # -------------------------------------------------------------------------
-    # 결과 변환
-    # -------------------------------------------------------------------------
-    def _to_dict(self, state: PipelineState) -> Dict:
-        """상태를 딕셔너리로 변환"""
+    def _score_to_grade(self, score: int) -> str:
+        """점수를 등급으로 변환"""
+        if score >= 90:
+            return "A"
+        elif score >= 80:
+            return "B"
+        elif score >= 70:
+            return "C"
+        elif score >= 50:
+            return "D"
+        else:
+            return "F"
+    
+    async def _generate_final_report(self, state: PipelineState) -> str:
+        """최종 보고서 생성 (Supervisor 승인된 섹션만)"""
+        
+        # 승인된 섹션만 수집
+        approved_sections = {
+            key: section
+            for key, section in state.sections.items()
+            if section.success
+        }
+        
+        logger.info(f"📊 승인된 섹션: {len(approved_sections)}/{len(state.sections)}개")
+        
+        if not approved_sections:
+            return "# ⚠️ 품질 기준을 충족하는 섹션이 없습니다.\n\n모든 섹션이 Supervisor 검증에서 실패했습니다."
+        
+        # 섹션 내용 조합
+        parts = [
+            f"# {state.country} {state.item} 시장진출 보고서",
+            f"\n🔢 HS Code: {state.hs_code}",
+            f"📅 생성일: {time.strftime('%Y-%m-%d')}",
+            f"\n---\n"
+        ]
+        
+        section_titles = {
+            "overview": "국가 및 시장 개요",
+            "market_size": "시장 규모",
+            "distribution": "유통 구조",
+            "regulation": "규제",
+            "risk": "시장리스크",
+            "price": "가격추세",
+            "demand": "수요전망"
+        }
+        
+        for key in ["overview", "market_size", "distribution", "regulation", "risk", "price", "demand"]:
+            if key in approved_sections:
+                section = approved_sections[key]
+                title = section_titles.get(key, key)
+                score = section.final_score
+                grade = section.evaluation.get("grade", "F")
+                version = section.final_version.upper()
+                
+                parts.append(f"\n## {title}")
+                parts.append(f"*품질: {grade}등급 ({score}점) | 버전: {version}*\n")
+                parts.append(section.final)
+        
+        # 참고문헌
+        if state.all_citations:
+            parts.append("\n## 📚 참고문헌\n")
+            unique_citations = list(set(state.all_citations))
+            for c in unique_citations[:30]:  # 최대 30개
+                parts.append(f"- {c}")
+        
+        # 품질 요약
+        parts.append("\n---\n## 📊 품질 요약\n")
+        for key, section in approved_sections.items():
+            parts.append(
+                f"- **{section.title}**: {section.evaluation.get('grade', 'F')}등급 "
+                f"({section.final_score}점, {section.final_version.upper()})"
+            )
+        
+        return "\n".join(parts)
+    
+    def _to_output(self, state: PipelineState) -> Dict:
+        """출력 형식 변환"""
         return {
-            "brief": state.brief,
+            "success": True,
+            "final_report": state.final_report,
             "sections": [
                 {
                     "key": s.key,
                     "title": s.title,
-                    "summary": s.summary,
-                    "success": s.success,
+                    "content": s.final,
+                    "passed": s.success,
+                    "evaluation": s.evaluation,
+                    "citations": s.citations,
+                    "version": s.final_version,
+                    "all_scores": {
+                        "draft": s.draft_score,
+                        "kati": s.kati_score,
+                        "pdf": s.pdf_score,
+                        "web": s.web_score
+                    }
                 }
                 for s in state.sections.values()
             ],
-            "final_report": state.final_report,
+            "all_citations": list(set(state.all_citations)),
+            "log_path": state.log_path,
             "errors": state.errors,
+            "quality_summary": {
+                "total_sections": len(state.sections),
+                "approved_sections": sum(1 for s in state.sections.values() if s.success),
+                "average_score": sum(s.final_score for s in state.sections.values()) / len(state.sections) if state.sections else 0
+            }
         }
 
 
-# =============================================================================
-# 벡터스토어 초기화
-# =============================================================================
 def init_vectorstore() -> QdrantVectorDB:
-    """벡터스토어 초기화 (데이터 없으면 구축)"""
+    """벡터스토어 초기화"""
     db = QdrantVectorDB()
     
-    if db.has_data():
-        logger.info("VectorDB 준비 완료")
-        return db
-    
-    logger.warning("VectorDB 구축 시작...")
-    
-    # 국가 JSON
-    for code in Config.COUNTRY_MAP.values():
-        docs = DataLoader.process_country_json(code)
-        if docs:
-            db.insert(docs)
-    
-    # PDF
-    for folder in ["kati", "kotra"]:
-        path = os.path.join(Config.DATA_DIR, folder)
-        if os.path.exists(path):
-            docs = DataLoader.process_all_pdfs(path)
-            if docs:
-                db.insert(docs)
+    if not db.has_data():
+        logger.warning("⚠️ 벡터스토어에 데이터가 없습니다. init_db.py를 먼저 실행하세요.")
     
     return db
-
-
-# =============================================================================
-# CLI 실행
-# =============================================================================
-if __name__ == "__main__":
-    import sys
-    import json
-    
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
-    
-    # 페이로드
-    if len(sys.argv) > 1:
-        with open(sys.argv[1], "r", encoding="utf-8") as f:
-            payload = json.load(f)
-    else:
-        payload = {"country": "일본", "hs_code": "3304.99", "item": "화장품"}
-    
-    print(f"\n{'='*50}")
-    print(f"GlobalPath AI - Research Pipeline")
-    print(f"{'='*50}")
-    print(f"국가: {payload['country']}")
-    print(f"HS Code: {payload['hs_code']}")
-    print(f"품목: {payload['item']}")
-    print(f"{'='*50}\n")
-    
-    # 콜백
-    def cli_callback(step: str, msg: str, progress: float):
-        bar = "█" * int(30 * progress) + "░" * int(30 * (1 - progress))
-        print(f"\r[{bar}] {progress*100:5.1f}% | {msg}", end="", flush=True)
-        if progress >= 1.0:
-            print()
-    
-    # 실행
-    db = init_vectorstore()
-    pipeline = ResearchPipeline(db)
-    result = pipeline.run(payload, cli_callback)
-    
-    print(f"\n{'='*50}")
-    print("완료!")
-    print(f"섹션: {len(result['sections'])}개")
-    print(f"오류: {len(result['errors'])}개")
