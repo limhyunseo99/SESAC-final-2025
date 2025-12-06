@@ -145,62 +145,102 @@ def create_success_rate_chart(country_code: str, hs_code: str, output_dir: str) 
 
 def create_sns_hashtag_chart(country_code: str, hashtag: str, output_dir: str) -> Optional[str]:
     """SNS 해시태그 트렌드 꺾은선 그래프 생성"""
+
     try:
         if not hashtag:
             return None
-            
-        base_dir = Path(__file__).parent
-        xlsx_path = base_dir / "data" / "sns.xlsx"
-        
-        if not xlsx_path.exists():
-            logger.warning(f"SNS 데이터 파일 없음: {xlsx_path}")
+
+        # Base directory (Notebook에서도 안전)
+        base_dir = Path().resolve()
+        data_dir = base_dir / "data"
+
+        # 파일 자동 감지
+        xlsx_path = data_dir / "sns.xlsx"
+        csv_path = data_dir / "sns.csv"
+
+        if xlsx_path.exists():
+            df = pd.read_excel(xlsx_path, engine="openpyxl")
+        elif csv_path.exists():
+            try:
+                df = pd.read_csv(csv_path, encoding="utf-8")
+            except:
+                df = pd.read_csv(csv_path, encoding="latin1")
+        else:
+            logger.warning("SNS 데이터 파일을 찾을 수 없습니다.")
             return None
-        
-        df = pd.read_excel(xlsx_path)
-        
-        # 해당 국가 + 해시태그 필터링
-        filtered = df[(df['country'] == country_code) & (df['name_kr'] == hashtag)]
-        
+
+        # --------------------------
+        # 국가 / 해시태그 필터링
+        # --------------------------
+        df["country"] = df["country"].str.upper().str.strip()
+        df["name_kr"] = df["name_kr"].str.strip()
+
+        filtered = df[
+            (df["country"] == country_code.upper()) &
+            (df["name_kr"] == hashtag)
+        ]
+
         if filtered.empty:
             logger.warning(f"SNS 데이터 없음: country={country_code}, hashtag={hashtag}")
             return None
-        
-        # 날짜순 정렬
-        filtered = filtered.sort_values('mm-yy')
-        
-        fig, ax = plt.subplots(figsize=(10, 5))
-        
+
+        # --------------------------
+        # 날짜 처리 (YYYY-MM-01)
+        # --------------------------
+        filtered["date"] = pd.to_datetime(filtered["mm-yy"], format="%Y-%m-%d")
+
+        filtered = filtered.sort_values("date")
+
         x = range(len(filtered))
-        y = filtered['count'].values
-        dates = pd.to_datetime(filtered['mm-yy']).dt.strftime('%Y-%m')
-        
-        ax.plot(x, y, marker='o', linewidth=2, markersize=8, color='#0D9488')
-        ax.fill_between(x, y, alpha=0.1, color='#0D9488')
-        
+        y = filtered["count"].values
+        dates = filtered["date"].dt.strftime("%Y-%m")
+
+        # --------------------------
+        # 그래프 생성
+        # --------------------------
+        plt.rcParams["font.family"] = "Malgun Gothic"
+
+        fig, ax = plt.subplots(figsize=(10, 5))
+
+        ax.plot(x, y, marker="o", linewidth=2, markersize=8, color="#0D9488")
+        ax.fill_between(x, y, alpha=0.1, color="#0D9488")
+
         # 값 표시
-        for i, (xi, yi) in enumerate(zip(x, y)):
-            ax.annotate(f'{yi}', (xi, yi), textcoords="offset points", 
-                       xytext=(0, 8), ha='center', fontsize=9)
-        
+        for xi, yi in zip(x, y):
+            ax.annotate(f"{yi}", (xi, yi), textcoords="offset points",
+                        xytext=(0, 8), ha="center", fontsize=9)
+
+        # 현지어 해시태그 선택
+        local_name = filtered["name_country_ver"].iloc[0]
+
         ax.set_xticks(x)
-        ax.set_xticklabels(dates, rotation=45, ha='right', fontsize=9)
-        ax.set_ylabel('언급 횟수', fontsize=10)
+        ax.set_xticklabels(dates, rotation=45, ha="right", fontsize=9)
+        ax.set_ylabel("언급 횟수", fontsize=10)
+        ax.set_title(
+            f"SNS 해시태그 트렌드: #{hashtag} (#{local_name})",
+            fontsize=12, fontweight="bold", pad=15
+        )
+
         ax.grid(True, alpha=0.3)
-        ax.spines['top'].set_visible(False)
-        ax.spines['right'].set_visible(False)
-        
-        # 현지 해시태그 이름 표시
-        local_name = filtered['name_country_ver'].iloc[0] if not filtered.empty else hashtag
-        ax.set_title(f'SNS 해시태그 트렌드: #{hashtag} (#{local_name})', fontsize=12, fontweight='bold', pad=15)
-        
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
+
         plt.tight_layout()
-        chart_path = os.path.join(output_dir, 'sns_chart.png')
-        plt.savefig(chart_path, dpi=150, bbox_inches='tight', facecolor='white')
+
+        # --------------------------
+        # 파일 저장
+        # --------------------------
+        output_dir = Path(output_dir)
+        output_dir.mkdir(parents=True, exist_ok=True)
+
+        chart_path = output_dir / f"sns_chart_{country_code}_{hashtag}.png"
+
+        plt.savefig(chart_path, dpi=150, bbox_inches="tight", facecolor="white")
         plt.close()
-        
+
         logger.info(f"✓ SNS 해시태그 차트 생성: {chart_path}")
-        return chart_path
-        
+        return str(chart_path)
+
     except Exception as e:
         logger.error(f"SNS 해시태그 차트 생성 실패: {e}")
         return None

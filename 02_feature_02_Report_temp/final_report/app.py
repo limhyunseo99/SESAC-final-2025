@@ -156,9 +156,9 @@ def navigate_to(page_name):
 
 
 # HS Code 찾기 팝업
-@st.dialog("HS 코드 찾기")
+@st.dialog("HTS 코드 찾기")
 def hs_code_finder_dialog():
-    st.caption("수출하고자 하는 상품의 상세설명을 입력해주세요.<br>관세청 기반 데이터를 통해 가장 적절한 HS코드 10자리를 찾아드려요.", unsafe_allow_html=True)
+    st.caption("수출하고자 하는 상품의 상세설명을 입력해주세요.<br>관세청 기반 데이터를 통해 가장 적절한 HTS코드 10자리를 찾아드려요.", unsafe_allow_html=True)
 
     # col_d1, col_d2 = st.columns(2)
     # with col_d1:
@@ -180,44 +180,46 @@ def hs_code_finder_dialog():
         st.session_state.selected_row = None
 
     # 검색 버튼
-    if st.button("🔍 코드 찾기", type="primary", use_container_width=True):
+    if st.button("🔍 검색", type="primary", use_container_width=True):
 
         if not desc.strip():
             st.error("상품 설명을 입력해주세요.")
             return
 
-        with st.spinner("HS 코드 분석 중... (약 1분 소요)"):
+        with st.spinner("HTS 코드 분석 중... (약 1분 소요)"):
             result = hs_main(desc)  # hs코드 예측 함수
             st.session_state.hs_result = result
             st.session_state.selected_row = None
 
-    # 결과 표 출력 + 선택
-    if st.session_state.hs_result:
+        # 결과 표 출력 + 선택
+    if st.session_state.get("hs_result"):
 
-        st.markdown("### 추천 HS 코드 결과")
 
+        # 1) df 정의
         df = pd.DataFrame(st.session_state.hs_result)
 
-        # 라디오 버튼으로 한 개 선택
-        selected_idx = st.radio(
-         "HS 코드 선택",
-        options=df.index,
-        format_func=lambda x: f"{x+1}순위 | {df.loc[x, 'hs_code']} | {df.loc[x, 'title']}",
-        key="hs_select_radio"
-        )
+        # 2) 탭 생성 (1순위, 2순위, 3순위...)
+        tab_labels = [f"{i+1}순위" for i in range(len(df))]
+        tabs = st.tabs(tab_labels)
+    
+        # 3) 각 탭에 해당 순위의 정보 표시
+        for i, tab in enumerate(tabs):
+            with tab:
+                st.markdown(f"### 🔎 {i+1}순위 HTS 코드")
+                st.write(f"**HTS 코드:** {df.loc[i, 'hs_code']}")
+                st.write(f"**품목명:** {df.loc[i, 'title']}")
+            
+                st.markdown("### 📌 결정 사유")
+                st.write(df.loc[i, "reason"])
+            
+                # 각 탭마다 선택 버튼 추가
+                if st.button(f"{i+1}순위 HTS 코드 선택하기", key=f"select_hs_{i}", use_container_width=True):
+                    st.session_state.analysis_data["hs_code"] = df.loc[i, "hs_code"]
+                    time.sleep(0.3)
+                    st.rerun()
 
-        # 선택된 항목의 결정사유 따로 출력
-        st.markdown("📌선택한 HS 코드 결정사유")
-        st.markdown(df.loc[selected_idx, "reason"])
-
-        # 선택 완료 버튼
-        if st.button("선택", use_container_width=True):
-            selected_hs = df.loc[selected_idx, "hs_code"]
-
-            # 메인 입력값으로 자동 반영
-            st.session_state.analysis_data["hs_code"] = selected_hs
-            time.sleep(0.5)
-            st.rerun()
+    else:
+        st.warning("HS 추천 결과가 없습니다. 먼저 분석을 실행해주세요.")
 
 # -----------------------------------------------------------------------------
 # 4. 사이드바
@@ -444,14 +446,14 @@ def page_new_analysis():
     with col_c2:
         hs_code = st.text_input(
             "HTS Code",
-            placeholder="예: 3304.99",
+            placeholder="예: 2204.99.0000",
             value=st.session_state.analysis_data.get("hs_code", ""),
         )
         st.session_state.analysis_data["hs_code"] = hs_code
 
     with col_btn:
         st.markdown("<div style='margin-top: 29px;'></div>", unsafe_allow_html=True)
-        if st.button("🔍 HS Code 찾기", key="hs_finder_btn", use_container_width=True):
+        if st.button("🔍 HTS Code 찾기", key="hs_finder_btn", use_container_width=True):
             hs_code_finder_dialog()
 
     st.write("")
@@ -479,8 +481,9 @@ def page_new_analysis():
     
     st.markdown("**SNS 해시태그 분석**")
     sns_hashtag = st.text_input(
-        "SNS 해시태그 키워드",
-        placeholder="예: 녹차, 칠성 사이다, 바나나우유",
+        label="SNS 키워드",
+        label_visibility="collapsed",
+        placeholder="예: 녹차, 식혜, 바나나 우유",
         help="분석하고 싶은 SNS 해시태그 키워드를 입력하세요"
     )
     st.session_state.analysis_data["sns_hashtag"] = sns_hashtag
@@ -494,7 +497,7 @@ def page_new_analysis():
             with open(payload_path, "w", encoding="utf-8") as f:
                 json.dump(payload, f, ensure_ascii=False, indent=2)
 
-            with st.spinner("보고서를 생성하고 있습니다..."):
+            with st.spinner("보고서를 생성하고 있습니다...약 5분 소요"):
                 result = subprocess.run(
                     ["python", "generator.py", str(payload_path)],
                     capture_output=True,
