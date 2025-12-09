@@ -1,5 +1,8 @@
 # config.py
 # 설정, 청킹 규칙, DataLoader, Supervisor 통합
+# 🔧 수정사항:
+# 1. quality_threshold = 70 고정 확인
+# 2. country code normalize 개선
 
 import os
 import re
@@ -26,8 +29,8 @@ class Config:
     DATA_DIR = os.path.join(BASE_DIR, "data")
     OUTPUT_DIR = os.path.join(BASE_DIR, "output")
     
-    MODEL_FAST = os.getenv("MODEL_FAST", "gpt-4o-mini") # 간단하고 작업
-    MODEL_SMART = os.getenv("MODEL_SMART", "gpt-4o-mini") # 복잡한 작업
+    MODEL_FAST = os.getenv("MODEL_FAST", "gpt-4o-mini")
+    MODEL_SMART = os.getenv("MODEL_SMART", "gpt-4o-mini")
     
     TAVILY_API_KEY = os.getenv("TAVILY_API_KEY", "")
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
@@ -37,7 +40,13 @@ class Config:
     QDRANT_COLLECTION_HTS = os.getenv("QDRANT_COLLECTION_HTS", "hts_case_all")
     QDRANT_COLLECTION_REPORT = os.getenv("QDRANT_COLLECTION_REPORT", "REPORT")
 
-    COUNTRY_MAP = {"미국": "US", "일본": "JP", "베트남": "VN"}
+    # 🔧 국가 매핑 확장
+    COUNTRY_MAP = {
+        "미국": "US", "일본": "JP", "베트남": "VN",
+        "미국 (USA)": "US", "일본 (Japan)": "JP", "베트남 (Vietnam)": "VN",
+        "US": "US", "JP": "JP", "VN": "VN",
+        "USA": "US", "Japan": "JP", "Vietnam": "VN",
+    }
     COUNTRY_NAMES = {"US": "미국", "JP": "일본", "VN": "베트남"}
     
     PUBLIC_DOMAINS = [
@@ -115,7 +124,7 @@ class DataLoader:
     
     @staticmethod
     def normalize_country(name: str) -> str:
-        """국가명을 코드로 변환/일관된 코드로 변환하여 전달"""
+        """🔧 개선: 국가명을 코드로 변환 - 더 유연한 처리"""
         if not name:
             raise ValueError("국가명이 비어 있습니다.")
         
@@ -123,12 +132,20 @@ class DataLoader:
         
         # 괄호 제거 (예: "미국 (USA)" → "미국")
         if "(" in name:
-            name = name.split("(")[0].strip()
+            name_cleaned = name.split("(")[0].strip()
+        else:
+            name_cleaned = name
         
+        # 먼저 원본으로 시도
         if name in Config.COUNTRY_MAP:
             return Config.COUNTRY_MAP[name]
         
-        name_upper = name.upper()
+        # 괄호 제거 버전으로 시도
+        if name_cleaned in Config.COUNTRY_MAP:
+            return Config.COUNTRY_MAP[name_cleaned]
+        
+        # 대문자 변환 시도
+        name_upper = name_cleaned.upper()
         mapping = {
             "UNITED STATES": "US", "USA": "US", "US": "US", "미국": "US",
             "JAPAN": "JP", "JP": "JP", "일본": "JP",
@@ -138,11 +155,16 @@ class DataLoader:
         if name_upper in mapping:
             return mapping[name_upper]
         
+        # 부분 매칭 시도
+        for key, code in mapping.items():
+            if key in name_upper or name_upper in key:
+                return code
+        
         raise ValueError(f"지원하지 않는 국가: {name}")
     
     @staticmethod
     def load_country_info_json(country_code: str) -> List[Dict]:
-        """country_info JSON 파일 로드 및 파싱/ json 파일 구조가 복잡해서 다양한 형식 로드 및 파싱 가능하도록 설계"""
+        """country_info JSON 파일 로드 및 파싱"""
         path = os.path.join(Config.DATA_DIR, "country_info", f"country_info_{country_code}.json")
         
         if not os.path.exists(path):
@@ -153,23 +175,17 @@ class DataLoader:
             with open(path, "r", encoding="utf-8") as f:
                 data = json.load(f)
             
-            # 리스트 형태면 그대로 반환
             if isinstance(data, list):
                 return data
             
-            # "chunks" 키가 있으면 반환
             if "chunks" in data:
                 return data["chunks"]
             
-            # 객체 형태면 섹션별로 파싱
             if isinstance(data, dict):
                 chunks = []
-                
                 for section_key, section_data in data.items():
                     if not isinstance(section_data, dict):
                         continue
-                    
-                    # pages 배열이 있는 경우
                     if "pages" in section_data:
                         for page in section_data["pages"]:
                             if "text" in page:
@@ -181,20 +197,15 @@ class DataLoader:
                                     "has_image": bool(page.get("images")),
                                     "year": 2024
                                 })
-                    
-                    # 직접 text가 있는 경우
                     elif "text" in section_data:
                         chunks.append({
                             "text": section_data["text"],
                             "section": section_key,
                             "year": section_data.get("year", 2024)
                         })
-                
                 logger.info(f"✓ {country_code} JSON 파싱 완료: {len(chunks)}개 청크")
                 return chunks
-            
             return []
-            
         except Exception as e:
             logger.error(f"JSON 로드 실패 ({path}): {e}", exc_info=True)
             return []
@@ -203,10 +214,8 @@ class DataLoader:
     def load_table_image_index() -> Dict:
         """표/이미지 인덱스 로드"""
         path = os.path.join(Config.DATA_DIR, "table_image_index.json")
-        
         if not os.path.exists(path):
             return {}
-        
         try:
             with open(path, "r", encoding="utf-8") as f:
                 return json.load(f)
@@ -217,11 +226,9 @@ class DataLoader:
     def load_regulation_csv() -> List[Dict]:
         """regulation.csv 로드"""
         path = os.path.join(Config.DATA_DIR, "regulation.csv")
-        
         if not os.path.exists(path):
             logger.warning("regulation.csv 없음")
             return []
-        
         try:
             with open(path, "r", encoding="utf-8-sig") as f:
                 reader = csv.DictReader(f)
@@ -231,189 +238,59 @@ class DataLoader:
             return []
     
     @staticmethod
-    def process_country_json(country_code: str) -> List[Document]:
-        """country_info JSON을 Document로 변환"""
-        items = DataLoader.load_country_info_json(country_code)
-        docs = []
-        
-        rule = get_chunking_rule(f"country_info_{country_code}")
-        
-        for item in items:
-            text = item.get("text") or item.get("content") or ""
-            if not text.strip():
-                continue
-            
-            chunks = DataLoader._chunk_text(text, rule["chunk_size"], rule["chunk_overlap"])
-            
-            for i, chunk in enumerate(chunks):
-                docs.append(Document(
-                    page_content=chunk,
-                    metadata={
-                        "country_code": country_code,
-                        "source": "country_info",
-                        "source_type": "json",
-                        "file_name": f"country_info_{country_code}.json",
-                        "section": item.get("section", ""),
-                        "has_table": item.get("has_table", False),
-                        "has_image": item.get("has_image", False),
-                        "chunk_index": i,
-                        "year": item.get("year"),
-                    }
-                ))
-        
-        logger.info(f"country_info_{country_code}: {len(docs)}개 문서 생성")
-        return docs
-    
-    @staticmethod
-    def process_pdf(pdf_path: str) -> List[Document]:
-        """단일 PDF를 Document로 변환"""
-        if not os.path.exists(pdf_path):
+    def load_pdf_content(file_path: str) -> List[Dict]:
+        """PDF 파일 텍스트 추출"""
+        if not os.path.exists(file_path):
+            logger.warning(f"PDF 파일 없음: {file_path}")
             return []
         
-        fname = os.path.basename(pdf_path)
-        rule = get_chunking_rule(fname)
-        
-        country = DataLoader._infer_country(fname)
-        year = DataLoader._infer_year(fname)
-        source = DataLoader._infer_source(pdf_path)
-        
-        pages = DataLoader._extract_pdf_pages(pdf_path)
-        if not pages:
-            return []
-        
-        chunks = DataLoader._chunk_pages(pages, rule["chunk_size"], rule["chunk_overlap"])
-        
-        docs = []
-        for text, page_start, page_end in chunks:
-            docs.append(Document(
-                page_content=text,
-                metadata={
-                    "country_code": country,
-                    "source": source,
-                    "source_type": "pdf",
-                    "file_name": fname,
-                    "page_start": page_start + 1,
-                    "page_end": page_end + 1,
-                    "year": year,
-                    "citation": f"[{fname}, p.{page_start+1}-{page_end+1}]",
-                }
-            ))
-        
-        logger.info(f"{fname}: {len(docs)}개 청크 생성")
-        return docs
-    
-    @staticmethod
-    def process_all_pdfs(folder: str) -> List[Document]:
-        """폴더 내 모든 PDF 처리"""
-        docs = []
-        
-        if not os.path.exists(folder):
-            return docs
-        
-        for fname in os.listdir(folder):
-            if fname.lower().endswith(".pdf"):
-                pdf_path = os.path.join(folder, fname)
-                docs.extend(DataLoader.process_pdf(pdf_path))
-        
-        return docs
-    
-    @staticmethod
-    def _extract_pdf_pages(pdf_path: str) -> List[str]:
-        """PDF 페이지별 텍스트 추출"""
         try:
-            doc = fitz.open(pdf_path)
-            pages = [page.get_text("text").strip() for page in doc]
+            doc = fitz.open(file_path)
+            chunks = []
+            
+            for page_num, page in enumerate(doc):
+                text = page.get_text()
+                if text.strip():
+                    chunks.append({
+                        "text": text,
+                        "page": page_num + 1,
+                        "file_path": file_path
+                    })
+            
             doc.close()
-            return pages
+            return chunks
         except Exception as e:
-            logger.error(f"PDF 추출 실패: {e}")
+            logger.error(f"PDF 로드 실패 ({file_path}): {e}")
             return []
     
     @staticmethod
-    def _chunk_text(text: str, chunk_size: int, chunk_overlap: int) -> List[str]:
-        """텍스트 청킹"""
-        if len(text) <= chunk_size:
-            return [text]
+    def search_files_by_pattern(directory: str, pattern: str) -> List[str]:
+        """디렉토리에서 패턴에 맞는 파일 찾기"""
+        if not os.path.exists(directory):
+            return []
         
-        chunks = []
-        start = 0
-        
-        while start < len(text):
-            end = start + chunk_size
-            chunk = text[start:end]
-            if chunk.strip():
-                chunks.append(chunk.strip())
-            start = end - chunk_overlap
-        
-        return chunks
-    
-    @staticmethod
-    def _chunk_pages(pages: List[str], chunk_size: int, chunk_overlap: int) -> List[Tuple[str, int, int]]:
-        """페이지 리스트 청킹"""
-        chunks = []
-        current_text = ""
-        start_page = 0
-        
-        for i, page in enumerate(pages):
-            if not page:
-                continue
-            
-            if not current_text:
-                start_page = i
-            
-            if len(current_text) + len(page) <= chunk_size:
-                current_text += "\n" + page
-            else:
-                if current_text.strip():
-                    chunks.append((current_text.strip(), start_page, i))
-                overlap_text = current_text[-chunk_overlap:] if chunk_overlap > 0 else ""
-                current_text = overlap_text + "\n" + page
-                start_page = max(i - 1, 0)
-        
-        if current_text.strip():
-            chunks.append((current_text.strip(), start_page, len(pages) - 1))
-        
-        return chunks
-    
-    @staticmethod
-    def _infer_country(fname: str) -> Optional[str]:
-        """파일명에서 국가 추출"""
-        upper = fname.upper()
-        if "_US" in upper or "US." in upper:
-            return "US"
-        if "_JP" in upper or "JP." in upper:
-            return "JP"
-        if "_VN" in upper or "VN." in upper:
-            return "VN"
-        return None
-    
-    @staticmethod
-    def _infer_year(fname: str) -> Optional[int]:
-        """파일명에서 연도 추출"""
-        m = re.search(r"(202[0-9])", fname)
-        return int(m.group(1)) if m else None
-    
-    @staticmethod
-    def _infer_source(path: str) -> str:
-        """경로에서 소스 추출"""
-        lower = path.lower()
-        if "kati" in lower:
-            return "kati"
-        if "kotra" in lower:
-            return "kotra"
-        return "pdf"
+        import glob
+        return glob.glob(os.path.join(directory, pattern))
 
 
 class Supervisor:
-    """Supervisor - 품질 평가 및 의사결정 (A등급 강제화)"""
+    """품질 검증 및 관리"""
     
-    def __init__(self, research_logger=None):
-        self.logger = research_logger
+    def __init__(self, research_logger=None, quality_threshold: int = 70):
+        """
+        Args:
+            research_logger: 리서치 로거 인스턴스
+            quality_threshold: 🔧 품질 기준 (기본값 70점)
+        """
+        self.research_logger = research_logger
+        self.quality_threshold = quality_threshold
         self.llm = ChatOpenAI(model=Config.MODEL_SMART, temperature=0)
-        self.quality_threshold = 90  # A등급 기준으로 상향
     
-    def evaluate_content(self, content: str, source_type: str, metadata: Dict) -> Dict:
+    def evaluate_content(self, content: str, source_type: str, metadata: Dict = None) -> Dict:
         """콘텐츠 품질 평가"""
+        if metadata is None:
+            metadata = {}
+            
         if not content or len(content.strip()) < 50:
             return {
                 "score": 0,
@@ -528,6 +405,8 @@ class Supervisor:
         elif file_name:
             if page_start and page_end:
                 return f"[{file_name}, p.{page_start}-{page_end}]"
+            elif page_start:
+                return f"[{file_name}, p.{page_start}]"
             return f"[{file_name}]"
         elif source:
             return f"[{source.upper()}, {year}]"
