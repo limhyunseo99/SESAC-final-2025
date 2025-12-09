@@ -26,8 +26,8 @@ class Config:
     DATA_DIR = os.path.join(BASE_DIR, "data")
     OUTPUT_DIR = os.path.join(BASE_DIR, "output")
     
-    MODEL_FAST = os.getenv("MODEL_FAST", "gpt-5-mini") # 간단하고 작업
-    MODEL_SMART = os.getenv("MODEL_SMART", "gpt-5") # 복잡한 작업
+    MODEL_FAST = os.getenv("MODEL_FAST", "gpt-4o-mini") # 간단하고 작업
+    MODEL_SMART = os.getenv("MODEL_SMART", "gpt-4o-mini") # 복잡한 작업
     
     TAVILY_API_KEY = os.getenv("TAVILY_API_KEY", "")
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
@@ -405,12 +405,12 @@ class DataLoader:
 
 
 class Supervisor:
-    """Supervisor - 품질 평가 및 의사결정 (로깅 통합)"""
+    """Supervisor - 품질 평가 및 의사결정 (A등급 강제화)"""
     
     def __init__(self, research_logger=None):
         self.logger = research_logger
         self.llm = ChatOpenAI(model=Config.MODEL_SMART, temperature=0)
-        self.quality_threshold = 70
+        self.quality_threshold = 90  # A등급 기준으로 상향
     
     def evaluate_content(self, content: str, source_type: str, metadata: Dict) -> Dict:
         """콘텐츠 품질 평가"""

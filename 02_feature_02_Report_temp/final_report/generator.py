@@ -1,6 +1,6 @@
-# generator.py
+# generator.py (수정본)
 # 보고서 생성 및 PDF 출력
-# 사용법: python generator.py input_payload.json
+# 🔧 변경사항: 하드코딩된 시장리스크/규제/가격 섹션 제거 → pipeline 결과 사용
 
 import os
 import sys
@@ -58,9 +58,43 @@ except Exception as e:
         FONT_REGULAR = "Helvetica"
         FONT_BOLD = "Helvetica-Bold"
 
-# Matplotlib 한글 폰트 설정
-plt.rcParams['font.family'] = 'Noto Sans CJK JP'
-plt.rcParams['axes.unicode_minus'] = False
+# Matplotlib 한글 폰트 설정 (개선됨)
+def setup_matplotlib_korean_font():
+    """matplotlib 한글 폰트를 설정합니다."""
+    try:
+        # 사용 가능한 한글 폰트 찾기
+        font_list = [f.name for f in fm.fontManager.ttflist]
+        
+        # 우선순위: KoPub > Noto Sans CJK > NanumGothic > Malgun Gothic
+        korean_fonts = [
+            'KoPubDotum', 'KoPub Dotum', 
+            'Noto Sans CJK JP', 'Noto Sans CJK KR',
+            'NanumGothic', 'NanumBarunGothic',
+            'Malgun Gothic', 'AppleGothic'
+        ]
+        
+        for font in korean_fonts:
+            if font in font_list:
+                plt.rcParams['font.family'] = font
+                plt.rcParams['axes.unicode_minus'] = False
+                logger.info(f"✓ Matplotlib 한글 폰트 설정: {font}")
+                return font
+        
+        # 한글 폰트가 없으면 DejaVu Sans 사용 (경고 출력)
+        plt.rcParams['font.family'] = 'DejaVu Sans'
+        plt.rcParams['axes.unicode_minus'] = False
+        logger.warning("⚠ 한글 폰트를 찾을 수 없습니다. 그래프에서 한글이 깨질 수 있습니다.")
+        logger.warning("   해결 방법: sudo apt-get install fonts-nanum")
+        return 'DejaVu Sans'
+        
+    except Exception as e:
+        logger.error(f"폰트 설정 오류: {e}")
+        plt.rcParams['font.family'] = 'DejaVu Sans'
+        plt.rcParams['axes.unicode_minus'] = False
+        return 'DejaVu Sans'
+
+# 폰트 설정 실행
+MATPLOTLIB_FONT = setup_matplotlib_korean_font()
 
 # -----------------------------------------------------------------------------
 # 국가 코드 매핑
@@ -80,8 +114,8 @@ COUNTRY_CODE_MAP = {
 # -----------------------------------------------------------------------------
 # 그래프 생성 함수
 # -----------------------------------------------------------------------------
-def create_success_rate_chart(country_code: str, hs_code: str, output_dir: str) -> Optional[str]:
-    """수출 유망 확률 꺾은선 그래프 생성"""
+def get_success_rate_info(country_code: str, hs_code: str) -> Optional[Dict]:
+    """수출 유망 확률 정보 조회 - 텍스트로 반환"""
     try:
         base_dir = Path(__file__).parent
         csv_path = base_dir / "data" / f"{country_code}_success_growth_2026_최적화.csv"
@@ -92,216 +126,139 @@ def create_success_rate_chart(country_code: str, hs_code: str, output_dir: str) 
         
         df = pd.read_csv(csv_path, encoding='utf-8-sig')
         
-        # 상위 10개 품목 추출
-        top_items = df.head(10)
+        # HS Code 클린징
+        hs_code_clean = str(hs_code).replace(".", "").replace(" ", "")
         
-        fig, ax = plt.subplots(figsize=(10, 5))
+        # 해당 HS Code 찾기
+        df['HS코드_clean'] = df['HS코드'].astype(str).str.replace(".", "").str.replace(" ", "")
         
-        # 꺾은선 그래프
-        x = range(len(top_items))
-        y = top_items['2026성공확률(%)'].values
-        labels = top_items['품목명'].values
+        # 정확히 일치하는 HS Code 찾기
+        exact_match = df[df['HS코드_clean'] == hs_code_clean]
         
-        ax.plot(x, y, marker='o', linewidth=2, markersize=8, color='#3B82F6')
-        ax.fill_between(x, y, alpha=0.1, color='#3B82F6')
+        if exact_match.empty:
+            logger.warning(f"HS Code {hs_code}를 CSV에서 찾을 수 없습니다.")
+            logger.info(f"사용 가능한 HS Code 예시: {df['HS코드'].head(10).tolist()}")
+            return None
         
-        # 현재 HS코드 강조 표시
-        hs_code_clean = str(hs_code).replace(".", "")
-        for idx, row in top_items.iterrows():
-            row_hs = str(row['HS코드']).replace(".", "")
-            if row_hs == hs_code_clean or hs_code_clean in row_hs:
-                ax.scatter([idx], [row['2026성공확률(%)']], color='#EF4444', s=150, zorder=5)
-                ax.annotate(f"{row['2026성공확률(%)']}%", 
-                           (idx, row['2026성공확률(%)']), 
-                           textcoords="offset points", 
-                           xytext=(0, 10),
-                           ha='center',
-                           fontsize=10,
-                           fontweight='bold',
-                           color='#EF4444')
+        # 해당 품목 정보
+        target_item = exact_match.iloc[0]
         
-        ax.set_xticks(x)
-        ax.set_xticklabels([f"{l[:8]}..." if len(str(l)) > 8 else l for l in labels], 
-                           rotation=45, ha='right', fontsize=8)
-        ax.set_ylabel('성공확률 (%)', fontsize=10)
-        ax.set_ylim(70, 100)
-        ax.set_title('2026년 수출 유망 확률 (상위 10개 품목)', fontsize=12, fontweight='bold', pad=15)
-        ax.grid(True, alpha=0.3)
-        ax.spines['top'].set_visible(False)
-        ax.spines['right'].set_visible(False)
+        logger.info(f"✓ HS Code {hs_code} 발견!")
+        logger.info(f"  순위: {target_item['순위']}위")
+        logger.info(f"  품목명: {target_item['품목명']}")
+        logger.info(f"  성공확률: {target_item['2026성공확률(%)']}%")
         
-        plt.tight_layout()
-        chart_path = os.path.join(output_dir, 'success_chart.png')
-        plt.savefig(chart_path, dpi=150, bbox_inches='tight', facecolor='white')
-        plt.close()
+        # 딕셔너리로 정보 반환
+        info = {
+            '순위': int(target_item['순위']),
+            '국가명': str(target_item['국가명']),
+            'HS코드': str(target_item['HS코드']),
+            '품목명': str(target_item['품목명']),
+            '카테고리': str(target_item['카테고리']),
+            '2025년수출액': float(target_item['2025년수출액($)']),
+            '2026성공확률': float(target_item['2026성공확률(%)']),
+            '2026성공예측': str(target_item['2026성공예측'])
+        }
         
-        logger.info(f"✓ 수출 유망 확률 차트 생성: {chart_path}")
-        return chart_path
+        logger.info(f"✓ 수출 유망 확률 정보 조회 완료")
+        return info
         
     except Exception as e:
-        logger.error(f"수출 유망 확률 차트 생성 실패: {e}")
+        logger.error(f"수출 유망 확률 정보 조회 실패: {e}", exc_info=True)
         return None
 
 
 def create_sns_hashtag_chart(country_code: str, hashtag: str, output_dir: str) -> Optional[str]:
-    """SNS 해시태그 트렌드 꺾은선 그래프 생성"""
-
+    """SNS 해시태그 트렌드 그래프 생성 (간단 버전)"""
+    
     try:
         if not hashtag:
+            logger.info("SNS 해시태그가 입력되지 않았습니다.")
             return None
-
-        # Base directory (Notebook에서도 안전)
-        base_dir = Path().resolve()
-        data_dir = base_dir / "data"
-
-        # 파일 자동 감지
-        xlsx_path = data_dir / "sns.xlsx"
-        csv_path = data_dir / "sns.csv"
-
-        if xlsx_path.exists():
-            df = pd.read_excel(xlsx_path, engine="openpyxl")
-        elif csv_path.exists():
-            try:
-                df = pd.read_csv(csv_path, encoding="utf-8")
-            except:
-                df = pd.read_csv(csv_path, encoding="latin1")
-        else:
-            logger.warning("SNS 데이터 파일을 찾을 수 없습니다.")
+        
+        # 한글 폰트 설정
+        plt.rcParams['font.family'] = MATPLOTLIB_FONT
+        plt.rcParams['axes.unicode_minus'] = False
+        
+        # 데이터 파일 경로
+        base_dir = Path(__file__).parent
+        data_path = base_dir / "data" / "sns.xlsx"
+        
+        if not data_path.exists():
+            logger.warning(f"❌ SNS 데이터 파일 없음: {data_path}")
             return None
-
-        # --------------------------
-        # 국가 / 해시태그 필터링
-        # --------------------------
-        df["country"] = df["country"].str.upper().str.strip()
-        df["name_kr"] = df["name_kr"].str.strip()
-
+        
+        # 데이터 로드
+        logger.info(f"✓ SNS 데이터 로드: {data_path}")
+        df = pd.read_excel(data_path, engine="openpyxl")
+        
+        # 필터링
         filtered = df[
-            (df["country"] == country_code.upper()) &
-            (df["name_kr"] == hashtag)
+            (df['country'] == country_code) & 
+            (df['name_kr'] == hashtag)
         ]
-
+        
         if filtered.empty:
-            logger.warning(f"SNS 데이터 없음: country={country_code}, hashtag={hashtag}")
+            logger.warning(f"❌ 데이터 없음: {country_code} - {hashtag}")
+            logger.info(f"   사용 가능한 국가: {df['country'].unique().tolist()}")
+            logger.info(f"   사용 가능한 키워드 예시: {df['name_kr'].unique().tolist()[:10]}")
             return None
-
-        # --------------------------
-        # 날짜 처리 (YYYY-MM-01)
-        # --------------------------
-        filtered["date"] = pd.to_datetime(filtered["mm-yy"], format="%Y-%m-%d")
-
-        filtered = filtered.sort_values("date")
-
-        x = range(len(filtered))
-        y = filtered["count"].values
-        dates = filtered["date"].dt.strftime("%Y-%m")
-
-        # --------------------------
+        
+        # 날짜순 정렬
+        filtered = filtered.sort_values("mm-yy")
+        
+        logger.info(f"✓ 필터링 완료: {len(filtered)}개 행")
+        
         # 그래프 생성
-        # --------------------------
-        plt.rcParams["font.family"] = "Malgun Gothic"
-
-        fig, ax = plt.subplots(figsize=(10, 5))
-
-        ax.plot(x, y, marker="o", linewidth=2, markersize=8, color="#0D9488")
-        ax.fill_between(x, y, alpha=0.1, color="#0D9488")
-
-        # 값 표시
-        for xi, yi in zip(x, y):
-            ax.annotate(f"{yi}", (xi, yi), textcoords="offset points",
-                        xytext=(0, 8), ha="center", fontsize=9)
-
-        # 현지어 해시태그 선택
-        local_name = filtered["name_country_ver"].iloc[0]
-
-        ax.set_xticks(x)
-        ax.set_xticklabels(dates, rotation=45, ha="right", fontsize=9)
-        ax.set_ylabel("언급 횟수", fontsize=10)
-        ax.set_title(
-            f"SNS 해시태그 트렌드: #{hashtag} (#{local_name})",
-            fontsize=12, fontweight="bold", pad=15
-        )
-
-        ax.grid(True, alpha=0.3)
-        ax.spines["top"].set_visible(False)
-        ax.spines["right"].set_visible(False)
-
+        plt.figure(figsize=(12, 6))
+        plt.plot(filtered["mm-yy"], filtered["count"], marker="o", linewidth=2.5, 
+                markersize=8, color="#0D9488")
+        
+        # 제목 및 라벨
+        plt.title(f"SNS 해시태그 트렌드: {hashtag} (국가: {country_code})", 
+                 fontsize=13, fontweight="bold", pad=15)
+        plt.xlabel("월", fontsize=11)
+        plt.ylabel("건수", fontsize=11)
+        plt.grid(True, alpha=0.3)
+        plt.xticks(rotation=45)
         plt.tight_layout()
-
-        # --------------------------
+        
         # 파일 저장
-        # --------------------------
         output_dir = Path(output_dir)
         output_dir.mkdir(parents=True, exist_ok=True)
-
-        chart_path = output_dir / f"sns_chart_{country_code}_{hashtag}.png"
-
+        
+        # 파일명 (특수문자 제거)
+        hashtag_safe = re.sub(r'[^\w\s-]', '', hashtag).strip().replace(' ', '_')
+        chart_path = output_dir / f"sns_chart_{country_code}_{hashtag_safe}.png"
+        
         plt.savefig(chart_path, dpi=150, bbox_inches="tight", facecolor="white")
         plt.close()
-
-        logger.info(f"✓ SNS 해시태그 차트 생성: {chart_path}")
+        
+        logger.info(f"✓ SNS 차트 생성 완료: {chart_path}")
         return str(chart_path)
-
+        
     except Exception as e:
-        logger.error(f"SNS 해시태그 차트 생성 실패: {e}")
+        logger.error(f"SNS 차트 생성 실패: {e}", exc_info=True)
         return None
 
 
-# -----------------------------------------------------------------------------
-# 추가 분석 섹션 텍스트 생성
-# -----------------------------------------------------------------------------
-def generate_market_risk_section(country: str) -> str:
-    """시장 리스크 섹션 생성"""
-    return f"""## 시장 리스크
 
-{country} 시장 진출 시 고려해야 할 주요 리스크 요인은 다음과 같습니다.
+# =============================================================================
+# 🔧 삭제됨: 하드코딩된 섹션 생성 함수들
+# 이제 pipeline.py에서 출처와 함께 생성됨
+# =============================================================================
 
-- **환율 변동성**: 환율 변동으로 인한 수입 물가 변동이 가공식품 소비자 가격에 영향을 미칠 수 있습니다.
-- **규제 변화**: 현지 규제 변화에 대한 상시 모니터링이 필요합니다 (알레르겐 표시 항목 추가 등).
-- **경쟁 심화**: 대형 유통 PB와의 가격 경쟁 및 안정적 공급(납기·규격 일관성) 확보가 도전 과제입니다.
-- **통관 리스크**: 통관 지연 및 서류 불비로 인한 비용 증가 리스크가 존재합니다.
-- **소비 트렌드 변화**: 현지 소비자 선호도 변화에 대한 빠른 대응이 필요합니다.
+# def generate_market_risk_section(country: str) -> str:
+#     """❌ 삭제 - 하드코딩된 내용, 출처 없음"""
+#     pass
 
-"""
+# def generate_regulation_section(country: str) -> str:
+#     """❌ 삭제 - 하드코딩된 내용, 출처 없음"""
+#     pass
 
-
-def generate_regulation_section(country: str) -> str:
-    """규제 검토 섹션 생성"""
-    return f"""## 규제 검토
-
-{country}에서 해당 품목의 주요 규제 요건은 다음과 같습니다.
-
-- **식품위생법**: 수입자는 수입신고서를 제출하며, 잔류농약·중금속·곰팡이독소 등 위생기준을 충족해야 합니다.
-- **식품표시법**: 원재료명, 알레르겐, 내용량, 유통기한, 영양성분, 원산지, 수입자 정보를 현지 언어로 기재해야 합니다.
-- **첨가물/성분**: 현지 허용 첨가물 목록 및 사용기준을 준수해야 합니다.
-- **포장·환경**: 재질 표기 및 분리배출 표시 가이드라인을 확인해야 합니다.
-- **인증**: HACCP, ISO 22000, FSSC 22000 등 식품안전관리 인증이 바이어 신뢰 지표로 활용됩니다.
-
-실무 권고사항:
-1. 선적 전 성분·오염물질 사전검사 실시
-2. 현지어 라벨 목업의 사전 감리
-3. 수입자·통관사와의 첨가물 대조표 공유
-4. 초기 로트에 대한 리스크 기반 검사 대응계획 수립
-
-"""
-
-
-def generate_price_trend_section(country: str) -> str:
-    """가격 추세 섹션 생성"""
-    return f"""## 가격 추세
-
-{country} 시장 내 해당 품목군의 가격 동향은 다음과 같습니다.
-
-- **원가 압력**: 최근 2~3년간 원재료 가격 상승, 환율 변동, 물류비 증가로 점진적 인상 압력이 존재했습니다.
-- **소비자 대응**: 소비자는 소용량·단가 절감 제품과 PB 대체품으로 대응하는 경향을 보입니다.
-- **가격대 형성**: 표준 소포장 제품의 권장소비자가는 채널·원산지·원가에 따라 조정되며, 프리미엄·원산지 차별화 제품은 더 높은 가격대를 형성합니다.
-- **채널별 차이**: 편의점 > 드럭스토어 > 슈퍼마켓 > 온라인(EC) 순으로 가격대가 형성되는 경향이 있습니다.
-
-가격 전략 권고:
-- 초기 진입 시 경쟁력 있는 가격 설정 필요
-- 프리미엄 포지셔닝 시 차별화 가치 명확히 전달
-- 채널별 가격 정책 수립
-
-"""
+# def generate_price_trend_section(country: str) -> str:
+#     """❌ 삭제 - 하드코딩된 내용, 출처 없음"""
+#     pass
 
 
 class ReportGenerator:
@@ -350,33 +307,127 @@ class ReportGenerator:
             return fallback, {"error": str(e)}
     
     def _build_report_from_sections(self, payload: Dict, result: Dict) -> str:
-        """섹션으로부터 보고서 구성"""
+        """
+        섹션으로부터 보고서 구성 (9개 항목 구조)
+        
+        1. 요약 (Executive Summary)
+        2. 국가 및 시장 개요
+        3. 시장 규모
+        4. 유통 구조 (수출 유망 확률 문장 포함)
+        5. 시장 리스크 (선택)
+        6. 규제 검토 (선택)
+        7. 가격 추세 (선택)
+        8. SNS 해시태그 (선택, 시각화)
+        9. 출처 (KOTRA p.X, KATI p.Y, 웹 URL)
+        """
         sections = result.get("sections", [])
         citations = result.get("all_citations", [])
         
+        # 국가 코드 추출
+        country_raw = payload.get('country', '')
+        country_code = COUNTRY_CODE_MAP.get(country_raw, country_raw[:2].upper() if country_raw else "XX")
+        hs_code = payload.get('hs_code', '')
+        item = payload.get('item', '제품')
+        
         parts = [
-            f"# {payload.get('country', '')} {payload.get('item', '')} 시장진출 보고서",
-            f"\nHS Code: {payload.get('hs_code', '')}",
-            f"생성일: {datetime.now().strftime('%Y-%m-%d')}",
+            f"# {country_raw} {item} 시장진출 보고서",
+            f"\n🔢 HS Code: {hs_code}",
+            f"📅 생성일: {datetime.now().strftime('%Y-%m-%d')}",
+            f"\n---\n"
         ]
         
-        for i, section in enumerate(sections):
+        # 섹션 키별로 매핑
+        section_map = {}
+        for section in sections:
             if section.get("passed"):
-                title = section.get("title", f"섹션 {i+1}")
+                section_map[section.get("key")] = section
+        
+        # 보고서 구조에 맞는 순서 (A등급만 포함)
+        section_order = [
+            ("summary", "1. 요약 (Executive Summary)"),
+            ("overview", "2. 국가 및 시장 개요"),
+            ("market_size", "3. 시장 규모"),
+            ("distribution", "4. 유통 구조"),
+            ("risk", "5. 시장 리스크"),
+            ("regulation", "6. 규제 검토"),
+            ("price", "7. 가격 추세"),
+            ("sns_hashtag", "8. SNS 해시태그"),
+        ]
+        
+        # 유통 구조 섹션에 수출 유망 확률 추가
+        success_info = get_success_rate_info(country_code, hs_code)
+        
+        # 각 섹션 추가
+        for key, title in section_order:
+            if key in section_map:
+                section = section_map[key]
                 content = section.get("content", "")
                 eval_info = section.get("evaluation", {})
                 grade = eval_info.get("grade", "N/A")
                 score = eval_info.get("score", 0)
                 
+                # A등급만 포함 (90점 이상)
+                if grade != "A":
+                    logger.warning(f"⚠️ {title}: {grade}등급 ({score}점) - A등급 미달로 제외")
+                    continue
+                
+                parts.append(f"\n## {title}")
+                
                 if self.internal_mode:
-                    parts.append(f"\n## {i+1}. {title} [품질: {grade}, {score}점]\n\n{content}")
-                else:
-                    parts.append(f"\n## {i+1}. {title}\n\n{content}")
+                    parts.append(f"*품질: {grade}등급 ({score}점)*\n")
+                
+                # 유통 구조 섹션에 수출 유망 확률 추가
+                if key == "distribution" and success_info:
+                    success_prob = success_info['2026성공확률']
+                    parts.append(f"**📊 2026년 수출 유망 확률**: {success_prob:.1f}%\n")
+                
+                parts.append(content)
         
+        # 9. 출처 (KOTRA p.X, KATI p.Y, 웹 URL 형식)
         if citations:
-            parts.append("\n## 참고문헌\n")
-            for c in list(set(citations)):
-                parts.append(f"- {c}")
+            parts.append("\n## 9. 출처\n")
+            
+            # 출처를 KOTRA, KATI, 웹으로 분류
+            kotra_sources = []
+            kati_sources = []
+            web_sources = []
+            other_sources = []
+            
+            unique_citations = list(set(citations))
+            for c in unique_citations:
+                c_lower = c.lower()
+                if "kotra" in c_lower:
+                    kotra_sources.append(c)
+                elif "kati" in c_lower:
+                    kati_sources.append(c)
+                elif "http" in c_lower or "웹" in c:
+                    web_sources.append(c)
+                else:
+                    other_sources.append(c)
+            
+            # KOTRA 출처
+            if kotra_sources:
+                parts.append("\n### KOTRA 자료")
+                for src in sorted(kotra_sources):
+                    parts.append(f"- {src}")
+            
+            # KATI 출처
+            if kati_sources:
+                parts.append("\n### KATI 자료")
+                for src in sorted(kati_sources):
+                    parts.append(f"- {src}")
+            
+            # 웹 출처
+            if web_sources:
+                parts.append("\n### 웹 자료")
+                for src in sorted(web_sources):
+                    parts.append(f"- {src}")
+            
+            # 기타 출처
+            if other_sources:
+                parts.append("\n### 기타")
+                for src in sorted(other_sources):
+                    parts.append(f"- {src}")
         
         return "\n".join(parts)
     
@@ -412,18 +463,13 @@ class ReportGenerator:
                 cleaned += "- 출처 정보 없음"
         
         return cleaned
-# ⬇️⬇️ pdf 생성에 관한 코드 ⬇️⬇️    
+
     def export_pdf(self, markdown_text: str, output_path: str, metadata: Dict) -> bool:
         """
         PDF 내보내기
         
-        Args:
-            markdown_text: 보고서 마크다운 텍스트
-            output_path: PDF 출력 경로
-            metadata: 메타데이터 (country, hs_code, market_risk, regulation, price_trend, sns_hashtag 등)
-        
-        Returns:
-            성공 여부
+        🔧 변경: 하드코딩된 섹션 추가 로직 제거
+        - 시장 리스크, 규제 검토, 가격 추세는 이제 pipeline에서 생성됨
         """
         try:
             # 출력 디렉토리 생성
@@ -437,35 +483,35 @@ class ReportGenerator:
             # 국가명 정리 (괄호 제거)
             country_name = country_raw.split("(")[0].strip() if "(" in country_raw else country_raw
             
-            # 추가 분석 섹션을 마크다운에 추가
+            # 🔧 하드코딩된 추가 섹션 삽입 로직 제거됨
+            # 이제 pipeline.py에서 risk, regulation, price 섹션을 생성함
             enhanced_markdown = markdown_text
             
-            # 참고문헌 섹션 앞에 추가 분석 섹션 삽입
-            additional_sections = ""
+            # 수출 유망 확률 정보 조회
+            hs_code = metadata.get("hs_code", "")
+            success_info = get_success_rate_info(country_code, hs_code)
             
-            if metadata.get("market_risk", False):
-                additional_sections += generate_market_risk_section(country_name)
-            
-            if metadata.get("regulation", False):
-                additional_sections += generate_regulation_section(country_name)
-            
-            if metadata.get("price_trend", False):
-                additional_sections += generate_price_trend_section(country_name)
-            
-            # 참고문헌 앞에 삽입
-            if additional_sections:
-                if "## 참고문헌" in enhanced_markdown:
-                    enhanced_markdown = enhanced_markdown.replace(
-                        "## 참고문헌",
-                        f"{additional_sections}\n## 참고문헌"
-                    )
-                elif "## 출처" in enhanced_markdown:
-                    enhanced_markdown = enhanced_markdown.replace(
-                        "## 출처",
-                        f"{additional_sections}\n## 출처"
-                    )
+            # success_info를 본문 시작 부분에 추가
+            if success_info:
+                success_text = (
+                    "\n## 📊 2026년 수출 유망 확률\n\n"
+                    f"**{success_info['순위']}위** | "
+                    f"**{success_info['국가명']}** | "
+                    f"**HS코드: {success_info['HS코드']}** | "
+                    f"**품목: {success_info['품목명']}** | "
+                    f"**카테고리: {success_info['카테고리']}** | "
+                    f"**2025년 수출액: ${success_info['2025년수출액']:,.0f}** | "
+                    f"**2026 성공확률: {success_info['2026성공확률']:.2f}%** | "
+                    f"**예측: {success_info['2026성공예측']}**\n\n"
+                    "---\n"
+                )
+                # 요약 섹션 바로 다음에 추가
+                parts = enhanced_markdown.split("## 국가 및 시장 개요", 1)
+                if len(parts) == 2:
+                    enhanced_markdown = parts[0] + success_text + "## 국가 및 시장 개요" + parts[1]
                 else:
-                    enhanced_markdown += f"\n\n{additional_sections}"
+                    # "국가 및 시장 개요"가 없으면 맨 앞에 추가
+                    enhanced_markdown = success_text + enhanced_markdown
             
             # 임시 파일 경로
             cover_path = output_path.replace(".pdf", "_cover.pdf")
@@ -479,25 +525,39 @@ class ReportGenerator:
             # 그래프 생성 및 차트 PDF 생성
             pdf_parts = [cover_path, body_path]
             
-            hs_code = metadata.get("hs_code", "")
             sns_hashtag = metadata.get("sns_hashtag", "")
             
-            success_chart = create_success_rate_chart(country_code, hs_code, output_dir)
-            sns_chart = create_sns_hashtag_chart(country_code, sns_hashtag, output_dir)
+            # 디버깅 로그 추가
+            logger.info(f"📊 정보 조회 시작:")
+            logger.info(f"  - HS Code: {hs_code}")
+            logger.info(f"  - SNS 해시태그: '{sns_hashtag}' (타입: {type(sns_hashtag)})")
+            logger.info(f"  - 국가 코드: {country_code}")
             
-            if success_chart or sns_chart:
-                self._create_charts_page(charts_path, success_chart, sns_chart)
+            # SNS 해시태그가 있을 때만 차트 생성
+            sns_chart = None
+            if sns_hashtag and sns_hashtag.strip():
+                logger.info(f"🔍 SNS 해시태그 차트 생성 시도: '{sns_hashtag}'")
+                sns_chart = create_sns_hashtag_chart(country_code, sns_hashtag, output_dir)
+                if sns_chart:
+                    logger.info(f"✓ SNS 차트 생성 완료: {sns_chart}")
+                else:
+                    logger.warning(f"⚠ SNS 차트 생성 실패 (키워드: {sns_hashtag})")
+            else:
+                logger.info("ℹ SNS 해시태그가 입력되지 않았습니다.")
+            
+            # 차트 페이지 생성 (SNS만)
+            if sns_chart:
+                self._create_charts_page(charts_path, None, sns_chart)
                 pdf_parts.append(charts_path)
             
             # PDF 병합
             self._merge_pdfs(pdf_parts, output_path)
             
             # 임시 파일 삭제
-            temp_files = [cover_path, body_path, charts_path]
-            if success_chart:
-                temp_files.append(success_chart)
+            temp_files = [cover_path, body_path]
             if sns_chart:
                 temp_files.append(sns_chart)
+                temp_files.append(charts_path)
                 
             for p in temp_files:
                 if os.path.exists(p):
@@ -569,40 +629,32 @@ class ReportGenerator:
             c = canvas.Canvas(path, pagesize=A4)
 
             country_raw = metadata.get("country", "")
-            item = metadata.get("item", "")
+            item = metadata.get("item", "제품")  # 🔧 기본값 추가
             hs_code = metadata.get("hs_code", "")
             today = datetime.now().strftime("%Y-%m-%d")
 
             # 괄호 제거된 국가명 (미국(USA) → 미국)
             country = country_raw.split("(")[0].strip() if "(" in country_raw else country_raw
 
-            # ----------------------
             # ① 배경 흰색
-            # ----------------------
             c.setFillColor(HexColor("#FFFFFF"))
             c.rect(0, 0, w, h, fill=1, stroke=0)
 
-            # ----------------------
             # ② 큰 원 (파란 계열)
-            # ----------------------
             big_r = 540
             big_cx = w + 360
             big_cy = h * 0.55
             c.setFillColor(HexColor("#7DA0CA"))
             c.circle(big_cx, big_cy, big_r, fill=1, stroke=0)
 
-            # ----------------------
             # ③ 작은 원 (남색)
-            # ----------------------
             small_r = 320
             small_cx = w * 0.70
             small_cy = -40
             c.setFillColor(HexColor("#052659"))
             c.circle(small_cx, small_cy, small_r, fill=1, stroke=0)
 
-            # ----------------------
             # ④ 제목 텍스트
-            # ----------------------
             c.setFillColor(HexColor("#052659"))
             c.setFont(FONT_BOLD, 40)
             c.drawString(70, h - 200, f"{country} 시장 진출 전략 보고서")
@@ -613,16 +665,12 @@ class ReportGenerator:
             c.setFont(FONT_REGULAR, 17)
             c.drawString(70, h - 290, "데이터 기반 해외시장 분석")
 
-            # ----------------------
             # ⑤ 구분선
-            # ----------------------
             c.setStrokeColor(HexColor("#021024"))
             c.setLineWidth(1)
             c.line(70, h - 305, 320, h - 305)
 
-            # ----------------------
             # ⑥ 설명문
-            # ----------------------
             desc = (
                 "본 보고서는 국가정보·진출전략·수출데이터 기반으로 생성되었습니다.\n"
                 "AI 기반 분석을 통해 시장성 평가 및 진출 전략을 제공합니다."
@@ -634,23 +682,19 @@ class ReportGenerator:
                 c.drawString(70, y, line)
                 y -= 14
 
-            # ----------------------
             # ⑦ 주요 입력값 노출 (품목 / HS Code)
-            # ----------------------
             c.setFont(FONT_BOLD, 16)
             c.drawString(70, y - 20, f"품목: {item}")
             c.drawString(70, y - 50, f"HS Code: {hs_code}")
 
-            # ----------------------
             # ⑧ 오른쪽 아래 표기 (발행일 / 기관 / 저작권)
-            # ----------------------
             c.setFillColor(HexColor("#FFFFFF"))
             c.setFont(FONT_REGULAR, 10)
 
             base_y = 40
             c.drawRightString(w - 40, base_y + 20, f"발행일: {today}")
-            c.drawRightString(w - 40, base_y + 10, "작성기관: Global Path AI – Market Intelligence Unit")
-            c.drawRightString(w - 40, base_y, "저작권: © Global Path AI. All Rights Reserved.")
+            c.drawRightString(w - 40, base_y + 10, "작성기관: GlobalPath AI – Market Intelligence Unit")
+            c.drawRightString(w - 40, base_y, "저작권: © GlobalPath AI. All Rights Reserved.")
 
             c.save()
 
@@ -803,7 +847,7 @@ class ReportGenerator:
 def main():
     """CLI 실행 - subprocess에서 호출됨"""
     try:
-        from pipeline import ResearchPipeline, init_vectorstore
+        from pipeline import ResearchPipelineUpgraded, init_vectorstore
         
         # payload 로드
         if len(sys.argv) > 1:
@@ -825,22 +869,42 @@ def main():
         
         logger.info(f"분석 시작: {payload}")
         
-        # 국가 코드 정규화 추가 ⬇️
+        # HS Code 정보 로깅
+        hs_code = payload.get("hs_code", "")
+        if hs_code:
+            hs_code_clean = str(hs_code).replace(".", "").replace(" ", "")
+            if len(hs_code_clean) == 10:
+                hs_2digit = hs_code_clean[:2]
+                hs_4digit = hs_code_clean[:4]
+                is_beverage = hs_2digit == "22"
+                
+                logger.info(f"  HS Code (10자리): {hs_code_clean}")
+                logger.info(f"  HS Code (2자리): {hs_2digit}")
+                logger.info(f"  HS Code (4자리): {hs_4digit}")
+                logger.info(f"  음료 카테고리: {'예' if is_beverage else '아니오'}")
+                
+                # payload에 추가 정보 저장 (pipeline에서 사용 가능)
+                payload["hs_code_2digit"] = hs_2digit
+                payload["hs_code_4digit"] = hs_4digit
+                payload["is_beverage"] = is_beverage
+        
+        # 국가 코드 정규화
         from config import DataLoader
         
         try:
             if "country" in payload:
                 original_country = payload["country"]
-                payload["country"] = DataLoader.normalize_country(original_country)
-                logger.info(f"✓ 국가 코드 변환: {original_country} → {payload['country']}")
+                # 🔧 country는 표시용으로 유지, country_code는 내부용
+                # pipeline에서 DataLoader.normalize_country 호출함
+                logger.info(f"✓ 국가: {original_country}")
         except Exception as e:
             logger.error(f"✗ 국가 코드 변환 실패: {e}")
         
         logger.info(f"최종 payload: {payload}")
         
-        # 파이프라인 실행
+        # 파이프라인 실행 (🔧 ResearchPipelineUpgraded 사용)
         db = init_vectorstore()
-        pipeline = ResearchPipeline(db)
+        pipeline = ResearchPipelineUpgraded(db)
         
         def progress_callback(step, msg, progress):
             logger.info(f"[{progress*100:.0f}%] {msg}")

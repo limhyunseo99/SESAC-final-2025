@@ -1,6 +1,10 @@
-# pipeline.py
-# 검증 강화 버전: Supervisor가 각 단계 승인
-# 프롬프트 3개로 축소 + 이모지 활용
+# pipeline_upgraded.py
+# 검증 강화 버전 v2.0
+# 주요 개선사항:
+# 1. HS Code 기반 필터링 추가
+# 2. Executive Summary 섹션 추가
+# 3. 시장 리스크/규제/가격 섹션 출처 강제화
+# 4. 데이터 관련성 검증 추가
 
 import os
 import asyncio
@@ -25,12 +29,122 @@ logger = logging.getLogger(__name__)
 
 ProgressCallback = Callable[[str, str, float], None]
 
-ANALYSIS_OPTIONS = {
-    "regulation": "규제",
-    "risk": "시장리스크",
-    "price": "가격추세",
-    "demand": "수요전망",
+# ============================================================
+# HS Code 카테고리 매핑 (신규 추가)
+# ============================================================
+
+HS_CODE_CATEGORIES = {
+    # 음료류 (22XX)
+    "2201": {"category": "음료", "keywords": ["음료", "물", "생수", "미네랄워터", "beverage", "water"]},
+    "2202": {"category": "음료", "keywords": ["음료", "탄산", "청량음료", "주스", "에너지드링크", "beverage", "soft drink", "juice"]},
+    "2203": {"category": "주류", "keywords": ["맥주", "beer", "주류"]},
+    "2204": {"category": "주류", "keywords": ["와인", "포도주", "wine"]},
+    "2205": {"category": "주류", "keywords": ["버뮤스", "vermouth"]},
+    "2206": {"category": "주류", "keywords": ["발효주", "사과주", "cider"]},
+    "2207": {"category": "주류", "keywords": ["에탄올", "알코올", "ethanol"]},
+    "2208": {"category": "주류", "keywords": ["증류주", "위스키", "보드카", "소주", "spirits", "whisky"]},
+    "2209": {"category": "식품", "keywords": ["식초", "vinegar"]},
+    
+    # 식품류 (일부 예시)
+    "0901": {"category": "음료원료", "keywords": ["커피", "coffee"]},
+    "0902": {"category": "음료원료", "keywords": ["차", "tea", "녹차"]},
+    "1704": {"category": "과자", "keywords": ["과자", "사탕", "candy", "confectionery"]},
+    "1806": {"category": "초콜릿", "keywords": ["초콜릿", "chocolate", "코코아"]},
+    "1905": {"category": "빵류", "keywords": ["빵", "과자", "비스킷", "bread", "biscuit"]},
+    
+    # 항공기부품
+    "8473": {"category": "전자부품", "keywords": ["컴퓨터부품", "전자부품", "computer parts"]},
+    "8803": {"category": "항공기부품", "keywords": ["항공기", "항공", "부품", "aircraft", "aviation"]},
+    
+    # 자동차
+    "8703": {"category": "자동차", "keywords": ["자동차", "승용차", "car", "automobile"]},
+    "8708": {"category": "자동차부품", "keywords": ["자동차부품", "auto parts"]},
 }
+
+def get_hs_category(hs_code: str) -> Dict:
+    """HS Code에서 카테고리 정보 추출"""
+    # HS Code 정규화 (점, 공백 제거)
+    hs_clean = re.sub(r'[.\s]', '', str(hs_code))
+    
+    # 4자리, 6자리, 10자리 순으로 매칭 시도
+    for length in [4, 6, 2]:
+        prefix = hs_clean[:length]
+        if prefix in HS_CODE_CATEGORIES:
+            return HS_CODE_CATEGORIES[prefix]
+    
+    # 기본값
+    return {"category": "일반", "keywords": []}
+
+
+def validate_content_relevance(content: str, hs_code: str, item: str) -> Dict:
+    """
+    콘텐츠가 HS Code/품목과 관련 있는지 검증
+    
+    Returns:
+        {
+            "relevant": bool,
+            "score": float (0-1),
+            "matched_keywords": list,
+            "irrelevant_topics": list
+        }
+    """
+    hs_info = get_hs_category(hs_code)
+    keywords = hs_info.get("keywords", []) + [item]
+    
+    # 관련 키워드 매칭
+    content_lower = content.lower()
+    matched = [kw for kw in keywords if kw.lower() in content_lower]
+    
+    # 무관한 토픽 감지 (다른 카테고리 키워드)
+    irrelevant_keywords = []
+    for code, info in HS_CODE_CATEGORIES.items():
+        if code[:2] != hs_code[:2]:  # 다른 대분류
+            for kw in info.get("keywords", []):
+                if kw.lower() in content_lower and kw not in keywords:
+                    irrelevant_keywords.append(kw)
+    
+    # 점수 계산
+    if not keywords:
+        relevance_score = 0.5
+    else:
+        relevance_score = len(matched) / len(keywords)
+    
+    # 무관한 키워드가 많으면 점수 감소
+    if irrelevant_keywords:
+        penalty = min(len(irrelevant_keywords) * 0.1, 0.5)
+        relevance_score = max(0, relevance_score - penalty)
+    
+    return {
+        "relevant": relevance_score >= 0.3,
+        "score": relevance_score,
+        "matched_keywords": matched,
+        "irrelevant_topics": list(set(irrelevant_keywords))
+    }
+
+
+# ============================================================
+# 개선된 섹션 정의
+# ============================================================
+
+# 기본 섹션 (항상 생성)
+BASE_SECTIONS = [
+    ("summary", "요약 (Executive Summary)"),      # 신규 추가
+    ("overview", "국가 및 시장 개요"),
+    ("market_size", "시장 규모"),
+    ("distribution", "유통 구조"),
+]
+
+# 분석 옵션 (선택적 또는 기본 포함)
+ANALYSIS_OPTIONS = {
+    "regulation": "규제 검토",
+    "risk": "시장 리스크",
+    "price": "가격 추세",
+    "demand": "수요 전망",
+}
+
+# 항상 포함할 분석 섹션 (출처 필수)
+MANDATORY_ANALYSIS = ["risk", "regulation", "price"]
+
 
 class PipelineStage:
     """파이프라인 단계 정의"""
@@ -42,6 +156,7 @@ class PipelineStage:
     WEB_SEARCH = "web_search"
     EVALUATION = "evaluation"
     FINAL_REPORT = "final_report"
+
 
 @dataclass
 class SectionResult:
@@ -65,7 +180,10 @@ class SectionResult:
     # 최종 선택된 버전
     final: str = ""
     final_score: int = 0
-    final_version: str = ""  # "draft", "kati", "pdf", "web"
+    final_version: str = ""
+    
+    # 관련성 검증 결과 (신규)
+    relevance: Dict = field(default_factory=dict)
     
     citations: List[str] = field(default_factory=list)
     evaluation: Dict = field(default_factory=dict)
@@ -78,7 +196,9 @@ class PipelineState:
     country: str
     country_code: str
     hs_code: str
-    item: str
+    hs_code_clean: str = ""  # 신규: 정규화된 HS Code
+    hs_category: Dict = field(default_factory=dict)  # 신규: HS 카테고리 정보
+    item: str = ""
     options: List[str] = field(default_factory=list)
     sections: Dict[str, SectionResult] = field(default_factory=dict)
     final_report: str = ""
@@ -122,8 +242,8 @@ class WebSearcher:
             return []
 
 
-class ResearchPipeline:
-    """연구 파이프라인 - 검증 강화 버전"""
+class ResearchPipelineUpgraded:
+    """연구 파이프라인 - 검증 강화 버전 v2.0"""
     
     def __init__(self, vectordb: Optional[QdrantVectorDB] = None):
         self.vectordb = vectordb or QdrantVectorDB()
@@ -133,10 +253,10 @@ class ResearchPipeline:
         self.strategy_selector = StrategySelector()
         
         # 품질 기준
-        self.MIN_SCORE = 70  # 최소 통과 점수
-        self.IMPROVEMENT_THRESHOLD = 5  # 개선 최소 폭 (점)
+        self.MIN_SCORE = 70
+        self.IMPROVEMENT_THRESHOLD = 5
+        self.MIN_RELEVANCE_SCORE = 0.3  # 신규: 최소 관련성 점수
         
-        # 로거 초기화
         self.research_logger: Optional[ResearchLogger] = None
         self.supervisor: Optional[Supervisor] = None
     
@@ -155,51 +275,65 @@ class ResearchPipeline:
         
         start_time = time.time()
         
-        # 상태 초기화
+        # 상태 초기화 (HS Code 정보 추가)
         country_name = payload.get("country", "미국")
+        hs_code = payload.get("hs_code", "")
+        hs_code_clean = re.sub(r'[.\s]', '', str(hs_code))
+        
         state = PipelineState(
             country=country_name,
             country_code=DataLoader.normalize_country(country_name),
-            hs_code=payload.get("hs_code", ""),
+            hs_code=hs_code,
+            hs_code_clean=hs_code_clean,
+            hs_category=get_hs_category(hs_code),
             item=payload.get("item", "제품"),
             options=payload.get("options", []),
         )
         
+        logger.info(f"📦 HS Code: {hs_code} → 카테고리: {state.hs_category.get('category', '일반')}")
+        logger.info(f"🔍 관련 키워드: {state.hs_category.get('keywords', [])}")
+        
         self.research_logger.log_stage_end(
             PipelineStage.INPUT_PARSING,
-            {"country_code": state.country_code},
+            {
+                "country_code": state.country_code,
+                "hs_code_clean": hs_code_clean,
+                "hs_category": state.hs_category
+            },
             (time.time() - start_time) * 1000
         )
         
-        # 기본 섹션 + 선택 옵션
-        sections_to_process = [
-            ("overview", "국가 및 시장 개요"),
-            ("market_size", "시장 규모"),
-            ("distribution", "유통 구조"),
-        ]
+        # ============================================================
+        # 섹션 구성 (개선)
+        # ============================================================
+        sections_to_process = list(BASE_SECTIONS)  # 기본 섹션 복사
         
+        # 필수 분석 섹션 추가
+        for opt_key in MANDATORY_ANALYSIS:
+            sections_to_process.append((opt_key, ANALYSIS_OPTIONS[opt_key]))
+        
+        # 추가 옵션 섹션
         for opt_key, opt_name in ANALYSIS_OPTIONS.items():
-            if opt_key in state.options:
+            if opt_key in state.options and opt_key not in MANDATORY_ANALYSIS:
                 sections_to_process.append((opt_key, opt_name))
         
         total_steps = len(sections_to_process) * 4 + 1
         current = 0
         
-        # 섹션별 처리 (검증 강화)
+        # 섹션별 처리
         for key, title in sections_to_process:
             section = SectionResult(key=key, title=title)
             
-            # 로거에 섹션 시작 기록
             self.research_logger.start_section(key, title)
             
-            # 전략 가져오기
             strategy = self.strategy_selector.get_strategy(key)
             logger.info(f"📋 섹션 {key}: {strategy['reason']}")
             
-            # 🔥 검증 강화 파이프라인
-            await self._process_section_with_validation(section, state, strategy, callback, current, total_steps)
+            # 섹션 처리 (HS Code 필터링 포함)
+            await self._process_section_with_validation(
+                section, state, strategy, callback, current, total_steps
+            )
             
-            # 로거에 섹션 완료 기록
             self.research_logger.end_section(
                 key,
                 section.final_score,
@@ -212,7 +346,7 @@ class ResearchPipeline:
             state.all_citations.extend(section.citations)
             current += 4
         
-        # 최종 보고서 생성 (Supervisor 승인된 섹션만)
+        # 최종 보고서 생성
         if callback:
             callback("report", "최종 보고서 생성 중...", (total_steps - 1) / total_steps)
         
@@ -247,51 +381,75 @@ class ResearchPipeline:
         current: int,
         total: int
     ):
-        """🔥 검증 강화 섹션 처리 - 각 단계마다 Supervisor 검증"""
+        """검증 강화 섹션 처리 - HS Code 필터링 포함"""
         
         key = section.key
         title = section.title
         
         # ============================================================
-        # 단계 1: Draft 생성 + Supervisor 검증 ⭐
+        # 특수 섹션 처리: summary (Executive Summary)
+        # ============================================================
+        if key == "summary":
+            # summary는 다른 섹션 완료 후 생성해야 하므로 일단 스킵
+            # _generate_final_report에서 처리
+            section.draft = "[요약은 최종 단계에서 생성됩니다]"
+            section.draft_score = 0
+            section.final = ""
+            section.final_score = 0
+            section.success = True  # 일단 통과
+            return
+        
+        # ============================================================
+        # 단계 1: Draft 생성 + HS Code 관련성 검증
         # ============================================================
         if strategy.get("use_json", True):
             if callback:
                 callback(key, f"✍️ {title}: 초안 생성 중...", current / total)
             
-            draft_content, draft_citations = await self._generate_section(
+            draft_content, draft_citations = await self._generate_section_with_hs_filter(
                 key, state, mode="draft"
             )
+            
+            # 관련성 검증
+            relevance = validate_content_relevance(
+                draft_content, state.hs_code, state.item
+            )
+            section.relevance = relevance
+            
+            if not relevance["relevant"]:
+                logger.warning(
+                    f"⚠️ {key} 관련성 낮음 (점수: {relevance['score']:.2f}), "
+                    f"무관 토픽: {relevance['irrelevant_topics']}"
+                )
             
             # Supervisor 검증
             draft_eval = self.supervisor.evaluate_content(
                 content=draft_content,
                 source_type="json",
-                metadata={"section": key, "step": "draft"}
+                metadata={"section": key, "step": "draft", "relevance": relevance}
             )
+            
+            # 관련성이 낮으면 점수 감점
+            if not relevance["relevant"]:
+                draft_eval["score"] = max(0, draft_eval.get("score", 0) - 20)
             
             section.draft = draft_content
             section.draft_score = draft_eval.get("score", 0)
             section.citations.extend(draft_citations)
             
-            logger.info(f"✅ {key} Draft: {section.draft_score}점 ({draft_eval.get('grade', 'F')})")
-            
-            # 최소 기준 미달 시 경고
-            if section.draft_score < self.MIN_SCORE:
-                logger.warning(f"⚠️ {key} Draft 품질 미달 ({section.draft_score}점) - 계속 진행")
+            logger.info(f"✅ {key} Draft: {section.draft_score}점 (관련성: {relevance['score']:.2f})")
         
         # ============================================================
-        # 단계 2: KATI 검증 + Supervisor 검증 ⭐
+        # 단계 2: KATI 검증
         # ============================================================
         if strategy.get("use_kati", False) and section.draft:
             if callback:
                 callback(key, f"🔍 {title}: KATI 검증 중...", (current + 1) / total)
             
-            kati_content, kati_citations = await self._generate_section(
+            kati_content, kati_citations = await self._generate_section_with_hs_filter(
                 key, state, mode="verify", existing_content=section.draft
             )
             
-            # Supervisor 검증
             kati_eval = self.supervisor.evaluate_content(
                 content=kati_content,
                 source_type="kati",
@@ -302,27 +460,25 @@ class ResearchPipeline:
             section.kati_score = kati_eval.get("score", 0)
             section.citations.extend(kati_citations)
             
-            logger.info(f"✅ {key} KATI: {section.kati_score}점 ({kati_eval.get('grade', 'F')})")
+            logger.info(f"✅ {key} KATI: {section.kati_score}점")
             
-            # 개선되지 않으면 draft로 롤백
             if section.kati_score < section.draft_score - self.IMPROVEMENT_THRESHOLD:
                 logger.warning(f"⚠️ {key} KATI 검증 후 품질 하락 → Draft 유지")
                 section.kati_verified = section.draft
                 section.kati_score = section.draft_score
         
         # ============================================================
-        # 단계 3: PDF 보완 + Supervisor 검증 ⭐
+        # 단계 3: PDF 보완
         # ============================================================
         if strategy.get("use_pdf", False):
             if callback:
                 callback(key, f"📚 {title}: PDF 보완 중...", (current + 2) / total)
             
             base_content = section.kati_verified or section.draft
-            pdf_content, pdf_citations = await self._generate_section(
+            pdf_content, pdf_citations = await self._generate_section_with_hs_filter(
                 key, state, mode="enhance_pdf", existing_content=base_content
             )
             
-            # Supervisor 검증
             pdf_eval = self.supervisor.evaluate_content(
                 content=pdf_content,
                 source_type="pdf",
@@ -333,9 +489,8 @@ class ResearchPipeline:
             section.pdf_score = pdf_eval.get("score", 0)
             section.citations.extend(pdf_citations)
             
-            logger.info(f"✅ {key} PDF: {section.pdf_score}점 ({pdf_eval.get('grade', 'F')})")
+            logger.info(f"✅ {key} PDF: {section.pdf_score}점")
             
-            # 개선되지 않으면 이전 버전 유지
             prev_score = section.kati_score or section.draft_score
             if section.pdf_score < prev_score - self.IMPROVEMENT_THRESHOLD:
                 logger.warning(f"⚠️ {key} PDF 보완 후 품질 하락 → 이전 버전 유지")
@@ -343,18 +498,17 @@ class ResearchPipeline:
                 section.pdf_score = prev_score
         
         # ============================================================
-        # 단계 4: Web 보완 + Supervisor 최종 검증 ⭐
+        # 단계 4: Web 보완
         # ============================================================
         if strategy.get("use_web", False):
             if callback:
                 callback(key, f"🌐 {title}: 웹 보완 중...", (current + 3) / total)
             
             base_content = section.pdf_enhanced or section.kati_verified or section.draft
-            web_content, web_citations = await self._generate_section(
+            web_content, web_citations = await self._generate_section_with_hs_filter(
                 key, state, mode="enhance_web", existing_content=base_content
             )
             
-            # Supervisor 최종 검증
             web_eval = self.supervisor.evaluate_content(
                 content=web_content,
                 source_type="web",
@@ -365,9 +519,8 @@ class ResearchPipeline:
             section.web_score = web_eval.get("score", 0)
             section.citations.extend(web_citations)
             
-            logger.info(f"✅ {key} Web: {section.web_score}점 ({web_eval.get('grade', 'F')})")
+            logger.info(f"✅ {key} Web: {section.web_score}점")
             
-            # 개선되지 않으면 이전 버전 유지
             prev_score = section.pdf_score or section.kati_score or section.draft_score
             if section.web_score < prev_score - self.IMPROVEMENT_THRESHOLD:
                 logger.warning(f"⚠️ {key} Web 보완 후 품질 하락 → 이전 버전 유지")
@@ -375,8 +528,12 @@ class ResearchPipeline:
                 section.web_score = prev_score
         
         # ============================================================
-        # 최종: 가장 높은 점수 버전 선택 🏆
+        # 최종: 가장 높은 점수 버전 선택
         # ============================================================
+        self._select_best_version(section, key)
+    
+    def _select_best_version(self, section: SectionResult, key: str):
+        """최고 점수 버전 선택"""
         versions = [
             ("draft", section.draft, section.draft_score),
             ("kati", section.kati_verified, section.kati_score),
@@ -384,9 +541,17 @@ class ResearchPipeline:
             ("web", section.web_enhanced, section.web_score),
         ]
         
-        # 점수 순 정렬
-        versions.sort(key=lambda x: x[2], reverse=True)
-        best_version, best_content, best_score = versions[0]
+        # 빈 콘텐츠 제외하고 점수 순 정렬
+        valid_versions = [(v, c, s) for v, c, s in versions if c.strip()]
+        if not valid_versions:
+            section.final = f"{section.title}에 대한 데이터를 찾을 수 없습니다."
+            section.final_score = 0
+            section.final_version = "none"
+            section.success = False
+            return
+        
+        valid_versions.sort(key=lambda x: x[2], reverse=True)
+        best_version, best_content, best_score = valid_versions[0]
         
         section.final = best_content
         section.final_score = best_score
@@ -397,7 +562,8 @@ class ResearchPipeline:
             "score": best_score,
             "grade": self._score_to_grade(best_score),
             "version": best_version,
-            "all_scores": {v[0]: v[2] for v in versions}
+            "all_scores": {v[0]: v[2] for v in versions},
+            "relevance": section.relevance
         }
         
         if section.success:
@@ -405,25 +571,21 @@ class ResearchPipeline:
         else:
             logger.error(f"❌ {key} 최종: 모든 버전 품질 미달 (최고 {best_score}점)")
     
-    async def _generate_section(
+    async def _generate_section_with_hs_filter(
         self,
         section_key: str,
         state: PipelineState,
         mode: str,
         existing_content: str = ""
     ) -> Tuple[str, List[str]]:
-        """섹션 생성 (통합 프롬프트 사용)"""
+        """섹션 생성 - HS Code 필터링 포함"""
         
-        # 데이터 검색
-        if mode == "draft":
-            filter_type = "country_info"
-        elif mode == "verify":
-            filter_type = "kati"
-        elif mode == "enhance_pdf":
-            filter_type = "kotra"
-        elif mode == "enhance_web":
-            # 웹 검색
-            query = f"{state.country} {state.item} {section_key} 최신"
+        # 웹 검색 모드
+        if mode == "enhance_web":
+            # HS 카테고리 키워드 포함 쿼리
+            hs_keywords = " ".join(state.hs_category.get("keywords", [])[:3])
+            query = f"{state.country} {state.item} {hs_keywords} {section_key} 최신 2024 2025"
+            
             web_results = self.web.search_public_only(query, top_k=5)
             
             if not web_results:
@@ -449,15 +611,57 @@ class ResearchPipeline:
             citations = [f"웹: {r.get('url', 'N/A')}" for r in web_results]
             
             return response.content.strip(), citations
+        
+        # 필터 타입 결정
+        if mode == "draft":
+            filter_type = "country_info"
+        elif mode == "verify":
+            filter_type = "kati"
+        elif mode == "enhance_pdf":
+            filter_type = "kotra"
         else:
             filter_type = "country_info"
         
-        # 벡터 검색
+        # ============================================================
+        # 개선된 쿼리: HS 카테고리 키워드 포함
+        # ============================================================
+        hs_keywords = state.hs_category.get("keywords", [])
+        keyword_str = " ".join(hs_keywords[:3]) if hs_keywords else state.item
+        
+        query = f"{state.country} {state.item} {keyword_str} {section_key}"
+        
+        # 벡터 검색 (HS Code 메타데이터 필터 시도)
+        filter_dict = {
+            "type": filter_type,
+            "country_code": state.country_code
+        }
+        
         docs = self.vectordb.retrieve(
-            query=f"{state.country} {state.item} {section_key}",
-            top_k=5,
-            filter_dict={"type": filter_type, "country_code": state.country_code}
+            query=query,
+            top_k=10,  # 더 많이 가져와서 필터링
+            filter_dict=filter_dict
         )
+        
+        # ============================================================
+        # 관련성 기반 문서 필터링 (신규)
+        # ============================================================
+        if docs:
+            filtered_docs = []
+            for doc in docs:
+                content = doc.page_content
+                relevance = validate_content_relevance(content, state.hs_code, state.item)
+                
+                if relevance["relevant"] or relevance["score"] >= 0.2:
+                    filtered_docs.append(doc)
+                else:
+                    logger.debug(f"문서 제외 (관련성 {relevance['score']:.2f}): {content[:50]}...")
+            
+            # 필터링 후 문서가 없으면 원본 사용 (최소 2개)
+            if len(filtered_docs) < 2:
+                filtered_docs = docs[:5]
+                logger.warning(f"관련 문서 부족, 원본 사용: {len(filtered_docs)}개")
+            
+            docs = filtered_docs[:5]
         
         if not docs:
             if existing_content:
@@ -470,7 +674,7 @@ class ResearchPipeline:
             for d in docs
         ])
         
-        # 프롬프트 생성
+        # 프롬프트에 HS Code 정보 추가
         prompt = get_section_prompt(
             mode=mode,
             context=context,
@@ -481,6 +685,17 @@ class ResearchPipeline:
             country_code=state.country_code,
             hs_code=state.hs_code
         )
+        
+        # HS Code 관련 지시 추가
+        hs_instruction = f"""
+⚠️ 중요: 이 보고서는 HS Code {state.hs_code} ({state.item})에 대한 것입니다.
+관련 카테고리: {state.hs_category.get('category', '일반')}
+관련 키워드: {', '.join(hs_keywords[:5])}
+
+다른 품목(항공기부품, MCU, 철강 등)에 대한 내용은 포함하지 마십시오.
+{state.item} 또는 {state.hs_category.get('category', '')} 관련 내용만 작성하십시오.
+"""
+        prompt = hs_instruction + "\n" + prompt
         
         # LLM 호출
         llm = self.llm_smart if mode in ["verify", "enhance_web"] else self.llm_fast
@@ -508,21 +723,36 @@ class ResearchPipeline:
             return "F"
     
     async def _generate_final_report(self, state: PipelineState) -> str:
-        """최종 보고서 생성 (Supervisor 승인된 섹션만)"""
+        """최종 보고서 생성 - A등급(90점 이상)만 포함"""
         
-        # 승인된 섹션만 수집
+        # A등급(90점 이상) 섹션만 승인
         approved_sections = {
             key: section
             for key, section in state.sections.items()
-            if section.success
+            if section.success and section.final_score >= 90 and key != "summary"
         }
         
-        logger.info(f"📊 승인된 섹션: {len(approved_sections)}/{len(state.sections)}개")
+        logger.info(f"📊 A등급 섹션: {len(approved_sections)}/{len(state.sections)}개")
+        
+        # 각 섹션의 등급 로깅
+        for key, section in state.sections.items():
+            score = section.final_score
+            grade = section.evaluation.get("grade", "F")
+            if section.success:
+                if score >= 90:
+                    logger.info(f"  ✅ {key}: {grade}등급 ({score}점) - 승인")
+                else:
+                    logger.warning(f"  ❌ {key}: {grade}등급 ({score}점) - A등급 미달로 제외")
         
         if not approved_sections:
-            return "# ⚠️ 품질 기준을 충족하는 섹션이 없습니다.\n\n모든 섹션이 Supervisor 검증에서 실패했습니다."
+            return "# ⚠️ A등급 기준을 충족하는 섹션이 없습니다.\n\n모든 섹션이 A등급(90점 이상) 기준에 미달했습니다."
         
-        # 섹션 내용 조합
+        # ============================================================
+        # Executive Summary 생성
+        # ============================================================
+        summary_content = await self._generate_executive_summary(state, approved_sections)
+        
+        # 보고서 조립
         parts = [
             f"# {state.country} {state.item} 시장진출 보고서",
             f"\n🔢 HS Code: {state.hs_code}",
@@ -530,20 +760,25 @@ class ResearchPipeline:
             f"\n---\n"
         ]
         
-        section_titles = {
-            "overview": "국가 및 시장 개요",
-            "market_size": "시장 규모",
-            "distribution": "유통 구조",
-            "regulation": "규제",
-            "risk": "시장리스크",
-            "price": "가격추세",
-            "demand": "수요전망"
-        }
+        # 1. Executive Summary (첫 번째)
+        parts.append("\n## 1. 요약 (Executive Summary)")
+        parts.append(f"*품질: 자동생성*\n")
+        parts.append(summary_content)
         
-        for key in ["overview", "market_size", "distribution", "regulation", "risk", "price", "demand"]:
+        # 2-8. 나머지 섹션 (A등급만)
+        section_order = [
+            ("overview", "2. 국가 및 시장 개요"),
+            ("market_size", "3. 시장 규모"),
+            ("distribution", "4. 유통 구조"),
+            ("risk", "5. 시장 리스크"),
+            ("regulation", "6. 규제 검토"),
+            ("price", "7. 가격 추세"),
+            ("sns_hashtag", "8. SNS 해시태그"),
+        ]
+        
+        for key, title in section_order:
             if key in approved_sections:
                 section = approved_sections[key]
-                title = section_titles.get(key, key)
                 score = section.final_score
                 grade = section.evaluation.get("grade", "F")
                 version = section.final_version.upper()
@@ -552,28 +787,130 @@ class ResearchPipeline:
                 parts.append(f"*품질: {grade}등급 ({score}점) | 버전: {version}*\n")
                 parts.append(section.final)
         
-        # 참고문헌
+        # 9. 출처 (KOTRA p.X, KATI p.Y, 웹 URL 형식)
         if state.all_citations:
-            parts.append("\n## 📚 참고문헌\n")
+            parts.append("\n## 9. 출처\n")
+            
+            # 출처를 KOTRA, KATI, 웹으로 분류
+            kotra_sources = []
+            kati_sources = []
+            web_sources = []
+            other_sources = []
+            
             unique_citations = list(set(state.all_citations))
-            for c in unique_citations[:30]:  # 최대 30개
-                parts.append(f"- {c}")
+            for c in unique_citations:
+                c_lower = c.lower()
+                if "kotra" in c_lower:
+                    kotra_sources.append(c)
+                elif "kati" in c_lower:
+                    kati_sources.append(c)
+                elif "http" in c_lower or "웹" in c:
+                    web_sources.append(c)
+                else:
+                    other_sources.append(c)
+            
+            # KOTRA 출처
+            if kotra_sources:
+                parts.append("\n### KOTRA 자료")
+                for src in sorted(kotra_sources):
+                    parts.append(f"- {src}")
+            
+            # KATI 출처
+            if kati_sources:
+                parts.append("\n### KATI 자료")
+                for src in sorted(kati_sources):
+                    parts.append(f"- {src}")
+            
+            # 웹 출처
+            if web_sources:
+                parts.append("\n### 웹 자료")
+                for src in sorted(web_sources):
+                    parts.append(f"- {src}")
+            
+            # 기타 출처
+            if other_sources:
+                parts.append("\n### 기타")
+                for src in sorted(other_sources):
+                    parts.append(f"- {src}")
         
-        # 품질 요약
+        # 품질 요약 (디버그용, 내부 모드에서만)
         parts.append("\n---\n## 📊 품질 요약\n")
-        for key, section in approved_sections.items():
-            parts.append(
-                f"- **{section.title}**: {section.evaluation.get('grade', 'F')}등급 "
-                f"({section.final_score}점, {section.final_version.upper()})"
-            )
+        for key, title in section_order:
+            if key in approved_sections:
+                section = approved_sections[key]
+                relevance_info = ""
+                if section.relevance:
+                    rel_score = section.relevance.get("score", 0)
+                    relevance_info = f", 관련성: {rel_score:.0%}"
+                
+                parts.append(
+                    f"- **{title.split('. ')[1]}**: {section.evaluation.get('grade', 'F')}등급 "
+                    f"({section.final_score}점, {section.final_version.upper()}{relevance_info})"
+                )
         
         return "\n".join(parts)
+    
+    async def _generate_executive_summary(
+        self, 
+        state: PipelineState, 
+        approved_sections: Dict[str, SectionResult]
+    ) -> str:
+        """Executive Summary 자동 생성"""
+        
+        # 각 섹션에서 핵심 정보 추출
+        section_summaries = []
+        for key, section in approved_sections.items():
+            content = section.final[:500]  # 앞부분만
+            section_summaries.append(f"### {section.title}\n{content}")
+        
+        combined_content = "\n\n".join(section_summaries)
+        
+        prompt = f"""
+당신은 KOTRA 보고서 요약 전문가입니다.
+
+아래 섹션 내용을 바탕으로 Executive Summary를 작성하세요.
+
+📌 대상 국가: {state.country}
+📌 HS Code: {state.hs_code}
+📌 품목: {state.item}
+📌 카테고리: {state.hs_category.get('category', '일반')}
+
+## 섹션 내용:
+{combined_content}
+
+## 요약 작성 규칙:
+1. **보고서 목적** (1-2문장): 대상 국가, HS코드, 품목 명시
+2. **시장 규모** (2-3문장): 구체적 금액, 성장률 (있는 경우)
+3. **한국산 제품 위치** (2-3문장): 순위, 점유율 (있는 경우)
+4. **관세 및 진입장벽** (2-3문장): 관세율 %, 주요 규제
+5. **GO/Conditional GO/NO-GO 판단** (2-3문장): 판단 + 근거 3가지
+
+⚠️ 규칙:
+- 각 항목에 출처 표기: [출처: ...]
+- 데이터가 없으면 "해당 데이터 없음" 명시
+- 일반론, 추측 금지
+- 최소 400자 이상
+"""
+        
+        try:
+            response = await self.llm_smart.ainvoke([HumanMessage(content=prompt)])
+            return response.content.strip()
+        except Exception as e:
+            logger.error(f"Executive Summary 생성 실패: {e}")
+            return f"""
+본 보고서는 {state.country} 시장에서 {state.item}(HS {state.hs_code})의 진출 전략을 분석합니다.
+
+상세 내용은 아래 각 섹션을 참조하십시오.
+
+[자동 요약 생성 실패 - 수동 검토 필요]
+"""
     
     def _to_output(self, state: PipelineState) -> Dict:
         """출력 형식 변환"""
         return {
             "success": True,
             "final_report": state.final_report,
+            "hs_category": state.hs_category,
             "sections": [
                 {
                     "key": s.key,
@@ -583,6 +920,7 @@ class ResearchPipeline:
                     "evaluation": s.evaluation,
                     "citations": s.citations,
                     "version": s.final_version,
+                    "relevance": s.relevance,
                     "all_scores": {
                         "draft": s.draft_score,
                         "kati": s.kati_score,
@@ -603,6 +941,10 @@ class ResearchPipeline:
         }
 
 
+# ============================================================
+# 초기화 함수
+# ============================================================
+
 def init_vectorstore() -> QdrantVectorDB:
     """벡터스토어 초기화"""
     db = QdrantVectorDB()
@@ -611,3 +953,34 @@ def init_vectorstore() -> QdrantVectorDB:
         logger.warning("⚠️ 벡터스토어에 데이터가 없습니다. init_db.py를 먼저 실행하세요.")
     
     return db
+
+
+# ============================================================
+# 테스트
+# ============================================================
+
+if __name__ == "__main__":
+    # HS Code 카테고리 테스트
+    test_codes = ["2202010000", "8803", "0901", "1905"]
+    
+    for code in test_codes:
+        info = get_hs_category(code)
+        print(f"HS {code}: {info}")
+    
+    # 관련성 검증 테스트
+    test_content = """
+    미국의 탄산음료 시장은 2024년 기준 500억 달러 규모입니다.
+    주요 브랜드로는 코카콜라, 펩시 등이 있습니다.
+    """
+    
+    relevance = validate_content_relevance(test_content, "2202010000", "탄산음료")
+    print(f"관련성 테스트: {relevance}")
+    
+    # 무관한 콘텐츠 테스트
+    irrelevant_content = """
+    항공기부품 시장은 2024년 기준 2,331억 달러 규모입니다.
+    Boeing, Lockheed Martin 등이 주요 기업입니다.
+    """
+    
+    relevance2 = validate_content_relevance(irrelevant_content, "2202010000", "탄산음료")
+    print(f"무관 콘텐츠 테스트: {relevance2}")

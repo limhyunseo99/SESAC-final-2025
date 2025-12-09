@@ -1,0 +1,269 @@
+{
+  "session_id": "20251208_210315_233771",
+  "started_at": "2025-12-08T21:03:15.233771",
+  "ended_at": "2025-12-08T21:22:22.536460",
+  "user_input": {
+    "country": "미국 (USA)",
+    "hs_code": "2204011222",
+    "market_risk": true,
+    "regulation": true,
+    "price_trend": true,
+    "sns_hashtag": "식혜",
+    "hs_code_2digit": "22",
+    "hs_code_4digit": "2204",
+    "is_beverage": true
+  },
+  "selected_options": [],
+  "user_activities": [
+    {
+      "timestamp": "2025-12-08T21:03:15.233771",
+      "stage": "input_parsing",
+      "action": "user_input_received",
+      "input_data": {
+        "country": "미국 (USA)",
+        "hs_code": "2204011222",
+        "market_risk": true,
+        "regulation": true,
+        "price_trend": true,
+        "sns_hashtag": "식혜",
+        "hs_code_2digit": "22",
+        "hs_code_4digit": "2204",
+        "is_beverage": true
+      },
+      "output_data": {},
+      "duration_ms": 0,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "timestamp": "2025-12-08T21:03:15.233771",
+      "stage": "input_parsing",
+      "action": "stage_started",
+      "input_data": {
+        "country": "미국 (USA)",
+        "hs_code": "2204011222",
+        "market_risk": true,
+        "regulation": true,
+        "price_trend": true,
+        "sns_hashtag": "식혜",
+        "hs_code_2digit": "22",
+        "hs_code_4digit": "2204",
+        "is_beverage": true
+      },
+      "output_data": {},
+      "duration_ms": 0,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "timestamp": "2025-12-08T21:03:15.249166",
+      "stage": "input_parsing",
+      "action": "stage_completed",
+      "input_data": {},
+      "output_data": {
+        "country_code": "US",
+        "hs_code_clean": "2204011222",
+        "hs_category": {
+          "category": "주류",
+          "keywords": [
+            "와인",
+            "포도주",
+            "wine"
+          ]
+        }
+      },
+      "duration_ms": 15.395402908325195,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "timestamp": "2025-12-08T21:22:19.764155",
+      "stage": "final_report",
+      "action": "stage_started",
+      "input_data": {},
+      "output_data": {},
+      "duration_ms": 0,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "timestamp": "2025-12-08T21:22:22.536460",
+      "stage": "final_report",
+      "action": "stage_completed",
+      "input_data": {},
+      "output_data": {
+        "report_length": 12724
+      },
+      "duration_ms": 2772.3045349121094,
+      "success": true,
+      "error_message": ""
+    }
+  ],
+  "sections": {
+    "summary": {
+      "section_key": "summary",
+      "section_title": "요약 (Executive Summary)",
+      "started_at": "2025-12-08T21:03:15.249166",
+      "ended_at": "2025-12-08T21:03:15.250688",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 0,
+      "final_grade": "F",
+      "included_in_report": true,
+      "sources_used": [],
+      "content_evolution": []
+    },
+    "overview": {
+      "section_key": "overview",
+      "section_title": "국가 및 시장 개요",
+      "started_at": "2025-12-08T21:03:15.250688",
+      "ended_at": "2025-12-08T21:03:55.205395",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 83,
+      "final_grade": "B",
+      "included_in_report": true,
+      "sources_used": [
+        "",
+        ""
+      ],
+      "content_evolution": []
+    },
+    "market_size": {
+      "section_key": "market_size",
+      "section_title": "시장 규모",
+      "started_at": "2025-12-08T21:03:55.205395",
+      "ended_at": "2025-12-08T21:06:48.521609",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 85,
+      "final_grade": "B",
+      "included_in_report": true,
+      "sources_used": [
+        "",
+        "",
+        "",
+        "[2023_kati_US.pdf, p.25-27]",
+        "[2023_kati_US.pdf, p.26-28]",
+        "[2023_kotra_US.pdf, p.31-33]",
+        "[2025_kotra_US.pdf, p.38-40]",
+        "[2024_kotra_US.pdf, p.42-44]",
+        "[2025_kotra_US.pdf, p.39-41]",
+        "[2023_kotra_US.pdf, p.33-35]"
+      ],
+      "content_evolution": []
+    },
+    "distribution": {
+      "section_key": "distribution",
+      "section_title": "유통 구조",
+      "started_at": "2025-12-08T21:06:48.521609",
+      "ended_at": "2025-12-08T21:09:34.208255",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 73,
+      "final_grade": "C",
+      "included_in_report": true,
+      "sources_used": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "[2023_kotra_US.pdf, p.74-76]",
+        "[2023_kotra_US.pdf, p.33-35]",
+        "[2023_kotra_US.pdf, p.31-33]",
+        "[2025_kotra_US.pdf, p.40-42]",
+        "[2023_kotra_US.pdf, p.52-54]"
+      ],
+      "content_evolution": []
+    },
+    "risk": {
+      "section_key": "risk",
+      "section_title": "시장 리스크",
+      "started_at": "2025-12-08T21:09:34.208255",
+      "ended_at": "2025-12-08T21:15:01.696413",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 79,
+      "final_grade": "C",
+      "included_in_report": true,
+      "sources_used": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "[2022_kati_US.pdf, p.71-73]",
+        "[2023_kati_US.pdf, p.26-28]",
+        "[2023_kati_US.pdf, p.25-27]",
+        "[2024_kati_US.pdf, p.60-62]",
+        "[2023_kati_US.pdf, p.27-29]",
+        "[2024_kotra_US.pdf, p.30-32]",
+        "[2023_kotra_US.pdf, p.74-76]",
+        "[2025_kotra_US.pdf, p.47-49]",
+        "[2023_kotra_US.pdf, p.33-35]",
+        "[2025_kotra_US.pdf, p.40-42]",
+        "웹: https://www.kpbma.or.kr/api/info/notice/download/242543"
+      ],
+      "content_evolution": []
+    },
+    "regulation": {
+      "section_key": "regulation",
+      "section_title": "규제 검토",
+      "started_at": "2025-12-08T21:15:01.696413",
+      "ended_at": "2025-12-08T21:21:18.116277",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 75,
+      "final_grade": "C",
+      "included_in_report": true,
+      "sources_used": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "[2024_kati_US.pdf, p.52-54]",
+        "[2024_kati_US.pdf, p.54-56]",
+        "[2024_kati_US.pdf, p.60-62]",
+        "[2023_kati_US.pdf, p.56-58]",
+        "[2025_kotra_US.pdf, p.36-38]",
+        "[2025_kotra_US.pdf, p.63-65]",
+        "웹: https://www.kpbma.or.kr/api/inform/notice/download/242913",
+        "웹: https://www.kpbma.or.kr/api/info/notice/download/242543"
+      ],
+      "content_evolution": []
+    },
+    "price": {
+      "section_key": "price",
+      "section_title": "가격 추세",
+      "started_at": "2025-12-08T21:21:18.116277",
+      "ended_at": "2025-12-08T21:22:19.764155",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 71,
+      "final_grade": "C",
+      "included_in_report": true,
+      "sources_used": [
+        "",
+        ""
+      ],
+      "content_evolution": []
+    }
+  },
+  "stats": {
+    "total_sections": 7,
+    "passed_sections": 7,
+    "rejected_sections": 0,
+    "total_decisions": 0,
+    "total_activities": 5,
+    "total_errors": 0,
+    "sources_summary": {
+      "json": 0,
+      "pdf": 28,
+      "web": 3,
+      "csv": 0
+    }
+  },
+  "errors": []
+}

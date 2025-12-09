@@ -445,11 +445,28 @@ def page_new_analysis():
 
     with col_c2:
         hs_code = st.text_input(
-            "HTS Code",
-            placeholder="예: 2204.99.0000",
+            "HTS Code (10자리)",
+            placeholder="예: 2204990000",
             value=st.session_state.analysis_data.get("hs_code", ""),
+            help="10자리 숫자만 입력 가능합니다 (예: 2204990000)"
         )
-        st.session_state.analysis_data["hs_code"] = hs_code
+        
+        # HS Code 검증
+        if hs_code:
+            # 숫자만 추출 (점이나 대시 제거)
+            hs_code_clean = hs_code.replace(".", "").replace("-", "").replace(" ", "")
+            
+            # 숫자가 아닌 문자가 있는지 확인
+            if not hs_code_clean.isdigit():
+                st.error("❌ HS Code는 숫자만 입력 가능합니다.")
+                hs_code_clean = ""
+            # 10자리가 아닌 경우
+            elif len(hs_code_clean) != 10:
+                st.warning(f"⚠️ HS Code는 10자리여야 합니다. (현재: {len(hs_code_clean)}자리)")
+            
+            st.session_state.analysis_data["hs_code"] = hs_code_clean
+        else:
+            st.session_state.analysis_data["hs_code"] = ""
 
     with col_btn:
         st.markdown("<div style='margin-top: 29px;'></div>", unsafe_allow_html=True)
@@ -493,6 +510,19 @@ def page_new_analysis():
     with bottom_col2:
         if st.button("분석 실행", type="primary", use_container_width=True):
             payload = st.session_state.analysis_data
+            
+            # HS Code 2자리, 4자리 추출 (음료 카테고리 분석용)
+            hs_code = payload.get("hs_code", "")
+            if hs_code and len(hs_code) == 10:
+                payload["hs_code_2digit"] = hs_code[:2]  # 앞 2자리
+                payload["hs_code_4digit"] = hs_code[:4]  # 앞 4자리
+                
+                # 음료 카테고리 여부 확인 (HS Code 22로 시작)
+                if hs_code.startswith("22"):
+                    payload["is_beverage"] = True
+                else:
+                    payload["is_beverage"] = False
+            
             payload_path = Path("input_payload.json")
             with open(payload_path, "w", encoding="utf-8") as f:
                 json.dump(payload, f, ensure_ascii=False, indent=2)
