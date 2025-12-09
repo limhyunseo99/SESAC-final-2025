@@ -1,22 +1,26 @@
 # hs_code.py
-
+import os
 from typing import List
 from uuid import uuid4
 import re
 
 from qdrant_client import QdrantClient
-from langchain.schema import Document
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from qdrant_client.models import VectorParams, Distance
 
+from config import Config
+
+from dotenv import load_dotenv
+load_dotenv()
 
 class HSRagPredictor:
     def __init__(
         self,
         qdrant_url: str,
-        qdrant_api_key: str,
         collection_name: str,
+        qdrant_api_key: str,
         embedding_model: str = "text-embedding-3-large",
         llm_model: str = "gpt-5-mini-2025-08-07", # gpt-5-mini-2025-08-07
     ):
@@ -24,19 +28,40 @@ class HSRagPredictor:
         HS 코드 RAG + LLM 예측 클래스
         """
 
-        self.collection_name = collection_name
-        self.llm_model = llm_model
+        # API Key 불러오기
+        QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
+        OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-        # Qdrant Cloud 연결
+        # Qdrant 연결 (.env의 key 사용)
         self.qdrant_client = QdrantClient(
             url=qdrant_url,
-            api_key=qdrant_api_key,
+            api_key=QDRANT_API_KEY
         )
-
-        # Embedding 모델
+        
+        # 컬렉션 존재 여부 확인
+        try:
+            self.qdrant_client.get_collection(collection_name)
+        except Exception:
+            # 없으면 자동 생성
+            self.qdrant_client.create_collection(
+            collection_name=collection_name,
+            vectors_config=VectorParams(
+                size=3072,
+                distance=Distance.COSINE
+            )
+        )
+        # Embedding 
         self.embeddings = OpenAIEmbeddings(
             model=embedding_model,
-            openai_api_key="")
+            openai_api_key=OPENAI_API_KEY
+        )
+        
+        # OPENAI KEY 저장
+        self.OPENAI_API_KEY = OPENAI_API_KEY
+        
+        # 기타 설정
+        self.collection_name = collection_name
+        self.llm_model = llm_model
 
 
     # LLM 출력 결과에서 결정세번만 파싱    
@@ -47,7 +72,7 @@ class HSRagPredictor:
     
 
     # Qdrant 검색 결과 → LLM 컨텍스트 문자열 변환
-    def _build_context_from_docs(self, docs: List[Document]) -> str:
+    def _build_context_from_docs(self, docs) -> str:
         lines = []
         for i, d in enumerate(docs, 1):
             hs_code = d.payload.get("hts_code")
@@ -155,8 +180,8 @@ class HSRagPredictor:
         llm = ChatOpenAI(
             model=self.llm_model,
             temperature=temperature,
-            openai_api_key=""
-            )
+            openai_api_key=self.OPENAI_API_KEY
+        )
 
         chain = prompt | llm | StrOutputParser()
 

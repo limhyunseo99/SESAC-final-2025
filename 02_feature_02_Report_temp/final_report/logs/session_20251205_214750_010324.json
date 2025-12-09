@@ -1,0 +1,173 @@
+{
+  "session_id": "20251205_214750_010324",
+  "started_at": "2025-12-05T21:47:50.010324",
+  "ended_at": "2025-12-05T21:48:49.545222",
+  "user_input": {
+    "country": "JP",
+    "hs_code": "1904.10-9000",
+    "market_risk": true,
+    "regulation": true,
+    "price_trend": true,
+    "sns_hashtag": "바나나우유"
+  },
+  "selected_options": [],
+  "user_activities": [
+    {
+      "timestamp": "2025-12-05T21:47:50.013959",
+      "stage": "input_parsing",
+      "action": "user_input_received",
+      "input_data": {
+        "country": "JP",
+        "hs_code": "1904.10-9000",
+        "market_risk": true,
+        "regulation": true,
+        "price_trend": true,
+        "sns_hashtag": "바나나우유"
+      },
+      "output_data": {},
+      "duration_ms": 0,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "timestamp": "2025-12-05T21:47:50.015494",
+      "stage": "input_parsing",
+      "action": "stage_started",
+      "input_data": {
+        "country": "JP",
+        "hs_code": "1904.10-9000",
+        "market_risk": true,
+        "regulation": true,
+        "price_trend": true,
+        "sns_hashtag": "바나나우유"
+      },
+      "output_data": {},
+      "duration_ms": 0,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "timestamp": "2025-12-05T21:47:50.016517",
+      "stage": "input_parsing",
+      "action": "stage_completed",
+      "input_data": {},
+      "output_data": {
+        "country_code": "JP"
+      },
+      "duration_ms": 0.0,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "timestamp": "2025-12-05T21:48:49.544000",
+      "stage": "final_report",
+      "action": "stage_started",
+      "input_data": {},
+      "output_data": {},
+      "duration_ms": 0,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "timestamp": "2025-12-05T21:48:49.544000",
+      "stage": "final_report",
+      "action": "stage_completed",
+      "input_data": {},
+      "output_data": {
+        "report_length": 1942
+      },
+      "duration_ms": 0.0,
+      "success": true,
+      "error_message": ""
+    }
+  ],
+  "sections": {
+    "overview": {
+      "section_key": "overview",
+      "section_title": "국가 및 시장 개요",
+      "started_at": "2025-12-05T21:47:50.016517",
+      "ended_at": "2025-12-05T21:47:56.618806",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 74,
+      "final_grade": "C",
+      "included_in_report": true,
+      "sources_used": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "content_evolution": []
+    },
+    "market_size": {
+      "section_key": "market_size",
+      "section_title": "시장 규모",
+      "started_at": "2025-12-05T21:47:56.633240",
+      "ended_at": "2025-12-05T21:48:31.215910",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 72,
+      "final_grade": "C",
+      "included_in_report": true,
+      "sources_used": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "[2023_kati_JP.pdf, p.2-4]",
+        "[2022_kati_JP.pdf, p.57-59]",
+        "[2022_kati_JP.pdf, p.45-47]",
+        "[2022_kati_JP.pdf, p.61-63]",
+        "[2023_kati_JP.pdf, p.1-2]",
+        "[2024_kotra_JP.pdf, p.28-30]",
+        "[2023_kotra_JP.pdf, p.29-31]",
+        "[2024_kotra_JP.pdf, p.35-37]",
+        "[2025_kotra_JP.pdf, p.26-28]",
+        "[2023_kotra_JP.pdf, p.40-42]"
+      ],
+      "content_evolution": []
+    },
+    "distribution": {
+      "section_key": "distribution",
+      "section_title": "유통 구조",
+      "started_at": "2025-12-05T21:48:31.215910",
+      "ended_at": "2025-12-05T21:48:49.544000",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 74,
+      "final_grade": "C",
+      "included_in_report": true,
+      "sources_used": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "[2025_kotra_JP.pdf, p.41-43]",
+        "[2023_kotra_JP.pdf, p.40-42]",
+        "[2024_kotra_JP.pdf, p.46-48]",
+        "[2024_kotra_JP.pdf, p.61-63]",
+        "[2025_kotra_JP.pdf, p.71-73]"
+      ],
+      "content_evolution": []
+    }
+  },
+  "stats": {
+    "total_sections": 3,
+    "passed_sections": 3,
+    "rejected_sections": 0,
+    "total_decisions": 0,
+    "total_activities": 5,
+    "total_errors": 0,
+    "sources_summary": {
+      "json": 0,
+      "pdf": 15,
+      "web": 0,
+      "csv": 0
+    }
+  },
+  "errors": []
+}

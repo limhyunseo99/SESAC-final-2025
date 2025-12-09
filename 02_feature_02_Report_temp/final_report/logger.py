@@ -173,20 +173,20 @@ class ResearchLogger:
         """단계 시작 기록"""
         activity = UserActivityLog(
             timestamp=datetime.now().isoformat(),
-            stage=stage.value,
+            stage=stage if hasattr(stage, 'value') else stage,
             action="stage_started",
             input_data=details or {}
         )
         self.session.user_activities.append(activity)
         
-        self.file_logger.info(f"STAGE_START: {stage.value} | {details or ''}")
+        self.file_logger.info(f"STAGE_START: {stage} | {details or ''}")
     
     def log_stage_end(self, stage: PipelineStage, result: Dict = None, 
                       duration_ms: float = 0, success: bool = True, error: str = ""):
         """단계 종료 기록"""
         activity = UserActivityLog(
             timestamp=datetime.now().isoformat(),
-            stage=stage.value,
+            stage=stage,
             action="stage_completed" if success else "stage_failed",
             output_data=result or {},
             duration_ms=duration_ms,
@@ -196,7 +196,7 @@ class ResearchLogger:
         self.session.user_activities.append(activity)
         
         status = "SUCCESS" if success else "FAILED"
-        self.file_logger.info(f"STAGE_END: {stage.value} | {status} | {duration_ms:.1f}ms")
+        self.file_logger.info(f"STAGE_END: {stage} | {status} | {duration_ms:.1f}ms")
         if error:
             self.file_logger.error(f"  ERROR: {error}")
     
