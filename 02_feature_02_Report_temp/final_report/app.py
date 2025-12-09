@@ -18,8 +18,8 @@ sys.path.append(BASE_DIR)
 # 1. 페이지 설정
 # -----------------------------------------------------------------------------
 st.set_page_config(
-    page_title="GlobalPath AI",
-    page_icon="🐋",
+    page_title="GlobalPath",
+    page_icon="🚢",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -218,9 +218,6 @@ def hs_code_finder_dialog():
                     time.sleep(0.3)
                     st.rerun()
 
-    else:
-        st.warning("HS 추천 결과가 없습니다. 먼저 분석을 실행해주세요.")
-
 # -----------------------------------------------------------------------------
 # 4. 사이드바
 # -----------------------------------------------------------------------------
@@ -230,8 +227,8 @@ def render_sidebar():
         st.markdown(
             """
             <div style="display: flex; align-items: center; margin-bottom: 30px;">
-                <span class="logo-icon">🐋</span>
-                <span class="logo-text">GlobalPath AI</span>
+                <span class="logo-icon">🚢</span>
+                <span class="logo-text">GlobalPath</span>
             </div>
         """,
             unsafe_allow_html=True,
@@ -329,7 +326,7 @@ def render_sidebar():
 # 5. 페이지: Home
 # -----------------------------------------------------------------------------
 def page_dashboard():
-    col_main1, col_main2, col_main3 = st.columns([2, 1, 2])
+    col_main1, col_main2, col_main3 = st.columns([3, 1, 3])
     with col_main2:
         # 이미지 주소
         image_url = "https://ugokawaii.com/wp-content/uploads/2023/06/ship.gif" 
@@ -343,7 +340,7 @@ def page_dashboard():
         """
         <div style="margin-bottom: 3rem; text-align: center;">
             <div style="font-size: 3.5rem; margin-bottom: 1rem; color: #1f2937;"></div>
-            <h1 style="color: #1f2937; margin-bottom: 0.5rem; font-size: 2.2rem;">Welcome to GlobalPath AI</h1>
+            <h1 style="color: #1f2937; margin-bottom: 0.5rem; font-size: 2.2rem;">Welcome to GlobalPath</h1>
             <p style="color: #4b5563; font-size: 1.1rem; opacity: 1;">
             데이터 기반의 무역 의사결정을 위한 최고의 솔루션입니다<br>
             복잡한 무역 데이터와 소셜 트렌드를 한눈에 파악하세요
@@ -446,7 +443,7 @@ def page_new_analysis():
     with col_c2:
         hs_code = st.text_input(
             "HTS Code (10자리)",
-            placeholder="예: 2204990000",
+            placeholder="예: 2204.99-0000",
             value=st.session_state.analysis_data.get("hs_code", ""),
             help="10자리 숫자만 입력 가능합니다 (예: 2204990000)"
         )
