@@ -29,6 +29,14 @@ logger = logging.getLogger(__name__)
 
 ProgressCallback = Callable[[str, str, float], None]
 
+
+HS_TO_KEYWORD = {
+    "2106109020": "바나나우유",
+    # 앞으로 필요한 품목 계속 추가 가능
+}
+
+def get_item_from_hs(hs_code: str) -> str:
+    return HS_TO_KEYWORD.get(hs_code, "")
 # ============================================================
 # HS Code 카테고리 매핑 (신규 추가)
 # ============================================================
@@ -289,6 +297,7 @@ class ResearchPipelineUpgraded:
             item=payload.get("item", "제품"),
             options=payload.get("options", []),
         )
+        state.item = state.item or get_item_from_hs(state.hs_code)
         
         logger.info(f"📦 HS Code: {hs_code} → 카테고리: {state.hs_category.get('category', '일반')}")
         logger.info(f"🔍 관련 키워드: {state.hs_category.get('keywords', [])}")

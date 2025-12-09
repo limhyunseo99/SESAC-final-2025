@@ -1,0 +1,285 @@
+{
+  "session_id": "20251209_185628_659003",
+  "started_at": "2025-12-09T18:56:28.659003",
+  "ended_at": "2025-12-09T18:59:49.741840",
+  "user_input": {
+    "country": "미국 (USA)",
+    "hs_code": "2106109020",
+    "market_risk": true,
+    "regulation": true,
+    "price_trend": true,
+    "sns_hashtag": "바나나우유",
+    "hs_code_2digit": "21",
+    "hs_code_4digit": "2106",
+    "is_beverage": false
+  },
+  "selected_options": [],
+  "user_activities": [
+    {
+      "timestamp": "2025-12-09T18:56:28.664093",
+      "stage": "input_parsing",
+      "action": "user_input_received",
+      "input_data": {
+        "country": "미국 (USA)",
+        "hs_code": "2106109020",
+        "market_risk": true,
+        "regulation": true,
+        "price_trend": true,
+        "sns_hashtag": "바나나우유",
+        "hs_code_2digit": "21",
+        "hs_code_4digit": "2106",
+        "is_beverage": false
+      },
+      "output_data": {},
+      "duration_ms": 0,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "timestamp": "2025-12-09T18:56:28.664093",
+      "stage": "input_parsing",
+      "action": "stage_started",
+      "input_data": {
+        "country": "미국 (USA)",
+        "hs_code": "2106109020",
+        "market_risk": true,
+        "regulation": true,
+        "price_trend": true,
+        "sns_hashtag": "바나나우유",
+        "hs_code_2digit": "21",
+        "hs_code_4digit": "2106",
+        "is_beverage": false
+      },
+      "output_data": {},
+      "duration_ms": 0,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "timestamp": "2025-12-09T18:56:28.665486",
+      "stage": "input_parsing",
+      "action": "stage_completed",
+      "input_data": {},
+      "output_data": {
+        "country_code": "US",
+        "hs_code_clean": "2106109020",
+        "hs_category": {
+          "category": "일반",
+          "keywords": []
+        }
+      },
+      "duration_ms": 1.3926029205322266,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "timestamp": "2025-12-09T18:59:49.741840",
+      "stage": "final_report",
+      "action": "stage_started",
+      "input_data": {},
+      "output_data": {},
+      "duration_ms": 0,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "timestamp": "2025-12-09T18:59:49.741840",
+      "stage": "final_report",
+      "action": "stage_completed",
+      "input_data": {},
+      "output_data": {
+        "report_length": 59
+      },
+      "duration_ms": 0.0,
+      "success": true,
+      "error_message": ""
+    }
+  ],
+  "sections": {
+    "summary": {
+      "section_key": "summary",
+      "section_title": "요약 (Executive Summary)",
+      "started_at": "2025-12-09T18:56:28.665486",
+      "ended_at": "2025-12-09T18:56:28.666197",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 0,
+      "final_grade": "F",
+      "included_in_report": true,
+      "sources_used": [],
+      "content_evolution": []
+    },
+    "overview": {
+      "section_key": "overview",
+      "section_title": "국가 및 시장 개요",
+      "started_at": "2025-12-09T18:56:28.666197",
+      "ended_at": "2025-12-09T18:56:38.328086",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 74,
+      "final_grade": "C",
+      "included_in_report": true,
+      "sources_used": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "content_evolution": []
+    },
+    "market_size": {
+      "section_key": "market_size",
+      "section_title": "시장 규모",
+      "started_at": "2025-12-09T18:56:38.328086",
+      "ended_at": "2025-12-09T18:57:21.143115",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 81,
+      "final_grade": "B",
+      "included_in_report": true,
+      "sources_used": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "[2023_kati_US.pdf, p.25-27]",
+        "[2023_kati_US.pdf, p.26-28]",
+        "[2022_kati_US.pdf, p.20-23]",
+        "[2025_kotra_US.pdf, p.102-104]",
+        "[2023_kotra_US.pdf, p.74-76]",
+        "[2024_kotra_US.pdf, p.37-39]",
+        "[2023_kotra_US.pdf, p.75-77]"
+      ],
+      "content_evolution": []
+    },
+    "distribution": {
+      "section_key": "distribution",
+      "section_title": "유통 구조",
+      "started_at": "2025-12-09T18:57:21.143115",
+      "ended_at": "2025-12-09T18:57:44.743499",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 79,
+      "final_grade": "C",
+      "included_in_report": true,
+      "sources_used": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "[2023_kotra_US.pdf, p.74-76]",
+        "[2024_kotra_US.pdf, p.106-108]",
+        "[2024_kotra_US.pdf, p.82-84]",
+        "[2024_kotra_US.pdf, p.80-82]",
+        "[2024_kotra_US.pdf, p.81-83]"
+      ],
+      "content_evolution": []
+    },
+    "risk": {
+      "section_key": "risk",
+      "section_title": "시장 리스크",
+      "started_at": "2025-12-09T18:57:44.743499",
+      "ended_at": "2025-12-09T18:58:26.807679",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 71,
+      "final_grade": "C",
+      "included_in_report": true,
+      "sources_used": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "[2024_kati_US.pdf, p.60-62]",
+        "[2023_kati_US.pdf, p.34-36]",
+        "[2023_kati_US.pdf, p.38-40]",
+        "[2023_kati_US.pdf, p.55-57]",
+        "[2024_kati_US.pdf, p.34-36]",
+        "[2023_kotra_US.pdf, p.74-76]",
+        "[2024_kotra_US.pdf, p.80-82]",
+        "[2023_kotra_US.pdf, p.38-40]",
+        "[2025_kotra_US.pdf, p.37-39]",
+        "[2024_kotra_US.pdf, p.81-83]",
+        "웹: https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/215256s024lbl.pdf",
+        "웹: https://www.irs.gov/publications/p547ko"
+      ],
+      "content_evolution": []
+    },
+    "regulation": {
+      "section_key": "regulation",
+      "section_title": "규제 검토",
+      "started_at": "2025-12-09T18:58:26.810949",
+      "ended_at": "2025-12-09T18:59:05.150695",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 75,
+      "final_grade": "C",
+      "included_in_report": true,
+      "sources_used": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "[2024_kati_US.pdf, p.54-56]",
+        "[2024_kati_US.pdf, p.53-55]",
+        "[2024_kati_US.pdf, p.60-62]",
+        "[2023_kati_US.pdf, p.56-58]",
+        "[2024_kati_US.pdf, p.52-54]",
+        "[2024_kotra_US.pdf, p.38-40]",
+        "[2023_kotra_US.pdf, p.37-39]",
+        "[2024_kotra_US.pdf, p.48-50]",
+        "[2025_kotra_US.pdf, p.36-38]",
+        "[2023_kotra_US.pdf, p.74-76]"
+      ],
+      "content_evolution": []
+    },
+    "price": {
+      "section_key": "price",
+      "section_title": "가격 추세",
+      "started_at": "2025-12-09T18:59:05.154745",
+      "ended_at": "2025-12-09T18:59:49.740077",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 83,
+      "final_grade": "B",
+      "included_in_report": true,
+      "sources_used": [
+        "",
+        "",
+        "",
+        "",
+        "[2022_kati_US.pdf, p.54-57]",
+        "[2023_kati_US.pdf, p.34-36]",
+        "[2022_kati_US.pdf, p.50-52]",
+        "[2022_kati_US.pdf, p.57-59]",
+        "[2023_kati_US.pdf, p.26-28]",
+        "[2023_kotra_US.pdf, p.35-37]",
+        "[2023_kotra_US.pdf, p.74-76]",
+        "[2025_kotra_US.pdf, p.41-43]",
+        "[2024_kotra_US.pdf, p.45-47]",
+        "[2023_kotra_US.pdf, p.75-77]"
+      ],
+      "content_evolution": []
+    }
+  },
+  "stats": {
+    "total_sections": 7,
+    "passed_sections": 7,
+    "rejected_sections": 0,
+    "total_decisions": 0,
+    "total_activities": 5,
+    "total_errors": 0,
+    "sources_summary": {
+      "json": 0,
+      "pdf": 43,
+      "web": 1,
+      "csv": 0
+    }
+  },
+  "errors": []
+}

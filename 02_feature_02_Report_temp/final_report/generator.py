@@ -96,6 +96,10 @@ def setup_matplotlib_korean_font():
 # 폰트 설정 실행
 MATPLOTLIB_FONT = setup_matplotlib_korean_font()
 
+# HS코드별 SNS 데이터 파일 매핑
+SNS_FILE_BY_HS = {
+    "2106109020": "data/sns_banana_milk.csv"
+}
 # -----------------------------------------------------------------------------
 # 국가 코드 매핑
 # -----------------------------------------------------------------------------
@@ -166,99 +170,83 @@ def get_success_rate_info(country_code: str, hs_code: str) -> Optional[Dict]:
     except Exception as e:
         logger.error(f"수출 유망 확률 정보 조회 실패: {e}", exc_info=True)
         return None
-
-
-def create_sns_hashtag_chart(country_code: str, hashtag: str, output_dir: str) -> Optional[str]:
-    """SNS 해시태그 트렌드 그래프 생성 (간단 버전)"""
     
+def load_sns_data(item: str, hs_code: str):
+    """
+    SNS 데이터 파일을 HS코드 기준으로 선택하여 로드한다.
+    """
+    # 1) HS 코드 기반 선택
+    if hs_code in SNS_FILE_BY_HS:
+        return pd.read_csv(SNS_FILE_BY_HS[hs_code])
+
+    # 2) 기본값 (기존 구조 유지용)
+    return pd.read_excel("data/sns.xlsx", engine="openpyxl")
+
+
+
+def create_sns_hashtag_chart(country_code: str, hashtag: str, hs_code: str, output_dir: str) -> Optional[str]:
+    """SNS 해시태그 트렌드 그래프 생성 (CSV 기반)"""
+
     try:
+        # 해시태그가 없으면 HS코드 기반 품목 사용
         if not hashtag:
-            logger.info("SNS 해시태그가 입력되지 않았습니다.")
-            return None
+            hashtag = get_item_from_hs(hs_code)
+            if not hashtag:
+                logger.info("SNS 해시태그 또는 품목명이 제공되지 않아 분석 생략")
+                return None
         
         # 한글 폰트 설정
         plt.rcParams['font.family'] = MATPLOTLIB_FONT
         plt.rcParams['axes.unicode_minus'] = False
         
-        # 데이터 파일 경로
-        base_dir = Path(__file__).parent
-        data_path = base_dir / "data" / "sns.xlsx"
-        
-        if not data_path.exists():
-            logger.warning(f"❌ SNS 데이터 파일 없음: {data_path}")
+        # ★ CSV / XLSX 자동 로드 (핵심)
+        df = load_sns_data(hashtag, hs_code)
+        if df is None or df.empty:
+            logger.warning("SNS 데이터가 존재하지 않습니다.")
             return None
-        
-        # 데이터 로드
-        logger.info(f"✓ SNS 데이터 로드: {data_path}")
-        df = pd.read_excel(data_path, engine="openpyxl")
         
         # 필터링
         filtered = df[
-            (df['country'] == country_code) & 
+            (df['country'].astype(str).str.upper() == country_code.upper()) & 
             (df['name_kr'] == hashtag)
         ]
         
         if filtered.empty:
             logger.warning(f"❌ 데이터 없음: {country_code} - {hashtag}")
-            logger.info(f"   사용 가능한 국가: {df['country'].unique().tolist()}")
-            logger.info(f"   사용 가능한 키워드 예시: {df['name_kr'].unique().tolist()[:10]}")
             return None
         
-        # 날짜순 정렬
+        # 날짜 정렬
+        filtered["mm-yy"] = pd.to_datetime(filtered["mm-yy"], errors="coerce")
         filtered = filtered.sort_values("mm-yy")
-        
-        logger.info(f"✓ 필터링 완료: {len(filtered)}개 행")
         
         # 그래프 생성
         plt.figure(figsize=(12, 6))
         plt.plot(filtered["mm-yy"], filtered["count"], marker="o", linewidth=2.5, 
-                markersize=8, color="#0D9488")
+                 markersize=8, color="#0D9488")
         
-        # 제목 및 라벨
         plt.title(f"SNS 해시태그 트렌드: {hashtag} (국가: {country_code})", 
-                 fontsize=13, fontweight="bold", pad=15)
+                  fontsize=13, fontweight="bold", pad=15)
         plt.xlabel("월", fontsize=11)
         plt.ylabel("건수", fontsize=11)
         plt.grid(True, alpha=0.3)
         plt.xticks(rotation=45)
         plt.tight_layout()
         
-        # 파일 저장
+        # 저장
         output_dir = Path(output_dir)
         output_dir.mkdir(parents=True, exist_ok=True)
         
-        # 파일명 (특수문자 제거)
-        hashtag_safe = re.sub(r'[^\w\s-]', '', hashtag).strip().replace(' ', '_')
+        hashtag_safe = re.sub(r"[^\w\s-]", "", hashtag).strip().replace(" ", "_")
         chart_path = output_dir / f"sns_chart_{country_code}_{hashtag_safe}.png"
         
         plt.savefig(chart_path, dpi=150, bbox_inches="tight", facecolor="white")
         plt.close()
         
-        logger.info(f"✓ SNS 차트 생성 완료: {chart_path}")
         return str(chart_path)
-        
+
     except Exception as e:
         logger.error(f"SNS 차트 생성 실패: {e}", exc_info=True)
         return None
-
-
-
-# =============================================================================
-# 🔧 삭제됨: 하드코딩된 섹션 생성 함수들
-# 이제 pipeline.py에서 출처와 함께 생성됨
-# =============================================================================
-
-# def generate_market_risk_section(country: str) -> str:
-#     """❌ 삭제 - 하드코딩된 내용, 출처 없음"""
-#     pass
-
-# def generate_regulation_section(country: str) -> str:
-#     """❌ 삭제 - 하드코딩된 내용, 출처 없음"""
-#     pass
-
-# def generate_price_trend_section(country: str) -> str:
-#     """❌ 삭제 - 하드코딩된 내용, 출처 없음"""
-#     pass
 
 
 class ReportGenerator:
@@ -366,9 +354,9 @@ class ReportGenerator:
                 grade = eval_info.get("grade", "N/A")
                 score = eval_info.get("score", 0)
                 
-                # A등급만 포함 (90점 이상)
-                if grade != "A":
-                    logger.warning(f"⚠️ {title}: {grade}등급 ({score}점) - A등급 미달로 제외")
+                # A등급만 포함 
+                if grade != "C":
+                    logger.warning(f"⚠️ {title}: {grade}등급 ({score}점) - 70점 미달로 제외")
                     continue
                 
                 parts.append(f"\n## {title}")
@@ -537,7 +525,7 @@ class ReportGenerator:
             sns_chart = None
             if sns_hashtag and sns_hashtag.strip():
                 logger.info(f"🔍 SNS 해시태그 차트 생성 시도: '{sns_hashtag}'")
-                sns_chart = create_sns_hashtag_chart(country_code, sns_hashtag, output_dir)
+                sns_chart = create_sns_hashtag_chart(country_code, sns_hashtag, hs_code, output_dir)
                 if sns_chart:
                     logger.info(f"✓ SNS 차트 생성 완료: {sns_chart}")
                 else:
