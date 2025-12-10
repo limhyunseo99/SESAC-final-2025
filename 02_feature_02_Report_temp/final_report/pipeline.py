@@ -575,12 +575,30 @@ class ResearchPipelineUpgraded:
         existing_content: str = ""
     ) -> Tuple[str, List[str]]:
         """섹션 생성 - HS Code 필터링 포함"""
-        
+
         # 웹 검색 모드
         if mode == "enhance_web":
-            # HS 카테고리 키워드 포함 쿼리
-            hs_keywords = " ".join(state.hs_category.get("keywords", [])[:3])
-            query = f"{state.country} {state.item} {hs_keywords} {section_key} 최신 2024 2025"
+            # ✅ 추가 분석 섹션이 아닌 경우에는 웹 보완을 사용하지 않음
+            analysis_sections = {"risk", "regulation", "price"}
+            if section_key not in analysis_sections:
+                # 이전 단계에서 생성된 내용을 그대로 사용
+                return (existing_content or ""), []
+            
+            # ✅ HS 코드 + 6단위 + 식품/식음료/음료 + 섹션 의미를 포함한 쿼리
+            hs_clean = getattr(state, "hs_code_clean", state.hs_code)
+            hs6 = hs_clean[:6] if hs_clean else ""
+            base_kw = "식품 식음료 음료"
+            section_kw_map = {
+                "risk": "시장 리스크",
+                "regulation": "수입 규제",
+                "price": "가격 동향",
+            }
+            section_kw = section_kw_map.get(section_key, "")
+            
+            query = (
+                f"{state.country} HS {hs_clean} {hs6} "
+                f"{base_kw} {section_kw} 최신 2024 2025"
+            ).strip()
             
             web_results = self.web.search_public_only(query, top_k=5)
             
@@ -589,6 +607,7 @@ class ResearchPipelineUpgraded:
             
             # 🔧 개선: 웹 검색 결과에 URL을 명확하게 포함
             context_parts = []
+
             for r in web_results:
                 url = r.get('url', 'N/A')
                 title = r.get('title', '')
@@ -628,20 +647,36 @@ class ResearchPipelineUpgraded:
             filter_type = "kotra"
         else:
             filter_type = "country_info"
+            
+        # 개선된 쿼리: 섹션 타입별로 검색 전략 분리
+        #  - 기본 섹션: 국가 + 식품/식음료/음료 + 섹션 의미
+        #  - 분석 섹션: 국가 + 식품/식음료/음료 + 섹션 키
+        basic_sections = {"overview", "market_size", "distribution"}
+        analysis_sections = {"risk", "regulation", "price"}
         
-        # ============================================================
-        # 개선된 쿼리: HS 카테고리 키워드 포함
-        # ============================================================
         hs_keywords = state.hs_category.get("keywords", [])
-        keyword_str = " ".join(hs_keywords[:3]) if hs_keywords else state.item
         
-        query = f"{state.country} {state.item} {keyword_str} {section_key}"
+        # 기본 섹션: HS/품목 언급 없이 식품/식음료/음료 기반 검색
+        if section_key in basic_sections:
+            base_kw = "식품 식음료 음료"
+            section_kw_map = {
+                "overview": "시장 개요",
+                "market_size": "시장 규모",
+                "distribution": "유통 구조",
+            }
+            section_kw = section_kw_map.get(section_key, "")
+            query = f"{state.country} {base_kw} {section_kw}".strip()
+        else:
+            # 분석 섹션 및 기타: 내부 벡터에서도 HS 대신 식품/식음료/음료 중심으로 검색
+            base_kw = "식품 식음료 음료"
+            query = f"{state.country} {base_kw} {section_key}".strip()
         
-        # 벡터 검색 (HS Code 메타데이터 필터 시도)
+        # 벡터 검색 필터
         filter_dict = {
             "type": filter_type,
             "country_code": state.country_code
         }
+
         
         docs = self.vectordb.retrieve(
             query=query,
@@ -707,16 +742,31 @@ class ResearchPipelineUpgraded:
             hs_code=state.hs_code
         )
         
-        # HS Code 관련 지시 추가
-        hs_instruction = f"""
+        # 섹션 유형에 따라 HS 관련 지시 분리
+        basic_sections = {"overview", "market_size", "distribution"}
+        
+        if section_key in basic_sections:
+            # ✅ 기본 섹션: HS 코드/품목 언급 금지
+            hs_instruction = f"""
+⚠️ 중요: 이 섹션은 특정 HS Code 품목이 아니라,
+{state.country}의 식품/식음료/음료 시장 전반을 설명하는 섹션입니다.
+
+- HS 코드 번호(예: {state.hs_code})나 구체적인 품목명({state.item})은 언급하지 마십시오.
+- 대신 {state.country}의 식품/식음료/음료 시장 구조, 규모, 소비·유통 특성을 중심으로 작성하십시오.
+""".strip("\n")
+        else:
+            # ✅ 분석 섹션 등: HS 코드 중심 지시 유지
+            hs_instruction = f"""
 ⚠️ 중요: 이 보고서는 HS Code {state.hs_code} ({state.item})에 대한 것입니다.
 관련 카테고리: {state.hs_category.get('category', '일반')}
 관련 키워드: {', '.join(hs_keywords[:5])}
 
 다른 품목(항공기부품, MCU, 철강 등)에 대한 내용은 포함하지 마십시오.
 {state.item} 또는 {state.hs_category.get('category', '')} 관련 내용만 작성하십시오.
-"""
-        prompt = hs_instruction + "\n" + prompt
+""".strip("\n")
+        
+        prompt = hs_instruction + "\n\n" + prompt
+
         
         # LLM 호출
         llm = self.llm_smart if mode in ["verify", "enhance_web"] else self.llm_fast
@@ -919,20 +969,20 @@ class ResearchPipelineUpgraded:
 아래 섹션 내용을 바탕으로 Executive Summary를 작성하세요.
 
 📌 대상 국가: {state.country}
-📌 HS Code: {state.hs_code}
 📌 카테고리: {state.hs_category.get('category', '일반')}
 
 ## 섹션 내용:
 {combined_content}
 
-## 사용 가능한 출처:
+## 출처 정보:
 {citations_str}
 
 ## 요약 작성 규칙 (반드시 준수):
 
 1. **보고서 목적** (1-2문장): 
-   - "{state.country} 시장에서 HS {state.hs_code} 품목의 진출 전략을 분석한다" 형식
-   - 예: "{state.country} 시장에서 HS {state.hs_code}({state.hs_category.get('category', '제품')})의 진출 전략을 분석합니다."
+   - "{state.country} 식품/식음료/음료 시장의 진출 전략을 분석한다" 형식
+   - 예: "{state.country} 식품/식음료/음료 시장의 기회와 위험 요인을 종합적으로 정리합니다."
+
 
 2. **시장 규모** (2-3문장): 
    - 위 섹션에서 추출한 구체적 금액, 성장률
@@ -960,6 +1010,7 @@ class ResearchPipelineUpgraded:
 - 일반론, 추측, 해석 금지
 - 최소 500자 이상 작성
 - 데이터가 없으면 솔직하게 "해당 데이터 확인 필요" 명시
+- "유제품"이라는 단어는 사용하지 말고, "해당 식품·음료 제품"과 같이 일반적인 표현으로 바꾸어 작성하십시오.
 """
         
         try:
@@ -967,9 +1018,9 @@ class ResearchPipelineUpgraded:
             return response.content.strip()
         except Exception as e:
             logger.error(f"Executive Summary 생성 실패: {e}")
-            # 🔧 개선: 실패 시에도 기본 정보 포함
+            # 🔧 개선: 실패 시에도 기본 정보 포함 (HS 코드는 언급하지 않음)
             return f"""
-본 보고서는 {state.country} 시장에서 HS {state.hs_code}({state.hs_category.get('category', '제품')})의 진출 전략을 분석합니다.
+본 보고서는 {state.country} 식품/식음료/음료 시장의 진출 전략을 정리한 것입니다.
 
 **시장 규모**: 아래 섹션 참조
 
@@ -981,6 +1032,7 @@ class ResearchPipelineUpgraded:
 
 [자동 요약 생성 중 오류 발생 - 각 섹션 내용을 직접 참조하시기 바랍니다]
 """
+
     
     def _to_output(self, state: PipelineState) -> Dict:
         """출력 형식 변환"""

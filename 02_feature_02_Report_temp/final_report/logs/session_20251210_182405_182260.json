@@ -1,0 +1,262 @@
+{
+  "session_id": "20251210_182405_182260",
+  "started_at": "2025-12-10T18:24:05.182260",
+  "ended_at": "2025-12-10T18:27:07.593361",
+  "user_input": {
+    "country": "미국 (USA)",
+    "hs_code": "0402999000",
+    "market_risk": false,
+    "regulation": false,
+    "price_trend": false,
+    "sns_hashtag": "",
+    "hs_code_2digit": "04",
+    "hs_code_4digit": "0402",
+    "is_beverage": false
+  },
+  "selected_options": [],
+  "user_activities": [
+    {
+      "timestamp": "2025-12-10T18:24:05.192098",
+      "stage": "input_parsing",
+      "action": "user_input_received",
+      "input_data": {
+        "country": "미국 (USA)",
+        "hs_code": "0402999000",
+        "market_risk": false,
+        "regulation": false,
+        "price_trend": false,
+        "sns_hashtag": "",
+        "hs_code_2digit": "04",
+        "hs_code_4digit": "0402",
+        "is_beverage": false
+      },
+      "output_data": {},
+      "duration_ms": 0,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "timestamp": "2025-12-10T18:24:05.192098",
+      "stage": "input_parsing",
+      "action": "stage_started",
+      "input_data": {
+        "country": "미국 (USA)",
+        "hs_code": "0402999000",
+        "market_risk": false,
+        "regulation": false,
+        "price_trend": false,
+        "sns_hashtag": "",
+        "hs_code_2digit": "04",
+        "hs_code_4digit": "0402",
+        "is_beverage": false
+      },
+      "output_data": {},
+      "duration_ms": 0,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "timestamp": "2025-12-10T18:24:05.192098",
+      "stage": "input_parsing",
+      "action": "stage_completed",
+      "input_data": {},
+      "output_data": {
+        "country_code": "US",
+        "hs_code_clean": "0402999000",
+        "hs_category": {
+          "category": "일반",
+          "keywords": []
+        }
+      },
+      "duration_ms": 0.0,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "timestamp": "2025-12-10T18:26:57.224155",
+      "stage": "final_report",
+      "action": "stage_started",
+      "input_data": {},
+      "output_data": {},
+      "duration_ms": 0,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "timestamp": "2025-12-10T18:27:07.592363",
+      "stage": "final_report",
+      "action": "stage_completed",
+      "input_data": {},
+      "output_data": {
+        "report_length": 4715
+      },
+      "duration_ms": 10368.207454681396,
+      "success": true,
+      "error_message": ""
+    }
+  ],
+  "sections": {
+    "overview": {
+      "section_key": "overview",
+      "section_title": "국가 및 시장 개요",
+      "started_at": "2025-12-10T18:24:05.192098",
+      "ended_at": "2025-12-10T18:24:19.664581",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 68,
+      "final_grade": "D",
+      "included_in_report": false,
+      "sources_used": [
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json"
+      ],
+      "content_evolution": []
+    },
+    "market_size": {
+      "section_key": "market_size",
+      "section_title": "시장 규모",
+      "started_at": "2025-12-10T18:24:19.665601",
+      "ended_at": "2025-12-10T18:25:11.632405",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 81,
+      "final_grade": "B",
+      "included_in_report": true,
+      "sources_used": [
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "KATI, 2023_kati_US.pdf, p.25",
+        "KATI, 2023_kati_US.pdf, p.26",
+        "KATI, 2022_kati_US.pdf, p.20",
+        "KOTRA, 2025_kotra_US.pdf, p.102",
+        "KOTRA, 2023_kotra_US.pdf, p.74",
+        "KOTRA, 2023_kotra_US.pdf, p.75",
+        "KOTRA, 2024_kotra_US.pdf, p.37",
+        "KOTRA, 2024_kotra_US.pdf, p.82"
+      ],
+      "content_evolution": []
+    },
+    "distribution": {
+      "section_key": "distribution",
+      "section_title": "유통 구조",
+      "started_at": "2025-12-10T18:25:11.632405",
+      "ended_at": "2025-12-10T18:25:34.723776",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 81,
+      "final_grade": "B",
+      "included_in_report": true,
+      "sources_used": [
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "KOTRA, 2023_kotra_US.pdf, p.74",
+        "KOTRA, 2024_kotra_US.pdf, p.106",
+        "KOTRA, 2024_kotra_US.pdf, p.82",
+        "KOTRA, 2024_kotra_US.pdf, p.80",
+        "KOTRA, 2024_kotra_US.pdf, p.81"
+      ],
+      "content_evolution": []
+    },
+    "risk": {
+      "section_key": "risk",
+      "section_title": "시장 리스크",
+      "started_at": "2025-12-10T18:25:34.723776",
+      "ended_at": "2025-12-10T18:26:05.786710",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 68,
+      "final_grade": "D",
+      "included_in_report": false,
+      "sources_used": [
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "KOTRA, 2023_kotra_US.pdf, p.74",
+        "KOTRA, 2024_kotra_US.pdf, p.80",
+        "KOTRA, 2023_kotra_US.pdf, p.38",
+        "KOTRA, 2025_kotra_US.pdf, p.37",
+        "KOTRA, 2024_kotra_US.pdf, p.81",
+        "웹: https://www.irs.gov/pub/irs-pdf/p519ko.pdf"
+      ],
+      "content_evolution": []
+    },
+    "regulation": {
+      "section_key": "regulation",
+      "section_title": "규제 검토",
+      "started_at": "2025-12-10T18:26:05.786710",
+      "ended_at": "2025-12-10T18:26:26.991746",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 64,
+      "final_grade": "D",
+      "included_in_report": false,
+      "sources_used": [
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "KOTRA, 2024_kotra_US.pdf, p.38",
+        "KOTRA, 2023_kotra_US.pdf, p.37",
+        "KOTRA, 2024_kotra_US.pdf, p.48",
+        "KOTRA, 2025_kotra_US.pdf, p.36",
+        "KOTRA, 2023_kotra_US.pdf, p.74"
+      ],
+      "content_evolution": []
+    },
+    "price": {
+      "section_key": "price",
+      "section_title": "가격 추세",
+      "started_at": "2025-12-10T18:26:26.992314",
+      "ended_at": "2025-12-10T18:26:57.224155",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 83,
+      "final_grade": "B",
+      "included_in_report": true,
+      "sources_used": [
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "KATI, 2022_kati_US.pdf, p.54",
+        "KATI, 2023_kati_US.pdf, p.34",
+        "KATI, 2022_kati_US.pdf, p.50",
+        "KATI, 2022_kati_US.pdf, p.57",
+        "KATI, 2023_kati_US.pdf, p.26",
+        "KOTRA, 2023_kotra_US.pdf, p.35",
+        "KOTRA, 2023_kotra_US.pdf, p.74",
+        "KOTRA, 2025_kotra_US.pdf, p.41",
+        "KOTRA, 2024_kotra_US.pdf, p.45",
+        "KOTRA, 2023_kotra_US.pdf, p.75"
+      ],
+      "content_evolution": []
+    }
+  },
+  "stats": {
+    "total_sections": 6,
+    "passed_sections": 3,
+    "rejected_sections": 3,
+    "total_decisions": 0,
+    "total_activities": 5,
+    "total_errors": 0,
+    "sources_summary": {
+      "json": 29,
+      "pdf": 34,
+      "web": 0,
+      "csv": 0
+    }
+  },
+  "errors": []
+}

@@ -1,0 +1,275 @@
+{
+  "session_id": "20251210_091047_926703",
+  "started_at": "2025-12-10T09:10:47.926703",
+  "ended_at": "2025-12-10T09:14:05.122349",
+  "user_input": {
+    "country": "미국 (USA)",
+    "hs_code": "2202440000",
+    "market_risk": true,
+    "regulation": true,
+    "price_trend": true,
+    "sns_hashtag": "바나나우유",
+    "hs_code_2digit": "22",
+    "hs_code_4digit": "2202",
+    "is_beverage": true
+  },
+  "selected_options": [],
+  "user_activities": [
+    {
+      "timestamp": "2025-12-10T09:10:47.931824",
+      "stage": "input_parsing",
+      "action": "user_input_received",
+      "input_data": {
+        "country": "미국 (USA)",
+        "hs_code": "2202440000",
+        "market_risk": true,
+        "regulation": true,
+        "price_trend": true,
+        "sns_hashtag": "바나나우유",
+        "hs_code_2digit": "22",
+        "hs_code_4digit": "2202",
+        "is_beverage": true
+      },
+      "output_data": {},
+      "duration_ms": 0,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "timestamp": "2025-12-10T09:10:47.931824",
+      "stage": "input_parsing",
+      "action": "stage_started",
+      "input_data": {
+        "country": "미국 (USA)",
+        "hs_code": "2202440000",
+        "market_risk": true,
+        "regulation": true,
+        "price_trend": true,
+        "sns_hashtag": "바나나우유",
+        "hs_code_2digit": "22",
+        "hs_code_4digit": "2202",
+        "is_beverage": true
+      },
+      "output_data": {},
+      "duration_ms": 0,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "timestamp": "2025-12-10T09:10:47.933286",
+      "stage": "input_parsing",
+      "action": "stage_completed",
+      "input_data": {},
+      "output_data": {
+        "country_code": "US",
+        "hs_code_clean": "2202440000",
+        "hs_category": {
+          "category": "음료",
+          "keywords": [
+            "음료",
+            "탄산",
+            "청량음료",
+            "주스",
+            "에너지드링크",
+            "beverage",
+            "soft drink",
+            "juice"
+          ]
+        }
+      },
+      "duration_ms": 1.4617443084716797,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "timestamp": "2025-12-10T09:13:50.873518",
+      "stage": "final_report",
+      "action": "stage_started",
+      "input_data": {},
+      "output_data": {},
+      "duration_ms": 0,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "timestamp": "2025-12-10T09:14:05.121011",
+      "stage": "final_report",
+      "action": "stage_completed",
+      "input_data": {},
+      "output_data": {
+        "report_length": 6850
+      },
+      "duration_ms": 14247.493028640747,
+      "success": true,
+      "error_message": ""
+    }
+  ],
+  "sections": {
+    "overview": {
+      "section_key": "overview",
+      "section_title": "국가 및 시장 개요",
+      "started_at": "2025-12-10T09:10:47.933286",
+      "ended_at": "2025-12-10T09:10:58.867549",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 77,
+      "final_grade": "C",
+      "included_in_report": true,
+      "sources_used": [
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json"
+      ],
+      "content_evolution": []
+    },
+    "market_size": {
+      "section_key": "market_size",
+      "section_title": "시장 규모",
+      "started_at": "2025-12-10T09:10:58.867549",
+      "ended_at": "2025-12-10T09:11:40.311843",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 77,
+      "final_grade": "C",
+      "included_in_report": true,
+      "sources_used": [
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "KATI, 2023_kati_US.pdf, p.25",
+        "KATI, 2023_kati_US.pdf, p.31",
+        "KATI, 2023_kati_US.pdf, p.26",
+        "KATI, 2023_kati_US.pdf, p.28",
+        "KATI, 2022_kati_US.pdf, p.71",
+        "KOTRA, 2023_kotra_US.pdf, p.31",
+        "KOTRA, 2025_kotra_US.pdf, p.102",
+        "KOTRA, 2024_kotra_US.pdf, p.42",
+        "KOTRA, 2025_kotra_US.pdf, p.38",
+        "KOTRA, 2023_kotra_US.pdf, p.26"
+      ],
+      "content_evolution": []
+    },
+    "distribution": {
+      "section_key": "distribution",
+      "section_title": "유통 구조",
+      "started_at": "2025-12-10T09:11:40.311843",
+      "ended_at": "2025-12-10T09:12:02.527587",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 78,
+      "final_grade": "C",
+      "included_in_report": true,
+      "sources_used": [
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "KOTRA, 2023_kotra_US.pdf, p.74",
+        "KOTRA, 2025_kotra_US.pdf, p.94",
+        "KOTRA, 2024_kotra_US.pdf, p.102",
+        "KOTRA, 2025_kotra_US.pdf, p.66",
+        "KOTRA, 2025_kotra_US.pdf, p.102"
+      ],
+      "content_evolution": []
+    },
+    "risk": {
+      "section_key": "risk",
+      "section_title": "시장 리스크",
+      "started_at": "2025-12-10T09:12:02.527587",
+      "ended_at": "2025-12-10T09:12:27.198870",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 69,
+      "final_grade": "D",
+      "included_in_report": false,
+      "sources_used": [
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "KOTRA, 2024_kotra_US.pdf, p.30",
+        "KOTRA, 2023_kotra_US.pdf, p.74",
+        "KOTRA, 2025_kotra_US.pdf, p.111",
+        "KOTRA, 2025_kotra_US.pdf, p.102",
+        "KOTRA, 2024_kotra_US.pdf, p.113"
+      ],
+      "content_evolution": []
+    },
+    "regulation": {
+      "section_key": "regulation",
+      "section_title": "규제 검토",
+      "started_at": "2025-12-10T09:12:27.198870",
+      "ended_at": "2025-12-10T09:13:05.807921",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 71,
+      "final_grade": "C",
+      "included_in_report": true,
+      "sources_used": [
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "KOTRA, 2025_kotra_US.pdf, p.63",
+        "KOTRA, 2024_kotra_US.pdf, p.48",
+        "KOTRA, 2023_kotra_US.pdf, p.37",
+        "KOTRA, 2024_kotra_US.pdf, p.38",
+        "KOTRA, 2025_kotra_US.pdf, p.102",
+        "웹: https://sciwatch.kiost.ac.kr/bitstream/2020.kiost/37851/1/%ED%95%B4%EC%96%91%EC%B4%88%EA%B3%A0%EC%98%A8_%EA%B3%A0%EC%84%B8%EA%B7%A0_%EC%9D%B4%EC%9A%A9_%EB%B0%94%EC%9D%B4%EC%98%A4%EC%88%98%EC%86%8C_%EC%8B%A4%EC%9A%A9%ED%99%94_%EA%B8%B0%EC%88%A0%EA%B0%9C%EB%B0%9C_%EA%B8%B0%ED%9A%8D%EC%97%B0%EA%B5%AC.pdf",
+        "웹: https://www.codil.or.kr/filebank/original/RK/OTKCRK220003/OTKCRK220003.pdf"
+      ],
+      "content_evolution": []
+    },
+    "price": {
+      "section_key": "price",
+      "section_title": "가격 추세",
+      "started_at": "2025-12-10T09:13:05.807921",
+      "ended_at": "2025-12-10T09:13:50.870856",
+      "stage_snapshots": {},
+      "supervisor_decisions": [],
+      "final_score": 81,
+      "final_grade": "B",
+      "included_in_report": true,
+      "sources_used": [
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "COUNTRY_INFO, country_info_US.json",
+        "KATI, 2023_kati_US.pdf, p.25",
+        "KATI, 2022_kati_US.pdf, p.71",
+        "KATI, 2023_kati_US.pdf, p.31",
+        "KATI, 2023_kati_US.pdf, p.26",
+        "KATI, 2023_kati_US.pdf, p.28",
+        "KOTRA, 2025_kotra_US.pdf, p.102",
+        "KOTRA, 2025_kotra_US.pdf, p.111",
+        "KOTRA, 2023_kotra_US.pdf, p.35",
+        "KOTRA, 2024_kotra_US.pdf, p.49",
+        "KOTRA, 2023_kotra_US.pdf, p.74"
+      ],
+      "content_evolution": []
+    }
+  },
+  "stats": {
+    "total_sections": 6,
+    "passed_sections": 5,
+    "rejected_sections": 1,
+    "total_decisions": 0,
+    "total_activities": 5,
+    "total_errors": 0,
+    "sources_summary": {
+      "json": 30,
+      "pdf": 37,
+      "web": 0,
+      "csv": 0
+    }
+  },
+  "errors": []
+}

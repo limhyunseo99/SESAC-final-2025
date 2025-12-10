@@ -282,10 +282,21 @@ class ReportGenerator:
         
         section_map = {}
         for section in sections:
+            key = section.get("key")
             eval_info = section.get("evaluation", {})
             score = eval_info.get("score", 0)
-            if section.get("passed") and score >= self.QUALITY_THRESHOLD:
-                section_map[section.get("key")] = section
+            passed = section.get("passed")
+            content = section.get("content", "") or ""
+            
+            # 💰 가격 추세 섹션은 내용만 있으면 포함 (검증 점수와 무관)
+            if key == "price":
+                if content.strip():
+                    section_map[key] = section
+                continue
+            
+            # 그 외 섹션은 기존 기준 유지
+            if passed and score >= self.QUALITY_THRESHOLD and content.strip():
+                section_map[key] = section
         
         section_order = [
             ("summary", "1. 요약 (Executive Summary)"),

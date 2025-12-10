@@ -4,7 +4,7 @@
   "market_risk": true,
   "regulation": true,
   "price_trend": true,
-  "sns_hashtag": "바나나우유",
+  "sns_hashtag": "",
   "hs_code_2digit": "21",
   "hs_code_4digit": "2106",
   "is_beverage": false
