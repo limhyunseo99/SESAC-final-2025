@@ -392,6 +392,7 @@ class ReportGenerator:
             hs_code = metadata.get("hs_code", "")
             success_info = get_success_rate_info(country_code, hs_code)
             if success_info:
+                # ✅ 예측 데이터가 있는 경우: 성공확률을 문장 형태로 표시
                 success_text = (
                     "\n## 📊 2026년 수출 유망 확률\n\n"
                     f"2026년 HS {success_info['HS코드']} 성공확률은: "
@@ -402,6 +403,19 @@ class ReportGenerator:
                     if len(parts) == 2:
                         enhanced_markdown = parts[0] + success_text + split_str + parts[1]
                         break
+            else:
+                # ✅ 예측 데이터가 없는 경우 (예: VN + HS 0402999000)
+                missing_text = (
+                    "\n## 📊 2026년 수출 유망 확률\n\n"
+                    f"2026년 HS {hs_code}에 대한 2026년 수출 유망 예측 데이터가 없어, "
+                    "성공확률을 제공하지 않습니다.\n\n---\n"
+                )
+                for split_str in ["## 국가 및 시장 개요", "## 2. 국가"]:
+                    parts = enhanced_markdown.split(split_str, 1)
+                    if len(parts) == 2:
+                        enhanced_markdown = parts[0] + missing_text + split_str + parts[1]
+                        break
+
 
             
             cover_path = output_path.replace(".pdf", "_cover.pdf")

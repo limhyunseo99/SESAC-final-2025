@@ -535,8 +535,8 @@ class ResearchPipelineUpgraded:
             ("pdf", section.pdf_enhanced, section.pdf_score),
             ("web", section.web_enhanced, section.web_score),
         ]
-        
-        # 빈 콘텐츠 제외하고 점수 순 정렬
+
+        # 빈 콘텐츠 제외하고 점수 순 정렬 대상만 추림
         valid_versions = [(v, c, s) for v, c, s in versions if c.strip()]
         if not valid_versions:
             section.final = f"{section.title}에 대한 데이터를 찾을 수 없습니다."
@@ -544,28 +544,44 @@ class ResearchPipelineUpgraded:
             section.final_version = "none"
             section.success = False
             return
-        
-        valid_versions.sort(key=lambda x: x[2], reverse=True)
-        best_version, best_content, best_score = valid_versions[0]
-        
+
+        analysis_sections = {"risk", "regulation", "price"}
+
+        # 🔎 분석 섹션(risk/regulation/price)에서는 웹 보강 버전에 가산점 부여
+        if key in analysis_sections:
+            boosted_versions = []
+            for v, c, s in valid_versions:
+                if v == "web":
+                    # 웹 보강 버전에 +10점 보너스
+                    boosted_versions.append((v, c, s + 10))
+                else:
+                    boosted_versions.append((v, c, s))
+            boosted_versions.sort(key=lambda x: x[2], reverse=True)
+            best_version, best_content, best_score = boosted_versions[0]
+        else:
+            # 그 외 섹션은 기존처럼 최고 점수 버전 선택
+            valid_versions.sort(key=lambda x: x[2], reverse=True)
+            best_version, best_content, best_score = valid_versions[0]
+
         section.final = best_content
         section.final_score = best_score
         section.final_version = best_version
         # 🔧 품질 기준: MIN_SCORE(70) 이상이면 성공으로 표시
         section.success = best_score >= self.MIN_SCORE
-        
+
         section.evaluation = {
             "score": best_score,
             "grade": self._score_to_grade(best_score),
             "version": best_version,
             "all_scores": {v[0]: v[2] for v in versions},
-            "relevance": section.relevance
+            "relevance": section.relevance,
         }
-        
+
         if section.success:
             logger.info(f"🏆 {key} 최종: {best_version.upper()} 버전 선택 ({best_score}점)")
         else:
             logger.error(f"❌ {key} 최종: 모든 버전 품질 미달 (최고 {best_score}점)")
+
     
     async def _generate_section_with_hs_filter(
         self,
