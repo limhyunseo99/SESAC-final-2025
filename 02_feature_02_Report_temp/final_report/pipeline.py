@@ -833,9 +833,20 @@ class ResearchPipelineUpgraded:
                 key=lambda x: x[1].final_score,
                 reverse=True
             )
-            # 최소 3개 섹션 포함
+            # 최소 3~5개 섹션 포함
             for key, section in sorted_sections[:5]:
                 approved_sections[key] = section
+
+        # 🔧 분석 필수 섹션(risk / regulation / price)은 가능하면 강제로 포함
+        for key in MANDATORY_ANALYSIS:
+            if key in state.sections and key not in approved_sections:
+                section = state.sections[key]
+                if section.final.strip():
+                    logger.warning(
+                        f"  ℹ️ {key}: B등급 미만이지만 최종 보고서에 포함합니다. "
+                        f"(점수: {section.final_score}점, grade: {section.evaluation.get('grade', 'F')})"
+                    )
+                    approved_sections[key] = section
         
         # ============================================================
         # 🔧 개선된 Executive Summary 생성
