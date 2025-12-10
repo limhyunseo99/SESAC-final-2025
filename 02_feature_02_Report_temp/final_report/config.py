@@ -29,8 +29,8 @@ class Config:
     DATA_DIR = os.path.join(BASE_DIR, "data")
     OUTPUT_DIR = os.path.join(BASE_DIR, "output")
     
-    MODEL_FAST = os.getenv("MODEL_FAST", "gpt-4o-mini")
-    MODEL_SMART = os.getenv("MODEL_SMART", "gpt-4o-mini")
+    MODEL_FAST = os.getenv("MODEL_FAST", "gpt-4")
+    MODEL_SMART = os.getenv("MODEL_SMART", "gpt-5-mini")
     
     TAVILY_API_KEY = os.getenv("TAVILY_API_KEY", "")
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
