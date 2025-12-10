@@ -394,16 +394,15 @@ class ReportGenerator:
             if success_info:
                 success_text = (
                     "\n## 📊 2026년 수출 유망 확률\n\n"
-                    f"**{success_info['순위']}위** | **{success_info['국가명']}** | "
-                    f"**HS코드: {success_info['HS코드']}** | **품목: {success_info['품목명']}** | "
-                    f"**카테고리: {success_info['카테고리']}** | **2025년 수출액: ${success_info['2025년수출액']:,.0f}** | "
-                    f"**2026 성공확률: {success_info['2026성공확률']:.2f}%** | **예측: {success_info['2026성공예측']}**\n\n---\n"
+                    f"2026년 HS {success_info['HS코드']} 성공확률은: "
+                    f"{success_info['2026성공확률']:.2f}%입니다.\n\n---\n"
                 )
                 for split_str in ["## 국가 및 시장 개요", "## 2. 국가"]:
                     parts = enhanced_markdown.split(split_str, 1)
                     if len(parts) == 2:
                         enhanced_markdown = parts[0] + success_text + split_str + parts[1]
                         break
+
             
             cover_path = output_path.replace(".pdf", "_cover.pdf")
             body_path = output_path.replace(".pdf", "_body.pdf")
