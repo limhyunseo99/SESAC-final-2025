@@ -833,10 +833,24 @@ class ResearchPipelineUpgraded:
                 key=lambda x: x[1].final_score,
                 reverse=True
             )
-            # 최소 3~5개 섹션 포함
+            # 최소 3개 섹션 포함
             for key, section in sorted_sections[:5]:
                 approved_sections[key] = section
 
+        # ✅ 기본 섹션(overview / market_size / distribution)은 점수와 무관하게 포함
+        basic_sections = {"overview", "market_size", "distribution"}
+        for key in basic_sections:
+            if key in state.sections and key not in approved_sections:
+                section = state.sections[key]
+                if getattr(section, "final", "").strip():
+                    logger.warning(
+                        f"  ℹ️ {key}: 기본 섹션은 점수({section.final_score}점)와 무관하게 최종 보고서에 포함합니다."
+                    )
+                    approved_sections[key] = section
+        
+        # ============================================================
+        # 🔧 개선된 Executive Summary 생성
+        # ============================================================
         # 🔧 분석 필수 섹션(risk / regulation / price)은 가능하면 강제로 포함
         for key in MANDATORY_ANALYSIS:
             if key in state.sections and key not in approved_sections:
@@ -866,7 +880,7 @@ class ResearchPipelineUpgraded:
         parts.append(f"*품질: 자동생성*\n")
         parts.append(summary_content)
         
-        # 2-8. 나머지 섹션 (B등급 이상)
+        # 2-8. 나머지 섹션
         section_order = [
             ("overview", "2. 국가 및 시장 개요"),
             ("market_size", "3. 시장 규모"),
@@ -877,15 +891,22 @@ class ResearchPipelineUpgraded:
             ("sns_hashtag", "8. SNS 해시태그"),
         ]
         
+        # ✅ 기본 섹션(2, 3, 4)은 점수·등급 라벨을 숨김
+        basic_sections = {"overview", "market_size", "distribution"}
+        
         for key, title in section_order:
             if key in approved_sections:
                 section = approved_sections[key]
-                score = section.final_score
-                grade = section.evaluation.get("grade", "F")
-                version = section.final_version.upper()
                 
                 parts.append(f"\n## {title}")
-                parts.append(f"*품질: {grade}등급 ({score}점) | 버전: {version}*\n")
+                
+                # 분석 섹션 등 나머지에만 품질 라벨 표시
+                if key not in basic_sections:
+                    score = section.final_score
+                    grade = section.evaluation.get("grade", "F")
+                    version = section.final_version.upper()
+                    parts.append(f"*품질: {grade}등급 ({score}점) | 버전: {version}*\n")
+                
                 parts.append(section.final)
         
         # 9. 출처 (KOTRA p.X, KATI p.Y, 웹 URL 형식)
@@ -937,7 +958,8 @@ class ResearchPipelineUpgraded:
         # 품질 요약 (디버그용, 내부 모드에서만)
         parts.append("\n---\n## 📊 품질 요약\n")
         for key, title in section_order:
-            if key in approved_sections:
+            # ✅ 기본 섹션(2, 3, 4)은 품질 요약에서도 제외
+            if key in approved_sections and key not in basic_sections:
                 section = approved_sections[key]
                 relevance_info = ""
                 if section.relevance:
@@ -948,7 +970,7 @@ class ResearchPipelineUpgraded:
                     f"- **{title.split('. ')[1]}**: {section.evaluation.get('grade', 'F')}등급 "
                     f"({section.final_score}점, {section.final_version.upper()}{relevance_info})"
                 )
-        
+
         return "\n".join(parts)
     
     async def _generate_executive_summary(
